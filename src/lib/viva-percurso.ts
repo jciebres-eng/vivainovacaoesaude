@@ -403,6 +403,66 @@ function estadoInicial(): EstadoPercurso {
   };
 }
 
+/* ------------------------------------------- cenários de demonstração (17) */
+
+export type Cenario = "primeiro-acesso" | "atividade-iniciada" | "apos-experiencia";
+
+export const rotulosDeCenario: Record<Cenario, string> = {
+  "primeiro-acesso": "Primeiro acesso",
+  "atividade-iniciada": "Com atividade iniciada",
+  "apos-experiencia": "Depois de uma experiência",
+};
+
+function estadoPrimeiroAcesso(): EstadoPercurso {
+  const base = estadoInicial();
+  return {
+    atividades: base.atividades.map((a) => ({ ...a, estado: "disponivel" })),
+    preparacoes: [],
+    estrategias: [],
+    experiencias: [],
+    reflexoes: [],
+    duvidas: [],
+    continuidade: {},
+  };
+}
+
+function estadoAposExperiencia(): EstadoPercurso {
+  const base = estadoInicial();
+  return {
+    ...base,
+    atividades: base.atividades.map((a) =>
+      a.id === "perguntas-consulta"
+        ? { ...a, estado: "pronto-para-reflexao" }
+        : a,
+    ),
+    experiencias: [
+      {
+        id: "experiencia-2",
+        atividade: "Consulta na unidade de saúde do bairro",
+        onde: "Unidade de saúde do bairro",
+        quando: "2026-07-29",
+        planejado: "Levar as perguntas por escrito.",
+        aconteceu: "Consegui fazer duas das três perguntas.",
+        ajudou: "Ter as perguntas anotadas antes.",
+        dificultou: "A sala de espera estava cheia.",
+        duvidaIds: [],
+        atualizadaEm: "2026-07-29",
+      },
+      ...base.experiencias,
+    ],
+    continuidade: {
+      ultimaAtividadeId: "perguntas-consulta",
+      ultimaVisitaEm: "2026-07-29",
+    },
+  };
+}
+
+export function estadoDoCenario(cenario: Cenario): EstadoPercurso {
+  if (cenario === "primeiro-acesso") return estadoPrimeiroAcesso();
+  if (cenario === "apos-experiencia") return estadoAposExperiencia();
+  return estadoInicial();
+}
+
 /* ------------------------------------------------------------ armazenamento */
 
 const CHAVE = "viva:percurso:v1";
@@ -592,6 +652,12 @@ export function usePercurso() {
 
   const restaurarDemonstracao = useCallback(() => gravar(estadoInicial()), []);
 
+  /** Troca o cenário fictício apresentado na demonstração. */
+  const aplicarCenario = useCallback(
+    (cenario: Cenario) => gravar(estadoDoCenario(cenario)),
+    [],
+  );
+
   return {
     ...dados,
     salvarPreparacao,
@@ -605,5 +671,6 @@ export function usePercurso() {
     salvarDuvida,
     removerDuvida,
     restaurarDemonstracao,
+    aplicarCenario,
   };
 }

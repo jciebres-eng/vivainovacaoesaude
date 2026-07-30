@@ -4,8 +4,8 @@ import {
   Clock3,
   Leaf,
   Route as RouteIcon,
-  Settings2,
   ShieldCheck,
+  Sunrise,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -25,10 +25,20 @@ const itensPrincipais: {
   combina: (p: string) => boolean;
 }[] = [
   {
+    to: "/meu-momento",
+    label: "Meu momento",
+    icon: Sunrise,
+    combina: (p) => p === "/meu-momento" || p.startsWith("/meu-momento"),
+  },
+  {
     to: "/perfil",
     label: "Percurso",
     icon: RouteIcon,
-    combina: (p) => steps.some((s) => p.startsWith(s.path)) && !p.startsWith("/biblioteca") && !p.startsWith("/linha-do-tempo"),
+    combina: (p) =>
+      steps.some((s) => p.startsWith(s.path)) &&
+      !p.startsWith("/meu-momento") &&
+      !p.startsWith("/biblioteca") &&
+      !p.startsWith("/linha-do-tempo"),
   },
   {
     to: "/biblioteca",
@@ -41,12 +51,6 @@ const itensPrincipais: {
     label: "Trajetória",
     icon: Clock3,
     combina: (p) => p.startsWith("/linha-do-tempo"),
-  },
-  {
-    to: "/configuracoes",
-    label: "Ajustes",
-    icon: Settings2,
-    combina: (p) => p.startsWith("/configuracoes"),
   },
   {
     to: "/sobre",

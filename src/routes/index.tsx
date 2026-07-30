@@ -45,10 +45,10 @@ function Inicio() {
 
         <div className="mt-10">
           <Link
-            to="/perfil"
+            to="/meu-momento"
             className="viva-tap inline-flex w-full items-center justify-center rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
           >
-            Começar
+            Entrar no meu momento
           </Link>
         </div>
 
