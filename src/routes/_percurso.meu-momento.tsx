@@ -114,7 +114,7 @@ function MeuMomentoPage() {
       rotulo: atividade
         ? `Continuar de onde parei · ${atividade.titulo}`
         : "Continuar de onde parei",
-      onSelecionar: () => navigate({ to: "/preparacao" }),
+      onSelecionar: () => navigate({ to: "/jornada/preparacao" }),
     },
     {
       id: "registrar",
@@ -152,7 +152,7 @@ function MeuMomentoPage() {
     {
       id: "pausa",
       rotulo: "Encerrar por hoje",
-      onSelecionar: () => navigate({ to: "/afastamento" }),
+      onSelecionar: () => navigate({ to: "/jornada/encerramento" }),
     },
   ];
 
@@ -204,7 +204,7 @@ function MeuMomentoPage() {
   const secaoEstrategias = percurso.estrategias.length ? (
     <MinhasEstrategias
       estrategias={percurso.estrategias}
-      onAdicionarAoPlano={() => navigate({ to: "/preparacao" })}
+      onAdicionarAoPlano={() => navigate({ to: "/jornada/preparacao" })}
       onRegistrarObservacao={() => abrirRegistro("experiencia")}
     />
   ) : null;
@@ -245,7 +245,7 @@ function MeuMomentoPage() {
 
         {momento.preferencias.mostrarEstadoAtual ? (
           <MeuMomentoCard
-            onSeguirSugestao={() => navigate({ to: "/preparacao" })}
+            onSeguirSugestao={() => navigate({ to: "/jornada/preparacao" })}
             onPular={() =>
               momento.definirPreferencia({ mostrarEstadoAtual: false })
             }
@@ -255,11 +255,11 @@ function MeuMomentoPage() {
         {atividade ? (
           <section aria-label="Próximo passo">
             <ProximoPassoCard
-              onComecar={() => navigate({ to: "/preparacao" })}
+              onComecar={() => navigate({ to: "/jornada/preparacao" })}
               onAdiar={() =>
                 percurso.definirEstadoDaAtividade(atividade.id, "pausado")
               }
-              onRecusar={() => navigate({ to: "/opcoes" })}
+              onRecusar={() => navigate({ to: "/jornada/objetivo" })}
             />
           </section>
         ) : (
@@ -274,9 +274,9 @@ function MeuMomentoPage() {
                   (a) => a.id === percurso.continuidade.ultimaAtividadeId,
                 )?.titulo
               }
-              onContinuar={() => navigate({ to: "/preparacao" })}
-              onRevisar={() => navigate({ to: "/opcoes" })}
-              onRetomarDepois={() => navigate({ to: "/afastamento" })}
+              onContinuar={() => navigate({ to: "/jornada/preparacao" })}
+              onRevisar={() => navigate({ to: "/jornada/objetivo" })}
+              onRetomarDepois={() => navigate({ to: "/jornada/encerramento" })}
             />
           </section>
         ) : null}
