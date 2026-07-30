@@ -39,7 +39,14 @@ export const groups: DocGroup[] = [
     description:
       "Biblioteca demonstrativa com informações curtas e acessíveis ligadas aos objetivos escolhidos.",
   },
+  {
+    id: "E",
+    label: "Grupo E — Interface",
+    description:
+      "Mapa de telas, navegação e wireframes de baixa fidelidade do protótipo.",
+  },
 ];
+
 
 
 
