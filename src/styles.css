@@ -5,27 +5,26 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * VIVA — Design System Humano (documento 14).
  *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
+ * Paleta: azul-esverdeado suave (principal), verde sálvia (progresso e
+ * estados positivos), areia claro (superfícies), brancos aquecidos e
+ * cinzas suaves. Sem preto absoluto. Sem branco puro em grandes áreas.
+ * Amarelo suave apenas para avisos. Vermelho discreto apenas quando
+ * realmente necessário.
  *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Todas as cores em oklch. Novos tokens precisam existir em :root, em
+ * .dark e em @theme inline.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-3xl: calc(var(--radius) + 14px);
+  --radius-4xl: calc(var(--radius) + 20px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -42,15 +41,17 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  /* Verde sálvia — continuidade, trajetória, estados positivos */
+  --color-salvia: var(--salvia);
+  --color-salvia-foreground: var(--salvia-foreground);
+  --color-salvia-suave: var(--salvia-suave);
+  /* Amarelo suave — avisos importantes, nunca urgência */
+  --color-atencao: var(--atencao);
+  --color-atencao-foreground: var(--atencao-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -59,81 +60,119 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --shadow-suave: 0 1px 2px oklch(0.3 0.02 200 / 0.04), 0 8px 24px -16px oklch(0.3 0.02 200 / 0.16);
+  --shadow-suave-alta: 0 2px 4px oklch(0.3 0.02 200 / 0.05), 0 14px 32px -18px oklch(0.3 0.02 200 / 0.22);
 }
 
 :root {
-  --radius: 0.5rem;
-  /* VIVA — paleta calma, adulta, baixo estímulo (doc 04, 5.2) */
-  --background: oklch(0.985 0.006 95);
-  --foreground: oklch(0.24 0.02 240);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.02 240);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.02 240);
-  --primary: oklch(0.42 0.06 210);
+  --radius: 0.875rem;
+
+  /* Superfícies: areia claro e branco aquecido */
+  --background: oklch(0.975 0.008 92);
+  --foreground: oklch(0.28 0.015 215);
+  --card: oklch(0.993 0.004 95);
+  --card-foreground: oklch(0.28 0.015 215);
+  --popover: oklch(0.993 0.004 95);
+  --popover-foreground: oklch(0.28 0.015 215);
+
+  /* Principal: azul-esverdeado suave */
+  --primary: oklch(0.47 0.055 205);
   --primary-foreground: oklch(0.985 0.006 95);
-  --secondary: oklch(0.945 0.012 200);
-  --secondary-foreground: oklch(0.3 0.03 220);
-  --muted: oklch(0.955 0.008 100);
-  --muted-foreground: oklch(0.45 0.02 240);
-  --accent: oklch(0.93 0.02 180);
-  --accent-foreground: oklch(0.28 0.04 220);
-  --destructive: oklch(0.48 0.14 25);
+
+  /* Superfícies de apoio */
+  --secondary: oklch(0.945 0.012 180);
+  --secondary-foreground: oklch(0.32 0.025 210);
+  --muted: oklch(0.952 0.009 95);
+  --muted-foreground: oklch(0.475 0.018 215);
+  --accent: oklch(0.925 0.024 190);
+  --accent-foreground: oklch(0.3 0.035 210);
+
+  /* Verde sálvia */
+  --salvia: oklch(0.62 0.05 155);
+  --salvia-foreground: oklch(0.985 0.006 95);
+  --salvia-suave: oklch(0.935 0.026 155);
+
+  /* Amarelo suave */
+  --atencao: oklch(0.93 0.05 92);
+  --atencao-foreground: oklch(0.38 0.05 80);
+
+  /* Vermelho discreto */
+  --destructive: oklch(0.52 0.11 25);
   --destructive-foreground: oklch(0.985 0.006 95);
-  --border: oklch(0.88 0.012 200);
-  --input: oklch(0.88 0.012 200);
-  --ring: oklch(0.42 0.06 210);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  --border: oklch(0.9 0.011 180);
+  --input: oklch(0.885 0.013 180);
+  --ring: oklch(0.47 0.055 205);
+
+  --sidebar: oklch(0.962 0.011 92);
+  --sidebar-foreground: oklch(0.28 0.015 215);
+  --sidebar-primary: oklch(0.47 0.055 205);
+  --sidebar-primary-foreground: oklch(0.985 0.006 95);
+  --sidebar-accent: oklch(0.925 0.024 190);
+  --sidebar-accent-foreground: oklch(0.3 0.035 210);
+  --sidebar-border: oklch(0.9 0.011 180);
+  --sidebar-ring: oklch(0.47 0.055 205);
 }
 
+/* Modo escuro: cinza aquecido, nunca preto absoluto */
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.215 0.012 210);
+  --foreground: oklch(0.94 0.008 95);
+  --card: oklch(0.258 0.014 210);
+  --card-foreground: oklch(0.94 0.008 95);
+  --popover: oklch(0.258 0.014 210);
+  --popover-foreground: oklch(0.94 0.008 95);
+
+  --primary: oklch(0.76 0.055 195);
+  --primary-foreground: oklch(0.2 0.02 210);
+
+  --secondary: oklch(0.305 0.016 205);
+  --secondary-foreground: oklch(0.93 0.008 95);
+  --muted: oklch(0.295 0.012 210);
+  --muted-foreground: oklch(0.755 0.014 200);
+  --accent: oklch(0.335 0.026 195);
+  --accent-foreground: oklch(0.95 0.008 95);
+
+  --salvia: oklch(0.72 0.045 155);
+  --salvia-foreground: oklch(0.2 0.02 210);
+  --salvia-suave: oklch(0.34 0.032 155);
+
+  --atencao: oklch(0.42 0.05 88);
+  --atencao-foreground: oklch(0.93 0.03 92);
+
+  --destructive: oklch(0.62 0.1 25);
+  --destructive-foreground: oklch(0.98 0.006 95);
+
+  --border: oklch(0.36 0.014 205);
+  --input: oklch(0.38 0.016 205);
+  --ring: oklch(0.76 0.055 195);
+
+  --sidebar: oklch(0.242 0.013 210);
+  --sidebar-foreground: oklch(0.94 0.008 95);
+  --sidebar-primary: oklch(0.76 0.055 195);
+  --sidebar-primary-foreground: oklch(0.2 0.02 210);
+  --sidebar-accent: oklch(0.335 0.026 195);
+  --sidebar-accent-foreground: oklch(0.95 0.008 95);
+  --sidebar-border: oklch(0.36 0.014 205);
+  --sidebar-ring: oklch(0.76 0.055 195);
+}
+
+/* Baixo estímulo: contraste reduzido entre superfícies, cor quase ausente */
+.viva-calmo {
+  --background: oklch(0.968 0.004 95);
+  --card: oklch(0.988 0.002 95);
+  --primary: oklch(0.44 0.028 210);
+  --secondary: oklch(0.945 0.005 180);
+  --accent: oklch(0.935 0.008 190);
+  --accent-foreground: oklch(0.3 0.015 210);
+  --salvia: oklch(0.6 0.028 155);
+  --salvia-suave: oklch(0.945 0.012 155);
+  --atencao: oklch(0.94 0.026 92);
+  --border: oklch(0.905 0.005 180);
+  --ring: oklch(0.44 0.028 210);
+  --sidebar: oklch(0.955 0.004 95);
+  --sidebar-accent: oklch(0.935 0.008 190);
+  --sidebar-primary: oklch(0.44 0.028 210);
 }
 
 @layer base {
@@ -141,39 +180,156 @@
     border-color: var(--color-border);
   }
 
+  html {
+    font-family: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+    /* Escala tipográfica base — ajustável pela pessoa (doc 14) */
+    font-size: 100%;
+  }
+
+  html[data-texto="pequeno"] {
+    font-size: 93.75%;
+  }
+
+  html[data-texto="grande"] {
+    font-size: 112.5%;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-  }
-}
-
-@layer base {
-  html {
-    font-family: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
-  }
-  body {
     font-size: 1.0625rem;
     line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Foco sempre visível, em todos os componentes */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
   }
 }
 
-/* Leitura de documentos: hierarquia clara, espaçamento generoso, sem decoração */
+/* ---------------------------------------------- escala tipográfica (doc 14) */
+
+@utility viva-titulo {
+  font-size: 1.625rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  @media (min-width: 768px) {
+    font-size: 1.9rem;
+  }
+}
+
+@utility viva-subtitulo {
+  font-size: 1.125rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+@utility viva-texto {
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+@utility viva-legenda {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------- microinterações */
+/* Toda animação tem finalidade funcional: orientar, confirmar, transicionar. */
+
+@utility viva-anim {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    width 220ms ease;
+}
+
+@utility viva-tap {
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+  &:active {
+    transform: scale(0.99);
+  }
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+  &[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+@utility viva-fade {
+  animation: viva-entrada 260ms ease-out both;
+}
+
+@utility viva-progress {
+  transition: width 420ms ease;
+}
+
+@keyframes viva-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Redução de animação: por preferência da pessoa ou do sistema */
+.viva-sem-animacao *,
+.viva-sem-animacao *::before,
+.viva-sem-animacao *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------- leitura de documentos longos */
+
 .viva-doc h1 {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 600;
   line-height: 1.3;
   margin-top: 3rem;
   margin-bottom: 1rem;
   color: var(--foreground);
 }
 .viva-doc h2 {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2.25rem;
   margin-bottom: 0.75rem;
 }
 .viva-doc h3 {
-  font-size: 1.125rem;
+  font-size: 1.075rem;
   font-weight: 600;
   margin-top: 1.75rem;
   margin-bottom: 0.5rem;
@@ -200,5 +356,5 @@
   border-color: var(--border);
 }
 .viva-doc strong {
-  font-weight: 700;
+  font-weight: 600;
 }
