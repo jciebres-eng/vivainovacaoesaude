@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
+import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
 import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const PercursoRoute = PercursoRouteImport.update({
   id: '/_percurso',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PercursoBarreirasRoute = PercursoBarreirasRouteImport.update({
+  id: '/barreiras',
+  path: '/barreiras',
+  getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoContextoRoute = PercursoContextoRouteImport.update({
   id: '/contexto',
@@ -54,6 +60,7 @@ const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -72,6 +80,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
+  '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/contexto': typeof PercursoContextoRoute
   '/_percurso/objetivo': typeof PercursoObjetivoRoute
   '/_percurso/perfil': typeof PercursoPerfilRoute
@@ -82,6 +91,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/barreiras'
     | '/contexto'
     | '/objetivo'
     | '/perfil'
@@ -90,6 +100,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/barreiras'
     | '/contexto'
     | '/objetivo'
     | '/perfil'
@@ -99,6 +110,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_percurso'
+    | '/_percurso/barreiras'
     | '/_percurso/contexto'
     | '/_percurso/objetivo'
     | '/_percurso/perfil'
@@ -127,6 +139,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof PercursoRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_percurso/barreiras': {
+      id: '/_percurso/barreiras'
+      path: '/barreiras'
+      fullPath: '/barreiras'
+      preLoaderRoute: typeof PercursoBarreirasRouteImport
+      parentRoute: typeof PercursoRoute
     }
     '/_percurso/contexto': {
       id: '/_percurso/contexto'
@@ -167,6 +186,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface PercursoRouteChildren {
+  PercursoBarreirasRoute: typeof PercursoBarreirasRoute
   PercursoContextoRoute: typeof PercursoContextoRoute
   PercursoObjetivoRoute: typeof PercursoObjetivoRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
@@ -174,6 +194,7 @@ interface PercursoRouteChildren {
 }
 
 const PercursoRouteChildren: PercursoRouteChildren = {
+  PercursoBarreirasRoute: PercursoBarreirasRoute,
   PercursoContextoRoute: PercursoContextoRoute,
   PercursoObjetivoRoute: PercursoObjetivoRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,
