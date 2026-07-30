@@ -336,35 +336,12 @@ function MeuMomentoPage() {
           onMudar={momento.definirPreferencia}
         />
 
-        <Card
-          variante="informativo"
-          titulo="Este espaço é seu"
-          descricao="O VIVA não avalia, não classifica e não interpreta o que você registra. Tudo fica guardado apenas neste dispositivo."
-        >
-          <div className="flex flex-wrap gap-3">
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => percurso.aplicarCenario("primeiro-acesso")}
-            >
-              Ver como fica no primeiro acesso
-            </Botao>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => percurso.aplicarCenario("atividade-iniciada")}
-            >
-              Ver com uma atividade iniciada
-            </Botao>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => percurso.aplicarCenario("apos-experiencia")}
-            >
-              Ver depois de uma experiência
-            </Botao>
-          </div>
-        </Card>
+        <p className="viva-legenda text-text-secondary">
+          O VIVA não avalia, não classifica e não interpreta o que você
+          registra. Tudo fica guardado apenas neste dispositivo.
+        </p>
+
+        <SecaoDeDemonstracao onAplicar={percurso.aplicarCenario} />
       </div>
     </Screen>
   );
