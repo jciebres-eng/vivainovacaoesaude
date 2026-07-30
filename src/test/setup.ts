@@ -10,4 +10,3 @@ declare module "vitest" {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface AsymmetricMatchersContaining extends matchers.AxeMatchers {}
 }
-
