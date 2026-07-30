@@ -51,8 +51,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           Não foi possível abrir esta página
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Isso não tem relação com nada que você fez. Você pode tentar de novo
-          agora ou voltar mais tarde.
+          Isso não tem relação com nada que você fez. O que você já registrou
+          continua guardado neste dispositivo. Você pode tentar novamente agora
+          ou voltar mais tarde.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
@@ -63,7 +64,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
           >
-            Tentar de novo
+            Tentar novamente
           </button>
           <a
             href="/"
