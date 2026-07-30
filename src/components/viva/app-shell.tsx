@@ -4,8 +4,8 @@ import {
   Clock3,
   Leaf,
   Route as RouteIcon,
-  Settings2,
   ShieldCheck,
+  Sunrise,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
