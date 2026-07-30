@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
+import { Route as PercursoEstrategiasRouteImport } from './routes/_percurso.estrategias'
 import { Route as PercursoHabilidadesRouteImport } from './routes/_percurso.habilidades'
 import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
 import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
@@ -37,6 +38,11 @@ const PercursoBarreirasRoute = PercursoBarreirasRouteImport.update({
 const PercursoContextoRoute = PercursoContextoRouteImport.update({
   id: '/contexto',
   path: '/contexto',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoEstrategiasRoute = PercursoEstrategiasRouteImport.update({
+  id: '/estrategias',
+  path: '/estrategias',
   getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoHabilidadesRoute = PercursoHabilidadesRouteImport.update({
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
+  '/estrategias': typeof PercursoEstrategiasRoute
   '/habilidades': typeof PercursoHabilidadesRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
+  '/estrategias': typeof PercursoEstrategiasRoute
   '/habilidades': typeof PercursoHabilidadesRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/_percurso': typeof PercursoRouteWithChildren
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/contexto': typeof PercursoContextoRoute
+  '/_percurso/estrategias': typeof PercursoEstrategiasRoute
   '/_percurso/habilidades': typeof PercursoHabilidadesRoute
   '/_percurso/objetivo': typeof PercursoObjetivoRoute
   '/_percurso/opcoes': typeof PercursoOpcoesRoute
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/'
     | '/barreiras'
     | '/contexto'
+    | '/estrategias'
     | '/habilidades'
     | '/objetivo'
     | '/opcoes'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/barreiras'
     | '/contexto'
+    | '/estrategias'
     | '/habilidades'
     | '/objetivo'
     | '/opcoes'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '/_percurso'
     | '/_percurso/barreiras'
     | '/_percurso/contexto'
+    | '/_percurso/estrategias'
     | '/_percurso/habilidades'
     | '/_percurso/objetivo'
     | '/_percurso/opcoes'
@@ -176,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/contexto'
       fullPath: '/contexto'
       preLoaderRoute: typeof PercursoContextoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/_percurso/estrategias': {
+      id: '/_percurso/estrategias'
+      path: '/estrategias'
+      fullPath: '/estrategias'
+      preLoaderRoute: typeof PercursoEstrategiasRouteImport
       parentRoute: typeof PercursoRoute
     }
     '/_percurso/habilidades': {
@@ -226,6 +245,7 @@ declare module '@tanstack/react-router' {
 interface PercursoRouteChildren {
   PercursoBarreirasRoute: typeof PercursoBarreirasRoute
   PercursoContextoRoute: typeof PercursoContextoRoute
+  PercursoEstrategiasRoute: typeof PercursoEstrategiasRoute
   PercursoHabilidadesRoute: typeof PercursoHabilidadesRoute
   PercursoObjetivoRoute: typeof PercursoObjetivoRoute
   PercursoOpcoesRoute: typeof PercursoOpcoesRoute
@@ -236,6 +256,7 @@ interface PercursoRouteChildren {
 const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoBarreirasRoute: PercursoBarreirasRoute,
   PercursoContextoRoute: PercursoContextoRoute,
+  PercursoEstrategiasRoute: PercursoEstrategiasRoute,
   PercursoHabilidadesRoute: PercursoHabilidadesRoute,
   PercursoObjetivoRoute: PercursoObjetivoRoute,
   PercursoOpcoesRoute: PercursoOpcoesRoute,
