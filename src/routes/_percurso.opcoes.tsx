@@ -70,15 +70,15 @@ function OpcoesScreen() {
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h2 className="text-lg font-semibold text-card-foreground">
+                  <h2 className="viva-subtitulo text-card-foreground">
                     {o.nome}
                   </h2>
                   {ehPrincipal ? (
-                    <span className="shrink-0 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+                    <span className="shrink-0 rounded-full bg-accent px-3 py-1.5 viva-legenda font-medium text-accent-foreground">
                       Principal
                     </span>
                   ) : ehAlternativa ? (
-                    <span className="shrink-0 rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-secondary-foreground">
+                    <span className="shrink-0 rounded-full bg-secondary px-3 py-1.5 viva-legenda font-medium text-secondary-foreground">
                       Alternativa
                     </span>
                   ) : null}

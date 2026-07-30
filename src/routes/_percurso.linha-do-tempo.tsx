@@ -8,6 +8,7 @@ import {
   ScreenFooter,
   ScreenHeader,
   SectionCard,
+  TextAction,
 } from "@/components/viva/screen";
 import { filtrosLinha, getStep, linhaDoTempo } from "@/lib/viva-data";
 
@@ -68,30 +69,25 @@ function LinhaDoTempoScreen() {
                 aria-hidden
                 className="absolute -left-[1.72rem] top-2 h-3 w-3 rounded-full border-2 border-background bg-primary"
               />
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              <p className="viva-legenda text-muted-foreground">
                 {r.data} · {r.tipo}
               </p>
               <p className="mt-1 font-semibold text-foreground">{r.titulo}</p>
-              <p className="text-sm text-muted-foreground">{r.descricao}</p>
+              <p className="viva-legenda text-muted-foreground">{r.descricao}</p>
             </li>
           ))}
         </ol>
 
         <SectionCard title="Próximo passo">
           <p className="text-card-foreground">Repetir o trajeto com adaptações</p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap items-center gap-3">
             <Link
               to="/proximo-passo"
-              className="viva-tap rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+              className="viva-tap inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
             >
-              Iniciar próximo passo
+              Ver meu próximo passo
             </Link>
-            <Link
-              to="/perfil"
-              className="viva-tap rounded-full border border-border px-5 py-2.5 text-sm font-medium text-card-foreground hover:bg-secondary"
-            >
-              Voltar ao início do percurso
-            </Link>
+            <TextAction to="/perfil">Voltar ao começo do percurso</TextAction>
           </div>
         </SectionCard>
 

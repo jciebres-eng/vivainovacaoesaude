@@ -63,7 +63,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-dvh bg-background">
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-card focus:px-4 focus:py-2 focus:text-card-foreground"
@@ -88,7 +88,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
 function SideNav({ pathname }: { pathname: string }) {
   return (
-    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-border bg-sidebar md:flex">
+    <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-border bg-sidebar md:flex">
       <div className="px-5 py-7">
         <Link
           to="/"

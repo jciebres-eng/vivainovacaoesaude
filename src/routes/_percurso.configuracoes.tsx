@@ -191,7 +191,7 @@ function ToggleLine({
         role="switch"
         aria-checked={value}
         onClick={onToggle}
-        className={`viva-tap shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
+        className={`viva-tap min-h-11 shrink-0 rounded-full border px-5 py-2.5 viva-legenda font-medium ${
           value
             ? "border-primary bg-primary text-primary-foreground"
             : "border-border bg-card text-muted-foreground"
