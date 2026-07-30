@@ -36,7 +36,7 @@ export const Route = createFileRoute("/_percurso/preparacao")({
 
 function PreparacaoScreen() {
   const step = getStep("preparacao");
-  const [pausa, setPausa] = useState("Sim");
+  const navigate = useNavigate();
   const [verResumo, setVerResumo] = useState(false);
 
   return (
