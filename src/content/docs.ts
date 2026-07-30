@@ -21,6 +21,13 @@ export const groups: DocGroup[] = [
     description:
       "Visão da solução, problema social, princípios éticos e experiência neuroinclusiva.",
   },
+  {
+    id: "B",
+    label: "Grupo B — Estrutura funcional",
+    description:
+      "Escopo do protótipo, jornada principal, catálogo de habilidades e instrumentos do usuário.",
+  },
+
 ];
 
 export type VivaDoc = {
