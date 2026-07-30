@@ -1,32 +1,35 @@
-# VIVA
+\# VIVA
 
-## Sistema Operacional Humano para o Desenvolvimento Funcional
+\## Sistema Operacional Humano para o Desenvolvimento Funcional
 
 Versão 1.0
 
 \-\--
 
-# Documento 03
+\# Documento 03
 
-## Princípios Éticos, Conceituais e de Segurança
+\## Princípios Éticos, Conceituais e de Segurança
 
 \-\--
 
-# Finalidade
+\# Finalidade
 
 Este documento estabelece os princípios permanentes da plataforma VIVA.
 
-Toda decisão de desenvolvimento, design, programação, inteligência artificial, experiência do usuário e expansão tecnológica deverá respeitar estes princípios.
+Toda decisão de desenvolvimento, design, programação, inteligência
+artificial, experiência do usuário e expansão tecnológica deverá
+respeitar estes princípios.
 
 São considerados princípios inegociáveis.
 
-Caso qualquer funcionalidade entre em conflito com este documento, a funcionalidade deverá ser revista.
+Caso qualquer funcionalidade entre em conflito com este documento, a
+funcionalidade deverá ser revista.
 
 \-\--
 
-# PRINCÍPIO 1
+\# PRINCÍPIO 1
 
-## A pessoa é protagonista do próprio percurso
+\## A pessoa é protagonista do próprio percurso
 
 O usuário é o principal agente do processo de desenvolvimento.
 
@@ -38,9 +41,9 @@ A decisão permanece com a pessoa.
 
 \-\--
 
-# PRINCÍPIO 2
+\# PRINCÍPIO 2
 
-## O foco é a vida, não o diagnóstico
+\## O foco é a vida, não o diagnóstico
 
 O diagnóstico pode auxiliar na compreensão de determinadas necessidades.
 
@@ -62,49 +65,61 @@ O diagnóstico não define quem a pessoa é.
 
 \-\--
 
-# PRINCÍPIO 3
+\# PRINCÍPIO 3
 
-## A neurodiversidade é respeitada
+\## A neurodiversidade é respeitada
 
-A plataforma reconhece a neurodiversidade como uma expressão legítima da diversidade humana.
+A plataforma reconhece a neurodiversidade como uma expressão legítima da
+diversidade humana.
 
-O objetivo não é tornar a pessoa neurodivergente semelhante ao padrão neurotípico.
+O objetivo não é tornar a pessoa neurodivergente semelhante ao padrão
+neurotípico.
 
-O objetivo é ampliar autonomia, qualidade de vida, participação e possibilidades de escolha.
-
-\-\--
-
-# PRINCÍPIO 4
-
-## O sofrimento merece atenção, não a diferença
-
-Características neurodivergentes não serão automaticamente tratadas como problemas.
-
-As intervenções priorizam situações que produzam sofrimento, limitação funcional ou restrição significativa de participação.
-
-O foco está na redução do sofrimento e na ampliação das possibilidades de vida.
+O objetivo é ampliar autonomia, qualidade de vida, participação e
+possibilidades de escolha.
 
 \-\--
 
-# PRINCÍPIO 5
+\# PRINCÍPIO 4
 
-## Estereotipias não são automaticamente consideradas comportamentos a eliminar
+\## O sofrimento merece atenção, não a diferença
 
-Movimentos repetitivos, estratégias sensoriais ou formas particulares de autorregulação poderão possuir funções importantes para a pessoa.
+Características neurodivergentes não serão automaticamente tratadas como
+problemas.
+
+As intervenções priorizam situações que produzam sofrimento, limitação
+funcional ou restrição significativa de participação.
+
+O foco está na redução do sofrimento e na ampliação das possibilidades
+de vida.
+
+\-\--
+
+\# PRINCÍPIO 5
+
+\## Estereotipias não são automaticamente consideradas comportamentos a
+eliminar
+
+Movimentos repetitivos, estratégias sensoriais ou formas particulares de
+autorregulação poderão possuir funções importantes para a pessoa.
 
 A plataforma nunca sugerirá automaticamente sua eliminação.
 
-Caso produzam sofrimento, risco ou limitação importante, poderão ser discutidas estratégias alternativas escolhidas pelo próprio usuário juntamente com profissionais.
+Caso produzam sofrimento, risco ou limitação importante, poderão ser
+discutidas estratégias alternativas escolhidas pelo próprio usuário
+juntamente com profissionais.
 
 \-\--
 
-# PRINCÍPIO 6
+\# PRINCÍPIO 6
 
-## A funcionalidade orienta a plataforma
+\## A funcionalidade orienta a plataforma
 
-Toda arquitetura do sistema será organizada segundo o funcionamento humano.
+Toda arquitetura do sistema será organizada segundo o funcionamento
+humano.
 
-A Classificação Internacional de Funcionalidade (CIF) constitui o principal referencial para estruturar:
+A Classificação Internacional de Funcionalidade (CIF) constitui o
+principal referencial para estruturar:
 
 • capacidades;
 
@@ -118,13 +133,14 @@ A Classificação Internacional de Funcionalidade (CIF) constitui o principal re
 
 • barreiras.
 
-O foco é aquilo que a pessoa deseja viver e realizar. :contentReference\[oaicite:0\]{index=0}
+O foco é aquilo que a pessoa deseja viver e realizar.
+:contentReference\[oaicite:0\]{index=0}
 
 \-\--
 
-# PRINCÍPIO 7
+\# PRINCÍPIO 7
 
-## DSM e CID possuem função complementar
+\## DSM e CID possuem função complementar
 
 DSM e CID poderão ser utilizados para:
 
@@ -148,9 +164,9 @@ Não serão utilizados para:
 
 \-\--
 
-# PRINCÍPIO 8
+\# PRINCÍPIO 8
 
-## O sistema não realiza diagnóstico
+\## O sistema não realiza diagnóstico
 
 A plataforma não identifica doenças.
 
@@ -162,9 +178,9 @@ Não substitui avaliação profissional.
 
 \-\--
 
-# PRINCÍPIO 9
+\# PRINCÍPIO 9
 
-## O sistema não prescreve tratamento
+\## O sistema não prescreve tratamento
 
 A plataforma organiza informações.
 
@@ -180,19 +196,21 @@ Não define condutas clínicas.
 
 \-\--
 
-# PRINCÍPIO 10
+\# PRINCÍPIO 10
 
-## O sistema não altera medicamentos
+\## O sistema não altera medicamentos
 
-Informações farmacológicas possuem finalidade educativa e organizacional.
+Informações farmacológicas possuem finalidade educativa e
+organizacional.
 
-Qualquer alteração medicamentosa depende exclusivamente do profissional responsável.
+Qualquer alteração medicamentosa depende exclusivamente do profissional
+responsável.
 
 \-\--
 
-# PRINCÍPIO 11
+\# PRINCÍPIO 11
 
-## A Inteligência Artificial exerce papel consultivo
+\## A Inteligência Artificial exerce papel consultivo
 
 A IA poderá:
 
@@ -224,9 +242,9 @@ Toda sugestão deverá ser transparente, explicável e opcional.
 
 \-\--
 
-# PRINCÍPIO 12
+\# PRINCÍPIO 12
 
-## A personalização respeita escolhas
+\## A personalização respeita escolhas
 
 Toda recomendação poderá ser:
 
@@ -246,11 +264,12 @@ O usuário nunca será obrigado a seguir percursos previamente definidos.
 
 \-\--
 
-# PRINCÍPIO 13
+\# PRINCÍPIO 13
 
-## O contexto modifica o percurso
+\## O contexto modifica o percurso
 
-Nenhum percurso será construído apenas com base em características individuais.
+Nenhum percurso será construído apenas com base em características
+individuais.
 
 Serão considerados:
 
@@ -282,9 +301,9 @@ Os determinantes sociais da saúde fazem parte da construção do cuidado.
 
 \-\--
 
-# PRINCÍPIO 14
+\# PRINCÍPIO 14
 
-## A realidade virtual é opcional
+\## A realidade virtual é opcional
 
 A plataforma deverá funcionar integralmente em:
 
@@ -300,9 +319,9 @@ Jamais serão obrigatórios.
 
 \-\--
 
-# PRINCÍPIO 15
+\# PRINCÍPIO 15
 
-## O usuário controla os estímulos
+\## O usuário controla os estímulos
 
 Sons.
 
@@ -320,9 +339,9 @@ Todo estímulo dependerá da escolha do usuário.
 
 \-\--
 
-# PRINCÍPIO 16
+\# PRINCÍPIO 16
 
-## Baixa carga cognitiva
+\## Baixa carga cognitiva
 
 A experiência do usuário deve minimizar:
 
@@ -340,9 +359,9 @@ Cada tela deverá possuir um objetivo principal claramente identificado.
 
 \-\--
 
-# PRINCÍPIO 17
+\# PRINCÍPIO 17
 
-## O tempo fora da tela faz parte do tratamento digital
+\## O tempo fora da tela faz parte do tratamento digital
 
 O VIVA não foi criado para aumentar tempo de uso.
 
@@ -366,9 +385,9 @@ O melhor uso do sistema é aquele que permite viver melhor fora dele.
 
 \-\--
 
-# PRINCÍPIO 18
+\# PRINCÍPIO 18
 
-## O usuário é proprietário de seus dados
+\## O usuário é proprietário de seus dados
 
 Todos os registros produzidos pertencem ao usuário.
 
@@ -392,9 +411,9 @@ O usuário controla o compartilhamento.
 
 \-\--
 
-# PRINCÍPIO 19
+\# PRINCÍPIO 19
 
-## Compartilhamento depende de autorização
+\## Compartilhamento depende de autorização
 
 Nenhuma informação será compartilhada automaticamente.
 
@@ -412,9 +431,9 @@ Cada profissional visualizará apenas os dados autorizados.
 
 \-\--
 
-# PRINCÍPIO 20
+\# PRINCÍPIO 20
 
-## As perspectivas permanecem separadas
+\## As perspectivas permanecem separadas
 
 Registros produzidos por:
 
@@ -434,25 +453,32 @@ Cada perspectiva permanece preservada.
 
 \-\--
 
-# PRINCÍPIO 21
+\# PRINCÍPIO 21
 
-## Transparência das decisões
+\## Transparência das decisões
 
-Sempre que a plataforma apresentar uma recomendação, deverá informar, em linguagem acessível, por que ela foi sugerida.
+Sempre que a plataforma apresentar uma recomendação, deverá informar, em
+linguagem acessível, por que ela foi sugerida.
 
-O usuário deve compreender o funcionamento do sistema e manter controle sobre suas escolhas.
-
-\-\--
-
-# PRINCÍPIO 22
-
-## Desenvolvimento baseado em evidências
-
-O desenvolvimento do VIVA será fundamentado em evidências científicas, diretrizes técnicas e boas práticas de design em saúde, considerando a funcionalidade, a participação, a promoção da saúde, a experiência do usuário e a neuroinclusão. A evolução da plataforma deverá incorporar processos contínuos de avaliação com usuários, profissionais e especialistas.
+O usuário deve compreender o funcionamento do sistema e manter controle
+sobre suas escolhas.
 
 \-\--
 
-# Síntese
+\# PRINCÍPIO 22
+
+\## Desenvolvimento baseado em evidências
+
+O desenvolvimento do VIVA será fundamentado em evidências científicas,
+diretrizes técnicas e boas práticas de design em saúde, considerando a
+funcionalidade, a participação, a promoção da saúde, a experiência do
+usuário e a neuroinclusão. A evolução da plataforma deverá incorporar
+processos contínuos de avaliação com usuários, profissionais e
+especialistas.
+
+\-\--
+
+\# Síntese
 
 O VIVA não pretende controlar pessoas.
 
