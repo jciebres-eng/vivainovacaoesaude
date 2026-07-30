@@ -164,8 +164,8 @@ export const rotulosDeStatusDuvida: Record<StatusDuvida, string> = {
   "quero-pesquisar": "Quero pesquisar",
   "quero-conversar": "Quero conversar com alguém",
   respondida: "Respondida",
-  arquivada": "Arquivada",
-} as unknown as Record<StatusDuvida, string>;
+  arquivada: "Arquivada",
+};
 
 export const estrategiasSugeridas: Omit<Estrategia, "id">[] = [
   {
