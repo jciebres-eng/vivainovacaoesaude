@@ -9,6 +9,11 @@ import {
   ScreenFooter,
   ScreenHeader,
 } from "@/components/viva/screen";
+import {
+  EstrategiaPessoalCard,
+  estrategiasDemo,
+  type EstrategiaDemo,
+} from "@/components/viva/humanos";
 import { estrategias, getStep, respostasEstrategia } from "@/lib/viva-data";
 
 export const Route = createFileRoute("/_percurso/estrategias")({
