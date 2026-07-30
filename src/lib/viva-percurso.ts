@@ -652,6 +652,12 @@ export function usePercurso() {
 
   const restaurarDemonstracao = useCallback(() => gravar(estadoInicial()), []);
 
+  /** Troca o cenário fictício apresentado na demonstração. */
+  const aplicarCenario = useCallback(
+    (cenario: Cenario) => gravar(estadoDoCenario(cenario)),
+    [],
+  );
+
   return {
     ...dados,
     salvarPreparacao,
