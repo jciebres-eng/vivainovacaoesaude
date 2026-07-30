@@ -85,6 +85,7 @@
   --color-feedback-attention-foreground: var(--atencao-foreground);
   --color-feedback-continuidade: var(--salvia);
   --color-feedback-continuidade-suave: var(--salvia-suave);
+  --color-feedback-continuidade-foreground: var(--salvia-foreground);
   --color-feedback-error: var(--destructive);
   --color-feedback-error-foreground: var(--destructive-foreground);
   --color-focus-ring: var(--ring);
