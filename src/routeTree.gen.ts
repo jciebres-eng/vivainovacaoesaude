@@ -22,6 +22,7 @@ import { Route as PercursoEstrategiasRouteImport } from './routes/_percurso.estr
 import { Route as PercursoHabilidadesRouteImport } from './routes/_percurso.habilidades'
 import { Route as PercursoLinhaDoTempoRouteImport } from './routes/_percurso.linha-do-tempo'
 import { Route as PercursoMeuMomentoRouteImport } from './routes/_percurso.meu-momento'
+import { Route as PercursoMinhaExperienciaRouteImport } from './routes/_percurso.minha-experiencia'
 import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
 import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
@@ -116,6 +117,12 @@ const PercursoMeuMomentoRoute = PercursoMeuMomentoRouteImport.update({
   path: '/meu-momento',
   getParentRoute: () => PercursoRoute,
 } as any)
+const PercursoMinhaExperienciaRoute =
+  PercursoMinhaExperienciaRouteImport.update({
+    id: '/minha-experiencia',
+    path: '/minha-experiencia',
+    getParentRoute: () => PercursoRoute,
+  } as any)
 const PercursoObjetivoRoute = PercursoObjetivoRouteImport.update({
   id: '/objetivo',
   path: '/objetivo',
@@ -279,6 +286,7 @@ export interface FileRoutesByFullPath {
   '/habilidades': typeof PercursoHabilidadesRoute
   '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
+  '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -321,6 +329,7 @@ export interface FileRoutesByTo {
   '/habilidades': typeof PercursoHabilidadesRoute
   '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
+  '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -366,6 +375,7 @@ export interface FileRoutesById {
   '/_percurso/habilidades': typeof PercursoHabilidadesRoute
   '/_percurso/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/_percurso/meu-momento': typeof PercursoMeuMomentoRoute
+  '/_percurso/minha-experiencia': typeof PercursoMinhaExperienciaRoute
   '/_percurso/objetivo': typeof PercursoObjetivoRoute
   '/_percurso/opcoes': typeof PercursoOpcoesRoute
   '/_percurso/perfil': typeof PercursoPerfilRoute
@@ -411,6 +421,7 @@ export interface FileRouteTypes {
     | '/habilidades'
     | '/linha-do-tempo'
     | '/meu-momento'
+    | '/minha-experiencia'
     | '/objetivo'
     | '/opcoes'
     | '/perfil'
@@ -453,6 +464,7 @@ export interface FileRouteTypes {
     | '/habilidades'
     | '/linha-do-tempo'
     | '/meu-momento'
+    | '/minha-experiencia'
     | '/objetivo'
     | '/opcoes'
     | '/perfil'
@@ -497,6 +509,7 @@ export interface FileRouteTypes {
     | '/_percurso/habilidades'
     | '/_percurso/linha-do-tempo'
     | '/_percurso/meu-momento'
+    | '/_percurso/minha-experiencia'
     | '/_percurso/objetivo'
     | '/_percurso/opcoes'
     | '/_percurso/perfil'
@@ -626,6 +639,13 @@ declare module '@tanstack/react-router' {
       path: '/meu-momento'
       fullPath: '/meu-momento'
       preLoaderRoute: typeof PercursoMeuMomentoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/_percurso/minha-experiencia': {
+      id: '/_percurso/minha-experiencia'
+      path: '/minha-experiencia'
+      fullPath: '/minha-experiencia'
+      preLoaderRoute: typeof PercursoMinhaExperienciaRouteImport
       parentRoute: typeof PercursoRoute
     }
     '/_percurso/objetivo': {
@@ -857,6 +877,7 @@ interface PercursoRouteChildren {
   PercursoHabilidadesRoute: typeof PercursoHabilidadesRoute
   PercursoLinhaDoTempoRoute: typeof PercursoLinhaDoTempoRoute
   PercursoMeuMomentoRoute: typeof PercursoMeuMomentoRoute
+  PercursoMinhaExperienciaRoute: typeof PercursoMinhaExperienciaRoute
   PercursoObjetivoRoute: typeof PercursoObjetivoRoute
   PercursoOpcoesRoute: typeof PercursoOpcoesRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
@@ -886,6 +907,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoHabilidadesRoute: PercursoHabilidadesRoute,
   PercursoLinhaDoTempoRoute: PercursoLinhaDoTempoRoute,
   PercursoMeuMomentoRoute: PercursoMeuMomentoRoute,
+  PercursoMinhaExperienciaRoute: PercursoMinhaExperienciaRoute,
   PercursoObjetivoRoute: PercursoObjetivoRoute,
   PercursoOpcoesRoute: PercursoOpcoesRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,

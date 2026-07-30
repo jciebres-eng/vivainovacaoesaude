@@ -108,15 +108,8 @@ export function VivaProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  // Aplica as preferências ao documento imediatamente (sem reinício).
-  useEffect(() => {
-    if (!hydrated) return;
-    const root = document.documentElement;
-    root.classList.toggle("dark", settings.aparencia === "escura");
-    root.classList.toggle("viva-calmo", settings.aparencia === "baixo-estimulo");
-    root.dataset.texto = settings.tamanhoTexto;
-    root.classList.toggle("viva-sem-animacao", !settings.animacoes);
-  }, [settings, hydrated]);
+  // A aplicação visual das preferências vive em ExperienciaProvider
+  // (src/lib/viva-experiencia.tsx), para existir uma única fonte de verdade.
 
   const value = useMemo(
     () => ({ settings, setSettings, resetSettings, escolhas, setEscolha, hydrated }),

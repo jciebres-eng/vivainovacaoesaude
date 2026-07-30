@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { VivaProvider } from "../lib/viva-store";
+import { ExperienciaProvider } from "../lib/viva-experiencia";
 
 function NotFoundComponent() {
   return (
@@ -142,8 +143,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <VivaProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        <ExperienciaProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </ExperienciaProvider>
       </VivaProvider>
     </QueryClientProvider>
   );

@@ -33,6 +33,7 @@ import { conteudos } from "@/lib/viva-data";
 import { useMomento } from "@/lib/viva-momento";
 import { usePercurso } from "@/lib/viva-percurso";
 import { useViva } from "@/lib/viva-store";
+import { useExperiencia } from "@/lib/viva-experiencia";
 
 export const Route = createFileRoute("/_percurso/meu-momento")({
   head: () => ({
@@ -62,8 +63,10 @@ function MeuMomentoPage() {
   const navigate = useNavigate();
   const percurso = usePercurso();
   const momento = useMomento();
-  const { settings, setSettings } = useViva();
-  const baixoEstimulo = settings.aparencia === "baixo-estimulo";
+  useViva();
+  const { preferencias, ajustar } = useExperiencia();
+  const baixoEstimulo = preferencias.aparencia.tema === "baixo-estimulo";
+  const comAnimacao = !preferencias.movimento.reduzirAnimacoes;
 
   const [registro, setRegistro] = useState<Registro>("nenhum");
   const areaDeRegistro = useRef<HTMLDivElement>(null);
@@ -72,7 +75,7 @@ function MeuMomentoPage() {
     setRegistro(tipo);
     requestAnimationFrame(() =>
       areaDeRegistro.current?.scrollIntoView({
-        behavior: settings.animacoes ? "smooth" : "auto",
+        behavior: comAnimacao ? "smooth" : "auto",
         block: "start",
       }),
     );
@@ -213,9 +216,16 @@ function MeuMomentoPage() {
           nome={momento.nome}
           baixoEstimulo={baixoEstimulo}
           onAlternarBaixoEstimulo={() =>
-            setSettings({
-              aparencia: baixoEstimulo ? "clara" : "baixo-estimulo",
-            })
+            ajustar(
+              {
+                aparencia: {
+                  tema: baixoEstimulo ? "claro" : "baixo-estimulo",
+                },
+              },
+              baixoEstimulo
+                ? "A aparência voltou ao modo claro."
+                : "A aparência está em baixa estimulação. Você pode voltar quando quiser.",
+            )
           }
         />
 
