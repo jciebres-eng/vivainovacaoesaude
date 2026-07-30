@@ -47,7 +47,7 @@ function OpcoesScreen() {
 
       <Screen>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm text-muted-foreground">Ordenar por:</span>
+          <span className="text-sm text-text-secondary">Ordenar por:</span>
           {["Custo", "Tempo", "Estímulos"].map((c) => (
             <Chip
               key={c}
@@ -65,8 +65,8 @@ function OpcoesScreen() {
             return (
               <div
                 key={o.id}
-                className={`viva-anim rounded-2xl border bg-card p-5 ${
-                  ehPrincipal ? "border-primary" : "border-border"
+                className={`viva-anim rounded-2xl border bg-surface-default p-5 ${
+                  ehPrincipal ? "border-primary" : "border-border-default"
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
@@ -88,9 +88,9 @@ function OpcoesScreen() {
                   {o.criterios.map((c) => (
                     <div
                       key={c.rotulo}
-                      className="flex items-center justify-between gap-3 border-b border-border pb-2 text-sm last:border-0"
+                      className="flex items-center justify-between gap-3 border-b border-border-default pb-2 text-sm last:border-0"
                     >
-                      <dt className="text-muted-foreground">{c.rotulo}</dt>
+                      <dt className="text-text-secondary">{c.rotulo}</dt>
                       <dd className="font-medium text-card-foreground">
                         {c.valor}
                       </dd>

@@ -53,11 +53,11 @@ function PerfilScreen() {
               <div
                 key={p.id}
                 className={`viva-anim rounded-3xl border p-5 shadow-suave ${
-                  ativo ? "border-primary bg-accent" : "border-border bg-card"
+                  ativo ? "border-primary bg-accent" : "border-border-default bg-surface-default"
                 }`}
               >
                 <h2 className="viva-subtitulo text-card-foreground">{p.nome}</h2>
-                <p className="viva-legenda text-muted-foreground">{p.tema}</p>
+                <p className="viva-legenda text-text-secondary">{p.tema}</p>
                 <p className="mt-3 max-w-[58ch] viva-legenda text-card-foreground">
                   {p.resumo}
                 </p>
@@ -69,7 +69,7 @@ function PerfilScreen() {
                     className={`viva-tap rounded-full border px-5 py-2.5 viva-legenda font-medium ${
                       ativo
                         ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-card text-card-foreground hover:bg-secondary"
+                        : "border-border-default bg-surface-default text-card-foreground hover:bg-secondary"
                     }`}
                   >
                     {ativo ? "Perfil escolhido" : "Escolher este perfil"}

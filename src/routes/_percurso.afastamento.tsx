@@ -40,7 +40,7 @@ function AfastamentoScreen() {
       <Screen>
         <SectionCard>
           <p className="text-card-foreground">Suas informações estão salvas.</p>
-          <p className="mt-2 text-muted-foreground">
+          <p className="mt-2 text-text-secondary">
             Você não precisa permanecer conectado e pode retornar quando desejar.
           </p>
         </SectionCard>

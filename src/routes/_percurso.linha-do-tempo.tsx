@@ -62,18 +62,18 @@ function LinhaDoTempoScreen() {
           ))}
         </div>
 
-        <ol className="relative space-y-4 border-l border-border pl-6">
+        <ol className="relative space-y-4 border-l border-border-default pl-6">
           {lista.map((r) => (
             <li key={`${r.data}-${r.titulo}`} className="viva-fade relative">
               <span
                 aria-hidden
                 className="absolute -left-[1.72rem] top-2 h-3 w-3 rounded-full border-2 border-background bg-primary"
               />
-              <p className="viva-legenda text-muted-foreground">
+              <p className="viva-legenda text-text-secondary">
                 {r.data} · {r.tipo}
               </p>
               <p className="mt-1 font-semibold text-foreground">{r.titulo}</p>
-              <p className="viva-legenda text-muted-foreground">{r.descricao}</p>
+              <p className="viva-legenda text-text-secondary">{r.descricao}</p>
             </li>
           ))}
         </ol>

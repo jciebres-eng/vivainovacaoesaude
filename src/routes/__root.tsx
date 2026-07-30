@@ -21,7 +21,7 @@ function NotFoundComponent() {
         <h1 className="viva-titulo text-foreground">
           Esta página não está aqui
         </h1>
-        <p className="mt-3 text-muted-foreground">
+        <p className="mt-3 text-text-secondary">
           Talvez o endereço tenha mudado. Nada do que você já escolheu foi
           perdido.
         </p>
@@ -51,7 +51,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="viva-titulo text-foreground">
           Não foi possível abrir esta página
         </h1>
-        <p className="mt-3 text-muted-foreground">
+        <p className="mt-3 text-text-secondary">
           Isso não tem relação com nada que você fez. O que você já registrou
           continua guardado neste dispositivo. Você pode tentar novamente agora
           ou voltar mais tarde.
@@ -69,7 +69,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           </button>
           <a
             href="/"
-            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-card px-5 py-3 viva-legenda font-medium text-card-foreground hover:bg-secondary"
+            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full border border-border-default bg-surface-default px-5 py-3 viva-legenda font-medium text-card-foreground hover:bg-secondary"
           >
             Voltar para o início
           </a>
