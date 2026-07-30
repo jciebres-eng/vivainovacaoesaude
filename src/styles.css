@@ -77,8 +77,10 @@
   --color-border-default: var(--border);
   --color-action-primary: var(--primary);
   --color-action-primary-foreground: var(--primary-foreground);
+  --color-action-primary-hover: color-mix(in oklab, var(--primary) 88%, var(--foreground));
   --color-action-secondary: var(--secondary);
   --color-action-secondary-foreground: var(--secondary-foreground);
+  --color-action-secondary-hover: color-mix(in oklab, var(--secondary) 88%, var(--foreground));
   --color-feedback-information: var(--accent);
   --color-feedback-information-foreground: var(--accent-foreground);
   --color-feedback-attention: var(--atencao);
@@ -89,6 +91,7 @@
   --color-feedback-error: var(--destructive);
   --color-feedback-error-foreground: var(--destructive-foreground);
   --color-focus-ring: var(--ring);
+
 
   /* Duração de animação — sempre breve (doc 04) */
   --duracao-imediata: 120ms;
