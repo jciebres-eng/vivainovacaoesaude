@@ -43,32 +43,32 @@ function Inicio() {
           no dia a dia. Sem cobrança, sem comparação e sem pressa.
         </p>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Link
-            to="/jornada"
-            className="viva-tap inline-flex w-full items-center justify-center rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
-          >
-            Começar meu percurso
-          </Link>
+        {/* Uma única ação principal por tela (doc 14). O resto é convite. */}
+        <div className="mt-10">
           <Link
             to="/meu-momento"
-            className="viva-tap inline-flex w-full items-center justify-center rounded-full border border-border px-8 py-4 font-medium text-foreground hover:bg-muted sm:w-auto"
+            className="viva-tap inline-flex w-full items-center justify-center rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
           >
-            Entrar no meu momento
+            Entrar
           </Link>
         </div>
 
-
-        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <div className="mt-8 flex flex-col gap-3">
+          <Link
+            to="/jornada"
+            className="viva-tap inline-flex w-fit items-center viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          >
+            Prefiro começar algo novo agora
+          </Link>
           <Link
             to="/sobre"
-            className="viva-tap viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            className="viva-tap inline-flex w-fit items-center viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
             Sobre o VIVA e seus limites
           </Link>
           <Link
-            to="/configuracoes"
-            className="viva-tap viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            to="/minha-experiencia"
+            className="viva-tap inline-flex w-fit items-center viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
             Ajustar leitura, cor e movimento
           </Link>
