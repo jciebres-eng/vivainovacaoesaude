@@ -1,20 +1,23 @@
-# VIVA
+\# VIVA
 
-## Sistema Operacional Humano para o Desenvolvimento Funcional
+\## Sistema Operacional Humano para o Desenvolvimento Funcional
 
 Versão 1.0
 
 \-\--
 
-# Documento 04
+\# Documento 04
 
-## Requisitos de Experiência Neuroinclusiva, Usabilidade e Acessibilidade
+\## Requisitos de Experiência Neuroinclusiva, Usabilidade e
+Acessibilidade
 
 \-\--
 
-# 1. Finalidade
+\# 1. Finalidade
 
-Este documento estabelece os requisitos obrigatórios de experiência do usuário, acessibilidade, navegação, personalização sensorial e redução do tempo de tela da plataforma VIVA.
+Este documento estabelece os requisitos obrigatórios de experiência do
+usuário, acessibilidade, navegação, personalização sensorial e redução
+do tempo de tela da plataforma VIVA.
 
 Os requisitos deverão orientar:
 
@@ -38,13 +41,14 @@ Os requisitos deverão orientar:
 
 \- manutenção e evolução da plataforma.
 
-A acessibilidade não será tratada como recurso adicional ou adaptação posterior.
+A acessibilidade não será tratada como recurso adicional ou adaptação
+posterior.
 
 Ela será incorporada desde a concepção da solução.
 
 \-\--
 
-# 2. Princípio estruturante
+\# 2. Princípio estruturante
 
 A plataforma será utilizada por pessoas neurodivergentes com diferentes:
 
@@ -68,13 +72,14 @@ A plataforma será utilizada por pessoas neurodivergentes com diferentes:
 
 \- contextos sociais.
 
-Por essa razão, não deverá existir uma única configuração considerada ideal para todas as pessoas.
+Por essa razão, não deverá existir uma única configuração considerada
+ideal para todas as pessoas.
 
 A interface deverá ser previsível, personalizável e adaptável.
 
 \-\--
 
-# 3. Objetivo da experiência neuroinclusiva
+\# 3. Objetivo da experiência neuroinclusiva
 
 A experiência neuroinclusiva do VIVA deverá:
 
@@ -98,15 +103,16 @@ A experiência neuroinclusiva do VIVA deverá:
 
 \- respeitar diferentes ritmos de processamento;
 
-\- permitir que cada pessoa configure a experiência segundo suas necessidades.
+\- permitir que cada pessoa configure a experiência segundo suas
+necessidades.
 
 \-\--
 
-# 4. Princípios gerais de UX
+\# 4. Princípios gerais de UX
 
 Toda interface do VIVA deverá respeitar os seguintes princípios:
 
-## 4.1 Clareza
+\## 4.1 Clareza
 
 O usuário deverá compreender:
 
@@ -126,7 +132,7 @@ O usuário deverá compreender:
 
 \- como continuar posteriormente.
 
-## 4.2 Previsibilidade
+\## 4.2 Previsibilidade
 
 A plataforma deverá manter:
 
@@ -142,7 +148,7 @@ A plataforma deverá manter:
 
 \- indicação prévia de sons, vídeos ou recursos imersivos.
 
-## 4.3 Controle
+\## 4.3 Controle
 
 O usuário deverá poder:
 
@@ -166,19 +172,21 @@ O usuário deverá poder:
 
 \- continuar posteriormente.
 
-## 4.4 Simplicidade
+\## 4.4 Simplicidade
 
-A interface deverá apresentar apenas os elementos necessários para a ação atual.
+A interface deverá apresentar apenas os elementos necessários para a
+ação atual.
 
 Complexidade técnica não deverá ser transferida para o usuário.
 
-## 4.5 Não infantilização
+\## 4.5 Não infantilização
 
-A linguagem, os elementos gráficos, os ícones, as ilustrações e as recompensas deverão preservar uma identidade adulta.
+A linguagem, os elementos gráficos, os ícones, as ilustrações e as
+recompensas deverão preservar uma identidade adulta.
 
 A simplificação da interface não significa infantilização da pessoa.
 
-## 4.6 Flexibilidade
+\## 4.6 Flexibilidade
 
 O sistema deverá admitir diferentes formas de:
 
@@ -194,7 +202,7 @@ O sistema deverá admitir diferentes formas de:
 
 \- utilizar recursos de apoio.
 
-## 4.7 Tolerância ao erro
+\## 4.7 Tolerância ao erro
 
 Erros deverão ser tratados como parte esperada da interação.
 
@@ -212,9 +220,9 @@ O sistema deverá:
 
 \-\--
 
-# 5. Requisitos visuais
+\# 5. Requisitos visuais
 
-## 5.1 Aparência adulta
+\## 5.1 Aparência adulta
 
 A identidade visual deverá:
 
@@ -230,7 +238,7 @@ A identidade visual deverá:
 
 \- preservar sobriedade sem tornar a interface fria.
 
-## 5.2 Paleta de cores
+\## 5.2 Paleta de cores
 
 A interface deverá utilizar poucas cores simultaneamente.
 
@@ -264,9 +272,10 @@ Sempre deverá ser acompanhada por:
 
 \- mensagem explicativa.
 
-## 5.3 Contraste
+\## 5.3 Contraste
 
-Textos, botões e elementos interativos deverão apresentar contraste suficiente em relação ao fundo.
+Textos, botões e elementos interativos deverão apresentar contraste
+suficiente em relação ao fundo.
 
 Deverão ser previstos:
 
@@ -278,7 +287,7 @@ Deverão ser previstos:
 
 \- modo de baixo estímulo.
 
-## 5.4 Tipografia
+\## 5.4 Tipografia
 
 A tipografia deverá:
 
@@ -300,7 +309,7 @@ A tipografia deverá:
 
 O usuário poderá aumentar o texto sem perder conteúdo ou funcionalidade.
 
-## 5.5 Hierarquia visual
+\## 5.5 Hierarquia visual
 
 Cada tela deverá apresentar:
 
@@ -316,7 +325,7 @@ Cada tela deverá apresentar:
 
 A ação principal deverá ser facilmente identificada.
 
-## 5.6 Espaços visuais
+\## 5.6 Espaços visuais
 
 A interface deverá possuir:
 
@@ -330,7 +339,7 @@ A interface deverá possuir:
 
 \- ausência de elementos decorativos desnecessários.
 
-## 5.7 Botões
+\## 5.7 Botões
 
 Os botões deverão:
 
@@ -340,7 +349,8 @@ Os botões deverão:
 
 \- manter distância entre ações diferentes;
 
-\- evitar comandos vagos, como "OK", quando uma ação mais clara puder ser indicada;
+\- evitar comandos vagos, como "OK", quando uma ação mais clara puder
+ser indicada;
 
 \- informar o resultado esperado.
 
@@ -354,13 +364,14 @@ Exemplos:
 
 \- "Iniciar atividade fora da tela".
 
-## 5.8 Ícones
+\## 5.8 Ícones
 
 Ícones deverão ser acompanhados por texto.
 
-Não se deverá presumir que o significado de um símbolo seja universalmente compreendido.
+Não se deverá presumir que o significado de um símbolo seja
+universalmente compreendido.
 
-## 5.9 Movimentos e animações
+\## 5.9 Movimentos e animações
 
 A plataforma não deverá utilizar:
 
@@ -380,7 +391,7 @@ A plataforma não deverá utilizar:
 
 Animações funcionais deverão poder ser reduzidas ou desativadas.
 
-## 5.10 Reprodução automática
+\## 5.10 Reprodução automática
 
 Não será permitida reprodução automática de:
 
@@ -402,11 +413,11 @@ O usuário deverá iniciar conscientemente esses recursos.
 
 \-\--
 
-# 6. Modo de baixo estímulo
+\# 6. Modo de baixo estímulo
 
 A plataforma deverá possuir uma configuração específica denominada:
 
-## Modo de baixo estímulo
+\## Modo de baixo estímulo
 
 Quando ativado, esse modo deverá:
 
@@ -446,15 +457,16 @@ A ativação não poderá apagar respostas ou interromper o percurso.
 
 \-\--
 
-# 7. Requisitos de navegação
+\# 7. Requisitos de navegação
 
-## 7.1 Uma decisão principal por tela
+\## 7.1 Uma decisão principal por tela
 
 Cada tela deverá solicitar prioritariamente uma ação ou decisão.
 
-Quando forem necessárias várias respostas, elas deverão ser divididas em etapas curtas e identificadas.
+Quando forem necessárias várias respostas, elas deverão ser divididas em
+etapas curtas e identificadas.
 
-## 7.2 Indicador de progresso
+\## 7.2 Indicador de progresso
 
 Atividades compostas por várias etapas deverão apresentar:
 
@@ -472,9 +484,10 @@ Exemplo:
 
 \> Etapa 2 de 5 --- aproximadamente 3 minutos restantes.
 
-O indicador não deverá gerar pressão ou obrigatoriedade de conclusão imediata.
+O indicador não deverá gerar pressão ou obrigatoriedade de conclusão
+imediata.
 
-## 7.3 Botão de voltar
+\## 7.3 Botão de voltar
 
 O botão de voltar deverá:
 
@@ -488,7 +501,7 @@ O botão de voltar deverá:
 
 \- permitir revisão das escolhas.
 
-## 7.4 Preservação das informações
+\## 7.4 Preservação das informações
 
 A plataforma deverá salvar progressivamente:
 
@@ -518,7 +531,7 @@ O usuário não deverá perder dados por:
 
 \- cometer um erro de navegação.
 
-## 7.5 Menus
+\## 7.5 Menus
 
 Os menus deverão:
 
@@ -532,9 +545,10 @@ Os menus deverão:
 
 \- permitir retorno fácil à página inicial.
 
-Não deverão ser utilizados termos técnicos como nomes principais das áreas quando houver uma expressão cotidiana equivalente.
+Não deverão ser utilizados termos técnicos como nomes principais das
+áreas quando houver uma expressão cotidiana equivalente.
 
-## 7.6 Textos curtos
+\## 7.6 Textos curtos
 
 As instruções deverão:
 
@@ -562,7 +576,7 @@ Conteúdos extensos deverão possuir opção entre:
 
 \- leitura em etapas.
 
-## 7.7 Instruções concretas
+\## 7.7 Instruções concretas
 
 As orientações deverão explicar claramente:
 
@@ -580,7 +594,7 @@ As orientações deverão explicar claramente:
 
 \- como interromper.
 
-## 7.8 Pausar e continuar
+\## 7.8 Pausar e continuar
 
 Toda atividade que ultrapasse uma ação simples deverá permitir:
 
@@ -592,9 +606,10 @@ Toda atividade que ultrapasse uma ação simples deverá permitir:
 
 \- retomar do mesmo ponto.
 
-O sistema não deverá utilizar mensagens que produzam culpa por interrupção.
+O sistema não deverá utilizar mensagens que produzam culpa por
+interrupção.
 
-## 7.9 Descarte de registros
+\## 7.9 Descarte de registros
 
 Antes de apagar qualquer informação, o sistema deverá:
 
@@ -606,7 +621,7 @@ Antes de apagar qualquer informação, o sistema deverá:
 
 \- permitir recuperação, quando tecnicamente possível.
 
-## 7.10 Previsão da atividade
+\## 7.10 Previsão da atividade
 
 Antes de iniciar uma atividade, a plataforma deverá informar:
 
@@ -628,11 +643,12 @@ Antes de iniciar uma atividade, a plataforma deverá informar:
 
 \-\--
 
-# 8. Personalização da experiência
+\# 8. Personalização da experiência
 
-O usuário deverá poder configurar a interface sem depender de autorização profissional ou familiar.
+O usuário deverá poder configurar a interface sem depender de
+autorização profissional ou familiar.
 
-## 8.1 Contraste
+\## 8.1 Contraste
 
 Opções mínimas:
 
@@ -646,7 +662,7 @@ Opções mínimas:
 
 \- escuro.
 
-## 8.2 Tamanho do texto
+\## 8.2 Tamanho do texto
 
 Opções mínimas:
 
@@ -658,13 +674,14 @@ Opções mínimas:
 
 \- extragrande.
 
-A ampliação não poderá esconder botões, cortar conteúdos ou impedir a navegação.
+A ampliação não poderá esconder botões, cortar conteúdos ou impedir a
+navegação.
 
-## 8.3 Quantidade de informações
+\## 8.3 Quantidade de informações
 
 O usuário poderá escolher entre:
 
-### Modo resumido
+\### Modo resumido
 
 Apresenta:
 
@@ -674,7 +691,7 @@ Apresenta:
 
 \- informações essenciais.
 
-### Modo detalhado
+\### Modo detalhado
 
 Apresenta:
 
@@ -686,7 +703,7 @@ Apresenta:
 
 \- conteúdos complementares.
 
-## 8.4 Ícones
+\## 8.4 Ícones
 
 O usuário poderá escolher:
 
@@ -698,7 +715,7 @@ O usuário poderá escolher:
 
 Ícones nunca substituirão completamente instruções importantes.
 
-## 8.5 Sons
+\## 8.5 Sons
 
 O usuário poderá:
 
@@ -716,7 +733,7 @@ O usuário poderá:
 
 O padrão inicial deverá ser sem reprodução automática.
 
-## 8.6 Velocidade das transições
+\## 8.6 Velocidade das transições
 
 O usuário poderá escolher:
 
@@ -726,7 +743,7 @@ O usuário poderá escolher:
 
 \- transições padrão.
 
-## 8.7 Linguagem
+\## 8.7 Linguagem
 
 O usuário poderá escolher:
 
@@ -742,7 +759,7 @@ O usuário poderá escolher:
 
 A linguagem simplificada deverá permanecer adulta e respeitosa.
 
-## 8.8 Lembretes
+\## 8.8 Lembretes
 
 O usuário poderá:
 
@@ -762,7 +779,7 @@ O usuário poderá:
 
 \- escolher o canal.
 
-## 8.9 Notificações
+\## 8.9 Notificações
 
 As notificações deverão ser:
 
@@ -782,7 +799,7 @@ As notificações deverão ser:
 
 A ausência de resposta não deverá gerar sequência invasiva de alertas.
 
-## 8.10 Recursos imersivos
+\## 8.10 Recursos imersivos
 
 O usuário poderá decidir se deseja utilizar:
 
@@ -812,11 +829,12 @@ Sempre deverá existir alternativa equivalente sem imersão.
 
 \-\--
 
-# 9. Interação multimodal
+\# 9. Interação multimodal
 
-Sempre que possível, a plataforma deverá admitir diferentes formas de entrada e saída.
+Sempre que possível, a plataforma deverá admitir diferentes formas de
+entrada e saída.
 
-## 9.1 Formas de entrada
+\## 9.1 Formas de entrada
 
 \- seleção por toque;
 
@@ -836,7 +854,7 @@ Sempre que possível, a plataforma deverá admitir diferentes formas de entrada 
 
 \- respostas livres.
 
-## 9.2 Formas de saída
+\## 9.2 Formas de saída
 
 \- texto;
 
@@ -854,13 +872,14 @@ Sempre que possível, a plataforma deverá admitir diferentes formas de entrada 
 
 \- resumo para consulta posterior.
 
-Nenhuma modalidade poderá ser obrigatória quando houver alternativa viável.
+Nenhuma modalidade poderá ser obrigatória quando houver alternativa
+viável.
 
 \-\--
 
-# 10. Comunicação neuroinclusiva
+\# 10. Comunicação neuroinclusiva
 
-## 10.1 Linguagem
+\## 10.1 Linguagem
 
 A linguagem deverá ser:
 
@@ -882,7 +901,7 @@ A linguagem deverá ser:
 
 \- compatível com diferentes níveis de letramento.
 
-## 10.2 Evitar
+\## 10.2 Evitar
 
 A plataforma deverá evitar expressões como:
 
@@ -902,7 +921,7 @@ A plataforma deverá evitar expressões como:
 
 \- "você perdeu sua sequência".
 
-## 10.3 Preferir
+\## 10.3 Preferir
 
 A plataforma deverá utilizar formulações como:
 
@@ -924,9 +943,9 @@ A plataforma deverá utilizar formulações como:
 
 \-\--
 
-# 11. Afastamento da tela
+\# 11. Afastamento da tela
 
-## 11.1 Princípio
+\## 11.1 Princípio
 
 O tempo fora da tela constitui parte funcional da plataforma.
 
@@ -946,7 +965,7 @@ O VIVA não deverá ser projetado para maximizar:
 
 O objetivo é apoiar experiências concretas fora do ambiente digital.
 
-## 11.2 Redução de etapas
+\## 11.2 Redução de etapas
 
 A plataforma deverá:
 
@@ -964,7 +983,7 @@ A plataforma deverá:
 
 \- evitar confirmação excessiva para ações reversíveis.
 
-## 11.3 Sugestões de pausa
+\## 11.3 Sugestões de pausa
 
 O sistema poderá sugerir pausa quando:
 
@@ -982,9 +1001,10 @@ A sugestão deverá ser opcional e não invasiva.
 
 Exemplo:
 
-\> "Você já preparou o necessário. Agora pode fechar o VIVA e realizar a atividade no seu tempo. Seu percurso ficará salvo."
+\> "Você já preparou o necessário. Agora pode fechar o VIVA e realizar a
+atividade no seu tempo. Seu percurso ficará salvo."
 
-## 11.4 Atividades externas
+\## 11.4 Atividades externas
 
 As atividades poderão envolver:
 
@@ -1014,9 +1034,10 @@ As atividades poderão envolver:
 
 \- praticar uma estratégia sensorial.
 
-## 11.5 Fechamento consciente
+\## 11.5 Fechamento consciente
 
-Ao iniciar uma experiência cotidiana, a plataforma deverá oferecer a opção:
+Ao iniciar uma experiência cotidiana, a plataforma deverá oferecer a
+opção:
 
 \> "Sair da tela e realizar a atividade."
 
@@ -1032,7 +1053,7 @@ O usuário poderá escolher:
 
 \- acessar um resumo rápido.
 
-## 11.6 Registro posterior
+\## 11.6 Registro posterior
 
 A pessoa poderá registrar sua experiência:
 
@@ -1054,7 +1075,7 @@ A pessoa poderá registrar sua experiência:
 
 O sistema não deverá exigir registro durante a experiência real.
 
-## 11.7 Ausência de recompensa por permanência
+\## 11.7 Ausência de recompensa por permanência
 
 Não deverão ser utilizadas recompensas baseadas em:
 
@@ -1070,7 +1091,7 @@ Não deverão ser utilizadas recompensas baseadas em:
 
 \- ranking público.
 
-## 11.8 Valorização das experiências
+\## 11.8 Valorização das experiências
 
 As conquistas deverão valorizar:
 
@@ -1098,7 +1119,7 @@ As conquistas deverão valorizar:
 
 \-\--
 
-# 12. Requisitos para atividades presenciais e sociais
+\# 12. Requisitos para atividades presenciais e sociais
 
 As atividades que envolvam comunicação ou interação deverão:
 
@@ -1128,13 +1149,15 @@ As atividades que envolvam comunicação ou interação deverão:
 
 \- considerar segurança física e emocional.
 
-O objetivo não será forçar exposição social, mas ampliar possibilidades de participação escolhidas pela pessoa.
+O objetivo não será forçar exposição social, mas ampliar possibilidades
+de participação escolhidas pela pessoa.
 
 \-\--
 
-# 13. Prevenção de sobrecarga
+\# 13. Prevenção de sobrecarga
 
-A plataforma deverá permitir que o usuário registre, sem finalidade diagnóstica:
+A plataforma deverá permitir que o usuário registre, sem finalidade
+diagnóstica:
 
 \- nível de energia;
 
@@ -1170,7 +1193,7 @@ Quando houver indicação de sobrecarga, o sistema poderá oferecer:
 
 \-\--
 
-# 14. Estados de carregamento e espera
+\# 14. Estados de carregamento e espera
 
 O sistema deverá informar claramente quando estiver:
 
@@ -1194,11 +1217,12 @@ Sempre que possível, deverá apresentar:
 
 \- mensagem de erro compreensível.
 
-Não deverá deixar o usuário sem resposta visual sobre o estado do sistema.
+Não deverá deixar o usuário sem resposta visual sobre o estado do
+sistema.
 
 \-\--
 
-# 15. Mensagens de erro
+\# 15. Mensagens de erro
 
 Mensagens de erro deverão:
 
@@ -1216,7 +1240,8 @@ Mensagens de erro deverão:
 
 Exemplo adequado:
 
-\> "Não foi possível salvar agora. Suas respostas continuam neste dispositivo. Tente novamente ou salve como rascunho."
+\> "Não foi possível salvar agora. Suas respostas continuam neste
+dispositivo. Tente novamente ou salve como rascunho."
 
 Exemplo inadequado:
 
@@ -1224,7 +1249,7 @@ Exemplo inadequado:
 
 \-\--
 
-# 16. Requisitos responsivos
+\# 16. Requisitos responsivos
 
 A plataforma deverá funcionar em:
 
@@ -1254,11 +1279,12 @@ Em todos os dispositivos deverá preservar:
 
 \- retomada do percurso.
 
-A versão móvel não deverá ser apenas uma redução visual da versão para computador.
+A versão móvel não deverá ser apenas uma redução visual da versão para
+computador.
 
 \-\--
 
-# 17. Acessibilidade técnica mínima
+\# 17. Acessibilidade técnica mínima
 
 O desenvolvimento deverá prever:
 
@@ -1294,9 +1320,10 @@ O desenvolvimento deverá prever:
 
 \-\--
 
-# 18. Co-design e participação dos usuários
+\# 18. Co-design e participação dos usuários
 
-Pessoas neurodivergentes deverão participar de diferentes etapas do desenvolvimento.
+Pessoas neurodivergentes deverão participar de diferentes etapas do
+desenvolvimento.
 
 A participação deverá ocorrer em:
 
@@ -1320,11 +1347,12 @@ A participação deverá ocorrer em:
 
 \- priorização das melhorias.
 
-A equipe não deverá presumir que consegue representar integralmente a experiência neurodivergente sem participação direta do público.
+A equipe não deverá presumir que consegue representar integralmente a
+experiência neurodivergente sem participação direta do público.
 
 \-\--
 
-# 19. Testes de usabilidade
+\# 19. Testes de usabilidade
 
 Os testes deverão verificar:
 
@@ -1372,11 +1400,11 @@ Os testes deverão incluir pessoas com diferentes:
 
 \-\--
 
-# 20. Indicadores de avaliação
+\# 20. Indicadores de avaliação
 
 A experiência poderá ser avaliada por indicadores como:
 
-## Usabilidade
+\## Usabilidade
 
 \- conclusão da tarefa;
 
@@ -1390,7 +1418,7 @@ A experiência poderá ser avaliada por indicadores como:
 
 \- facilidade de retomada.
 
-## Compreensão
+\## Compreensão
 
 \- entendimento das instruções;
 
@@ -1400,7 +1428,7 @@ A experiência poderá ser avaliada por indicadores como:
 
 \- compreensão das recomendações.
 
-## Carga cognitiva
+\## Carga cognitiva
 
 \- número de decisões simultâneas;
 
@@ -1410,7 +1438,7 @@ A experiência poderá ser avaliada por indicadores como:
 
 \- dificuldade de lembrar etapas anteriores.
 
-## Conforto sensorial
+\## Conforto sensorial
 
 \- incômodo visual;
 
@@ -1420,7 +1448,7 @@ A experiência poderá ser avaliada por indicadores como:
 
 \- adequação do modo de baixo estímulo.
 
-## Autonomia
+\## Autonomia
 
 \- capacidade de alterar escolhas;
 
@@ -1432,7 +1460,7 @@ A experiência poderá ser avaliada por indicadores como:
 
 \- capacidade de pausar e retomar.
 
-## Vida fora da tela
+\## Vida fora da tela
 
 \- realização de atividades externas;
 
@@ -1444,7 +1472,7 @@ A experiência poderá ser avaliada por indicadores como:
 
 \-\--
 
-# 21. Critérios de aceite do protótipo
+\# 21. Critérios de aceite do protótipo
 
 Uma tela somente será considerada adequada quando:
 
@@ -1496,7 +1524,7 @@ Uma jornada somente será considerada adequada quando:
 
 \-\--
 
-# 22. Requisitos para o MVP demonstrativo
+\# 22. Requisitos para o MVP demonstrativo
 
 A primeira versão demonstrativa deverá conter, obrigatoriamente:
 
@@ -1542,7 +1570,7 @@ A primeira versão demonstrativa deverá conter, obrigatoriamente:
 
 \-\--
 
-# 23. Checklist para cada nova funcionalidade
+\# 23. Checklist para cada nova funcionalidade
 
 Antes de aprovar qualquer funcionalidade, a equipe deverá responder:
 
@@ -1582,23 +1610,27 @@ Antes de aprovar qualquer funcionalidade, a equipe deverá responder:
 
 \- A pessoa neurodivergente participou de sua validação?
 
-Se a funcionalidade não produzir benefício claro para o usuário, não deverá ser incluída.
+Se a funcionalidade não produzir benefício claro para o usuário, não
+deverá ser incluída.
 
 \-\--
 
-# 24. Regra final
+\# 24. Regra final
 
 Toda tela deverá responder positivamente à seguinte pergunta:
 
-\> Esta interface ajuda a pessoa a compreender, escolher, preparar ou realizar algo significativo em sua vida fora da plataforma?
+\> Esta interface ajuda a pessoa a compreender, escolher, preparar ou
+realizar algo significativo em sua vida fora da plataforma?
 
-Caso a resposta seja negativa, a tela deverá ser simplificada, reformulada ou removida.
+Caso a resposta seja negativa, a tela deverá ser simplificada,
+reformulada ou removida.
 
 \-\--
 
-# Síntese
+\# Síntese
 
-A experiência neuroinclusiva do VIVA não será definida apenas por cores, fontes ou recursos de acessibilidade.
+A experiência neuroinclusiva do VIVA não será definida apenas por cores,
+fontes ou recursos de acessibilidade.
 
 Ela será definida pela forma como a plataforma:
 
@@ -1624,4 +1656,5 @@ Ela será definida pela forma como a plataforma:
 
 O VIVA não deverá exigir que o usuário se adapte à tecnologia.
 
-A tecnologia deverá adaptar-se, dentro de limites seguros e transparentes, às necessidades, preferências e objetivos do usuário.
+A tecnologia deverá adaptar-se, dentro de limites seguros e
+transparentes, às necessidades, preferências e objetivos do usuário.
