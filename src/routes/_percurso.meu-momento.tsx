@@ -230,14 +230,23 @@ function MeuMomentoPage() {
           reduzido={baixoEstimulo}
         />
 
+        {momento.preferencias.mostrarEstadoAtual ? (
+          <MeuMomentoCard
+            onSeguirSugestao={() => navigate({ to: "/preparacao" })}
+            onPular={() =>
+              momento.definirPreferencia({ mostrarEstadoAtual: false })
+            }
+          />
+        ) : null}
+
         {atividade ? (
           <section aria-label="Próximo passo">
-            <CartaoDeProximoPasso
-              atividade={atividade}
-              onAcaoPrincipal={() => navigate({ to: "/preparacao" })}
-              onAcaoSecundaria={() =>
+            <ProximoPassoCard
+              onComecar={() => navigate({ to: "/preparacao" })}
+              onAdiar={() =>
                 percurso.definirEstadoDaAtividade(atividade.id, "pausado")
               }
+              onRecusar={() => navigate({ to: "/opcoes" })}
             />
           </section>
         ) : (
@@ -246,28 +255,19 @@ function MeuMomentoPage() {
 
         {preparacaoSalva || experienciaSemReflexao ? (
           <section aria-label="Continuar de onde parei">
-            <ContinuidadeDoPercurso
-              ultimaAtividade={percurso.atividades.find(
-                (a) => a.id === percurso.continuidade.ultimaAtividadeId,
-              )}
-              preparacaoSalva={preparacaoSalva}
-              experienciaAguardandoReflexao={experienciaSemReflexao}
+            <RetomarAtividadeCard
+              nome={
+                percurso.atividades.find(
+                  (a) => a.id === percurso.continuidade.ultimaAtividadeId,
+                )?.titulo
+              }
               onContinuar={() => navigate({ to: "/preparacao" })}
-              onEscolherOutra={() => navigate({ to: "/opcoes" })}
+              onRevisar={() => navigate({ to: "/opcoes" })}
+              onRetomarDepois={() => navigate({ to: "/afastamento" })}
             />
           </section>
         ) : null}
 
-        {momento.preferencias.mostrarEstadoAtual ? (
-          <ComoEstouAgora
-            estado={momento.estadoAtual}
-            onRegistrar={momento.registrarMomento}
-            onLimpar={momento.limparMomento}
-            onOcultar={() => momento.definirPreferencia({ mostrarEstadoAtual: false })}
-            onFazerPausa={() => navigate({ to: "/afastamento" })}
-            onConteudoCurto={() => navigate({ to: "/biblioteca" })}
-          />
-        ) : null}
 
         <div ref={areaDeRegistro} className="space-y-4">
           <ReflexaoOpcional opcoes={baixoEstimulo ? reflexoes.slice(0, 2) : reflexoes} />
