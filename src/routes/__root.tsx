@@ -78,20 +78,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VIVA — percurso de autonomia neuroinclusiva" },
+      { title: "Biblioteca VIVA — Base documental da solução" },
       {
         name: "description",
         content:
-          "Protótipo demonstrativo do VIVA: percurso guiado, calmo e acessível para planejar experiências reais de autonomia.",
+          "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva.",
       },
       { name: "author", content: "VIVA" },
-      { property: "og:title", content: "VIVA — percurso de autonomia neuroinclusiva" },
+      { property: "og:title", content: "Biblioteca VIVA — Base documental da solução" },
       {
         property: "og:description",
-        content: "Percurso guiado, calmo e acessível para planejar experiências reais.",
+        content: "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Biblioteca VIVA — Base documental da solução" },
+      { name: "twitter:description", content: "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/654089da-003e-4f8a-aa3d-0a513a884a6e" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/654089da-003e-4f8a-aa3d-0a513a884a6e" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
