@@ -43,14 +43,21 @@ function Inicio() {
           no dia a dia. Sem cobrança, sem comparação e sem pressa.
         </p>
 
-        <div className="mt-10">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Link
+            to="/percurso"
+            className="viva-tap inline-flex w-full items-center justify-center rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
+          >
+            Começar meu percurso
+          </Link>
           <Link
             to="/meu-momento"
-            className="viva-tap inline-flex w-full items-center justify-center rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
+            className="viva-tap inline-flex w-full items-center justify-center rounded-full border border-border px-8 py-4 font-medium text-foreground hover:bg-muted sm:w-auto"
           >
             Entrar no meu momento
           </Link>
         </div>
+
 
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
           <Link
