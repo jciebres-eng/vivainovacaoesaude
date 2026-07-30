@@ -366,7 +366,6 @@ export function ExperienciaProvider({ children }: { children: ReactNode }) {
     const { aparencia, movimento, leitura, navegacao } = preferencias;
 
     const escuro =
-      aparencia.tema === "escura" ||
       aparencia.tema === "escuro" ||
       (aparencia.tema === "automatico" && temaDoSistema === "escuro");
 
