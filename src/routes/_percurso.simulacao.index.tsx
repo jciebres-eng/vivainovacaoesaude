@@ -58,26 +58,21 @@ function SimulacaoScreen() {
         </ChoiceList>
 
         <SectionCard title="Esta simulação">
-          <ul className="space-y-2 text-card-foreground">
-            <li>• dura cerca de 2 minutos</li>
-            <li>• não possui som</li>
-            <li>• pode ser interrompida</li>
+          <ul className="list-disc space-y-2 pl-5 text-card-foreground">
+            <li>dura cerca de dois minutos</li>
+            <li>não possui som</li>
+            <li>pode ser interrompida a qualquer momento</li>
           </ul>
         </SectionCard>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Link
             to="/simulacao/situacao"
-            className="viva-tap rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+            className="viva-tap inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
           >
-            Iniciar simulação
+            Começar a simulação
           </Link>
-          <Link
-            to="/afastamento"
-            className="viva-tap rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground hover:bg-secondary"
-          >
-            Continuar sem simular
-          </Link>
+          <TextAction to="/afastamento">Seguir sem simular</TextAction>
         </div>
 
         <Note>
