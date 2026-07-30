@@ -12,25 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as JornadaRouteImport } from './routes/jornada'
-import { Route as PercursoAfastamentoRouteImport } from './routes/_percurso.afastamento'
-import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
-import { Route as PercursoConfiguracoesRouteImport } from './routes/_percurso.configuracoes'
-import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
 import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
-import { Route as PercursoEstrategiasRouteImport } from './routes/_percurso.estrategias'
-import { Route as PercursoHabilidadesRouteImport } from './routes/_percurso.habilidades'
-import { Route as PercursoLinhaDoTempoRouteImport } from './routes/_percurso.linha-do-tempo'
 import { Route as PercursoMeuMomentoRouteImport } from './routes/_percurso.meu-momento'
 import { Route as PercursoMinhaExperienciaRouteImport } from './routes/_percurso.minha-experiencia'
-import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
-import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
-import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
-import { Route as PercursoPreparacaoRouteImport } from './routes/_percurso.preparacao'
-import { Route as PercursoProximoPassoRouteImport } from './routes/_percurso.proximo-passo'
-import { Route as PercursoRegistroRouteImport } from './routes/_percurso.registro'
-import { Route as PercursoRevisaoRouteImport } from './routes/_percurso.revisao'
 import { Route as PercursoSeusDadosRouteImport } from './routes/_percurso.seus-dados'
-import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
 import { Route as PercursoSobreRouteImport } from './routes/_percurso.sobre'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
 import { Route as JornadaIndexRouteImport } from './routes/jornada.index'
@@ -48,9 +33,6 @@ import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.
 import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_percurso.biblioteca.$conteudoId'
 import { Route as PercursoBibliotecaMinhaRouteImport } from './routes/_percurso.biblioteca.minha'
 import { Route as PercursoBibliotecaReflexoesRouteImport } from './routes/_percurso.biblioteca.reflexoes'
-import { Route as PercursoSimulacaoIndexRouteImport } from './routes/_percurso.simulacao.index'
-import { Route as PercursoSimulacaoSituacaoRouteImport } from './routes/_percurso.simulacao.situacao'
-import { Route as PercursoEstrategiasAdaptarEstrategiaIdRouteImport } from './routes/_percurso.estrategias.adaptar.$estrategiaId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -66,44 +48,9 @@ const JornadaRoute = JornadaRouteImport.update({
   path: '/jornada',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PercursoAfastamentoRoute = PercursoAfastamentoRouteImport.update({
-  id: '/afastamento',
-  path: '/afastamento',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoBarreirasRoute = PercursoBarreirasRouteImport.update({
-  id: '/barreiras',
-  path: '/barreiras',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoConfiguracoesRoute = PercursoConfiguracoesRouteImport.update({
-  id: '/configuracoes',
-  path: '/configuracoes',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoContextoRoute = PercursoContextoRouteImport.update({
-  id: '/contexto',
-  path: '/contexto',
-  getParentRoute: () => PercursoRoute,
-} as any)
 const PercursoDocumentacaoRoute = PercursoDocumentacaoRouteImport.update({
   id: '/documentacao',
   path: '/documentacao',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoEstrategiasRoute = PercursoEstrategiasRouteImport.update({
-  id: '/estrategias',
-  path: '/estrategias',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoHabilidadesRoute = PercursoHabilidadesRouteImport.update({
-  id: '/habilidades',
-  path: '/habilidades',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoLinhaDoTempoRoute = PercursoLinhaDoTempoRouteImport.update({
-  id: '/linha-do-tempo',
-  path: '/linha-do-tempo',
   getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoMeuMomentoRoute = PercursoMeuMomentoRouteImport.update({
@@ -117,49 +64,9 @@ const PercursoMinhaExperienciaRoute =
     path: '/minha-experiencia',
     getParentRoute: () => PercursoRoute,
   } as any)
-const PercursoObjetivoRoute = PercursoObjetivoRouteImport.update({
-  id: '/objetivo',
-  path: '/objetivo',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoOpcoesRoute = PercursoOpcoesRouteImport.update({
-  id: '/opcoes',
-  path: '/opcoes',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoPerfilRoute = PercursoPerfilRouteImport.update({
-  id: '/perfil',
-  path: '/perfil',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoPreparacaoRoute = PercursoPreparacaoRouteImport.update({
-  id: '/preparacao',
-  path: '/preparacao',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoProximoPassoRoute = PercursoProximoPassoRouteImport.update({
-  id: '/proximo-passo',
-  path: '/proximo-passo',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoRegistroRoute = PercursoRegistroRouteImport.update({
-  id: '/registro',
-  path: '/registro',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoRevisaoRoute = PercursoRevisaoRouteImport.update({
-  id: '/revisao',
-  path: '/revisao',
-  getParentRoute: () => PercursoRoute,
-} as any)
 const PercursoSeusDadosRoute = PercursoSeusDadosRouteImport.update({
   id: '/seus-dados',
   path: '/seus-dados',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoSistemaRoute = PercursoSistemaRouteImport.update({
-  id: '/sistema',
-  path: '/sistema',
   getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoSobreRoute = PercursoSobreRouteImport.update({
@@ -249,46 +156,14 @@ const PercursoBibliotecaReflexoesRoute =
     path: '/biblioteca/reflexoes',
     getParentRoute: () => PercursoRoute,
   } as any)
-const PercursoSimulacaoIndexRoute = PercursoSimulacaoIndexRouteImport.update({
-  id: '/simulacao/',
-  path: '/simulacao/',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoSimulacaoSituacaoRoute =
-  PercursoSimulacaoSituacaoRouteImport.update({
-    id: '/simulacao/situacao',
-    path: '/simulacao/situacao',
-    getParentRoute: () => PercursoRoute,
-  } as any)
-const PercursoEstrategiasAdaptarEstrategiaIdRoute =
-  PercursoEstrategiasAdaptarEstrategiaIdRouteImport.update({
-    id: '/adaptar/$estrategiaId',
-    path: '/adaptar/$estrategiaId',
-    getParentRoute: () => PercursoEstrategiasRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/jornada': typeof JornadaRouteWithChildren
-  '/afastamento': typeof PercursoAfastamentoRoute
-  '/barreiras': typeof PercursoBarreirasRoute
-  '/configuracoes': typeof PercursoConfiguracoesRoute
-  '/contexto': typeof PercursoContextoRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
-  '/estrategias': typeof PercursoEstrategiasRouteWithChildren
-  '/habilidades': typeof PercursoHabilidadesRoute
-  '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
-  '/objetivo': typeof PercursoObjetivoRoute
-  '/opcoes': typeof PercursoOpcoesRoute
-  '/perfil': typeof PercursoPerfilRoute
-  '/preparacao': typeof PercursoPreparacaoRoute
-  '/proximo-passo': typeof PercursoProximoPassoRoute
-  '/registro': typeof PercursoRegistroRoute
-  '/revisao': typeof PercursoRevisaoRoute
   '/seus-dados': typeof PercursoSeusDadosRoute
-  '/sistema': typeof PercursoSistemaRoute
   '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/jornada/atividade': typeof JornadaAtividadeRoute
@@ -305,32 +180,14 @@ export interface FileRoutesByFullPath {
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/biblioteca/reflexoes': typeof PercursoBibliotecaReflexoesRoute
-  '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca/': typeof PercursoBibliotecaIndexRoute
-  '/simulacao/': typeof PercursoSimulacaoIndexRoute
-  '/estrategias/adaptar/$estrategiaId': typeof PercursoEstrategiasAdaptarEstrategiaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/afastamento': typeof PercursoAfastamentoRoute
-  '/barreiras': typeof PercursoBarreirasRoute
-  '/configuracoes': typeof PercursoConfiguracoesRoute
-  '/contexto': typeof PercursoContextoRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
-  '/estrategias': typeof PercursoEstrategiasRouteWithChildren
-  '/habilidades': typeof PercursoHabilidadesRoute
-  '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
-  '/objetivo': typeof PercursoObjetivoRoute
-  '/opcoes': typeof PercursoOpcoesRoute
-  '/perfil': typeof PercursoPerfilRoute
-  '/preparacao': typeof PercursoPreparacaoRoute
-  '/proximo-passo': typeof PercursoProximoPassoRoute
-  '/registro': typeof PercursoRegistroRoute
-  '/revisao': typeof PercursoRevisaoRoute
   '/seus-dados': typeof PercursoSeusDadosRoute
-  '/sistema': typeof PercursoSistemaRoute
   '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/jornada/atividade': typeof JornadaAtividadeRoute
@@ -347,35 +204,17 @@ export interface FileRoutesByTo {
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/biblioteca/reflexoes': typeof PercursoBibliotecaReflexoesRoute
-  '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca': typeof PercursoBibliotecaIndexRoute
-  '/simulacao': typeof PercursoSimulacaoIndexRoute
-  '/estrategias/adaptar/$estrategiaId': typeof PercursoEstrategiasAdaptarEstrategiaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
   '/jornada': typeof JornadaRouteWithChildren
-  '/_percurso/afastamento': typeof PercursoAfastamentoRoute
-  '/_percurso/barreiras': typeof PercursoBarreirasRoute
-  '/_percurso/configuracoes': typeof PercursoConfiguracoesRoute
-  '/_percurso/contexto': typeof PercursoContextoRoute
   '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
-  '/_percurso/estrategias': typeof PercursoEstrategiasRouteWithChildren
-  '/_percurso/habilidades': typeof PercursoHabilidadesRoute
-  '/_percurso/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/_percurso/meu-momento': typeof PercursoMeuMomentoRoute
   '/_percurso/minha-experiencia': typeof PercursoMinhaExperienciaRoute
-  '/_percurso/objetivo': typeof PercursoObjetivoRoute
-  '/_percurso/opcoes': typeof PercursoOpcoesRoute
-  '/_percurso/perfil': typeof PercursoPerfilRoute
-  '/_percurso/preparacao': typeof PercursoPreparacaoRoute
-  '/_percurso/proximo-passo': typeof PercursoProximoPassoRoute
-  '/_percurso/registro': typeof PercursoRegistroRoute
-  '/_percurso/revisao': typeof PercursoRevisaoRoute
   '/_percurso/seus-dados': typeof PercursoSeusDadosRoute
-  '/_percurso/sistema': typeof PercursoSistemaRoute
   '/_percurso/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/jornada/atividade': typeof JornadaAtividadeRoute
@@ -392,35 +231,17 @@ export interface FileRoutesById {
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/_percurso/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/_percurso/biblioteca/reflexoes': typeof PercursoBibliotecaReflexoesRoute
-  '/_percurso/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/_percurso/biblioteca/': typeof PercursoBibliotecaIndexRoute
-  '/_percurso/simulacao/': typeof PercursoSimulacaoIndexRoute
-  '/_percurso/estrategias/adaptar/$estrategiaId': typeof PercursoEstrategiasAdaptarEstrategiaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/jornada'
-    | '/afastamento'
-    | '/barreiras'
-    | '/configuracoes'
-    | '/contexto'
     | '/documentacao'
-    | '/estrategias'
-    | '/habilidades'
-    | '/linha-do-tempo'
     | '/meu-momento'
     | '/minha-experiencia'
-    | '/objetivo'
-    | '/opcoes'
-    | '/perfil'
-    | '/preparacao'
-    | '/proximo-passo'
-    | '/registro'
-    | '/revisao'
     | '/seus-dados'
-    | '/sistema'
     | '/sobre'
     | '/documentos/$slug'
     | '/jornada/atividade'
@@ -437,32 +258,14 @@ export interface FileRouteTypes {
     | '/biblioteca/$conteudoId'
     | '/biblioteca/minha'
     | '/biblioteca/reflexoes'
-    | '/simulacao/situacao'
     | '/biblioteca/'
-    | '/simulacao/'
-    | '/estrategias/adaptar/$estrategiaId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/afastamento'
-    | '/barreiras'
-    | '/configuracoes'
-    | '/contexto'
     | '/documentacao'
-    | '/estrategias'
-    | '/habilidades'
-    | '/linha-do-tempo'
     | '/meu-momento'
     | '/minha-experiencia'
-    | '/objetivo'
-    | '/opcoes'
-    | '/perfil'
-    | '/preparacao'
-    | '/proximo-passo'
-    | '/registro'
-    | '/revisao'
     | '/seus-dados'
-    | '/sistema'
     | '/sobre'
     | '/documentos/$slug'
     | '/jornada/atividade'
@@ -479,34 +282,16 @@ export interface FileRouteTypes {
     | '/biblioteca/$conteudoId'
     | '/biblioteca/minha'
     | '/biblioteca/reflexoes'
-    | '/simulacao/situacao'
     | '/biblioteca'
-    | '/simulacao'
-    | '/estrategias/adaptar/$estrategiaId'
   id:
     | '__root__'
     | '/'
     | '/_percurso'
     | '/jornada'
-    | '/_percurso/afastamento'
-    | '/_percurso/barreiras'
-    | '/_percurso/configuracoes'
-    | '/_percurso/contexto'
     | '/_percurso/documentacao'
-    | '/_percurso/estrategias'
-    | '/_percurso/habilidades'
-    | '/_percurso/linha-do-tempo'
     | '/_percurso/meu-momento'
     | '/_percurso/minha-experiencia'
-    | '/_percurso/objetivo'
-    | '/_percurso/opcoes'
-    | '/_percurso/perfil'
-    | '/_percurso/preparacao'
-    | '/_percurso/proximo-passo'
-    | '/_percurso/registro'
-    | '/_percurso/revisao'
     | '/_percurso/seus-dados'
-    | '/_percurso/sistema'
     | '/_percurso/sobre'
     | '/documentos/$slug'
     | '/jornada/atividade'
@@ -523,10 +308,7 @@ export interface FileRouteTypes {
     | '/_percurso/biblioteca/$conteudoId'
     | '/_percurso/biblioteca/minha'
     | '/_percurso/biblioteca/reflexoes'
-    | '/_percurso/simulacao/situacao'
     | '/_percurso/biblioteca/'
-    | '/_percurso/simulacao/'
-    | '/_percurso/estrategias/adaptar/$estrategiaId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -559,60 +341,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JornadaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_percurso/afastamento': {
-      id: '/_percurso/afastamento'
-      path: '/afastamento'
-      fullPath: '/afastamento'
-      preLoaderRoute: typeof PercursoAfastamentoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/barreiras': {
-      id: '/_percurso/barreiras'
-      path: '/barreiras'
-      fullPath: '/barreiras'
-      preLoaderRoute: typeof PercursoBarreirasRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/configuracoes': {
-      id: '/_percurso/configuracoes'
-      path: '/configuracoes'
-      fullPath: '/configuracoes'
-      preLoaderRoute: typeof PercursoConfiguracoesRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/contexto': {
-      id: '/_percurso/contexto'
-      path: '/contexto'
-      fullPath: '/contexto'
-      preLoaderRoute: typeof PercursoContextoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
     '/_percurso/documentacao': {
       id: '/_percurso/documentacao'
       path: '/documentacao'
       fullPath: '/documentacao'
       preLoaderRoute: typeof PercursoDocumentacaoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/estrategias': {
-      id: '/_percurso/estrategias'
-      path: '/estrategias'
-      fullPath: '/estrategias'
-      preLoaderRoute: typeof PercursoEstrategiasRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/habilidades': {
-      id: '/_percurso/habilidades'
-      path: '/habilidades'
-      fullPath: '/habilidades'
-      preLoaderRoute: typeof PercursoHabilidadesRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/linha-do-tempo': {
-      id: '/_percurso/linha-do-tempo'
-      path: '/linha-do-tempo'
-      fullPath: '/linha-do-tempo'
-      preLoaderRoute: typeof PercursoLinhaDoTempoRouteImport
       parentRoute: typeof PercursoRoute
     }
     '/_percurso/meu-momento': {
@@ -629,67 +362,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoMinhaExperienciaRouteImport
       parentRoute: typeof PercursoRoute
     }
-    '/_percurso/objetivo': {
-      id: '/_percurso/objetivo'
-      path: '/objetivo'
-      fullPath: '/objetivo'
-      preLoaderRoute: typeof PercursoObjetivoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/opcoes': {
-      id: '/_percurso/opcoes'
-      path: '/opcoes'
-      fullPath: '/opcoes'
-      preLoaderRoute: typeof PercursoOpcoesRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/perfil': {
-      id: '/_percurso/perfil'
-      path: '/perfil'
-      fullPath: '/perfil'
-      preLoaderRoute: typeof PercursoPerfilRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/preparacao': {
-      id: '/_percurso/preparacao'
-      path: '/preparacao'
-      fullPath: '/preparacao'
-      preLoaderRoute: typeof PercursoPreparacaoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/proximo-passo': {
-      id: '/_percurso/proximo-passo'
-      path: '/proximo-passo'
-      fullPath: '/proximo-passo'
-      preLoaderRoute: typeof PercursoProximoPassoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/registro': {
-      id: '/_percurso/registro'
-      path: '/registro'
-      fullPath: '/registro'
-      preLoaderRoute: typeof PercursoRegistroRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/revisao': {
-      id: '/_percurso/revisao'
-      path: '/revisao'
-      fullPath: '/revisao'
-      preLoaderRoute: typeof PercursoRevisaoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
     '/_percurso/seus-dados': {
       id: '/_percurso/seus-dados'
       path: '/seus-dados'
       fullPath: '/seus-dados'
       preLoaderRoute: typeof PercursoSeusDadosRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/sistema': {
-      id: '/_percurso/sistema'
-      path: '/sistema'
-      fullPath: '/sistema'
-      preLoaderRoute: typeof PercursoSistemaRouteImport
       parentRoute: typeof PercursoRoute
     }
     '/_percurso/sobre': {
@@ -811,98 +488,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoBibliotecaReflexoesRouteImport
       parentRoute: typeof PercursoRoute
     }
-    '/_percurso/simulacao/': {
-      id: '/_percurso/simulacao/'
-      path: '/simulacao'
-      fullPath: '/simulacao/'
-      preLoaderRoute: typeof PercursoSimulacaoIndexRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/simulacao/situacao': {
-      id: '/_percurso/simulacao/situacao'
-      path: '/simulacao/situacao'
-      fullPath: '/simulacao/situacao'
-      preLoaderRoute: typeof PercursoSimulacaoSituacaoRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/estrategias/adaptar/$estrategiaId': {
-      id: '/_percurso/estrategias/adaptar/$estrategiaId'
-      path: '/adaptar/$estrategiaId'
-      fullPath: '/estrategias/adaptar/$estrategiaId'
-      preLoaderRoute: typeof PercursoEstrategiasAdaptarEstrategiaIdRouteImport
-      parentRoute: typeof PercursoEstrategiasRoute
-    }
   }
 }
 
-interface PercursoEstrategiasRouteChildren {
-  PercursoEstrategiasAdaptarEstrategiaIdRoute: typeof PercursoEstrategiasAdaptarEstrategiaIdRoute
-}
-
-const PercursoEstrategiasRouteChildren: PercursoEstrategiasRouteChildren = {
-  PercursoEstrategiasAdaptarEstrategiaIdRoute:
-    PercursoEstrategiasAdaptarEstrategiaIdRoute,
-}
-
-const PercursoEstrategiasRouteWithChildren =
-  PercursoEstrategiasRoute._addFileChildren(PercursoEstrategiasRouteChildren)
-
 interface PercursoRouteChildren {
-  PercursoAfastamentoRoute: typeof PercursoAfastamentoRoute
-  PercursoBarreirasRoute: typeof PercursoBarreirasRoute
-  PercursoConfiguracoesRoute: typeof PercursoConfiguracoesRoute
-  PercursoContextoRoute: typeof PercursoContextoRoute
   PercursoDocumentacaoRoute: typeof PercursoDocumentacaoRoute
-  PercursoEstrategiasRoute: typeof PercursoEstrategiasRouteWithChildren
-  PercursoHabilidadesRoute: typeof PercursoHabilidadesRoute
-  PercursoLinhaDoTempoRoute: typeof PercursoLinhaDoTempoRoute
   PercursoMeuMomentoRoute: typeof PercursoMeuMomentoRoute
   PercursoMinhaExperienciaRoute: typeof PercursoMinhaExperienciaRoute
-  PercursoObjetivoRoute: typeof PercursoObjetivoRoute
-  PercursoOpcoesRoute: typeof PercursoOpcoesRoute
-  PercursoPerfilRoute: typeof PercursoPerfilRoute
-  PercursoPreparacaoRoute: typeof PercursoPreparacaoRoute
-  PercursoProximoPassoRoute: typeof PercursoProximoPassoRoute
-  PercursoRegistroRoute: typeof PercursoRegistroRoute
-  PercursoRevisaoRoute: typeof PercursoRevisaoRoute
   PercursoSeusDadosRoute: typeof PercursoSeusDadosRoute
-  PercursoSistemaRoute: typeof PercursoSistemaRoute
   PercursoSobreRoute: typeof PercursoSobreRoute
   PercursoBibliotecaConteudoIdRoute: typeof PercursoBibliotecaConteudoIdRoute
   PercursoBibliotecaMinhaRoute: typeof PercursoBibliotecaMinhaRoute
   PercursoBibliotecaReflexoesRoute: typeof PercursoBibliotecaReflexoesRoute
-  PercursoSimulacaoSituacaoRoute: typeof PercursoSimulacaoSituacaoRoute
   PercursoBibliotecaIndexRoute: typeof PercursoBibliotecaIndexRoute
-  PercursoSimulacaoIndexRoute: typeof PercursoSimulacaoIndexRoute
 }
 
 const PercursoRouteChildren: PercursoRouteChildren = {
-  PercursoAfastamentoRoute: PercursoAfastamentoRoute,
-  PercursoBarreirasRoute: PercursoBarreirasRoute,
-  PercursoConfiguracoesRoute: PercursoConfiguracoesRoute,
-  PercursoContextoRoute: PercursoContextoRoute,
   PercursoDocumentacaoRoute: PercursoDocumentacaoRoute,
-  PercursoEstrategiasRoute: PercursoEstrategiasRouteWithChildren,
-  PercursoHabilidadesRoute: PercursoHabilidadesRoute,
-  PercursoLinhaDoTempoRoute: PercursoLinhaDoTempoRoute,
   PercursoMeuMomentoRoute: PercursoMeuMomentoRoute,
   PercursoMinhaExperienciaRoute: PercursoMinhaExperienciaRoute,
-  PercursoObjetivoRoute: PercursoObjetivoRoute,
-  PercursoOpcoesRoute: PercursoOpcoesRoute,
-  PercursoPerfilRoute: PercursoPerfilRoute,
-  PercursoPreparacaoRoute: PercursoPreparacaoRoute,
-  PercursoProximoPassoRoute: PercursoProximoPassoRoute,
-  PercursoRegistroRoute: PercursoRegistroRoute,
-  PercursoRevisaoRoute: PercursoRevisaoRoute,
   PercursoSeusDadosRoute: PercursoSeusDadosRoute,
-  PercursoSistemaRoute: PercursoSistemaRoute,
   PercursoSobreRoute: PercursoSobreRoute,
   PercursoBibliotecaConteudoIdRoute: PercursoBibliotecaConteudoIdRoute,
   PercursoBibliotecaMinhaRoute: PercursoBibliotecaMinhaRoute,
   PercursoBibliotecaReflexoesRoute: PercursoBibliotecaReflexoesRoute,
-  PercursoSimulacaoSituacaoRoute: PercursoSimulacaoSituacaoRoute,
   PercursoBibliotecaIndexRoute: PercursoBibliotecaIndexRoute,
-  PercursoSimulacaoIndexRoute: PercursoSimulacaoIndexRoute,
 }
 
 const PercursoRouteWithChildren = PercursoRoute._addFileChildren(
@@ -949,3 +559,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
