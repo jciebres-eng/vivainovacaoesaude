@@ -65,8 +65,8 @@ export function CabecalhoDaHome({
         >
           {baixoEstimulo ? "Sair da baixa estimulação" : "Baixa estimulação"}
         </Botao>
-        <BotaoLink to="/configuracoes" tamanho="compacto" icone={Settings2}>
-          Preferências
+        <BotaoLink to="/minha-experiencia" tamanho="compacto" icone={Settings2}>
+          Minha experiência
         </BotaoLink>
         <BotaoLink to="/perfil" tamanho="compacto" icone={UserRound}>
           Perfil
@@ -571,10 +571,10 @@ export function PreferenciasDaHomeSecao({
         <p className="viva-legenda text-text-secondary">
           Cor, tamanho do texto, movimento e densidade ficam em{" "}
           <Link
-            to="/configuracoes"
+            to="/minha-experiencia"
             className="underline underline-offset-4 hover:text-text-primary"
           >
-            Preferências
+            Minha experiência
           </Link>
           .
         </p>

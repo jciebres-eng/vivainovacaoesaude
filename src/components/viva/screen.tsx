@@ -48,12 +48,12 @@ export function ScreenHeader({
               Pausar
             </BotaoLink>
             <BotaoLink
-              to="/configuracoes"
+              to="/minha-experiencia"
               tamanho="compacto"
               icone={Settings2}
               className="text-text-secondary"
             >
-              Ajustes
+              Minha experiência
             </BotaoLink>
           </div>
         </div>

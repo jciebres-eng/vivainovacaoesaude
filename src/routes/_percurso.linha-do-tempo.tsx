@@ -96,7 +96,7 @@ function LinhaDoTempoScreen() {
         </Note>
       </Screen>
 
-      <ScreenFooter backTo="/proximo-passo" nextTo="/configuracoes" nextLabel="Ajustar interface" />
+      <ScreenFooter backTo="/proximo-passo" />
     </>
   );
 }
