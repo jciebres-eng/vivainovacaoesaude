@@ -14,6 +14,7 @@ import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
 import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
+import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
@@ -42,6 +43,11 @@ const PercursoObjetivoRoute = PercursoObjetivoRouteImport.update({
   path: '/objetivo',
   getParentRoute: () => PercursoRoute,
 } as any)
+const PercursoOpcoesRoute = PercursoOpcoesRouteImport.update({
+  id: '/opcoes',
+  path: '/opcoes',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const PercursoPerfilRoute = PercursoPerfilRouteImport.update({
   id: '/perfil',
   path: '/perfil',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
   '/objetivo': typeof PercursoObjetivoRoute
+  '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
   '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByTo {
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
   '/objetivo': typeof PercursoObjetivoRoute
+  '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
   '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/contexto': typeof PercursoContextoRoute
   '/_percurso/objetivo': typeof PercursoObjetivoRoute
+  '/_percurso/opcoes': typeof PercursoOpcoesRoute
   '/_percurso/perfil': typeof PercursoPerfilRoute
   '/_percurso/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
     | '/barreiras'
     | '/contexto'
     | '/objetivo'
+    | '/opcoes'
     | '/perfil'
     | '/sistema'
     | '/documentos/$slug'
@@ -103,6 +113,7 @@ export interface FileRouteTypes {
     | '/barreiras'
     | '/contexto'
     | '/objetivo'
+    | '/opcoes'
     | '/perfil'
     | '/sistema'
     | '/documentos/$slug'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '/_percurso/barreiras'
     | '/_percurso/contexto'
     | '/_percurso/objetivo'
+    | '/_percurso/opcoes'
     | '/_percurso/perfil'
     | '/_percurso/sistema'
     | '/documentos/$slug'
@@ -161,6 +173,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoObjetivoRouteImport
       parentRoute: typeof PercursoRoute
     }
+    '/_percurso/opcoes': {
+      id: '/_percurso/opcoes'
+      path: '/opcoes'
+      fullPath: '/opcoes'
+      preLoaderRoute: typeof PercursoOpcoesRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/_percurso/perfil': {
       id: '/_percurso/perfil'
       path: '/perfil'
@@ -189,6 +208,7 @@ interface PercursoRouteChildren {
   PercursoBarreirasRoute: typeof PercursoBarreirasRoute
   PercursoContextoRoute: typeof PercursoContextoRoute
   PercursoObjetivoRoute: typeof PercursoObjetivoRoute
+  PercursoOpcoesRoute: typeof PercursoOpcoesRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
   PercursoSistemaRoute: typeof PercursoSistemaRoute
 }
@@ -197,6 +217,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoBarreirasRoute: PercursoBarreirasRoute,
   PercursoContextoRoute: PercursoContextoRoute,
   PercursoObjetivoRoute: PercursoObjetivoRoute,
+  PercursoOpcoesRoute: PercursoOpcoesRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,
   PercursoSistemaRoute: PercursoSistemaRoute,
 }
