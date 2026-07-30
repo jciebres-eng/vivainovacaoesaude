@@ -77,6 +77,13 @@ const meta: Record<
   string,
   { title: string; subtitle?: string; group: string; summary: string }
 > = {
+  "00_FILOSOFIA_DO_VIVA": {
+    title: "Filosofia do Produto",
+    subtitle: "Manifesto e fundamentos filosóficos do VIVA",
+    group: "A",
+    summary:
+      "Manifesto do VIVA: tecnologia como apoio ao desenvolvimento humano, respeitando singularidade, modos de funcionamento cognitivo e autonomia.",
+  },
   "01_VISAO_DA_SOLUCAO": {
     title: "Visão da Solução",
     subtitle: "Documento Mestre da Solução",
