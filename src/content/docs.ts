@@ -106,7 +106,22 @@ const meta: Record<
     summary:
       "Apresenta os instrumentos usados no percurso para identificar objetivos, reconhecer barreiras e escolher estratégias.",
   },
+  "06_PERSONAS_E_CONTEXTOS": {
+    title: "Personas Demonstrativas e Contextos de Uso",
+    subtitle: "Perfis fictícios para demonstração",
+    group: "C",
+    summary:
+      "Apresenta personas fictícias com objetivos e contextos distintos, mostrando por que cada pessoa precisa de um percurso diferente.",
+  },
+  "10_REGRAS_DE_PERSONALIZACAO": {
+    title: "Regras de Personalização Demonstrativa",
+    subtitle: "Motor de regras simples, transparentes e rastreáveis",
+    group: "C",
+    summary:
+      "Define o motor inicial de personalização por regras condicionais, sem inteligência artificial real na primeira versão.",
+  },
 };
+
 
 
 function cleanMarkdown(raw: string): string {
