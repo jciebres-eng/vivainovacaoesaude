@@ -1,17 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import {
-  ChoiceItem,
-  ChoiceList,
   Note,
   Screen,
   ScreenFooter,
   ScreenHeader,
-  SectionCard,
-  TextArea,
 } from "@/components/viva/screen";
-import { ajudou, dificultou, getStep, resultadosExperiencia } from "@/lib/viva-data";
+import { RegistroExperienciaCard } from "@/components/viva/humanos";
+import { getStep } from "@/lib/viva-data";
 
 export const Route = createFileRoute("/_percurso/registro")({
   head: () => ({
