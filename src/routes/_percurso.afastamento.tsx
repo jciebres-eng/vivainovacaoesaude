@@ -26,6 +26,7 @@ export const Route = createFileRoute("/_percurso/afastamento")({
 
 function AfastamentoScreen() {
   const step = getStep("afastamento");
+  const navigate = useNavigate();
 
   return (
     <>
@@ -43,39 +44,13 @@ function AfastamentoScreen() {
           </p>
         </SectionCard>
 
-        <Link
-          to="/registro"
-          className="viva-tap flex w-full items-center justify-center rounded-2xl bg-primary px-6 py-5 text-base font-semibold text-primary-foreground hover:bg-primary/90"
-        >
-          Sair da tela agora
-        </Link>
+        <PausaConscienteCard
+          onContinuarDepois={() => navigate({ to: "/registro" })}
+          linkEstrategias="/estrategias"
+          onVoltarAoInicio={() => navigate({ to: "/meu-momento" })}
+          onFecharAtividade={() => navigate({ to: "/linha-do-tempo" })}
+        />
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <Link
-            to="/preparacao"
-            className="viva-tap rounded-2xl border border-border bg-card px-5 py-4 text-center text-sm font-medium text-card-foreground hover:bg-secondary"
-          >
-            Continuar preparando
-          </Link>
-          <button
-            type="button"
-            className="viva-tap rounded-2xl border border-border bg-card px-5 py-4 text-sm font-medium text-card-foreground hover:bg-secondary"
-          >
-            Programar lembrete
-          </button>
-          <Link
-            to="/linha-do-tempo"
-            className="viva-tap rounded-2xl border border-border bg-card px-5 py-4 text-center text-sm font-medium text-card-foreground hover:bg-secondary"
-          >
-            Ver trajetória
-          </Link>
-          <button
-            type="button"
-            className="viva-tap rounded-2xl border border-border bg-card px-5 py-4 text-sm font-medium text-card-foreground hover:bg-secondary"
-          >
-            Cancelar atividade
-          </button>
-        </div>
 
         <SectionCard title="Resumo rápido">
           <ul className="space-y-2">
