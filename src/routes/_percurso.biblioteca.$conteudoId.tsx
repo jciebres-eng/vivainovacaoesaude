@@ -15,11 +15,7 @@ import {
 } from "@/components/viva/biblioteca";
 import { Screen, ScreenHeader } from "@/components/viva/screen";
 import { cn } from "@/lib/utils";
-import {
-  conteudoPorId,
-  rotulosDeArea,
-  rotulosDeComplexidade,
-} from "@/lib/viva-biblioteca-dados";
+import { conteudoPorId, rotulosDeArea, rotulosDeComplexidade } from "@/lib/viva-biblioteca-dados";
 import { novoId, useBiblioteca } from "@/lib/viva-biblioteca";
 import { usePercurso } from "@/lib/viva-percurso";
 
@@ -33,9 +29,7 @@ export const Route = createFileRoute("/_percurso/biblioteca/$conteudoId")({
     const title = loaderData
       ? `${loaderData.titulo} — Biblioteca VIVA`
       : "Conteúdo indisponível — VIVA";
-    const description =
-      loaderData?.resumo ??
-      "Conteúdo da biblioteca demonstrativa do VIVA.";
+    const description = loaderData?.resumo ?? "Conteúdo da biblioteca demonstrativa do VIVA.";
     return {
       meta: [
         { title },
@@ -109,7 +103,6 @@ function ConteudoScreen() {
         ];
   }, [percurso.experiencias]);
 
-
   return (
     <>
       <ScreenHeader
@@ -125,9 +118,7 @@ function ConteudoScreen() {
           )}
         >
           <Card variante="informativo" titulo="Resumo">
-            <p className="max-w-[64ch] viva-texto text-text-primary">
-              {conteudo.resumo}
-            </p>
+            <p className="max-w-[64ch] viva-texto text-text-primary">{conteudo.resumo}</p>
             {adaptacao?.resumoPessoal ? (
               <p className="mt-4 rounded-2xl border-l-4 border-action-primary bg-surface-muted p-4 viva-apoio text-text-primary">
                 Sua versão resumida: {adaptacao.resumoPessoal}
@@ -153,9 +144,7 @@ function ConteudoScreen() {
             <Interruptor
               rotulo="Aumentar o tamanho da fonte"
               valor={dados.leitura.fonteAmpliada}
-              onToggle={() =>
-                definirLeitura({ fonteAmpliada: !dados.leitura.fonteAmpliada })
-              }
+              onToggle={() => definirLeitura({ fonteAmpliada: !dados.leitura.fonteAmpliada })}
             />
           </div>
 
@@ -168,14 +157,8 @@ function ConteudoScreen() {
           </article>
 
           {adaptacao?.observacoes ? (
-            <Card
-              variante="registro"
-              titulo="Suas observações"
-              className="mt-6"
-            >
-              <p className="max-w-[62ch] viva-texto text-text-primary">
-                {adaptacao.observacoes}
-              </p>
+            <Card variante="registro" titulo="Suas observações" className="mt-6">
+              <p className="max-w-[62ch] viva-texto text-text-primary">{adaptacao.observacoes}</p>
             </Card>
           ) : null}
         </div>
@@ -208,9 +191,7 @@ function ConteudoScreen() {
                 variante={acaoAberta === chave ? "principal" : "secundario"}
                 tamanho="compacto"
                 aria-pressed={acaoAberta === chave}
-                onClick={() =>
-                  setAcaoAberta(acaoAberta === chave ? null : chave)
-                }
+                onClick={() => setAcaoAberta(acaoAberta === chave ? null : chave)}
               >
                 {rotulo}
               </Botao>
@@ -245,16 +226,12 @@ function ConteudoScreen() {
         {acaoAberta === "relacionar" ? (
           <AcaoRelacionar
             experiencias={experiencias}
-            onRelacionar={(exp, obs) =>
-              relacionarComExperiencia(conteudo.id, exp, obs)
-            }
+            onRelacionar={(exp, obs) => relacionarComExperiencia(conteudo.id, exp, obs)}
           />
         ) : null}
 
         {acaoAberta === "plano" ? (
-          <AcaoPlano
-            onAdicionar={(quando) => adicionarAoPlano(conteudo.id, quando)}
-          />
+          <AcaoPlano onAdicionar={(quando) => adicionarAoPlano(conteudo.id, quando)} />
         ) : null}
 
         <ReflexaoBibliotecaCard
@@ -276,16 +253,12 @@ function ConteudoScreen() {
           titulo="Uma pergunta para levar com você"
           descricao="Sem resposta certa e sem necessidade de responder agora."
         >
-          <p className="max-w-[62ch] viva-texto text-text-primary">
-            {conteudo.perguntaDeReflexao}
-          </p>
+          <p className="max-w-[62ch] viva-texto text-text-primary">{conteudo.perguntaDeReflexao}</p>
         </Card>
 
         {relacionados.length ? (
           <section className="space-y-4">
-            <h2 className="viva-subtitulo text-text-primary">
-              Conteúdos relacionados
-            </h2>
+            <h2 className="viva-subtitulo text-text-primary">Conteúdos relacionados</h2>
             {relacionados.map((c) =>
               c ? (
                 <BibliotecaCard

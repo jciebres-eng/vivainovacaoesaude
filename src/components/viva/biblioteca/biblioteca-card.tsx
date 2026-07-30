@@ -60,9 +60,7 @@ export function BibliotecaCard({
         </Link>
       </h3>
 
-      <p className="mt-2 max-w-[62ch] viva-apoio text-text-secondary">
-        {conteudo.resumo}
-      </p>
+      <p className="mt-2 max-w-[62ch] viva-apoio text-text-secondary">{conteudo.resumo}</p>
 
       <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 viva-legenda text-text-secondary">
         <span className="inline-flex items-center gap-1.5">
@@ -101,9 +99,7 @@ export function BibliotecaCard({
           {utilidade ? (
             <div className="flex flex-wrap gap-1">
               <dt>Sua marcação:</dt>
-              <dd className="text-text-primary">
-                {rotulosDeUtilidade[utilidade]}
-              </dd>
+              <dd className="text-text-primary">{rotulosDeUtilidade[utilidade]}</dd>
             </div>
           ) : null}
           {adaptado ? (

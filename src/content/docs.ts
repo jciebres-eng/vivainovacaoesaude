@@ -42,8 +42,7 @@ export const groups: DocGroup[] = [
   {
     id: "E",
     label: "Grupo E — Interface",
-    description:
-      "Mapa de telas, navegação e wireframes de baixa fidelidade do protótipo.",
+    description: "Mapa de telas, navegação e wireframes de baixa fidelidade do protótipo.",
   },
   {
     id: "F",
@@ -59,9 +58,6 @@ export const groups: DocGroup[] = [
   },
 ];
 
-
-
-
 export type VivaDoc = {
   slug: string;
   number: string;
@@ -73,10 +69,7 @@ export type VivaDoc = {
   content: string;
 };
 
-const meta: Record<
-  string,
-  { title: string; subtitle?: string; group: string; summary: string }
-> = {
+const meta: Record<string, { title: string; subtitle?: string; group: string; summary: string }> = {
   "00_FILOSOFIA_DO_VIVA": {
     title: "Filosofia do Produto",
     subtitle: "Manifesto e fundamentos filosóficos do VIVA",
@@ -202,10 +195,6 @@ const meta: Record<
       "Princípios psicológicos que orientam a experiência, a arquitetura da informação e a interação do VIVA: a interface influencia comportamento e faz parte da responsabilidade ética do desenvolvimento.",
   },
 };
-
-
-
-
 
 function cleanMarkdown(raw: string): string {
   return raw

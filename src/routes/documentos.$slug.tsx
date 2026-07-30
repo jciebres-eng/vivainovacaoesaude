@@ -47,9 +47,7 @@ function DocumentoPage() {
           <p className="viva-legenda font-medium text-text-secondary">
             Documento {doc.number} · Leitura estimada: {doc.minutes} minutos
           </p>
-          <h1 className="mt-2 text-3xl font-bold leading-tight text-text-primary">
-            {doc.title}
-          </h1>
+          <h1 className="mt-2 text-3xl font-bold leading-tight text-text-primary">{doc.title}</h1>
           {doc.subtitle ? (
             <p className="mt-2 viva-texto text-text-secondary">{doc.subtitle}</p>
           ) : null}
@@ -59,7 +57,10 @@ function DocumentoPage() {
           <Markdown>{doc.content}</Markdown>
         </article>
 
-        <nav aria-label="Navegação entre documentos" className="mt-14 flex flex-col gap-3 border-t border-border-default-default pt-8 sm:flex-row sm:justify-between">
+        <nav
+          aria-label="Navegação entre documentos"
+          className="mt-14 flex flex-col gap-3 border-t border-border-default-default pt-8 sm:flex-row sm:justify-between"
+        >
           {prev ? (
             <Link
               to="/documentos/$slug"

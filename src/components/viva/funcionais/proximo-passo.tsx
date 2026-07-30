@@ -29,12 +29,7 @@ const equivalencia: Record<EstadoDoProximoPasso, EstadoDoPercurso> = {
 };
 
 export function EstadoDoPasso({ estado }: { estado: EstadoDoProximoPasso }) {
-  return (
-    <IndicadorDeEstado
-      estado={equivalencia[estado]}
-      texto={rotulosDeEstado[estado]}
-    />
-  );
+  return <IndicadorDeEstado estado={equivalencia[estado]} texto={rotulosDeEstado[estado]} />;
 }
 
 export function CartaoDeProximoPasso({
@@ -52,8 +47,7 @@ export function CartaoDeProximoPasso({
   onAcaoSecundaria?: () => void;
   extra?: ReactNode;
 }) {
-  const indisponivel =
-    atividade.estado === "indisponivel" || atividade.estado === "sem-atividade";
+  const indisponivel = atividade.estado === "indisponivel" || atividade.estado === "sem-atividade";
 
   return (
     <Card variante="proximo-passo" titulo={atividade.titulo}>
@@ -72,9 +66,7 @@ export function CartaoDeProximoPasso({
         ) : null}
         <div className="flex flex-wrap gap-x-2">
           <dt>Preparação:</dt>
-          <dd className="text-text-primary">
-            {rotulosDePreparacao[atividade.preparacao]}
-          </dd>
+          <dd className="text-text-primary">{rotulosDePreparacao[atividade.preparacao]}</dd>
         </div>
       </dl>
 

@@ -2,10 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 
 import { Botao, CampoBusca, Card, EstadoDaInterface } from "@/components/ds";
-import {
-  BibliotecaCard,
-  TalvezSejaUtil,
-} from "@/components/viva/biblioteca";
+import { BibliotecaCard, TalvezSejaUtil } from "@/components/viva/biblioteca";
 import { Screen, ScreenHeader } from "@/components/viva/screen";
 import {
   areasDaBiblioteca,
@@ -30,8 +27,7 @@ export const Route = createFileRoute("/_percurso/biblioteca/")({
       { property: "og:title", content: "Biblioteca Viva — VIVA" },
       {
         property: "og:description",
-        content:
-          "Um espaço de descoberta e consulta, organizado por situações da vida cotidiana.",
+        content: "Um espaço de descoberta e consulta, organizado por situações da vida cotidiana.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -59,16 +55,13 @@ function BibliotecaScreen() {
 
     const daMesmaArea = ultimo
       ? conteudosDaBiblioteca.filter(
-          (c) =>
-            c.area === conteudoPorId(ultimo.id)?.area && c.id !== ultimo.id,
+          (c) => c.area === conteudoPorId(ultimo.id)?.area && c.id !== ultimo.id,
         )
       : [];
     const salvos = dados.salvos
       .map((id) => conteudoPorId(id))
       .filter(Boolean) as typeof conteudosDaBiblioteca;
-    const naoExplorados = conteudosDaBiblioteca.filter(
-      (c) => !vistos.includes(c.id),
-    );
+    const naoExplorados = conteudosDaBiblioteca.filter((c) => !vistos.includes(c.id));
 
     const juntos = [...daMesmaArea, ...salvos, ...naoExplorados];
     const unicos: typeof conteudosDaBiblioteca = [];
@@ -158,9 +151,7 @@ function BibliotecaScreen() {
                 onClick={() => setArea(a)}
                 className="viva-tap rounded-3xl border border-border-default-default bg-surface-default p-5 text-left hover:bg-surface-muted"
               >
-                <span className="viva-subtitulo text-text-primary">
-                  {rotulosDeArea[a].nome}
-                </span>
+                <span className="viva-subtitulo text-text-primary">{rotulosDeArea[a].nome}</span>
                 <span className="mt-2 block viva-apoio text-text-secondary">
                   {rotulosDeArea[a].descricao}
                 </span>
@@ -171,9 +162,7 @@ function BibliotecaScreen() {
 
         <section aria-live="polite" className="space-y-4">
           <h2 className="viva-subtitulo text-text-primary">
-            {area === "todas"
-              ? "Todos os conteúdos"
-              : rotulosDeArea[area].nome}
+            {area === "todas" ? "Todos os conteúdos" : rotulosDeArea[area].nome}
           </h2>
 
           {resultados.length === 0 ? (

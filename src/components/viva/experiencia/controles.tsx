@@ -30,9 +30,7 @@ export function GrupoDeOpcoes<T extends string>({
   return (
     <fieldset className="min-w-0">
       <legend className="viva-rotulo text-text-primary">{legenda}</legend>
-      {descricao ? (
-        <p className="mt-1 viva-legenda text-text-secondary">{descricao}</p>
-      ) : null}
+      {descricao ? <p className="mt-1 viva-legenda text-text-secondary">{descricao}</p> : null}
       <div
         className={cn(
           "mt-3 grid gap-2",
@@ -58,14 +56,10 @@ export function GrupoDeOpcoes<T extends string>({
             >
               <span className="flex items-baseline justify-between gap-2">
                 <span className="viva-rotulo">{opcao.rotulo}</span>
-                <span className="viva-legenda text-text-secondary">
-                  {ativo ? "Em uso" : ""}
-                </span>
+                <span className="viva-legenda text-text-secondary">{ativo ? "Em uso" : ""}</span>
               </span>
               {opcao.apoio ? (
-                <span className="mt-1 block viva-legenda text-text-secondary">
-                  {opcao.apoio}
-                </span>
+                <span className="mt-1 block viva-legenda text-text-secondary">{opcao.apoio}</span>
               ) : null}
             </button>
           );

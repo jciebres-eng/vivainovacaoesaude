@@ -44,17 +44,12 @@ function Encerramento() {
         <ul className="space-y-2 viva-apoio text-text-primary">
           <li>Objetivo: {objetivo?.nome ?? "nenhum objetivo escolhido"}.</li>
           <li>
-            Registro da experiência:{" "}
-            {j.registro ? "guardado com suas palavras" : "não registrado"}.
+            Registro da experiência: {j.registro ? "guardado com suas palavras" : "não registrado"}.
           </li>
           <li>Reflexão: {j.reflexao ? "guardada" : "não guardada"}.</li>
-          <li>
-            Próximo passo: {passo ? passo.titulo : "nenhum passo escolhido"}.
-          </li>
+          <li>Próximo passo: {passo ? passo.titulo : "nenhum passo escolhido"}.</li>
         </ul>
-        <Nota>
-          Tudo isso está apenas neste dispositivo e pertence a você.
-        </Nota>
+        <Nota>Tudo isso está apenas neste dispositivo e pertence a você.</Nota>
 
         <AcoesAutonomas
           principal={
@@ -64,11 +59,7 @@ function Encerramento() {
           }
           secundarias={
             <>
-              <BotaoLink
-                to="/jornada/linha-do-tempo"
-                variante="terciario"
-                tamanho="compacto"
-              >
+              <BotaoLink to="/jornada/linha-do-tempo" variante="terciario" tamanho="compacto">
                 Ver meu percurso
               </BotaoLink>
               <BotaoLink to="/" variante="terciario" tamanho="compacto">

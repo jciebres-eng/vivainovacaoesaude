@@ -9,12 +9,7 @@ import {
   Chip,
   Confirmacao,
 } from "@/components/ds";
-import {
-  novoId,
-  rotulosDeStatusDuvida,
-  type Duvida,
-  type StatusDuvida,
-} from "@/lib/viva-percurso";
+import { novoId, rotulosDeStatusDuvida, type Duvida, type StatusDuvida } from "@/lib/viva-percurso";
 
 /**
  * Registro de Dúvida (documentos 10, 15 e 16).
@@ -85,9 +80,7 @@ export function RegistroDeDuvida({
         <CampoSelecao
           rotulo="Prioridade definida por você"
           value={duvida.prioridade}
-          onChange={(e) =>
-            mudar({ prioridade: e.target.value as Duvida["prioridade"] })
-          }
+          onChange={(e) => mudar({ prioridade: e.target.value as Duvida["prioridade"] })}
           opcoes={[
             { valor: "quando-der", label: "Quando der" },
             { valor: "em-breve", label: "Em breve" },
@@ -190,9 +183,7 @@ export function CartaoDeDuvida({
         ) : null}
         <div className="flex flex-wrap gap-x-2">
           <dt>Situação:</dt>
-          <dd className="text-text-primary">
-            {rotulosDeStatusDuvida[duvida.status]}
-          </dd>
+          <dd className="text-text-primary">{rotulosDeStatusDuvida[duvida.status]}</dd>
         </div>
       </dl>
       <div className="mt-4 flex flex-wrap gap-3">

@@ -24,13 +24,7 @@ import {
  * Uma ação principal por bloco. Nenhuma marcação vira pontuação ou ranking.
  */
 
-export function AcaoSalvar({
-  salvo,
-  onAlternar,
-}: {
-  salvo: boolean;
-  onAlternar: () => void;
-}) {
+export function AcaoSalvar({ salvo, onAlternar }: { salvo: boolean; onAlternar: () => void }) {
   const [mostrou, setMostrou] = useState(false);
   return (
     <Card
@@ -148,18 +142,14 @@ export function AcaoAdaptar({
       </div>
 
       <fieldset className="mt-5">
-        <legend className="viva-rotulo text-text-primary">
-          Partes deste conteúdo
-        </legend>
+        <legend className="viva-rotulo text-text-primary">Partes deste conteúdo</legend>
         <p className="mt-1 viva-legenda text-text-secondary">
           Você pode ocultar ou destacar trechos na sua versão.
         </p>
         <ul className="mt-3 space-y-3">
           {conteudo.blocos.map((bloco, i) => {
             const rotulo =
-              "texto" in bloco
-                ? bloco.texto.slice(0, 60)
-                : bloco.itens[0]?.slice(0, 60);
+              "texto" in bloco ? bloco.texto.slice(0, 60) : bloco.itens[0]?.slice(0, 60);
             return (
               <li
                 key={`${bloco.tipo}-${i}`}
@@ -178,7 +168,6 @@ export function AcaoAdaptar({
                     onToggle={() => onAlternarBloco(i, "destacados")}
                   />
                 </div>
-
               </li>
             );
           })}
@@ -285,11 +274,7 @@ const momentosDoPlano = [
   "Consultar quando algo mudar no caminho",
 ];
 
-export function AcaoPlano({
-  onAdicionar,
-}: {
-  onAdicionar: (quando: string) => void;
-}) {
+export function AcaoPlano({ onAdicionar }: { onAdicionar: (quando: string) => void }) {
   const [quando, setQuando] = useState(momentosDoPlano[0]);
   const [guardado, setGuardado] = useState(false);
   return (

@@ -15,8 +15,7 @@ export const Route = createFileRoute("/_percurso/documentacao")({
       { property: "og:title", content: "Documentos do projeto VIVA" },
       {
         property: "og:description",
-        content:
-          "Os documentos que orientam cada decisão de design, linguagem e ética do VIVA.",
+        content: "Os documentos que orientam cada decisão de design, linguagem e ética do VIVA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -55,9 +54,7 @@ function DocumentacaoPage() {
                       <span className="viva-legenda text-text-secondary">
                         Documento {doc.number} · leitura de {doc.minutes} minutos
                       </span>
-                      <h3 className="mt-1 viva-subtitulo text-text-primary">
-                        {doc.title}
-                      </h3>
+                      <h3 className="mt-1 viva-subtitulo text-text-primary">{doc.title}</h3>
                       <p className="mt-2 max-w-[62ch] viva-legenda text-text-primary">
                         {doc.summary}
                       </p>
@@ -70,8 +67,7 @@ function DocumentacaoPage() {
         })}
 
         <Note>
-          Em caso de divergência entre a plataforma e estes documentos, o
-          documento prevalece.
+          Em caso de divergência entre a plataforma e estes documentos, o documento prevalece.
         </Note>
       </Screen>
     </>

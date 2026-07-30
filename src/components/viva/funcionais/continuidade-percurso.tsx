@@ -1,11 +1,5 @@
 import { Botao, Card } from "@/components/ds";
-import type {
-  Atividade,
-  Duvida,
-  Estrategia,
-  Experiencia,
-  Preparacao,
-} from "@/lib/viva-percurso";
+import type { Atividade, Duvida, Estrategia, Experiencia, Preparacao } from "@/lib/viva-percurso";
 
 /**
  * Continuidade do Percurso (documentos 08 e 13).

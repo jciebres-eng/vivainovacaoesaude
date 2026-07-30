@@ -35,8 +35,7 @@ const itensPrincipais: {
     to: "/jornada",
     label: "Percurso",
     icon: RouteIcon,
-    combina: (p) =>
-      p.startsWith("/jornada") && !p.startsWith("/jornada/linha-do-tempo"),
+    combina: (p) => p.startsWith("/jornada") && !p.startsWith("/jornada/linha-do-tempo"),
   },
   {
     to: "/biblioteca",
@@ -55,9 +54,7 @@ const itensPrincipais: {
     label: "Sobre o VIVA",
     icon: ShieldCheck,
     combina: (p) =>
-      p.startsWith("/sobre") ||
-      p.startsWith("/seus-dados") ||
-      p.startsWith("/documenta"),
+      p.startsWith("/sobre") || p.startsWith("/seus-dados") || p.startsWith("/documenta"),
   },
 ];
 
@@ -68,9 +65,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   // a pessoa continua alcançando tudo pelo próprio conteúdo das telas.
   const foco = preferencias.navegacao === "foco";
   const itens = foco
-    ? itensPrincipais.filter(
-        (i) => i.label === "Meu momento" || i.label === "Percurso",
-      )
+    ? itensPrincipais.filter((i) => i.label === "Meu momento" || i.label === "Percurso")
     : itensPrincipais;
 
   return (
@@ -84,10 +79,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="mx-auto flex w-full max-w-7xl">
         <SideNav pathname={pathname} itens={itens} foco={foco} />
         <div className="min-w-0 flex-1">
-          <main
-            id="conteudo"
-            className="px-5 pb-28 pt-8 md:px-10 md:pb-16 md:pt-12"
-          >
+          <main id="conteudo" className="px-5 pb-28 pt-8 md:px-10 md:pb-16 md:pt-12">
             <div className="mx-auto max-w-3xl">{children}</div>
           </main>
         </div>
@@ -123,12 +115,8 @@ function SideNav({
             <Leaf className="h-4 w-4" />
           </span>
           <span className="min-w-0">
-            <span className="block truncate viva-subtitulo text-sidebar-foreground">
-              VIVA
-            </span>
-            <span className="block truncate viva-legenda text-text-secondary">
-              Demonstração
-            </span>
+            <span className="block truncate viva-subtitulo text-sidebar-foreground">VIVA</span>
+            <span className="block truncate viva-legenda text-text-secondary">Demonstração</span>
           </span>
         </Link>
       </div>
@@ -161,9 +149,7 @@ function SideNav({
       <div className="px-3 pb-6">
         <Link
           to="/minha-experiencia"
-          aria-current={
-            pathname.startsWith("/minha-experiencia") ? "page" : undefined
-          }
+          aria-current={pathname.startsWith("/minha-experiencia") ? "page" : undefined}
           className="viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem] text-sidebar-foreground hover:bg-background-secondary"
         >
           <SlidersHorizontal className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
@@ -179,13 +165,7 @@ function SideNav({
   );
 }
 
-function BottomNav({
-  pathname,
-  itens,
-}: {
-  pathname: string;
-  itens: ItemDeNavegacao[];
-}) {
+function BottomNav({ pathname, itens }: { pathname: string; itens: ItemDeNavegacao[] }) {
   return (
     <nav
       aria-label="Navegação principal (rodapé)"

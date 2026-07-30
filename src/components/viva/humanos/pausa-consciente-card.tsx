@@ -31,9 +31,8 @@ export function PausaConscienteCard({
       className={className}
     >
       <p className="viva-apoio text-text-secondary">
-        Nada está sendo contado aqui. Esta tela pode ficar aberta o tempo que
-        você quiser, sem som, sem contagem regressiva e sem nenhum exercício
-        conduzido.
+        Nada está sendo contado aqui. Esta tela pode ficar aberta o tempo que você quiser, sem som,
+        sem contagem regressiva e sem nenhum exercício conduzido.
       </p>
 
       <ul className="mt-5 flex flex-wrap items-center gap-3">
@@ -46,43 +45,27 @@ export function PausaConscienteCard({
         ) : null}
         {linkEstrategias ? (
           <li>
-            <BotaoLink
-              to={linkEstrategias}
-              variante="terciario"
-              tamanho="compacto"
-            >
+            <BotaoLink to={linkEstrategias} variante="terciario" tamanho="compacto">
               Revisar uma estratégia
             </BotaoLink>
           </li>
         ) : onRevisarEstrategia ? (
           <li>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={onRevisarEstrategia}
-            >
+            <Botao variante="terciario" tamanho="compacto" onClick={onRevisarEstrategia}>
               Revisar uma estratégia
             </Botao>
           </li>
         ) : null}
         {onVoltarAoInicio ? (
           <li>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={onVoltarAoInicio}
-            >
+            <Botao variante="terciario" tamanho="compacto" onClick={onVoltarAoInicio}>
               Voltar ao início
             </Botao>
           </li>
         ) : null}
         {onFecharAtividade ? (
           <li>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={onFecharAtividade}
-            >
+            <Botao variante="terciario" tamanho="compacto" onClick={onFecharAtividade}>
               Fechar a atividade
             </Botao>
           </li>

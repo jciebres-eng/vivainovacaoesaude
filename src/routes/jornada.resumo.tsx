@@ -40,10 +40,7 @@ function ResumoDoObjetivo() {
         voltarPara="/jornada"
       >
         <Card variante="informativo">
-          <Botao
-            variante="principal"
-            onClick={() => navigate({ to: "/jornada/objetivo" })}
-          >
+          <Botao variante="principal" onClick={() => navigate({ to: "/jornada/objetivo" })}>
             Escolher um objetivo
           </Botao>
         </Card>
@@ -76,8 +73,7 @@ function ResumoDoObjetivo() {
           <div>
             <dt className="viva-rotulo text-text-primary">Ajustar</dt>
             <dd>
-              Você pode mudar o ritmo, reduzir o texto e ativar baixa
-              estimulação na preparação.
+              Você pode mudar o ritmo, reduzir o texto e ativar baixa estimulação na preparação.
             </dd>
           </div>
         </dl>

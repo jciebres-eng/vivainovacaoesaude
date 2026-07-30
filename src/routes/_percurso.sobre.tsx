@@ -2,10 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 
 import { Note, Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
-import {
-  InformacaoSeguraCard,
-  limiteDoViva,
-} from "@/components/viva/humanos";
+import { InformacaoSeguraCard, limiteDoViva } from "@/components/viva/humanos";
 
 export const Route = createFileRoute("/_percurso/sobre")({
   head: () => ({
@@ -19,8 +16,7 @@ export const Route = createFileRoute("/_percurso/sobre")({
       { property: "og:title", content: "Sobre o VIVA — propósito e limites" },
       {
         property: "og:description",
-        content:
-          "Propósito, princípios e limites da plataforma, em linguagem simples.",
+        content: "Propósito, princípios e limites da plataforma, em linguagem simples.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -66,12 +62,12 @@ function SobrePage() {
 
         <SectionCard title="Para que serve">
           <p className="text-text-primary">
-            Ajudar a transformar um objetivo real da sua vida em passos que façam
-            sentido para você, no seu contexto e no seu ritmo.
+            Ajudar a transformar um objetivo real da sua vida em passos que façam sentido para você,
+            no seu contexto e no seu ritmo.
           </p>
           <p className="mt-3 text-text-primary">
-            O sucesso do VIVA não é você usar a plataforma por muito tempo. É você
-            precisar cada vez menos dela.
+            O sucesso do VIVA não é você usar a plataforma por muito tempo. É você precisar cada vez
+            menos dela.
           </p>
         </SectionCard>
 
@@ -91,28 +87,31 @@ function SobrePage() {
           <ul className="mt-3 space-y-2.5">
             {limites.map((l) => (
               <li key={l} className="flex gap-3 text-text-primary">
-                <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-surface-muted-foreground" />
+                <span
+                  aria-hidden
+                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-surface-muted-foreground"
+                />
                 {l}
               </li>
             ))}
           </ul>
           <p className="mt-4 text-text-primary">
-            Quando algo exigir avaliação ou cuidado profissional, procure um
-            profissional habilitado ou um serviço de saúde da sua região.
+            Quando algo exigir avaliação ou cuidado profissional, procure um profissional habilitado
+            ou um serviço de saúde da sua região.
           </p>
         </SectionCard>
 
         <SectionCard title="Sobre sugestões automáticas">
           <p className="text-text-primary">
-            Nesta versão não existe inteligência artificial. As sugestões vêm de
-            regras simples, escritas de forma transparente na documentação do
-            projeto. Você pode aceitar, ignorar ou modificar qualquer sugestão.
+            Nesta versão não existe inteligência artificial. As sugestões vêm de regras simples,
+            escritas de forma transparente na documentação do projeto. Você pode aceitar, ignorar ou
+            modificar qualquer sugestão.
           </p>
         </SectionCard>
 
         <Note>
-          Esta é uma demonstração. Os dados apresentados são fictícios e servem
-          apenas para mostrar como a experiência funciona.
+          Esta é uma demonstração. Os dados apresentados são fictícios e servem apenas para mostrar
+          como a experiência funciona.
         </Note>
 
         <div className="flex flex-wrap gap-3">

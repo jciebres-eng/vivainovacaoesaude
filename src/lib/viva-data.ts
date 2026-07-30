@@ -60,8 +60,7 @@ export const conteudos: Conteudo[] = [
     titulo: "Como preparar uma rota alternativa",
     categoria: "Mobilidade",
     minutos: 2,
-    resumo:
-      "Uma rota alternativa ajuda quando a primeira opção não está disponível.",
+    resumo: "Uma rota alternativa ajuda quando a primeira opção não está disponível.",
     passos: [
       "Salve outro trajeto.",
       "Identifique um ponto de retorno.",
@@ -74,8 +73,7 @@ export const conteudos: Conteudo[] = [
     titulo: "Como pedir informação por mensagem",
     categoria: "Comunicação",
     minutos: 2,
-    resumo:
-      "Uma mensagem pronta reduz o esforço de falar em um momento de tensão.",
+    resumo: "Uma mensagem pronta reduz o esforço de falar em um momento de tensão.",
     passos: [
       "Escreva a pergunta antes de sair.",
       "Use uma frase curta e direta.",
@@ -88,8 +86,7 @@ export const conteudos: Conteudo[] = [
     titulo: "Como reduzir o impacto do ruído",
     categoria: "Sensorial",
     minutos: 3,
-    resumo:
-      "Pequenos ajustes podem tornar um ambiente intenso mais suportável.",
+    resumo: "Pequenos ajustes podem tornar um ambiente intenso mais suportável.",
     passos: [
       "Escolha horários com menos movimento.",
       "Leve protetor auditivo ou fone.",

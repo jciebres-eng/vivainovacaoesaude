@@ -36,15 +36,13 @@ export type VarianteCard =
 
 const variantes: Record<VarianteCard, string> = {
   informativo: "border-border-default-default bg-surface-default",
-  "proximo-passo":
-    "border-feedback-continuidade/40 bg-feedback-continuidade-suave/50",
+  "proximo-passo": "border-feedback-continuidade/40 bg-feedback-continuidade-suave/50",
   habilidade: "border-border-default-default bg-surface-default",
   biblioteca: "border-border-default-default bg-surface-default",
   registro: "border-border-default-default bg-surface-muted",
   reflexao: "border-dashed border-border-default-default bg-surface-default",
   rotina: "border-border-default-default bg-surface-muted",
-  experiencia:
-    "border-feedback-continuidade/40 bg-feedback-continuidade-suave/40",
+  experiencia: "border-feedback-continuidade/40 bg-feedback-continuidade-suave/40",
   "estado-atual": "border-action-primary/40 bg-feedback-information/40",
   aviso: "border-transparent bg-feedback-attention",
 };
@@ -61,7 +59,6 @@ const textoDaVariante: Record<VarianteCard, string> = {
   "estado-atual": "text-text-primary",
   aviso: "text-feedback-attention-foreground",
 };
-
 
 export function Card({
   variante = "informativo",
@@ -97,33 +94,20 @@ export function Card({
     >
       {titulo || Icone ? (
         <div className="flex items-start gap-3">
-          {Icone ? (
-            <Icone
-              className={cn(tokenIcone.medio, "mt-0.5 shrink-0")}
-              aria-hidden
-            />
-          ) : null}
-          {titulo ? (
-            <h2 className="min-w-0 viva-subtitulo">{titulo}</h2>
-          ) : null}
+          {Icone ? <Icone className={cn(tokenIcone.medio, "mt-0.5 shrink-0")} aria-hidden /> : null}
+          {titulo ? <h2 className="min-w-0 viva-subtitulo">{titulo}</h2> : null}
         </div>
       ) : null}
 
       {descricao ? (
-        <p className={cn("viva-legenda text-text-secondary", titulo && "mt-2")}>
-          {descricao}
-        </p>
+        <p className={cn("viva-legenda text-text-secondary", titulo && "mt-2")}>{descricao}</p>
       ) : null}
 
       {children ? (
-        <div className={cn(titulo || descricao ? "mt-4" : undefined)}>
-          {children}
-        </div>
+        <div className={cn(titulo || descricao ? "mt-4" : undefined)}>{children}</div>
       ) : null}
 
-      {acao ? (
-        <div className="mt-5 flex flex-wrap items-center gap-3">{acao}</div>
-      ) : null}
+      {acao ? <div className="mt-5 flex flex-wrap items-center gap-3">{acao}</div> : null}
     </section>
   );
 }
@@ -175,9 +159,7 @@ export function CardDeHabilidade({
         <p className="viva-legenda text-text-secondary">Costuma aparecer: {contexto}</p>
       ) : null}
       <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-        <span className="min-w-0">
-          {estado ? <IndicadorDeEstado estado={estado} /> : null}
-        </span>
+        <span className="min-w-0">{estado ? <IndicadorDeEstado estado={estado} /> : null}</span>
         {para ? (
           <BotaoLink to={para} tamanho="compacto" icone={ArrowRight} iconePosicao="fim">
             {acaoRotulo}

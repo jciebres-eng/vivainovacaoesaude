@@ -12,21 +12,11 @@ import { Card } from "@/components/ds";
  * `QuadroDoPercurso`.
  */
 
-export function ScreenHeader({
-  title,
-  intro,
-}: {
-  title: string;
-  intro?: string;
-}) {
+export function ScreenHeader({ title, intro }: { title: string; intro?: string }) {
   return (
     <header className="viva-fade">
       <h1 className="viva-titulo-pagina text-text-primary">{title}</h1>
-      {intro ? (
-        <p className="mt-3 max-w-[58ch] viva-texto text-text-secondary">
-          {intro}
-        </p>
-      ) : null}
+      {intro ? <p className="mt-3 max-w-[58ch] viva-texto text-text-secondary">{intro}</p> : null}
     </header>
   );
 }
@@ -48,12 +38,7 @@ export function SectionCard({
   className?: string;
 }) {
   return (
-    <Card
-      variante="informativo"
-      titulo={title}
-      descricao={hint}
-      className={className}
-    >
+    <Card variante="informativo" titulo={title} descricao={hint} className={className}>
       {children}
     </Card>
   );

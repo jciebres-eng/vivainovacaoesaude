@@ -2,10 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { Botao } from "@/components/ds/botao";
 import { Interruptor } from "@/components/ds/campos";
-import {
-  AvisoDeAjuste,
-  GrupoDeOpcoes,
-} from "@/components/viva/experiencia/controles";
+import { AvisoDeAjuste, GrupoDeOpcoes } from "@/components/viva/experiencia/controles";
 import { Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
 import { personas } from "@/lib/viva-data";
 import {
@@ -85,10 +82,7 @@ function MinhaExperienciaScreen() {
           ]}
           valor={p.linguagem}
           onEscolher={(linguagem) =>
-            ajustar(
-              { linguagem },
-              "A forma de escrever mudou. O conteúdo continua o mesmo.",
-            )
+            ajustar({ linguagem }, "A forma de escrever mudou. O conteúdo continua o mesmo.")
           }
         />
       </SectionCard>
@@ -118,10 +112,7 @@ function MinhaExperienciaScreen() {
           ]}
           valor={p.densidade}
           onEscolher={(densidade) =>
-            ajustar(
-              { densidade },
-              "A quantidade de informação por tela foi ajustada.",
-            )
+            ajustar({ densidade }, "A quantidade de informação por tela foi ajustada.")
           }
         />
       </SectionCard>
@@ -171,9 +162,7 @@ function MinhaExperienciaScreen() {
               },
             ]}
             valor={p.ritmo}
-            onEscolher={(ritmo) =>
-              ajustar({ ritmo }, "Seu ritmo foi ajustado. Nada tem prazo.")
-            }
+            onEscolher={(ritmo) => ajustar({ ritmo }, "Seu ritmo foi ajustado. Nada tem prazo.")}
           />
         </div>
       </SectionCard>
@@ -199,8 +188,7 @@ function MinhaExperienciaScreen() {
             {
               id: "foco",
               rotulo: "Foco",
-              apoio:
-                "Mostra apenas o que você está fazendo agora e reduz o menu.",
+              apoio: "Mostra apenas o que você está fazendo agora e reduz o menu.",
             },
           ]}
           valor={p.navegacao}
@@ -238,9 +226,7 @@ function MinhaExperienciaScreen() {
               },
             ]}
             valor={p.aparencia.tema}
-            onEscolher={(tema) =>
-              ajustar({ aparencia: { tema } }, "A aparência foi ajustada.")
-            }
+            onEscolher={(tema) => ajustar({ aparencia: { tema } }, "A aparência foi ajustada.")}
           />
           <GrupoDeOpcoes
             colunas={2}
@@ -262,9 +248,7 @@ function MinhaExperienciaScreen() {
               { id: "ampliada", rotulo: "Ampliado" },
             ]}
             valor={p.aparencia.fonte}
-            onEscolher={(fonte) =>
-              ajustar({ aparencia: { fonte } }, "O tamanho do texto mudou.")
-            }
+            onEscolher={(fonte) => ajustar({ aparencia: { fonte } }, "O tamanho do texto mudou.")}
           />
           <GrupoDeOpcoes
             legenda="Espaço entre os blocos"
@@ -275,10 +259,7 @@ function MinhaExperienciaScreen() {
             ]}
             valor={p.aparencia.espacamento}
             onEscolher={(espacamento) =>
-              ajustar(
-                { aparencia: { espacamento } },
-                "O espaçamento foi ajustado.",
-              )
+              ajustar({ aparencia: { espacamento } }, "O espaçamento foi ajustado.")
             }
           />
           <GrupoDeOpcoes
@@ -296,10 +277,7 @@ function MinhaExperienciaScreen() {
         </div>
       </SectionCard>
 
-      <SectionCard
-        title="Movimento"
-        hint="Se animações incomodam, você pode desligar tudo."
-      >
+      <SectionCard title="Movimento" hint="Se animações incomodam, você pode desligar tudo.">
         <div className="space-y-5">
           <Interruptor
             rotulo="Reduzir animações"
@@ -408,10 +386,7 @@ function MinhaExperienciaScreen() {
             ]}
             valor={p.notificacoes.intensidade}
             onEscolher={(intensidade) =>
-              ajustar(
-                { notificacoes: { intensidade } },
-                "Sua preferência de avisos foi aplicada.",
-              )
+              ajustar({ notificacoes: { intensidade } }, "Sua preferência de avisos foi aplicada.")
             }
           />
           {p.notificacoes.intensidade === "personalizado" ? (
@@ -449,10 +424,7 @@ function MinhaExperienciaScreen() {
         </ul>
       </SectionCard>
 
-      <SectionCard
-        title="Leitura"
-        hint="Vale para a biblioteca e para os textos longos."
-      >
+      <SectionCard title="Leitura" hint="Vale para a biblioteca e para os textos longos.">
         <div className="space-y-6">
           <GrupoDeOpcoes
             legenda="Largura das linhas"
@@ -565,10 +537,7 @@ function MinhaExperienciaScreen() {
           }))}
           valor={p.demonstracao.perfil}
           onEscolher={(perfil) =>
-            ajustar(
-              { demonstracao: { perfil } },
-              "O perfil da demonstração foi trocado.",
-            )
+            ajustar({ demonstracao: { perfil } }, "O perfil da demonstração foi trocado.")
           }
         />
       </SectionCard>
@@ -576,17 +545,16 @@ function MinhaExperienciaScreen() {
       <SectionCard title="O que o VIVA faz com essas escolhas">
         <div className="space-y-3 text-text-secondary">
           <p>
-            As preferências são usadas apenas para organizar a interface. Elas
-            não geram avaliação, diagnóstico, pontuação, comparação com outras
-            pessoas nem previsão sobre você.
+            As preferências são usadas apenas para organizar a interface. Elas não geram avaliação,
+            diagnóstico, pontuação, comparação com outras pessoas nem previsão sobre você.
           </p>
           <p>
-            Nada é inferido a partir do seu comportamento: o VIVA só considera o
-            que você marcou nesta página. Nenhuma configuração muda sozinha.
+            Nada é inferido a partir do seu comportamento: o VIVA só considera o que você marcou
+            nesta página. Nenhuma configuração muda sozinha.
           </p>
           <p>
-            Tudo fica guardado apenas neste dispositivo. Se você limpar os dados
-            do navegador, as escolhas desaparecem — e isso é esperado.
+            Tudo fica guardado apenas neste dispositivo. Se você limpar os dados do navegador, as
+            escolhas desaparecem — e isso é esperado.
           </p>
         </div>
       </SectionCard>

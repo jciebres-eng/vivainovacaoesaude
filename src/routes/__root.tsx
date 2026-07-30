@@ -18,12 +18,9 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md">
-        <h1 className="viva-titulo text-text-primary">
-          Esta página não está aqui
-        </h1>
+        <h1 className="viva-titulo text-text-primary">Esta página não está aqui</h1>
         <p className="mt-3 text-text-secondary">
-          Talvez o endereço tenha mudado. Nada do que você já escolheu foi
-          perdido.
+          Talvez o endereço tenha mudado. Nada do que você já escolheu foi perdido.
         </p>
         <div className="mt-8">
           <Link
@@ -48,13 +45,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md">
-        <h1 className="viva-titulo text-text-primary">
-          Não foi possível abrir esta página
-        </h1>
+        <h1 className="viva-titulo text-text-primary">Não foi possível abrir esta página</h1>
         <p className="mt-3 text-text-secondary">
-          Isso não tem relação com nada que você fez. O que você já registrou
-          continua guardado neste dispositivo. Você pode tentar novamente agora
-          ou voltar mais tarde.
+          Isso não tem relação com nada que você fez. O que você já registrou continua guardado
+          neste dispositivo. Você pode tentar novamente agora ou voltar mais tarde.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
@@ -94,14 +88,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Biblioteca VIVA — Base documental da solução" },
       {
         property: "og:description",
-        content: "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva.",
+        content:
+          "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Biblioteca VIVA — Base documental da solução" },
-      { name: "twitter:description", content: "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/654089da-003e-4f8a-aa3d-0a513a884a6e" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/654089da-003e-4f8a-aa3d-0a513a884a6e" },
+      {
+        name: "twitter:description",
+        content:
+          "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/654089da-003e-4f8a-aa3d-0a513a884a6e",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/654089da-003e-4f8a-aa3d-0a513a884a6e",
+      },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

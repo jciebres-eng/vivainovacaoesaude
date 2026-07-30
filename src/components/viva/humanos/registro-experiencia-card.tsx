@@ -1,12 +1,7 @@
 import { useState } from "react";
 
 import { AreaDeTexto, Botao, Card, Confirmacao } from "@/components/ds";
-import {
-  ajustesPossiveis,
-  comoFoi,
-  oQueAjudou,
-  oQueDificultou,
-} from "./dados-demo";
+import { ajustesPossiveis, comoFoi, oQueAjudou, oQueDificultou } from "./dados-demo";
 import { AcoesAutonomas, EscolhaAutonomaGroup } from "./escolha-autonoma";
 
 /**
@@ -56,17 +51,13 @@ export function RegistroExperienciaCard({
   const alternarLista = (campo: "ajudou" | "dificultou", id: string) =>
     setRegistro((r) => ({
       ...r,
-      [campo]: r[campo].includes(id)
-        ? r[campo].filter((i) => i !== id)
-        : [...r[campo], id],
+      [campo]: r[campo].includes(id) ? r[campo].filter((i) => i !== id) : [...r[campo], id],
     }));
 
   if (salvo) {
     return (
       <Card variante="registro" titulo="Registro guardado" className={className}>
-        <Confirmacao>
-          Seu registro foi salvo. Você poderá revisá-lo quando quiser.
-        </Confirmacao>
+        <Confirmacao>Seu registro foi salvo. Você poderá revisá-lo quando quiser.</Confirmacao>
         <AcoesAutonomas
           secundarias={
             <Botao
@@ -158,16 +149,13 @@ export function RegistroExperienciaCard({
             titulo="Gostaria de ajustar algo para a próxima vez?"
             opcoes={ajustesPossiveis}
             valor={registro.ajuste}
-            onEscolher={(id) =>
-              setRegistro((r) => ({ ...r, ajuste: r.ajuste === id ? null : id }))
-            }
+            onEscolher={(id) => setRegistro((r) => ({ ...r, ajuste: r.ajuste === id ? null : id }))}
             nota="Manter como está também é uma escolha."
           />
         ) : null}
 
         <p className="viva-legenda text-text-secondary">
-          Parte {bloco + 1} de {blocos.length}. Você pode responder só o que
-          quiser.
+          Parte {bloco + 1} de {blocos.length}. Você pode responder só o que quiser.
         </p>
       </div>
 
@@ -196,29 +184,17 @@ export function RegistroExperienciaCard({
         secundarias={
           <>
             {bloco > 0 ? (
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={() => setBloco((b) => b - 1)}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={() => setBloco((b) => b - 1)}>
                 Revisar respostas
               </Botao>
             ) : null}
             {onRegistrarDepois ? (
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={onRegistrarDepois}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={onRegistrarDepois}>
                 Registrar depois
               </Botao>
             ) : null}
             {onDispensar ? (
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={onDispensar}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={onDispensar}>
                 Não quero registrar agora
               </Botao>
             ) : null}

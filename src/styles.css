@@ -61,7 +61,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --shadow-suave: 0 1px 2px oklch(0.3 0.02 200 / 0.04), 0 8px 24px -16px oklch(0.3 0.02 200 / 0.16);
-  --shadow-suave-alta: 0 2px 4px oklch(0.3 0.02 200 / 0.05), 0 14px 32px -18px oklch(0.3 0.02 200 / 0.22);
+  --shadow-suave-alta:
+    0 2px 4px oklch(0.3 0.02 200 / 0.05), 0 14px 32px -18px oklch(0.3 0.02 200 / 0.22);
 
   /* ------------------------------------------------------------------
    * Paleta semântica do Design System (documento 14).
@@ -91,7 +92,6 @@
   --color-feedback-error: var(--destructive);
   --color-feedback-error-foreground: var(--destructive-foreground);
   --color-focus-ring: var(--ring);
-
 
   /* Duração de animação — sempre breve (doc 04) */
   --duracao-imediata: 120ms;

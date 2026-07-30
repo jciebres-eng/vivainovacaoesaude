@@ -1,16 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import { Botao, Card } from "@/components/ds";
-import {
-  AcoesAutonomas,
-  EscolhaAutonomaGroup,
-  MeuMomentoCard,
-} from "@/components/viva/humanos";
+import { AcoesAutonomas, EscolhaAutonomaGroup, MeuMomentoCard } from "@/components/viva/humanos";
 import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
-import {
-  necessidadeDeEstimulos,
-  ritmosDoMomento,
-} from "@/lib/viva-jornada-dados";
+import { necessidadeDeEstimulos, ritmosDoMomento } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
 export const Route = createFileRoute("/jornada/momento")({

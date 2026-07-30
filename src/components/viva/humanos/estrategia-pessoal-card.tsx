@@ -42,9 +42,7 @@ export function EstrategiaPessoalCard({
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
         <div className="min-w-0">
           <h3 className="viva-subtitulo text-text-primary">{estrategia.nome}</h3>
-          <p className="mt-1 viva-legenda text-text-secondary">
-            {estrategia.descricao}
-          </p>
+          <p className="mt-1 viva-legenda text-text-secondary">{estrategia.descricao}</p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           {onEditar ? (
@@ -66,9 +64,7 @@ export function EstrategiaPessoalCard({
       </div>
 
       <p className="mt-3 viva-legenda text-text-secondary">
-        <span className="font-medium text-text-primary">
-          Quando pode ser útil:{" "}
-        </span>
+        <span className="font-medium text-text-primary">Quando pode ser útil: </span>
         {estrategia.contexto}
       </p>
 
@@ -78,17 +74,12 @@ export function EstrategiaPessoalCard({
             <IndicadorDeEstado estado="concluido" texto="Marcada como minha" />
           ) : null}
           {estrategia.naPreparacao ? (
-            <IndicadorDeEstado
-              estado="em-preparacao"
-              texto="Aparece na preparação"
-            />
+            <IndicadorDeEstado estado="em-preparacao" texto="Aparece na preparação" />
           ) : null}
         </div>
       ) : null}
 
-      <p className="mt-3 viva-legenda text-text-secondary">
-        {avisoDeEstrategia}
-      </p>
+      <p className="mt-3 viva-legenda text-text-secondary">{avisoDeEstrategia}</p>
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
         {onAlternarPessoal ? (
@@ -97,9 +88,7 @@ export function EstrategiaPessoalCard({
             tamanho="compacto"
             onClick={() => onAlternarPessoal(estrategia.id)}
           >
-            {estrategia.pessoal
-              ? "Deixar de marcar como minha"
-              : "Marcar como minha"}
+            {estrategia.pessoal ? "Deixar de marcar como minha" : "Marcar como minha"}
           </Botao>
         ) : null}
         {onAlternarPreparacao ? (
@@ -108,9 +97,7 @@ export function EstrategiaPessoalCard({
             tamanho="compacto"
             onClick={() => onAlternarPreparacao(estrategia.id)}
           >
-            {estrategia.naPreparacao
-              ? "Retirar da preparação"
-              : "Adicionar à preparação"}
+            {estrategia.naPreparacao ? "Retirar da preparação" : "Adicionar à preparação"}
           </Botao>
         ) : null}
       </div>

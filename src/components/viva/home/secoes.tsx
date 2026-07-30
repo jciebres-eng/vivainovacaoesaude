@@ -1,19 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import {
-  BookOpen,
-  ChevronDown,
-  Leaf,
-  Settings2,
-} from "lucide-react";
+import { BookOpen, ChevronDown, Leaf, Settings2 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
-import {
-  Botao,
-  BotaoLink,
-  Card,
-  Chip,
-  EstadoDaInterface,
-} from "@/components/ds";
+import { Botao, BotaoLink, Card, Chip, EstadoDaInterface } from "@/components/ds";
 import {
   indicouPoucaEnergia,
   perguntasDoMomento,
@@ -184,9 +173,7 @@ export function ComoEstouAgora({
                   key={o}
                   label={o}
                   selected={estado[p.chave] === o}
-                  onClick={() =>
-                    onRegistrar(p.chave, estado[p.chave] === o ? undefined : o)
-                  }
+                  onClick={() => onRegistrar(p.chave, estado[p.chave] === o ? undefined : o)}
                 />
               ))}
             </div>
@@ -279,11 +266,7 @@ export function BibliotecaRelacionada({
                 >
                   {uteis.includes(c.id) ? "Marcado como útil" : "Marcar como útil"}
                 </Botao>
-                <Botao
-                  variante="terciario"
-                  tamanho="compacto"
-                  onClick={() => onRegistrarDuvida(c)}
-                >
+                <Botao variante="terciario" tamanho="compacto" onClick={() => onRegistrarDuvida(c)}>
                   Registrar dúvida
                 </Botao>
                 <Botao
@@ -304,11 +287,7 @@ export function BibliotecaRelacionada({
 
 /* --------------------------------------------------------- reflexão opcional */
 
-export function ReflexaoOpcional({
-  opcoes,
-}: {
-  opcoes: PossibilidadeDaHome[];
-}) {
+export function ReflexaoOpcional({ opcoes }: { opcoes: PossibilidadeDaHome[] }) {
   return (
     <section aria-labelledby="reflexao-home" className="space-y-3">
       <h2 id="reflexao-home" className="viva-subtitulo text-text-primary">
@@ -357,11 +336,7 @@ export function MinhasEstrategias({
             <p className="viva-apoio text-text-primary">{e.nome}</p>
             <p className="viva-legenda text-text-secondary">{e.quandoAjuda}</p>
             <div className="mt-2 flex flex-wrap gap-2">
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={() => onAdicionarAoPlano(e)}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={() => onAdicionarAoPlano(e)}>
                 Adicionar ao próximo plano
               </Botao>
               <Botao
@@ -414,9 +389,7 @@ export function RegistrosRecentes({
             className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 rounded-2xl border border-border-default-default bg-surface-default px-4 py-3"
           >
             <span className="min-w-0 viva-apoio text-text-primary">{r.titulo}</span>
-            <span className="shrink-0 viva-legenda text-text-secondary">
-              {r.quando}
-            </span>
+            <span className="shrink-0 viva-legenda text-text-secondary">{r.quando}</span>
           </li>
         ))}
       </ul>
@@ -457,9 +430,7 @@ export function SecaoRecolhivel({
           <h2 id={`${idConteudo}-titulo`} className="viva-subtitulo text-text-primary">
             {titulo}
           </h2>
-          {apoio ? (
-            <p className="viva-legenda text-text-secondary">{apoio}</p>
-          ) : null}
+          {apoio ? <p className="viva-legenda text-text-secondary">{apoio}</p> : null}
         </div>
         <Botao
           tamanho="compacto"
@@ -528,9 +499,7 @@ export function PreferenciasDaHomeSecao({
           <Chip
             label="Mostrar “Como estou agora”"
             selected={preferencias.mostrarEstadoAtual}
-            onClick={() =>
-              onMudar({ mostrarEstadoAtual: !preferencias.mostrarEstadoAtual })
-            }
+            onClick={() => onMudar({ mostrarEstadoAtual: !preferencias.mostrarEstadoAtual })}
           />
           <Chip
             label="Mostrar registros recentes"
@@ -544,9 +513,7 @@ export function PreferenciasDaHomeSecao({
           <Chip
             label="Estratégias antes da biblioteca"
             selected={preferencias.estrategiasPrimeiro}
-            onClick={() =>
-              onMudar({ estrategiasPrimeiro: !preferencias.estrategiasPrimeiro })
-            }
+            onClick={() => onMudar({ estrategiasPrimeiro: !preferencias.estrategiasPrimeiro })}
           />
         </div>
         <fieldset>

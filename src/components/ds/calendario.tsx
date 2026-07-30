@@ -73,10 +73,7 @@ export function CalendarioMensal({
           rotulo="Mês anterior"
           onClick={() => setMostrado(new Date(ano, mes - 1, 1))}
         />
-        <p
-          aria-live="polite"
-          className="min-w-0 text-center viva-subtitulo text-text-primary"
-        >
+        <p aria-live="polite" className="min-w-0 text-center viva-subtitulo text-text-primary">
           {meses[mes]} de {ano}
         </p>
         <BotaoIcone
@@ -88,10 +85,7 @@ export function CalendarioMensal({
 
       <div className="mt-4 grid grid-cols-7 gap-1" aria-hidden>
         {diasDaSemana.map((d) => (
-          <span
-            key={d}
-            className="py-1 text-center viva-legenda text-text-secondary"
-          >
+          <span key={d} className="py-1 text-center viva-legenda text-text-secondary">
             {d}
           </span>
         ))}
@@ -111,9 +105,7 @@ export function CalendarioMensal({
               type="button"
               onClick={() => onSelecionarDia?.(chave)}
               aria-label={
-                marca
-                  ? `${dia} de ${meses[mes]} — ${marca.titulo}`
-                  : `${dia} de ${meses[mes]}`
+                marca ? `${dia} de ${meses[mes]} — ${marca.titulo}` : `${dia} de ${meses[mes]}`
               }
               className={cn(
                 "viva-tap grid min-h-11 place-items-center rounded-xl viva-legenda",
@@ -129,8 +121,7 @@ export function CalendarioMensal({
       </div>
 
       <p className="mt-4 viva-legenda text-text-secondary">
-        Os dias marcados indicam registros existentes. Dias sem marca não
-        significam falta.
+        Os dias marcados indicam registros existentes. Dias sem marca não significam falta.
       </p>
     </div>
   );
@@ -151,13 +142,9 @@ export function AgendaDiaria({
         >
           <span className="min-w-0">
             {i.horario ? (
-              <span className="block viva-legenda text-text-secondary">
-                {i.horario}
-              </span>
+              <span className="block viva-legenda text-text-secondary">{i.horario}</span>
             ) : null}
-            <span className="block truncate viva-apoio text-text-primary">
-              {i.titulo}
-            </span>
+            <span className="block truncate viva-apoio text-text-primary">{i.titulo}</span>
           </span>
           <IndicadorDeEstado estado={i.estado} />
         </li>
@@ -184,9 +171,7 @@ export function RegistroDeAtividade({
         {data} · {tipo}
       </p>
       <p className="mt-1 viva-rotulo font-semibold text-text-primary">{titulo}</p>
-      {descricao ? (
-        <p className="viva-legenda text-text-secondary">{descricao}</p>
-      ) : null}
+      {descricao ? <p className="viva-legenda text-text-secondary">{descricao}</p> : null}
     </article>
   );
 }

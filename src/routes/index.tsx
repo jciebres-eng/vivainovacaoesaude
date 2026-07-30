@@ -18,8 +18,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:description",
-        content:
-          "Um ambiente digital calmo, acessível e centrado na autonomia das pessoas.",
+        content: "Um ambiente digital calmo, acessível e centrado na autonomia das pessoas.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -41,17 +40,13 @@ function Inicio() {
 
         <h1 className="mt-8 viva-titulo text-text-primary">VIVA</h1>
         <p className="mt-4 max-w-[52ch] viva-texto text-text-secondary">
-          Um espaço para organizar, no seu ritmo, algo que você deseja realizar
-          no dia a dia. Sem cobrança, sem comparação e sem pressa.
+          Um espaço para organizar, no seu ritmo, algo que você deseja realizar no dia a dia. Sem
+          cobrança, sem comparação e sem pressa.
         </p>
 
         {/* Uma única ação principal por tela (doc 14). O resto é convite. */}
         <div className="mt-10">
-          <BotaoLink
-            to="/meu-momento"
-            variante="principal"
-            className="w-full sm:w-auto"
-          >
+          <BotaoLink to="/meu-momento" variante="principal" className="w-full sm:w-auto">
             Entrar
           </BotaoLink>
         </div>
@@ -78,9 +73,8 @@ function Inicio() {
         </div>
 
         <p className="mt-16 max-w-[52ch] viva-legenda text-text-secondary">
-          Demonstração com dados fictícios. O VIVA não faz diagnóstico e não
-          substitui acompanhamento profissional. Suas escolhas ficam apenas neste
-          dispositivo.
+          Demonstração com dados fictícios. O VIVA não faz diagnóstico e não substitui
+          acompanhamento profissional. Suas escolhas ficam apenas neste dispositivo.
         </p>
       </div>
     </main>

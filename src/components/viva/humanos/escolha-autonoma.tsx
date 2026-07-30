@@ -53,22 +53,14 @@ export function EscolhaAutonomaGroup({
   className?: string;
 }) {
   const nome = useId();
-  const selecionado = (id: string) =>
-    multipla ? (valores ?? []).includes(id) : valor === id;
+  const selecionado = (id: string) => (multipla ? (valores ?? []).includes(id) : valor === id);
 
   return (
     <fieldset className={cn("min-w-0", className)} disabled={desabilitado}>
       <legend className="viva-rotulo text-text-primary">{titulo}</legend>
-      {apoio ? (
-        <p className="mt-1 viva-legenda text-text-secondary">{apoio}</p>
-      ) : null}
+      {apoio ? <p className="mt-1 viva-legenda text-text-secondary">{apoio}</p> : null}
 
-      <div
-        className={cn(
-          "mt-3 grid gap-2",
-          colunas === "duas" ? "sm:grid-cols-2" : undefined,
-        )}
-      >
+      <div className={cn("mt-3 grid gap-2", colunas === "duas" ? "sm:grid-cols-2" : undefined)}>
         {opcoes.map((opcao) => {
           const marcada = selecionado(opcao.id);
           const Icone = opcao.icone;
@@ -80,8 +72,7 @@ export function EscolhaAutonomaGroup({
                 marcada
                   ? "border-action-primary bg-feedback-information/50"
                   : "border-border-default-default bg-surface-default hover:bg-background-secondary",
-                (opcao.desabilitada || desabilitado) &&
-                  "cursor-not-allowed opacity-55",
+                (opcao.desabilitada || desabilitado) && "cursor-not-allowed opacity-55",
                 "focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--ring)]",
               )}
             >
@@ -132,9 +123,7 @@ export function EscolhaAutonomaGroup({
         })}
       </div>
 
-      {nota ? (
-        <p className="mt-3 viva-legenda text-text-secondary">{nota}</p>
-      ) : null}
+      {nota ? <p className="mt-3 viva-legenda text-text-secondary">{nota}</p> : null}
     </fieldset>
   );
 }
@@ -158,9 +147,7 @@ export function AcoesAutonomas({
         {principal}
         {secundarias}
       </div>
-      {nota ? (
-        <p className="mt-3 viva-legenda text-text-secondary">{nota}</p>
-      ) : null}
+      {nota ? <p className="mt-3 viva-legenda text-text-secondary">{nota}</p> : null}
     </div>
   );
 }

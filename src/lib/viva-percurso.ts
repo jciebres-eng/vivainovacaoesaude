@@ -13,12 +13,7 @@ import { useCallback, useSyncExternalStore } from "react";
  */
 
 export type AreaFuncional =
-  | "Deslocamento"
-  | "Saúde"
-  | "Compras"
-  | "Convívio"
-  | "Estudo e trabalho"
-  | "Casa";
+  "Deslocamento" | "Saúde" | "Compras" | "Convívio" | "Estudo e trabalho" | "Casa";
 
 export type EstadoDoProximoPasso =
   | "disponivel"
@@ -106,11 +101,7 @@ export type Reflexao = {
 };
 
 export type StatusDuvida =
-  | "quero-lembrar"
-  | "quero-pesquisar"
-  | "quero-conversar"
-  | "respondida"
-  | "arquivada";
+  "quero-lembrar" | "quero-pesquisar" | "quero-conversar" | "respondida" | "arquivada";
 
 export type Duvida = {
   id: string;
@@ -431,9 +422,7 @@ function estadoAposExperiencia(): EstadoPercurso {
   return {
     ...base,
     atividades: base.atividades.map((a) =>
-      a.id === "perguntas-consulta"
-        ? { ...a, estado: "pronto-para-reflexao" }
-        : a,
+      a.id === "perguntas-consulta" ? { ...a, estado: "pronto-para-reflexao" } : a,
     ),
     experiencias: [
       {
@@ -506,9 +495,7 @@ function assinar(ouvinte: () => void) {
 const instantaneoServidor = estadoInicial();
 
 export function novoId(prefixo: string) {
-  return `${prefixo}-${Date.now().toString(36)}-${Math.random()
-    .toString(36)
-    .slice(2, 6)}`;
+  return `${prefixo}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
 }
 
 /** Acesso ao percurso guardado neste dispositivo. */
@@ -519,12 +506,9 @@ export function usePercurso() {
     () => instantaneoServidor,
   );
 
-  const atualizar = useCallback(
-    (mudanca: (anterior: EstadoPercurso) => EstadoPercurso) => {
-      gravar(mudanca(estado));
-    },
-    [],
-  );
+  const atualizar = useCallback((mudanca: (anterior: EstadoPercurso) => EstadoPercurso) => {
+    gravar(mudanca(estado));
+  }, []);
 
   const salvarPreparacao = useCallback(
     (preparacao: Preparacao) =>
@@ -559,9 +543,7 @@ export function usePercurso() {
     (id: string, estadoNovo: EstadoDoProximoPasso) =>
       atualizar((a) => ({
         ...a,
-        atividades: a.atividades.map((at) =>
-          at.id === id ? { ...at, estado: estadoNovo } : at,
-        ),
+        atividades: a.atividades.map((at) => (at.id === id ? { ...at, estado: estadoNovo } : at)),
         continuidade: { ...a.continuidade, ultimaAtividadeId: id },
       })),
     [atualizar],
@@ -592,9 +574,7 @@ export function usePercurso() {
       atualizar((a) => ({
         ...a,
         experiencias: a.experiencias.some((e) => e.id === experiencia.id)
-          ? a.experiencias.map((e) =>
-              e.id === experiencia.id ? experiencia : e,
-            )
+          ? a.experiencias.map((e) => (e.id === experiencia.id ? experiencia : e))
           : [experiencia, ...a.experiencias],
       })),
     [atualizar],
@@ -653,10 +633,7 @@ export function usePercurso() {
   const restaurarDemonstracao = useCallback(() => gravar(estadoInicial()), []);
 
   /** Troca o cenário fictício apresentado na demonstração. */
-  const aplicarCenario = useCallback(
-    (cenario: Cenario) => gravar(estadoDoCenario(cenario)),
-    [],
-  );
+  const aplicarCenario = useCallback((cenario: Cenario) => gravar(estadoDoCenario(cenario)), []);
 
   return {
     ...dados,

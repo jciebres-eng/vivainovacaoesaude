@@ -10,11 +10,7 @@ import {
   RegistroDeExperiencia,
   SemProximoPasso,
 } from "@/components/viva/funcionais";
-import {
-  MeuMomentoCard,
-  ProximoPassoCard,
-  RetomarAtividadeCard,
-} from "@/components/viva/humanos";
+import { MeuMomentoCard, ProximoPassoCard, RetomarAtividadeCard } from "@/components/viva/humanos";
 import {
   AvisoDeArmazenamento,
   BibliotecaRelacionada,
@@ -105,7 +101,13 @@ function MeuMomentoPage() {
           .filter((c) => momento.conteudos.uteis.includes(c.id))
           .map((c) => ({ id: c.id, titulo: c.titulo })),
       }),
-    [percurso.preparacoes, percurso.experiencias, percurso.estrategias, percurso.duvidas, momento.conteudos.uteis],
+    [
+      percurso.preparacoes,
+      percurso.experiencias,
+      percurso.estrategias,
+      percurso.duvidas,
+      momento.conteudos.uteis,
+    ],
   );
 
   const principais: PossibilidadeDaHome[] = [
@@ -237,18 +239,12 @@ function MeuMomentoPage() {
           />
         ) : null}
 
-        <PerguntaDeAbertura
-          principais={principais}
-          outras={outras}
-          reduzido={baixoEstimulo}
-        />
+        <PerguntaDeAbertura principais={principais} outras={outras} reduzido={baixoEstimulo} />
 
         {momento.preferencias.mostrarEstadoAtual ? (
           <MeuMomentoCard
             onSeguirSugestao={() => navigate({ to: "/jornada/preparacao" })}
-            onPular={() =>
-              momento.definirPreferencia({ mostrarEstadoAtual: false })
-            }
+            onPular={() => momento.definirPreferencia({ mostrarEstadoAtual: false })}
           />
         ) : null}
 
@@ -256,9 +252,7 @@ function MeuMomentoPage() {
           <section aria-label="Próximo passo">
             <ProximoPassoCard
               onComecar={() => navigate({ to: "/jornada/preparacao" })}
-              onAdiar={() =>
-                percurso.definirEstadoDaAtividade(atividade.id, "pausado")
-              }
+              onAdiar={() => percurso.definirEstadoDaAtividade(atividade.id, "pausado")}
               onRecusar={() => navigate({ to: "/jornada/objetivo" })}
             />
           </section>
@@ -270,9 +264,8 @@ function MeuMomentoPage() {
           <section aria-label="Continuar de onde parei">
             <RetomarAtividadeCard
               nome={
-                percurso.atividades.find(
-                  (a) => a.id === percurso.continuidade.ultimaAtividadeId,
-                )?.titulo
+                percurso.atividades.find((a) => a.id === percurso.continuidade.ultimaAtividadeId)
+                  ?.titulo
               }
               onContinuar={() => navigate({ to: "/jornada/preparacao" })}
               onRevisar={() => navigate({ to: "/jornada/objetivo" })}
@@ -280,7 +273,6 @@ function MeuMomentoPage() {
             />
           </section>
         ) : null}
-
 
         <div ref={areaDeRegistro} className="space-y-4">
           <ReflexaoOpcional opcoes={baixoEstimulo ? reflexoes.slice(0, 2) : reflexoes} />
@@ -339,9 +331,7 @@ function MeuMomentoPage() {
         {momento.preferencias.mostrarRegistrosRecentes && !baixoEstimulo ? (
           <RegistrosRecentes
             registros={registrosRecentes}
-            onOcultar={() =>
-              momento.definirPreferencia({ mostrarRegistrosRecentes: false })
-            }
+            onOcultar={() => momento.definirPreferencia({ mostrarRegistrosRecentes: false })}
           />
         ) : null}
 
@@ -351,8 +341,8 @@ function MeuMomentoPage() {
         />
 
         <p className="viva-legenda text-text-secondary">
-          O VIVA não avalia, não classifica e não interpreta o que você
-          registra. Tudo fica guardado apenas neste dispositivo.
+          O VIVA não avalia, não classifica e não interpreta o que você registra. Tudo fica guardado
+          apenas neste dispositivo.
         </p>
 
         <SecaoDeDemonstracao onAplicar={percurso.aplicarCenario} />
@@ -376,11 +366,7 @@ function SecaoDeDemonstracao({
       onAlternar={() => setAberto((a) => !a)}
     >
       <div className="flex flex-wrap gap-3">
-        <Botao
-          variante="terciario"
-          tamanho="compacto"
-          onClick={() => onAplicar("primeiro-acesso")}
-        >
+        <Botao variante="terciario" tamanho="compacto" onClick={() => onAplicar("primeiro-acesso")}>
           No primeiro acesso
         </Botao>
         <Botao

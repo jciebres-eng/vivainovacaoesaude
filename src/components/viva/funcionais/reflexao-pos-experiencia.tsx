@@ -136,23 +136,19 @@ export function ReflexaoPosExperiencia({
 
       <div className="mt-4">
         <Confirmacao visivel={salvo}>
-          Sua reflexão foi salva. Você pode continuar depois, do ponto em que
-          parou.
+          Sua reflexão foi salva. Você pode continuar depois, do ponto em que parou.
         </Confirmacao>
       </div>
 
       {mostrarResumo ? (
         <div className="mt-6 rounded-2xl bg-surface-muted p-4">
-          <p className="viva-rotulo text-text-primary">
-            Resumo do que você registrou
-          </p>
+          <p className="viva-rotulo text-text-primary">Resumo do que você registrou</p>
           <p className="mt-2 viva-apoio text-text-primary">
-            {resumo ??
-              "Você ainda não registrou respostas. Pode voltar quando quiser."}
+            {resumo ?? "Você ainda não registrou respostas. Pode voltar quando quiser."}
           </p>
           <p className="mt-3 viva-legenda text-text-secondary">
-            Este resumo repete apenas o que você escreveu. Ele não interpreta,
-            não avalia e não classifica nada.
+            Este resumo repete apenas o que você escreveu. Ele não interpreta, não avalia e não
+            classifica nada.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             {reflexao.respostas.repetir ? (

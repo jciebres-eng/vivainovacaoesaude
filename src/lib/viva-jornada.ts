@@ -24,12 +24,7 @@ export type EtapaDoPercurso =
 
 /** Linguagem de estado permitida (documento 13). Nada de "falhou"/"atrasado". */
 export type EstadoDoRegistro =
-  | "preparado"
-  | "iniciado"
-  | "pausado"
-  | "registrado"
-  | "encerrado"
-  | "retomado";
+  "preparado" | "iniciado" | "pausado" | "registrado" | "encerrado" | "retomado";
 
 export type MomentoAtual = {
   comoEstou: string | null;
@@ -236,10 +231,7 @@ export const jornada = {
       linhaDoTempo: adicionar(a.linhaDoTempo, {
         estado: a.atividade.estado === "pausada" ? "retomado" : "iniciado",
         titulo,
-        detalhe:
-          a.atividade.estado === "pausada"
-            ? "Atividade retomada"
-            : "Atividade iniciada",
+        detalhe: a.atividade.estado === "pausada" ? "Atividade retomada" : "Atividade iniciada",
       }),
     }));
   },

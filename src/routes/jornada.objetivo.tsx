@@ -76,9 +76,7 @@ function EscolhaDoObjetivo() {
             opcoes={daCategoria.map((o) => ({
               id: o.id,
               rotulo: o.nome,
-              apoio: o.disponivel
-                ? o.duracao
-                : "Disponível em uma próxima demonstração",
+              apoio: o.disponivel ? o.duracao : "Disponível em uma próxima demonstração",
               desabilitada: !o.disponivel,
             }))}
             valor={selecionado}
@@ -88,8 +86,8 @@ function EscolhaDoObjetivo() {
           />
 
           <Nota>
-            Nesta versão, apenas “Preparar uma rota alternativa” possui percurso
-            completo. As demais aparecem como possibilidades futuras.
+            Nesta versão, apenas “Preparar uma rota alternativa” possui percurso completo. As demais
+            aparecem como possibilidades futuras.
           </Nota>
 
           <AcoesAutonomas
@@ -108,11 +106,7 @@ function EscolhaDoObjetivo() {
             }
             secundarias={
               <>
-                <Botao
-                  variante="terciario"
-                  tamanho="compacto"
-                  onClick={() => setCategoriaId(null)}
-                >
+                <Botao variante="terciario" tamanho="compacto" onClick={() => setCategoriaId(null)}>
                   Ver outra possibilidade
                 </Botao>
                 <Botao

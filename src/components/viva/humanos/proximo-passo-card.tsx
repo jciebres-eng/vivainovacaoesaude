@@ -29,9 +29,7 @@ export function ProximoPassoCard({
   onRecusar?: () => void;
   className?: string;
 }) {
-  const [escolhido, setEscolhido] = useState<PassoPossivel>(
-    passoExterno ?? passos[0],
-  );
+  const [escolhido, setEscolhido] = useState<PassoPossivel>(passoExterno ?? passos[0]);
   const [trocando, setTrocando] = useState(false);
   const passo = passoExterno ?? escolhido;
 
@@ -77,11 +75,7 @@ export function ProximoPassoCard({
           />
           <AcoesAutonomas
             secundarias={
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={() => setTrocando(false)}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={() => setTrocando(false)}>
                 Manter a sugestão anterior
               </Botao>
             }
@@ -111,28 +105,16 @@ export function ProximoPassoCard({
             }
             secundarias={
               <>
-                <Botao
-                  variante="terciario"
-                  tamanho="compacto"
-                  onClick={() => setTrocando(true)}
-                >
+                <Botao variante="terciario" tamanho="compacto" onClick={() => setTrocando(true)}>
                   Escolher outro
                 </Botao>
                 {onAdiar ? (
-                  <Botao
-                    variante="terciario"
-                    tamanho="compacto"
-                    onClick={onAdiar}
-                  >
+                  <Botao variante="terciario" tamanho="compacto" onClick={onAdiar}>
                     Retomar depois
                   </Botao>
                 ) : null}
                 {onRecusar ? (
-                  <Botao
-                    variante="terciario"
-                    tamanho="compacto"
-                    onClick={onRecusar}
-                  >
+                  <Botao variante="terciario" tamanho="compacto" onClick={onRecusar}>
                     Não quero este passo
                   </Botao>
                 ) : null}

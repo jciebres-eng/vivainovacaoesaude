@@ -6,7 +6,7 @@
 
 **Versão 1.0**
 
-------------------------------------------------------------------------
+---
 
 **Finalidade**
 
@@ -25,7 +25,7 @@ Toda decisão visual deverá estar alinhada aos documentos:
 
 - 13_IDENTIDADE_DA_EXPERIENCIA.md
 
-------------------------------------------------------------------------
+---
 
 **Princípio central**
 
@@ -37,7 +37,7 @@ A atenção deve permanecer na atividade que deseja realizar.
 
 Nunca na interface.
 
-------------------------------------------------------------------------
+---
 
 **Princípios de Design**
 
@@ -57,7 +57,7 @@ Toda decisão visual deverá contribuir para:
 
 - manter consistência entre todas as telas.
 
-------------------------------------------------------------------------
+---
 
 **Identidade Visual**
 
@@ -87,7 +87,7 @@ hiperestimulação;
 
 complexidade desnecessária.
 
-------------------------------------------------------------------------
+---
 
 **Paleta de Cores**
 
@@ -111,7 +111,7 @@ Uso:
 
 - elementos ativos.
 
-------------------------------------------------------------------------
+---
 
 **Cor secundária**
 
@@ -127,7 +127,7 @@ Uso:
 
 - indicadores de evolução.
 
-------------------------------------------------------------------------
+---
 
 **Cor de apoio**
 
@@ -141,7 +141,7 @@ Uso:
 
 - áreas neutras.
 
-------------------------------------------------------------------------
+---
 
 **Tons neutros**
 
@@ -153,7 +153,7 @@ Evitar preto absoluto.
 
 Evitar branco puro em grandes áreas.
 
-------------------------------------------------------------------------
+---
 
 **Cores de atenção**
 
@@ -163,7 +163,7 @@ Somente para avisos importantes.
 
 Nunca utilizar amarelo intenso.
 
-------------------------------------------------------------------------
+---
 
 **Cores de erro**
 
@@ -173,7 +173,7 @@ Utilizado apenas quando realmente necessário.
 
 Nunca como elemento predominante.
 
-------------------------------------------------------------------------
+---
 
 **Tipografia**
 
@@ -199,7 +199,7 @@ Espaçamento confortável.
 
 Evitar textos centralizados longos.
 
-------------------------------------------------------------------------
+---
 
 **Escala Tipográfica**
 
@@ -227,7 +227,7 @@ Menor
 
 Peso 400
 
-------------------------------------------------------------------------
+---
 
 **Espaçamento**
 
@@ -241,7 +241,7 @@ Margens amplas.
 
 Separação clara entre blocos.
 
-------------------------------------------------------------------------
+---
 
 **Componentes**
 
@@ -257,7 +257,7 @@ alto contraste entre texto e fundo;
 
 área de toque confortável.
 
-------------------------------------------------------------------------
+---
 
 **Botões**
 
@@ -275,7 +275,7 @@ Somente texto.
 
 Nunca utilizar muitos botões principais simultaneamente.
 
-------------------------------------------------------------------------
+---
 
 **Cards**
 
@@ -285,7 +285,7 @@ Cada card deve responder apenas uma pergunta.
 
 Evitar excesso de conteúdo.
 
-------------------------------------------------------------------------
+---
 
 **Campos de entrada**
 
@@ -297,7 +297,7 @@ Mensagens de ajuda próximas ao campo.
 
 Erros explicados de forma objetiva.
 
-------------------------------------------------------------------------
+---
 
 **Navegação**
 
@@ -311,7 +311,7 @@ Barra inferior.
 
 No máximo cinco itens principais.
 
-------------------------------------------------------------------------
+---
 
 **Ícones**
 
@@ -327,7 +327,7 @@ Traço uniforme.
 
 Evitar ícones ilustrativos excessivamente detalhados.
 
-------------------------------------------------------------------------
+---
 
 **Ilustrações**
 
@@ -343,7 +343,7 @@ representações inclusivas.
 
 Evitar estereótipos.
 
-------------------------------------------------------------------------
+---
 
 **Animações**
 
@@ -365,7 +365,7 @@ Movimentos suaves.
 
 Sem efeitos chamativos.
 
-------------------------------------------------------------------------
+---
 
 **Feedback Visual**
 
@@ -379,7 +379,7 @@ ação indisponível.
 
 Evitar efeitos exagerados.
 
-------------------------------------------------------------------------
+---
 
 **Estados da Interface**
 
@@ -399,7 +399,7 @@ carregando;
 
 erro.
 
-------------------------------------------------------------------------
+---
 
 **Acessibilidade**
 
@@ -431,7 +431,7 @@ redução de animações;
 
 preferências de acessibilidade.
 
-------------------------------------------------------------------------
+---
 
 **Carga Cognitiva**
 
@@ -451,7 +451,7 @@ dividir em passos.
 
 Nunca apresentar formulários longos quando puderem ser fragmentados.
 
-------------------------------------------------------------------------
+---
 
 **Design Responsivo**
 
@@ -467,7 +467,7 @@ Sem perda de funcionalidade.
 
 Sem necessidade de zoom.
 
-------------------------------------------------------------------------
+---
 
 **Microinterações**
 
@@ -481,7 +481,7 @@ reduzir incerteza.
 
 Jamais distrair.
 
-------------------------------------------------------------------------
+---
 
 **Design Ético**
 
@@ -501,7 +501,7 @@ mecanismos destinados apenas a aumentar tempo de uso.
 
 Toda interação deverá favorecer decisões livres e informadas.
 
-------------------------------------------------------------------------
+---
 
 **Coerência**
 
@@ -521,7 +521,7 @@ Respeita os princípios éticos do VIVA?
 
 Se alguma resposta for negativa, a solução deverá ser redesenhada.
 
-------------------------------------------------------------------------
+---
 
 **Declaração Final**
 

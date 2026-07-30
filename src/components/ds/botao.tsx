@@ -14,11 +14,7 @@ import { icone as tokenIcone } from "./tokens";
  *
  * Regra de composição: no máximo um botão principal por bloco de decisão.
  */
-export type VarianteBotao =
-  | "principal"
-  | "secundario"
-  | "terciario"
-  | "destrutivo";
+export type VarianteBotao = "principal" | "secundario" | "terciario" | "destrutivo";
 
 export type TamanhoBotao = "padrao" | "compacto";
 
@@ -30,8 +26,7 @@ const variantes: Record<VarianteBotao, string> = {
     "bg-action-primary text-action-primary-foreground hover:bg-action-primary-hover active:bg-action-primary/95",
   secundario:
     "border border-border-default-default bg-surface-default text-text-primary hover:bg-background-secondary",
-  terciario:
-    "text-text-secondary underline underline-offset-4 hover:text-text-primary",
+  terciario: "text-text-secondary underline underline-offset-4 hover:text-text-primary",
   destrutivo:
     "border border-feedback-error/40 bg-surface-default text-feedback-error hover:bg-feedback-error/10",
 };
@@ -111,9 +106,7 @@ export function BotaoLink({
         <Icone className={tokenIcone.padrao} aria-hidden />
       ) : null}
       {children}
-      {Icone && iconePosicao === "fim" ? (
-        <Icone className={tokenIcone.padrao} aria-hidden />
-      ) : null}
+      {Icone && iconePosicao === "fim" ? <Icone className={tokenIcone.padrao} aria-hidden /> : null}
     </Link>
   );
 }
@@ -138,12 +131,7 @@ export function BotaoIcone({
       type={rest.type ?? "button"}
       aria-label={rotulo}
       title={rotulo}
-      className={cn(
-        base,
-        variantes[variante],
-        "min-h-11 min-w-11 px-3",
-        className,
-      )}
+      className={cn(base, variantes[variante], "min-h-11 min-w-11 px-3", className)}
     >
       <Icone className={tokenIcone.medio} aria-hidden />
     </button>

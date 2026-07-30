@@ -43,10 +43,7 @@ export function QuadroDoPercurso({
         baixaEstimulacao && "max-w-xl",
       )}
     >
-      <nav
-        aria-label="Navegação do percurso"
-        className="flex flex-wrap items-center gap-2"
-      >
+      <nav aria-label="Navegação do percurso" className="flex flex-wrap items-center gap-2">
         {aoVoltar ? (
           <button
             type="button"
@@ -97,18 +94,12 @@ export function QuadroDoPercurso({
       </nav>
 
       <header className="mt-6">
-        {etapa ? (
-          <p className="viva-legenda text-text-secondary">{etapa}</p>
-        ) : null}
+        {etapa ? <p className="viva-legenda text-text-secondary">{etapa}</p> : null}
         <h1 className="mt-1 viva-titulo text-text-primary">{titulo}</h1>
-        {finalidade ? (
-          <p className="mt-2 viva-apoio text-text-secondary">{finalidade}</p>
-        ) : null}
+        {finalidade ? <p className="mt-2 viva-apoio text-text-secondary">{finalidade}</p> : null}
       </header>
 
-      <div className={cn("mt-6 space-y-5", baixaEstimulacao && "space-y-4")}>
-        {children}
-      </div>
+      <div className={cn("mt-6 space-y-5", baixaEstimulacao && "space-y-4")}>{children}</div>
 
       {depois ? (
         <p className="mt-8 rounded-2xl bg-surface-muted px-4 py-3 viva-legenda text-text-secondary">
