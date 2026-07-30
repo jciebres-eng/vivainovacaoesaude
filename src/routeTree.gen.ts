@@ -26,6 +26,7 @@ import { Route as PercursoProximoPassoRouteImport } from './routes/_percurso.pro
 import { Route as PercursoRegistroRouteImport } from './routes/_percurso.registro'
 import { Route as PercursoRevisaoRouteImport } from './routes/_percurso.revisao'
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
+import { Route as PercursoSobreRouteImport } from './routes/_percurso.sobre'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
 import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.biblioteca.index'
 import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_percurso.biblioteca.$conteudoId'
@@ -117,6 +118,11 @@ const PercursoSistemaRoute = PercursoSistemaRouteImport.update({
   path: '/sistema',
   getParentRoute: () => PercursoRoute,
 } as any)
+const PercursoSobreRoute = PercursoSobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
   id: '/documentos/$slug',
   path: '/documentos/$slug',
@@ -168,6 +174,7 @@ export interface FileRoutesByFullPath {
   '/registro': typeof PercursoRegistroRoute
   '/revisao': typeof PercursoRevisaoRoute
   '/sistema': typeof PercursoSistemaRoute
+  '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByTo {
   '/registro': typeof PercursoRegistroRoute
   '/revisao': typeof PercursoRevisaoRoute
   '/sistema': typeof PercursoSistemaRoute
+  '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
@@ -218,6 +226,7 @@ export interface FileRoutesById {
   '/_percurso/registro': typeof PercursoRegistroRoute
   '/_percurso/revisao': typeof PercursoRevisaoRoute
   '/_percurso/sistema': typeof PercursoSistemaRoute
+  '/_percurso/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/_percurso/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
@@ -244,6 +253,7 @@ export interface FileRouteTypes {
     | '/registro'
     | '/revisao'
     | '/sistema'
+    | '/sobre'
     | '/documentos/$slug'
     | '/biblioteca/$conteudoId'
     | '/simulacao/situacao'
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/registro'
     | '/revisao'
     | '/sistema'
+    | '/sobre'
     | '/documentos/$slug'
     | '/biblioteca/$conteudoId'
     | '/simulacao/situacao'
@@ -293,6 +304,7 @@ export interface FileRouteTypes {
     | '/_percurso/registro'
     | '/_percurso/revisao'
     | '/_percurso/sistema'
+    | '/_percurso/sobre'
     | '/documentos/$slug'
     | '/_percurso/biblioteca/$conteudoId'
     | '/_percurso/simulacao/situacao'
@@ -428,6 +440,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoSistemaRouteImport
       parentRoute: typeof PercursoRoute
     }
+    '/_percurso/sobre': {
+      id: '/_percurso/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof PercursoSobreRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/documentos/$slug': {
       id: '/documentos/$slug'
       path: '/documentos/$slug'
@@ -501,6 +520,7 @@ interface PercursoRouteChildren {
   PercursoRegistroRoute: typeof PercursoRegistroRoute
   PercursoRevisaoRoute: typeof PercursoRevisaoRoute
   PercursoSistemaRoute: typeof PercursoSistemaRoute
+  PercursoSobreRoute: typeof PercursoSobreRoute
   PercursoBibliotecaConteudoIdRoute: typeof PercursoBibliotecaConteudoIdRoute
   PercursoSimulacaoSituacaoRoute: typeof PercursoSimulacaoSituacaoRoute
   PercursoBibliotecaIndexRoute: typeof PercursoBibliotecaIndexRoute
@@ -523,6 +543,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoRegistroRoute: PercursoRegistroRoute,
   PercursoRevisaoRoute: PercursoRevisaoRoute,
   PercursoSistemaRoute: PercursoSistemaRoute,
+  PercursoSobreRoute: PercursoSobreRoute,
   PercursoBibliotecaConteudoIdRoute: PercursoBibliotecaConteudoIdRoute,
   PercursoSimulacaoSituacaoRoute: PercursoSimulacaoSituacaoRoute,
   PercursoBibliotecaIndexRoute: PercursoBibliotecaIndexRoute,
