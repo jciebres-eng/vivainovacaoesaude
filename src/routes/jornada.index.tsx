@@ -76,22 +76,17 @@ function Entrada() {
           descricao="Vamos encontrar um próximo passo possível para hoje."
         >
           <Nota>
-            Você não precisa responder nada agora sobre como está ou sobre o que
-            pretende fazer.
+            Você não precisa responder nada agora sobre como está ou sobre o que pretende fazer.
           </Nota>
           <AcoesAutonomas
             principal={
-              <BotaoLink to="/jornada/momento" variante="principal">
+              <BotaoLink to="/jornada/objetivo" variante="principal">
                 Começar um novo percurso
               </BotaoLink>
             }
             secundarias={
               <>
-                <BotaoLink
-                  to="/jornada/objetivo"
-                  variante="terciario"
-                  tamanho="compacto"
-                >
+                <BotaoLink to="/jornada/objetivo" variante="terciario" tamanho="compacto">
                   Explorar possibilidades
                 </BotaoLink>
                 <BotaoLink to="/meu-momento" variante="terciario" tamanho="compacto">
@@ -129,18 +124,10 @@ function Entrada() {
         motivo="Você pode apagar todos os dados demonstrativos quando quiser."
         acao={
           <div className="flex flex-wrap gap-3">
-            <BotaoLink
-              to="/jornada/linha-do-tempo"
-              variante="secundario"
-              tamanho="compacto"
-            >
+            <BotaoLink to="/jornada/linha-do-tempo" variante="secundario" tamanho="compacto">
               Ver meu percurso
             </BotaoLink>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => jornada.apagarTudo()}
-            >
+            <Botao variante="terciario" tamanho="compacto" onClick={() => jornada.apagarTudo()}>
               Apagar os dados demonstrativos
             </Botao>
           </div>
@@ -153,7 +140,7 @@ function Entrada() {
 function rotaDaEtapa(etapa: string) {
   switch (etapa) {
     case "momento":
-      return "/jornada/momento";
+      return "/jornada/objetivo";
     case "objetivo":
       return "/jornada/objetivo";
     case "resumo":

@@ -100,10 +100,7 @@ export const perguntasDoMomento: {
 
 /** Indica pouca energia sem qualquer leitura clínica: é o que a pessoa escreveu. */
 export function indicouPoucaEnergia(estado: EstadoAtual) {
-  return (
-    estado.energia === "Tenho pouca energia agora" ||
-    estado.pausa === "Quero fazer uma pausa"
-  );
+  return estado.energia === "Tenho pouca energia agora" || estado.pausa === "Quero fazer uma pausa";
 }
 
 export const preferenciasPadrao: PreferenciasDaHome = {
@@ -158,8 +155,7 @@ function gravar(proximo: EstadoMomento) {
     window.localStorage.setItem(CHAVE, JSON.stringify(proximo));
     erroDeArmazenamento = null;
   } catch {
-    erroDeArmazenamento =
-      "Não foi possível salvar esta alteração neste dispositivo.";
+    erroDeArmazenamento = "Não foi possível salvar esta alteração neste dispositivo.";
   }
   avisar();
 }
@@ -203,10 +199,7 @@ export function useMomento() {
     [],
   );
 
-  const limparMomento = useCallback(
-    () => gravar({ ...estado, estadoAtual: {} }),
-    [],
-  );
+  const limparMomento = useCallback(() => gravar({ ...estado, estadoAtual: {} }), []);
 
   const definirPreferencia = useCallback(
     (patch: Partial<PreferenciasDaHome>) =>

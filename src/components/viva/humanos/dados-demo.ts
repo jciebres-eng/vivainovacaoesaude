@@ -114,24 +114,18 @@ export const passosPossiveis: PassoPossivel[] = [
 
 export const atividadeDemo = {
   nome: "Trajeto curto de transporte público",
-  finalidade:
-    "Reconhecer com antecedência as partes do trajeto e o que pode ajudar em cada uma.",
+  finalidade: "Reconhecer com antecedência as partes do trajeto e o que pode ajudar em cada uma.",
   descricao:
     "Uma leitura tranquila sobre o percurso, com espaço para anotar o que você quiser levar em conta.",
   etapas: 4,
   duracao: "Entre 10 e 15 minutos. Você pode interromper e continuar depois.",
-  materiais: [
-    "Celular",
-    "Fones, se você quiser",
-    "Papel e caneta, se preferir anotar",
-  ],
+  materiais: ["Celular", "Fones, se você quiser", "Papel e caneta, se preferir anotar"],
   ambiente: [
     "Um ambiente mais tranquilo, se possível",
     "Um lugar em que você possa sentar",
     "Qualquer ambiente em que você se sinta confortável",
   ],
-  depois:
-    "Depois da atividade, você poderá registrar como foi e ajustar seu percurso.",
+  depois: "Depois da atividade, você poderá registrar como foi e ajustar seu percurso.",
 };
 
 export const estrategiasSugeridas: OpcaoSimples[] = [

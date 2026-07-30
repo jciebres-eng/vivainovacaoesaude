@@ -52,10 +52,7 @@ function Preparacao() {
         voltarPara="/jornada"
       >
         <Card variante="informativo">
-          <Botao
-            variante="principal"
-            onClick={() => navigate({ to: "/jornada/objetivo" })}
-          >
+          <Botao variante="principal" onClick={() => navigate({ to: "/jornada/objetivo" })}>
             Escolher um objetivo
           </Botao>
         </Card>
@@ -157,17 +154,13 @@ function Preparacao() {
         </Card>
       ) : (
         <Card variante="informativo" titulo="Modo de baixa estimulação ativado">
-          <Nota>
-            A interface está mais simples. Você pode desativar quando quiser.
-          </Nota>
+          <Nota>A interface está mais simples. Você pode desativar quando quiser.</Nota>
           <AcoesAutonomas
             secundarias={
               <Botao
                 variante="terciario"
                 tamanho="compacto"
-                onClick={() =>
-                  jornada.ajustarPreparacao({ baixaEstimulacao: false })
-                }
+                onClick={() => jornada.ajustarPreparacao({ baixaEstimulacao: false })}
               >
                 Desativar baixa estimulação
               </Botao>

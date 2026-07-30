@@ -147,9 +147,7 @@ function assinar(ouvinte: () => void) {
 const instantaneoServidor = bibliotecaVazia;
 
 export function novoId(prefixo: string) {
-  return `${prefixo}-${Date.now().toString(36)}-${Math.random()
-    .toString(36)
-    .slice(2, 6)}`;
+  return `${prefixo}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
 }
 
 export function dataLegivel(iso: string) {
@@ -175,8 +173,7 @@ export function useBiblioteca() {
   );
 
   const atualizar = useCallback(
-    (mudanca: (anterior: EstadoDaBiblioteca) => EstadoDaBiblioteca) =>
-      gravar(mudanca(estado)),
+    (mudanca: (anterior: EstadoDaBiblioteca) => EstadoDaBiblioteca) => gravar(mudanca(estado)),
     [],
   );
 
@@ -271,9 +268,11 @@ export function useBiblioteca() {
   );
 
   const salvarReflexao = useCallback(
-    (reflexao: Omit<ReflexaoDeConteudo, "criadaEm" | "atualizadaEm"> & {
-      criadaEm?: string;
-    }) =>
+    (
+      reflexao: Omit<ReflexaoDeConteudo, "criadaEm" | "atualizadaEm"> & {
+        criadaEm?: string;
+      },
+    ) =>
       atualizar((a) => {
         const agora = new Date().toISOString();
         const existe = a.reflexoes.some((r) => r.id === reflexao.id);
@@ -281,9 +280,7 @@ export function useBiblioteca() {
           ...a,
           reflexoes: existe
             ? a.reflexoes.map((r) =>
-                r.id === reflexao.id
-                  ? { ...r, ...reflexao, atualizadaEm: agora }
-                  : r,
+                r.id === reflexao.id ? { ...r, ...reflexao, atualizadaEm: agora } : r,
               )
             : [
                 {
@@ -318,17 +315,14 @@ export function useBiblioteca() {
             quando,
             criadoEm: new Date().toISOString(),
           },
-          ...a.plano.filter(
-            (p) => !(p.conteudoId === conteudoId && p.quando === quando),
-          ),
+          ...a.plano.filter((p) => !(p.conteudoId === conteudoId && p.quando === quando)),
         ],
       })),
     [atualizar],
   );
 
   const removerDoPlano = useCallback(
-    (id: string) =>
-      atualizar((a) => ({ ...a, plano: a.plano.filter((p) => p.id !== id) })),
+    (id: string) => atualizar((a) => ({ ...a, plano: a.plano.filter((p) => p.id !== id) })),
     [atualizar],
   );
 

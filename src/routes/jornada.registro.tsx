@@ -1,10 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import { Botao, Card } from "@/components/ds";
-import {
-  AcoesAutonomas,
-  RegistroExperienciaCard,
-} from "@/components/viva/humanos";
+import { AcoesAutonomas, RegistroExperienciaCard } from "@/components/viva/humanos";
 import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { objetivoPorId } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";

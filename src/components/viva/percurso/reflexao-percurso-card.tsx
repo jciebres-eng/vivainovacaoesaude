@@ -29,22 +29,16 @@ export function ReflexaoPercursoCard({
   onRemoverResumo?: () => void;
   className?: string;
 }) {
-  const [respostas, setRespostas] = useState<Record<string, string>>(
-    respostasExternas ?? {},
-  );
+  const [respostas, setRespostas] = useState<Record<string, string>>(respostasExternas ?? {});
   const [outras, setOutras] = useState(false);
   const [guardado, setGuardado] = useState(false);
 
-  const visiveis = outras
-    ? perguntasDeReflexao.slice(2)
-    : perguntasDeReflexao.slice(0, 2);
+  const visiveis = outras ? perguntasDeReflexao.slice(2) : perguntasDeReflexao.slice(0, 2);
 
   if (guardado) {
     return (
       <Card variante="reflexao" titulo="Reflexão guardada" className={className}>
-        <Confirmacao>
-          Sua reflexão ficou guardada apenas neste dispositivo.
-        </Confirmacao>
+        <Confirmacao>Sua reflexão ficou guardada apenas neste dispositivo.</Confirmacao>
       </Card>
     );
   }
@@ -64,8 +58,7 @@ export function ReflexaoPercursoCard({
         </ul>
       ) : (
         <p className="viva-apoio text-text-secondary">
-          Você ainda não registrou nada nesta atividade. Também está tudo bem
-          seguir sem resumo.
+          Você ainda não registrou nada nesta atividade. Também está tudo bem seguir sem resumo.
         </p>
       )}
 
@@ -77,16 +70,13 @@ export function ReflexaoPercursoCard({
             apoio="Responder é opcional."
             rows={3}
             value={respostas[pergunta.id] ?? ""}
-            onChange={(e) =>
-              setRespostas((r) => ({ ...r, [pergunta.id]: e.target.value }))
-            }
+            onChange={(e) => setRespostas((r) => ({ ...r, [pergunta.id]: e.target.value }))}
           />
         ))}
       </div>
 
       <Nota>
-        Você escolhe o que fica registrado. Pular esta etapa não muda nada no
-        seu percurso.
+        Você escolhe o que fica registrado. Pular esta etapa não muda nada no seu percurso.
       </Nota>
 
       <AcoesAutonomas
@@ -103,19 +93,11 @@ export function ReflexaoPercursoCard({
         }
         secundarias={
           <>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => setOutras((v) => !v)}
-            >
+            <Botao variante="terciario" tamanho="compacto" onClick={() => setOutras((v) => !v)}>
               {outras ? "Ver as primeiras perguntas" : "Ver outras perguntas"}
             </Botao>
             {onEditarRegistro ? (
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={onEditarRegistro}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={onEditarRegistro}>
                 Editar registro
               </Botao>
             ) : null}
@@ -125,11 +107,7 @@ export function ReflexaoPercursoCard({
               </Botao>
             ) : null}
             {onRemoverResumo ? (
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={onRemoverResumo}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={onRemoverResumo}>
                 Remover este resumo
               </Botao>
             ) : null}

@@ -26,8 +26,7 @@ type BaseCampo = {
 const campoBase =
   "w-full rounded-2xl border bg-surface-default px-4 py-3 viva-texto text-text-primary placeholder:text-text-secondary disabled:cursor-not-allowed disabled:opacity-55";
 
-const bordaCampo = (erro?: string) =>
-  erro ? "border-feedback-error" : "border-input";
+const bordaCampo = (erro?: string) => (erro ? "border-feedback-error" : "border-input");
 
 /** Envelope comum: rótulo, apoio, campo e mensagem de validação. */
 export function Campo({
@@ -51,9 +50,7 @@ export function Campo({
       <label htmlFor={htmlFor} className="block viva-rotulo text-text-primary">
         {rotulo}
         {obrigatorio ? (
-          <span className="ml-1 viva-legenda text-text-secondary">
-            (necessário)
-          </span>
+          <span className="ml-1 viva-legenda text-text-secondary">(necessário)</span>
         ) : null}
       </label>
       {apoio ? (
@@ -68,10 +65,7 @@ export function Campo({
           role="alert"
           className="mt-2 flex items-start gap-2 viva-legenda text-feedback-error"
         >
-          <AlertCircle
-            className={cn(tokenIcone.padrao, "mt-0.5 shrink-0")}
-            aria-hidden
-          />
+          <AlertCircle className={cn(tokenIcone.padrao, "mt-0.5 shrink-0")} aria-hidden />
           <span>{erro}</span>
         </p>
       ) : null}
@@ -84,22 +78,13 @@ function useCampoIds(erro?: string, apoio?: string) {
   const apoioId = `${id}-apoio`;
   const erroId = `${id}-erro`;
   const describedBy =
-    [apoio ? apoioId : null, erro ? erroId : null].filter(Boolean).join(" ") ||
-    undefined;
+    [apoio ? apoioId : null, erro ? erroId : null].filter(Boolean).join(" ") || undefined;
   return { id, apoioId, erroId, describedBy };
 }
 
-type InputProps = BaseCampo &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, "className" | "id">;
+type InputProps = BaseCampo & Omit<React.InputHTMLAttributes<HTMLInputElement>, "className" | "id">;
 
-export function CampoTexto({
-  rotulo,
-  apoio,
-  erro,
-  obrigatorio,
-  className,
-  ...rest
-}: InputProps) {
+export function CampoTexto({ rotulo, apoio, erro, obrigatorio, className, ...rest }: InputProps) {
   const { id, apoioId, erroId, describedBy } = useCampoIds(erro, apoio);
   return (
     <Campo
@@ -142,8 +127,7 @@ export function AreaDeTexto({
   obrigatorio,
   className,
   ...rest
-}: BaseCampo &
-  Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "className" | "id">) {
+}: BaseCampo & Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "className" | "id">) {
   const { id, apoioId, erroId, describedBy } = useCampoIds(erro, apoio);
   return (
     <Campo
@@ -235,9 +219,7 @@ export function CaixaDeSelecao({
       />
       <label htmlFor={id} className="min-w-0">
         <span className="block viva-rotulo text-text-primary">{rotulo}</span>
-        {apoio ? (
-          <span className="block viva-legenda text-text-secondary">{apoio}</span>
-        ) : null}
+        {apoio ? <span className="block viva-legenda text-text-secondary">{apoio}</span> : null}
       </label>
     </div>
   );
@@ -273,9 +255,7 @@ export function BotaoDeOpcao({
       />
       <label htmlFor={id} className="min-w-0">
         <span className="block viva-rotulo text-text-primary">{rotulo}</span>
-        {apoio ? (
-          <span className="block viva-legenda text-text-secondary">{apoio}</span>
-        ) : null}
+        {apoio ? <span className="block viva-legenda text-text-secondary">{apoio}</span> : null}
       </label>
     </div>
   );
@@ -303,9 +283,7 @@ export function Interruptor({
     <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
       <span className="min-w-0">
         <span className="block viva-rotulo text-text-primary">{rotulo}</span>
-        {apoio ? (
-          <span className="block viva-legenda text-text-secondary">{apoio}</span>
-        ) : null}
+        {apoio ? <span className="block viva-legenda text-text-secondary">{apoio}</span> : null}
       </span>
       <button
         type="button"
@@ -360,9 +338,7 @@ export function ControleDeslizante({
           {formatarValor ? formatarValor(valor) : valor}
         </span>
       </div>
-      {apoio ? (
-        <p className="mt-1 viva-legenda text-text-secondary">{apoio}</p>
-      ) : null}
+      {apoio ? <p className="mt-1 viva-legenda text-text-secondary">{apoio}</p> : null}
       <input
         id={id}
         type="range"

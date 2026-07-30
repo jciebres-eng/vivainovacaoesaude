@@ -64,11 +64,7 @@ export function RetomarAtividadeCard({
               </Botao>
             ) : null}
             {onRetomarDepois ? (
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={onRetomarDepois}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={onRetomarDepois}>
                 Retomar em outro momento
               </Botao>
             ) : null}

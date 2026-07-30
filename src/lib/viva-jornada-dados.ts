@@ -235,8 +235,7 @@ export function objetivoPorId(id?: string | null) {
 export const preparacaoDoObjetivo = {
   "rota-alternativa": {
     nome: "Preparar uma rota alternativa",
-    finalidade:
-      "Organizar outra possibilidade de trajeto antes de um deslocamento.",
+    finalidade: "Organizar outra possibilidade de trajeto antes de um deslocamento.",
     descricao:
       "Uma sequência curta de anotações suas sobre destino, caminho alternativo e informações úteis.",
     etapas: 4,
@@ -335,8 +334,7 @@ export const etapasDaAtividade: Record<string, EtapaDaAtividade[]> = {
     {
       id: "estrategia",
       titulo: "Definir uma estratégia",
-      instrucao:
-        "Escolha o que poderá fazer se houver atraso ou mudança de rota.",
+      instrucao: "Escolha o que poderá fazer se houver atraso ou mudança de rota.",
       exemplo: "Por exemplo: “parar em um lugar tranquilo e reler minhas notas”.",
       rotuloCampo: "Minha estratégia",
       placeholder: "O que pode ajudar se algo mudar",

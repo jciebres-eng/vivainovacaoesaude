@@ -11,7 +11,6 @@ import {
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
-import { steps } from "@/lib/viva-data";
 import { useExperiencia } from "@/lib/viva-experiencia";
 
 type To = LinkProps["to"];
@@ -36,11 +35,7 @@ const itensPrincipais: {
     to: "/jornada",
     label: "Percurso",
     icon: RouteIcon,
-    combina: (p) =>
-      (p.startsWith("/jornada") || steps.some((s) => p.startsWith(s.path))) &&
-      !p.startsWith("/meu-momento") &&
-      !p.startsWith("/biblioteca") &&
-      !p.startsWith("/linha-do-tempo"),
+    combina: (p) => p.startsWith("/jornada") && !p.startsWith("/jornada/linha-do-tempo"),
   },
   {
     to: "/biblioteca",
@@ -49,19 +44,17 @@ const itensPrincipais: {
     combina: (p) => p.startsWith("/biblioteca"),
   },
   {
-    to: "/linha-do-tempo",
+    to: "/jornada/linha-do-tempo",
     label: "Trajetória",
     icon: Clock3,
-    combina: (p) => p.startsWith("/linha-do-tempo"),
+    combina: (p) => p.startsWith("/jornada/linha-do-tempo"),
   },
   {
     to: "/sobre",
     label: "Sobre o VIVA",
     icon: ShieldCheck,
     combina: (p) =>
-      p.startsWith("/sobre") ||
-      p.startsWith("/seus-dados") ||
-      p.startsWith("/documenta"),
+      p.startsWith("/sobre") || p.startsWith("/seus-dados") || p.startsWith("/documenta"),
   },
 ];
 
@@ -72,26 +65,21 @@ export function AppShell({ children }: { children: ReactNode }) {
   // a pessoa continua alcançando tudo pelo próprio conteúdo das telas.
   const foco = preferencias.navegacao === "foco";
   const itens = foco
-    ? itensPrincipais.filter(
-        (i) => i.label === "Meu momento" || i.label === "Percurso",
-      )
+    ? itensPrincipais.filter((i) => i.label === "Meu momento" || i.label === "Percurso")
     : itensPrincipais;
 
   return (
     <div className="min-h-dvh bg-background">
       <a
         href="#conteudo"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface-default focus:px-4 focus:py-2 focus:text-card-foreground"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface-default focus:px-4 focus:py-2 focus:text-text-primary"
       >
         Ir para o conteúdo
       </a>
       <div className="mx-auto flex w-full max-w-7xl">
         <SideNav pathname={pathname} itens={itens} foco={foco} />
         <div className="min-w-0 flex-1">
-          <main
-            id="conteudo"
-            className="px-5 pb-28 pt-8 md:px-10 md:pb-16 md:pt-12"
-          >
+          <main id="conteudo" className="px-5 pb-28 pt-8 md:px-10 md:pb-16 md:pt-12">
             <div className="mx-auto max-w-3xl">{children}</div>
           </main>
         </div>
@@ -127,12 +115,8 @@ function SideNav({
             <Leaf className="h-4 w-4" />
           </span>
           <span className="min-w-0">
-            <span className="block truncate viva-subtitulo text-sidebar-foreground">
-              VIVA
-            </span>
-            <span className="block truncate viva-legenda text-text-secondary">
-              Demonstração
-            </span>
+            <span className="block truncate viva-subtitulo text-sidebar-foreground">VIVA</span>
+            <span className="block truncate viva-legenda text-text-secondary">Demonstração</span>
           </span>
         </Link>
       </div>
@@ -150,7 +134,7 @@ function SideNav({
                     "viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem]",
                     ativo
                       ? "bg-accent font-semibold text-accent-foreground"
-                      : "text-sidebar-foreground hover:bg-secondary",
+                      : "text-sidebar-foreground hover:bg-background-secondary",
                   )}
                 >
                   <item.icon className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
@@ -165,10 +149,8 @@ function SideNav({
       <div className="px-3 pb-6">
         <Link
           to="/minha-experiencia"
-          aria-current={
-            pathname.startsWith("/minha-experiencia") ? "page" : undefined
-          }
-          className="viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem] text-sidebar-foreground hover:bg-secondary"
+          aria-current={pathname.startsWith("/minha-experiencia") ? "page" : undefined}
+          className="viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem] text-sidebar-foreground hover:bg-background-secondary"
         >
           <SlidersHorizontal className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
           <span className="truncate">Minha experiência</span>
@@ -183,13 +165,7 @@ function SideNav({
   );
 }
 
-function BottomNav({
-  pathname,
-  itens,
-}: {
-  pathname: string;
-  itens: ItemDeNavegacao[];
-}) {
+function BottomNav({ pathname, itens }: { pathname: string; itens: ItemDeNavegacao[] }) {
   return (
     <nav
       aria-label="Navegação principal (rodapé)"

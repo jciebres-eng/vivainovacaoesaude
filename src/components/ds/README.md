@@ -10,20 +10,20 @@ Importe sempre por `@/components/ds`. Não escreva valores visuais soltos
 
 Cores semânticas disponíveis como classes Tailwind:
 
-| Token | Uso |
-| --- | --- |
-| `background-primary` | fundo da aplicação |
-| `background-secondary` | faixas e notas de apoio |
-| `surface-default` | cards e campos |
-| `surface-muted` | blocos internos, listas |
-| `text-primary` / `text-secondary` | texto principal / de apoio |
-| `border-default` | bordas |
-| `action-primary` / `action-secondary` | ações |
-| `feedback-information` | contexto e orientação |
-| `feedback-attention` | aviso suave (amarelo, nunca urgência) |
-| `feedback-continuidade` | continuidade e conclusão |
-| `feedback-error` | erro real, discreto |
-| `focus-ring` | anel de foco (sempre visível) |
+| Token                                 | Uso                                   |
+| ------------------------------------- | ------------------------------------- |
+| `background-primary`                  | fundo da aplicação                    |
+| `background-secondary`                | faixas e notas de apoio               |
+| `surface-default`                     | cards e campos                        |
+| `surface-muted`                       | blocos internos, listas               |
+| `text-primary` / `text-secondary`     | texto principal / de apoio            |
+| `border-default`                      | bordas                                |
+| `action-primary` / `action-secondary` | ações                                 |
+| `feedback-information`                | contexto e orientação                 |
+| `feedback-attention`                  | aviso suave (amarelo, nunca urgência) |
+| `feedback-continuidade`               | continuidade e conclusão              |
+| `feedback-error`                      | erro real, discreto                   |
+| `focus-ring`                          | anel de foco (sempre visível)         |
 
 Tipografia (oito estilos): `viva-titulo-pagina`, `viva-titulo-secao`,
 `viva-subtitulo`, `viva-texto`, `viva-apoio`, `viva-legenda`, `viva-rotulo`,
@@ -65,9 +65,9 @@ foco gerenciado. Prefira uma tela simples quando o modal não for necessário.
 `IndicadorDeEstado`, `MarcadorDeContinuidade`, `BarraDeContinuidade`,
 `EtapasDoPercurso`, `Carregando`, `EstadoDaInterface`, `Confirmacao`.
 
-Linguagem permitida: *Em preparação, Em andamento, Você pode continuar,
-Concluído, Pausado, Retomar quando desejar*.
-Proibida: *Falhou, Atrasado, Incompleto, Baixo desempenho*.
+Linguagem permitida: _Em preparação, Em andamento, Você pode continuar,
+Concluído, Pausado, Retomar quando desejar_.
+Proibida: _Falhou, Atrasado, Incompleto, Baixo desempenho_.
 
 `EstadoDaInterface` cobre `vazio`, `concluido`, `indisponivel`, `erro`,
 `sem-conexao` e `nao-encontrado` com mensagens neutras já escritas.

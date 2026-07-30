@@ -76,16 +76,10 @@ function LinhaDoTempoDoPercurso() {
                     estado={aparencia[e.estado]}
                     texto={rotulosDeEstadoDoRegistro[e.estado]}
                   />
-                  <span className="viva-legenda text-text-secondary">
-                    {dataLegivel(e.quando)}
-                  </span>
+                  <span className="viva-legenda text-text-secondary">{dataLegivel(e.quando)}</span>
                 </div>
                 <p className="mt-2 viva-rotulo text-text-primary">{e.titulo}</p>
-                {e.detalhe ? (
-                  <p className="viva-legenda text-text-secondary">
-                    {e.detalhe}
-                  </p>
-                ) : null}
+                {e.detalhe ? <p className="viva-legenda text-text-secondary">{e.detalhe}</p> : null}
               </Card>
             </li>
           ))}
@@ -93,10 +87,7 @@ function LinhaDoTempoDoPercurso() {
       )}
 
       <Card variante="informativo" titulo="Seus dados">
-        <Nota>
-          Tudo aqui fica somente neste navegador. Nada é enviado, comparado ou
-          analisado.
-        </Nota>
+        <Nota>Tudo aqui fica somente neste navegador. Nada é enviado, comparado ou analisado.</Nota>
         <AcoesAutonomas
           secundarias={
             <>
@@ -107,11 +98,7 @@ function LinhaDoTempoDoPercurso() {
               >
                 Reiniciar o percurso
               </Botao>
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={() => jornada.apagarTudo()}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={() => jornada.apagarTudo()}>
                 Apagar os dados demonstrativos
               </Botao>
             </>

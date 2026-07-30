@@ -26,17 +26,9 @@ export type Linguagem = "essencial" | "equilibrada" | "detalhada";
 export type Densidade = "reduzida" | "intermediaria" | "completa";
 export type TamanhoDePasso = "pequenos" | "medios" | "amplos";
 export type Ritmo = "livre" | "tranquilo" | "continuo";
-export type IntensidadeDeNotificacao =
-  | "silencioso"
-  | "essencial"
-  | "moderado"
-  | "personalizado";
+export type IntensidadeDeNotificacao = "silencioso" | "essencial" | "moderado" | "personalizado";
 export type CanalDeNotificacao =
-  | "continuidade"
-  | "preparacao"
-  | "revisao"
-  | "biblioteca"
-  | "lembretes";
+  "continuidade" | "preparacao" | "revisao" | "biblioteca" | "lembretes";
 export type ModoDeNavegacao = "guiado" | "exploracao" | "foco";
 export type Tema = "claro" | "escuro" | "baixo-estimulo" | "automatico";
 export type Contraste = "padrao" | "aumentado";
@@ -140,44 +132,43 @@ export const preferenciasPadrao: Preferencias = {
 
 /* ----------------------------------------------------- catálogo de rótulos */
 
-export const estrategiasSugeridas: { id: string; nome: string; apoio: string }[] =
-  [
-    {
-      id: "dividir",
-      nome: "Dividir atividades em partes",
-      apoio: "Fazer por etapas, uma de cada vez.",
-    },
-    {
-      id: "preparar-materiais",
-      nome: "Preparar materiais antes",
-      apoio: "Deixar tudo separado antes de começar.",
-    },
-    {
-      id: "lembretes-escritos",
-      nome: "Usar lembretes escritos",
-      apoio: "Anotar o que não quero esquecer.",
-    },
-    {
-      id: "pausas",
-      nome: "Fazer pausas",
-      apoio: "Parar quando precisar, sem justificar.",
-    },
-    {
-      id: "reduzir-estimulos",
-      nome: "Reduzir estímulos",
-      apoio: "Procurar um lugar mais silencioso ou com menos gente.",
-    },
-    {
-      id: "fones",
-      nome: "Utilizar fones",
-      apoio: "Diminuir o ruído do ambiente.",
-    },
-    {
-      id: "revisar-antes-de-sair",
-      nome: "Revisar antes de sair",
-      apoio: "Conferir o que levo e o caminho antes de começar.",
-    },
-  ];
+export const estrategiasSugeridas: { id: string; nome: string; apoio: string }[] = [
+  {
+    id: "dividir",
+    nome: "Dividir atividades em partes",
+    apoio: "Fazer por etapas, uma de cada vez.",
+  },
+  {
+    id: "preparar-materiais",
+    nome: "Preparar materiais antes",
+    apoio: "Deixar tudo separado antes de começar.",
+  },
+  {
+    id: "lembretes-escritos",
+    nome: "Usar lembretes escritos",
+    apoio: "Anotar o que não quero esquecer.",
+  },
+  {
+    id: "pausas",
+    nome: "Fazer pausas",
+    apoio: "Parar quando precisar, sem justificar.",
+  },
+  {
+    id: "reduzir-estimulos",
+    nome: "Reduzir estímulos",
+    apoio: "Procurar um lugar mais silencioso ou com menos gente.",
+  },
+  {
+    id: "fones",
+    nome: "Utilizar fones",
+    apoio: "Diminuir o ruído do ambiente.",
+  },
+  {
+    id: "revisar-antes-de-sair",
+    nome: "Revisar antes de sair",
+    apoio: "Conferir o que levo e o caminho antes de começar.",
+  },
+];
 
 export const rotulosDeCanal: Record<CanalDeNotificacao, string> = {
   continuidade: "Continuidade do percurso",
@@ -255,14 +246,11 @@ function gravar(p: Preferencias) {
 }
 
 export function ExperienciaProvider({ children }: { children: ReactNode }) {
-  const [preferencias, setPreferencias] =
-    useState<Preferencias>(preferenciasPadrao);
+  const [preferencias, setPreferencias] = useState<Preferencias>(preferenciasPadrao);
   const [hidratado, setHidratado] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
   const temporizador = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [temaDoSistema, setTemaDoSistema] = useState<"claro" | "escuro">(
-    "claro",
-  );
+  const [temaDoSistema, setTemaDoSistema] = useState<"claro" | "escuro">("claro");
 
   useEffect(() => {
     const salvo = ler();
@@ -292,10 +280,7 @@ export function ExperienciaProvider({ children }: { children: ReactNode }) {
         gravar(proximo);
         return proximo;
       });
-      anunciar(
-        mensagem ??
-          "Sua preferência foi aplicada. Você pode alterá-la quando desejar.",
-      );
+      anunciar(mensagem ?? "Sua preferência foi aplicada. Você pode alterá-la quando desejar.");
     },
     [anunciar],
   );
@@ -313,9 +298,7 @@ export function ExperienciaProvider({ children }: { children: ReactNode }) {
         gravar(proximo);
         return proximo;
       });
-      anunciar(
-        "Sua lista de estratégias foi atualizada. Elas são possibilidades, não obrigações.",
-      );
+      anunciar("Sua lista de estratégias foi atualizada. Elas são possibilidades, não obrigações.");
     },
     [anunciar],
   );
@@ -381,10 +364,7 @@ export function ExperienciaProvider({ children }: { children: ReactNode }) {
       "viva-sem-animacao",
       movimento.reduzirAnimacoes || movimento.removerTransicoes,
     );
-    raiz.classList.toggle(
-      "viva-sem-decoracao",
-      movimento.semEfeitosDecorativos,
-    );
+    raiz.classList.toggle("viva-sem-decoracao", movimento.semEfeitosDecorativos);
   }, [preferencias, hidratado, temaDoSistema]);
 
   const valor = useMemo(
@@ -467,10 +447,7 @@ export const itensPorPasso: Record<TamanhoDePasso, number> = {
 };
 
 /** Um canal está ativo conforme a intensidade escolhida. */
-export function canalAtivo(
-  preferencias: Preferencias,
-  canal: CanalDeNotificacao,
-) {
+export function canalAtivo(preferencias: Preferencias, canal: CanalDeNotificacao) {
   const { intensidade, canais } = preferencias.notificacoes;
   if (intensidade === "silencioso") return false;
   if (intensidade === "essencial") {

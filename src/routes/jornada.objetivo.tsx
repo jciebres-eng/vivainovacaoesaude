@@ -4,7 +4,12 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Botao, Card, Nota } from "@/components/ds";
 import { AcoesAutonomas, EscolhaAutonomaGroup } from "@/components/viva/humanos";
 import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
-import { categorias, objetivos } from "@/lib/viva-jornada-dados";
+import {
+  categorias,
+  necessidadeDeEstimulos,
+  objetivos,
+  ritmosDoMomento,
+} from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
 export const Route = createFileRoute("/jornada/objetivo")({
@@ -41,11 +46,49 @@ function EscolhaDoObjetivo() {
     <QuadroDoPercurso
       titulo="O que você gostaria de preparar?"
       finalidade="Qual situação faz sentido trabalhar agora? Você poderá mudar essa escolha depois."
-      voltarPara={categoriaId ? undefined : "/jornada/momento"}
+      voltarPara={categoriaId ? undefined : "/jornada"}
       aoVoltar={categoriaId ? () => setCategoriaId(null) : undefined}
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
       depois="Depois de escolher, você verá um resumo breve da atividade antes de começar."
     >
+      {!categoriaId ? (
+        <Card
+          variante="informativo"
+          titulo="Preferência de ritmo"
+          descricao="Opcional. Serve apenas para adaptar esta demonstração. Nada aqui indica diagnóstico, risco ou estado psicológico."
+        >
+          <div className="space-y-6">
+            <EscolhaAutonomaGroup
+              titulo="Como você prefere seguir hoje?"
+              opcoes={ritmosDoMomento}
+              valor={j.momento.ritmo}
+              onEscolher={(id) =>
+                jornada.registrarMomento({
+                  ritmo: j.momento.ritmo === id ? null : id,
+                })
+              }
+              colunas="uma"
+            />
+
+            <EscolhaAutonomaGroup
+              titulo="Necessidade de redução de estímulos"
+              opcoes={necessidadeDeEstimulos}
+              valor={j.momento.estimulos}
+              onEscolher={(id) => {
+                jornada.registrarMomento({
+                  estimulos: j.momento.estimulos === id ? null : id,
+                });
+                if (id === "reduzir") {
+                  jornada.ajustarPreparacao({ baixaEstimulacao: true });
+                }
+              }}
+              colunas="uma"
+              nota="Se você escolher reduzir estímulos, a interface fica mais simples daqui em diante."
+            />
+          </div>
+        </Card>
+      ) : null}
+
       {!categoriaId ? (
         <Card variante="informativo">
           <EscolhaAutonomaGroup
@@ -76,9 +119,7 @@ function EscolhaDoObjetivo() {
             opcoes={daCategoria.map((o) => ({
               id: o.id,
               rotulo: o.nome,
-              apoio: o.disponivel
-                ? o.duracao
-                : "Disponível em uma próxima demonstração",
+              apoio: o.disponivel ? o.duracao : "Disponível em uma próxima demonstração",
               desabilitada: !o.disponivel,
             }))}
             valor={selecionado}
@@ -88,8 +129,8 @@ function EscolhaDoObjetivo() {
           />
 
           <Nota>
-            Nesta versão, apenas “Preparar uma rota alternativa” possui percurso
-            completo. As demais aparecem como possibilidades futuras.
+            Nesta versão, apenas “Preparar uma rota alternativa” possui percurso completo. As demais
+            aparecem como possibilidades futuras.
           </Nota>
 
           <AcoesAutonomas
@@ -108,11 +149,7 @@ function EscolhaDoObjetivo() {
             }
             secundarias={
               <>
-                <Botao
-                  variante="terciario"
-                  tamanho="compacto"
-                  onClick={() => setCategoriaId(null)}
-                >
+                <Botao variante="terciario" tamanho="compacto" onClick={() => setCategoriaId(null)}>
                   Ver outra possibilidade
                 </Botao>
                 <Botao

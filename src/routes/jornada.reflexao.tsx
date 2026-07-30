@@ -4,10 +4,7 @@ import { Botao, Card } from "@/components/ds";
 import { AcoesAutonomas } from "@/components/viva/humanos";
 import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { ReflexaoPercursoCard } from "@/components/viva/percurso/reflexao-percurso-card";
-import {
-  estrategiasDaPreparacao,
-  objetivoPorId,
-} from "@/lib/viva-jornada-dados";
+import { estrategiasDaPreparacao, objetivoPorId } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
 export const Route = createFileRoute("/jornada/reflexao")({
@@ -42,9 +39,7 @@ function montarResumo(
     frases.push(`Você registrou que ajudou: ${registro.ajudou.join(", ")}.`);
   }
   if (registro?.dificultou.length) {
-    frases.push(
-      `Você registrou que dificultou: ${registro.dificultou.join(", ")}.`,
-    );
+    frases.push(`Você registrou que dificultou: ${registro.dificultou.join(", ")}.`);
   }
   if (registro?.emMinhasPalavras) {
     frases.push(`Com suas palavras: “${registro.emMinhasPalavras}”.`);
@@ -67,11 +62,7 @@ function Reflexao() {
   const objetivo = objetivoPorId(j.objetivoId);
   const nome = objetivo?.nome ?? "Atividade";
 
-  const resumo = montarResumo(
-    j.registro,
-    j.atividade.respostas,
-    j.preparacao.estrategias,
-  );
+  const resumo = montarResumo(j.registro, j.atividade.respostas, j.preparacao.estrategias);
 
   return (
     <QuadroDoPercurso

@@ -13,12 +13,7 @@ import { icone as tokenIcone } from "./tokens";
  * Termos proibidos: falhou, atrasado, incompleto, baixo desempenho.
  */
 export type EstadoDoPercurso =
-  | "em-preparacao"
-  | "em-andamento"
-  | "pode-continuar"
-  | "concluido"
-  | "pausado"
-  | "retomar";
+  "em-preparacao" | "em-andamento" | "pode-continuar" | "concluido" | "pausado" | "retomar";
 
 const rotulos: Record<EstadoDoPercurso, string> = {
   "em-preparacao": "Em preparação",
@@ -33,8 +28,7 @@ const aparencias: Record<EstadoDoPercurso, string> = {
   "em-preparacao": "bg-surface-muted text-text-secondary",
   "em-andamento": "bg-feedback-information text-feedback-information-foreground",
   "pode-continuar": "bg-feedback-information text-feedback-information-foreground",
-  concluido:
-    "bg-feedback-continuidade-suave text-feedback-continuidade-foreground",
+  concluido: "bg-feedback-continuidade-suave text-feedback-continuidade-foreground",
   pausado: "bg-surface-muted text-text-secondary",
   retomar: "bg-surface-muted text-text-secondary",
 };
@@ -49,13 +43,7 @@ const icones: Record<EstadoDoPercurso, typeof Check> = {
 };
 
 /** Indicador de estado: cor + ícone + palavra. Nunca só cor. */
-export function IndicadorDeEstado({
-  estado,
-  texto,
-}: {
-  estado: EstadoDoPercurso;
-  texto?: string;
-}) {
+export function IndicadorDeEstado({ estado, texto }: { estado: EstadoDoPercurso; texto?: string }) {
   const Icone = icones[estado];
   return (
     <span
@@ -151,9 +139,7 @@ export function EtapasDoPercurso({
           key={e.id}
           className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-2xl bg-surface-muted px-4 py-3"
         >
-          <span className="min-w-0 truncate viva-apoio text-text-primary">
-            {e.titulo}
-          </span>
+          <span className="min-w-0 truncate viva-apoio text-text-primary">{e.titulo}</span>
           <IndicadorDeEstado estado={e.estado} />
         </li>
       ))}
@@ -164,11 +150,7 @@ export function EtapasDoPercurso({
 /* ------------------------------------------------- estados da interface */
 
 /** Carregando: texto sempre presente, sem pulsação contínua de conteúdo. */
-export function Carregando({
-  texto = "Carregando esta parte…",
-}: {
-  texto?: string;
-}) {
+export function Carregando({ texto = "Carregando esta parte…" }: { texto?: string }) {
   return (
     <p
       role="status"
@@ -186,40 +168,34 @@ export function Carregando({
  * conteúdo não encontrado. Sempre neutra e orientada ao próximo passo.
  */
 export type TipoDeEstado =
-  | "vazio"
-  | "concluido"
-  | "indisponivel"
-  | "erro"
-  | "sem-conexao"
-  | "nao-encontrado";
+  "vazio" | "concluido" | "indisponivel" | "erro" | "sem-conexao" | "nao-encontrado";
 
-const mensagensPadrao: Record<TipoDeEstado, { titulo: string; texto: string }> =
-  {
-    vazio: {
-      titulo: "Ainda não há registros aqui.",
-      texto: "Você pode começar quando fizer sentido.",
-    },
-    concluido: {
-      titulo: "Suas alterações foram salvas.",
-      texto: "Você pode editar isto depois, quando quiser.",
-    },
-    indisponivel: {
-      titulo: "Esta parte não está disponível agora.",
-      texto: "Você pode seguir por outro caminho e voltar mais tarde.",
-    },
-    erro: {
-      titulo: "Não foi possível carregar esta informação.",
-      texto: "Tente novamente ou retorne mais tarde.",
-    },
-    "sem-conexao": {
-      titulo: "Você está sem conexão.",
-      texto: "Suas escolhas continuam guardadas neste dispositivo.",
-    },
-    "nao-encontrado": {
-      titulo: "Não encontramos este conteúdo.",
-      texto: "Ele pode ter mudado de lugar. Nada do que você escolheu se perdeu.",
-    },
-  };
+const mensagensPadrao: Record<TipoDeEstado, { titulo: string; texto: string }> = {
+  vazio: {
+    titulo: "Ainda não há registros aqui.",
+    texto: "Você pode começar quando fizer sentido.",
+  },
+  concluido: {
+    titulo: "Suas alterações foram salvas.",
+    texto: "Você pode editar isto depois, quando quiser.",
+  },
+  indisponivel: {
+    titulo: "Esta parte não está disponível agora.",
+    texto: "Você pode seguir por outro caminho e voltar mais tarde.",
+  },
+  erro: {
+    titulo: "Não foi possível carregar esta informação.",
+    texto: "Tente novamente ou retorne mais tarde.",
+  },
+  "sem-conexao": {
+    titulo: "Você está sem conexão.",
+    texto: "Suas escolhas continuam guardadas neste dispositivo.",
+  },
+  "nao-encontrado": {
+    titulo: "Não encontramos este conteúdo.",
+    texto: "Ele pode ter mudado de lugar. Nada do que você escolheu se perdeu.",
+  },
+};
 
 export function EstadoDaInterface({
   tipo,
@@ -240,9 +216,7 @@ export function EstadoDaInterface({
     >
       <p className="viva-subtitulo text-text-primary">{titulo ?? padrao.titulo}</p>
       <p className="mt-2 viva-apoio text-text-secondary">{texto ?? padrao.texto}</p>
-      {acao ? (
-        <div className="mt-5 flex flex-wrap justify-center gap-3">{acao}</div>
-      ) : null}
+      {acao ? <div className="mt-5 flex flex-wrap justify-center gap-3">{acao}</div> : null}
     </div>
   );
 }

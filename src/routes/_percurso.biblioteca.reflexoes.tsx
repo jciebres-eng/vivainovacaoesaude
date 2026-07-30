@@ -5,7 +5,6 @@ import { Screen, ScreenHeader } from "@/components/viva/screen";
 import { conteudoPorId } from "@/lib/viva-biblioteca-dados";
 import { perguntasDeReflexao, useBiblioteca } from "@/lib/viva-biblioteca";
 
-
 export const Route = createFileRoute("/_percurso/biblioteca/reflexoes")({
   head: () => ({
     meta: [
@@ -29,9 +28,7 @@ export const Route = createFileRoute("/_percurso/biblioteca/reflexoes")({
 
 function ReflexoesScreen() {
   const { dados, apagarReflexao } = useBiblioteca();
-  const reflexoes = [...dados.reflexoes].sort((a, b) =>
-    b.criadaEm.localeCompare(a.criadaEm),
-  );
+  const reflexoes = [...dados.reflexoes].sort((a, b) => b.criadaEm.localeCompare(a.criadaEm));
 
   return (
     <>
@@ -74,9 +71,7 @@ function ReflexoesScreen() {
                     if (!resposta) return null;
                     return (
                       <div key={p.chave}>
-                        <dt className="viva-legenda text-text-secondary">
-                          {p.texto}
-                        </dt>
+                        <dt className="viva-legenda text-text-secondary">{p.texto}</dt>
                         <dd className="mt-1 max-w-[62ch] viva-texto text-text-primary">
                           {resposta}
                         </dd>

@@ -61,7 +61,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --shadow-suave: 0 1px 2px oklch(0.3 0.02 200 / 0.04), 0 8px 24px -16px oklch(0.3 0.02 200 / 0.16);
-  --shadow-suave-alta: 0 2px 4px oklch(0.3 0.02 200 / 0.05), 0 14px 32px -18px oklch(0.3 0.02 200 / 0.22);
+  --shadow-suave-alta:
+    0 2px 4px oklch(0.3 0.02 200 / 0.05), 0 14px 32px -18px oklch(0.3 0.02 200 / 0.22);
 
   /* ------------------------------------------------------------------
    * Paleta semântica do Design System (documento 14).
@@ -77,8 +78,10 @@
   --color-border-default: var(--border);
   --color-action-primary: var(--primary);
   --color-action-primary-foreground: var(--primary-foreground);
+  --color-action-primary-hover: color-mix(in oklab, var(--primary) 88%, var(--foreground));
   --color-action-secondary: var(--secondary);
   --color-action-secondary-foreground: var(--secondary-foreground);
+  --color-action-secondary-hover: color-mix(in oklab, var(--secondary) 88%, var(--foreground));
   --color-feedback-information: var(--accent);
   --color-feedback-information-foreground: var(--accent-foreground);
   --color-feedback-attention: var(--atencao);

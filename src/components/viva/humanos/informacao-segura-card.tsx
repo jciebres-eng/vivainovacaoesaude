@@ -13,12 +13,7 @@ import { icone as tokenIcone } from "@/components/ds";
  * texto jurídico extenso dentro da experiência principal, nada de tom de
  * alerta vermelho. Sempre com o motivo da informação e uma ação possível.
  */
-export type TipoDeInformacao =
-  | "informacao"
-  | "atencao"
-  | "privacidade"
-  | "limite"
-  | "apoio-humano";
+export type TipoDeInformacao = "informacao" | "atencao" | "privacidade" | "limite" | "apoio-humano";
 
 const aparencia: Record<
   TipoDeInformacao,
@@ -71,9 +66,7 @@ export function InformacaoSeguraCard({
           </p>
           <h2 className="mt-2 viva-subtitulo text-text-primary">{titulo}</h2>
           <p className="mt-2 viva-apoio text-text-secondary">{mensagem}</p>
-          {motivo ? (
-            <p className="mt-2 viva-legenda text-text-secondary">{motivo}</p>
-          ) : null}
+          {motivo ? <p className="mt-2 viva-legenda text-text-secondary">{motivo}</p> : null}
         </div>
 
         {aoFechar ? (
@@ -89,9 +82,7 @@ export function InformacaoSeguraCard({
         ) : null}
       </div>
 
-      {acao ? (
-        <div className="mt-5 flex flex-wrap items-center gap-3">{acao}</div>
-      ) : null}
+      {acao ? <div className="mt-5 flex flex-wrap items-center gap-3">{acao}</div> : null}
     </Card>
   );
 }

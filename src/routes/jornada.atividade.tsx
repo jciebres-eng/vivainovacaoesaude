@@ -47,10 +47,7 @@ function Atividade() {
         voltarPara="/jornada"
       >
         <Card variante="informativo">
-          <Botao
-            variante="principal"
-            onClick={() => navigate({ to: "/jornada/objetivo" })}
-          >
+          <Botao variante="principal" onClick={() => navigate({ to: "/jornada/objetivo" })}>
             Escolher um objetivo
           </Botao>
         </Card>
@@ -76,12 +73,9 @@ function Atividade() {
             jornada.encerrar(objetivo.nome);
             navigate({ to: "/jornada/encerramento" });
           }}
-          linkEstrategias="/estrategias"
+          linkEstrategias="/biblioteca/minha"
         />
-        <Nota>
-          Nada foi perdido: suas respostas continuam guardadas neste
-          dispositivo.
-        </Nota>
+        <Nota>Nada foi perdido: suas respostas continuam guardadas neste dispositivo.</Nota>
       </QuadroDoPercurso>
     );
   }
@@ -92,11 +86,7 @@ function Atividade() {
       finalidade={etapa.instrucao}
       etapa={`Etapa ${indice + 1} de ${etapas.length}`}
       voltarPara={indice === 0 ? "/jornada/preparacao" : undefined}
-      aoVoltar={
-        indice === 0
-          ? undefined
-          : () => jornada.irParaEtapaDaAtividade(indice - 1)
-      }
+      aoVoltar={indice === 0 ? undefined : () => jornada.irParaEtapaDaAtividade(indice - 1)}
       aoPausar={() => {
         jornada.pausarAtividade(objetivo.nome);
         setPausa(true);
@@ -147,11 +137,7 @@ function Atividade() {
           }
           secundarias={
             <>
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={() => setAjuda((v) => !v)}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={() => setAjuda((v) => !v)}>
                 Preciso de outra orientação
               </Botao>
               {indice > 0 ? (
@@ -203,11 +189,7 @@ function Atividade() {
                 >
                   Pular esta etapa
                 </Botao>
-                <Botao
-                  variante="terciario"
-                  tamanho="compacto"
-                  onClick={() => setAjuda(false)}
-                >
+                <Botao variante="terciario" tamanho="compacto" onClick={() => setAjuda(false)}>
                   Fechar a ajuda
                 </Botao>
               </>

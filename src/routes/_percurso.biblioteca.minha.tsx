@@ -38,13 +38,10 @@ const abas: { chave: Aba; rotulo: string }[] = [
 ];
 
 function MinhaBibliotecaScreen() {
-  const { dados, alternarSalvo, removerDoPlano, removerEstrategia } =
-    useBiblioteca();
+  const { dados, alternarSalvo, removerDoPlano, removerEstrategia } = useBiblioteca();
   const [aba, setAba] = useState<Aba>("salvos");
 
-  const salvos = dados.salvos
-    .map((id) => conteudoPorId(id))
-    .filter((c) => c !== undefined);
+  const salvos = dados.salvos.map((id) => conteudoPorId(id)).filter((c) => c !== undefined);
   const adaptados = Object.keys(dados.adaptacoes)
     .map((id) => conteudoPorId(id))
     .filter((c) => c !== undefined);
@@ -101,18 +98,14 @@ function MinhaBibliotecaScreen() {
                 return (
                   <Card key={c.id} variante="biblioteca" titulo={c.titulo}>
                     {a.resumoPessoal ? (
-                      <p className="max-w-[62ch] viva-texto text-text-primary">
-                        {a.resumoPessoal}
-                      </p>
+                      <p className="max-w-[62ch] viva-texto text-text-primary">{a.resumoPessoal}</p>
                     ) : null}
                     {a.lembrete ? (
-                      <p className="mt-2 viva-apoio text-text-secondary">
-                        Lembrete: {a.lembrete}
-                      </p>
+                      <p className="mt-2 viva-apoio text-text-secondary">Lembrete: {a.lembrete}</p>
                     ) : null}
                     <p className="mt-2 viva-legenda text-text-secondary">
-                      {a.blocosOcultos.length} trecho(s) ocultado(s) ·{" "}
-                      {a.blocosDestacados.length} destacado(s)
+                      {a.blocosOcultos.length} trecho(s) ocultado(s) · {a.blocosDestacados.length}{" "}
+                      destacado(s)
                     </p>
                     <div className="mt-4">
                       <Link
@@ -140,9 +133,7 @@ function MinhaBibliotecaScreen() {
                 if (!c) return null;
                 return (
                   <Card key={item.id} variante="rotina" titulo={c.titulo}>
-                    <p className="viva-apoio text-text-secondary">
-                      Quando: {item.quando}
-                    </p>
+                    <p className="viva-apoio text-text-secondary">Quando: {item.quando}</p>
                     <div className="mt-4 flex flex-wrap gap-3">
                       <Link
                         to="/biblioteca/$conteudoId"
@@ -173,9 +164,7 @@ function MinhaBibliotecaScreen() {
             <div className="space-y-4">
               {dados.estrategias.map((e) => (
                 <Card key={e.id} variante="habilidade" titulo={e.nome}>
-                  <p className="max-w-[62ch] viva-apoio text-text-secondary">
-                    {e.comoAjuda}
-                  </p>
+                  <p className="max-w-[62ch] viva-apoio text-text-secondary">{e.comoAjuda}</p>
                   <div className="mt-4">
                     <Botao
                       variante="terciario"

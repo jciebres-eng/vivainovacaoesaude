@@ -1,13 +1,6 @@
 import { useState } from "react";
 
-import {
-  AreaDeTexto,
-  Botao,
-  CampoSelecao,
-  CampoTexto,
-  Card,
-  Chip,
-} from "@/components/ds";
+import { AreaDeTexto, Botao, CampoSelecao, CampoTexto, Card, Chip } from "@/components/ds";
 import { novoId, type Estrategia } from "@/lib/viva-percurso";
 
 /**
@@ -29,9 +22,7 @@ export function CartaoDeEstrategiaPessoal({
   onRemover,
 }: {
   estrategia: Estrategia;
-  onAlternarMarcador?: (
-    marcador: "queroExperimentar" | "jaUtilizei" | "foiUtil",
-  ) => void;
+  onAlternarMarcador?: (marcador: "queroExperimentar" | "jaUtilizei" | "foiUtil") => void;
   onAdicionarAoPlano?: () => void;
   onEditar?: () => void;
   onDuplicar?: () => void;
@@ -153,17 +144,10 @@ export function FormularioDeEstrategia({
         <CampoSelecao
           rotulo="Área funcional"
           value={dados.area}
-          onChange={(e) =>
-            setDados({ ...dados, area: e.target.value as Estrategia["area"] })
-          }
-          opcoes={[
-            "Deslocamento",
-            "Saúde",
-            "Compras",
-            "Convívio",
-            "Estudo e trabalho",
-            "Casa",
-          ].map((a) => ({ valor: a, label: a }))}
+          onChange={(e) => setDados({ ...dados, area: e.target.value as Estrategia["area"] })}
+          opcoes={["Deslocamento", "Saúde", "Compras", "Convívio", "Estudo e trabalho", "Casa"].map(
+            (a) => ({ valor: a, label: a }),
+          )}
         />
         <CampoTexto
           rotulo="Forma de utilização (opcional)"
@@ -178,11 +162,7 @@ export function FormularioDeEstrategia({
       </div>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <Botao
-          variante="principal"
-          disabled={!dados.nome.trim()}
-          onClick={() => onSalvar(dados)}
-        >
+        <Botao variante="principal" disabled={!dados.nome.trim()} onClick={() => onSalvar(dados)}>
           Salvar estratégia
         </Botao>
         {onCancelar ? (

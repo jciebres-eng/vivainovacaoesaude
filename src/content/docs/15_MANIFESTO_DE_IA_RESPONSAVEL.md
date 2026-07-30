@@ -7,7 +7,7 @@ Privacidade e Governança de Dados**
 
 **Versão 1.0**
 
-------------------------------------------------------------------------
+---
 
 **Finalidade**
 
@@ -29,7 +29,7 @@ Este documento complementa:
 
 - 14_DESIGN_SYSTEM_HUMANO.md
 
-------------------------------------------------------------------------
+---
 
 **Princípio Fundamental**
 
@@ -44,7 +44,7 @@ aos profissionais habilitados.
 Nenhum recurso automatizado poderá assumir autoridade clínica,
 terapêutica ou diagnóstica.
 
-------------------------------------------------------------------------
+---
 
 **Compromisso com a Dignidade Humana**
 
@@ -70,7 +70,7 @@ Toda decisão tecnológica deverá preservar:
 
 O usuário permanece no centro de todas as decisões.
 
-------------------------------------------------------------------------
+---
 
 **Finalidade da Inteligência Artificial**
 
@@ -101,7 +101,7 @@ A IA poderá ser utilizada para:
 
 Toda sugestão deverá poder ser aceita, modificada ou ignorada.
 
-------------------------------------------------------------------------
+---
 
 **Limites da Inteligência Artificial**
 
@@ -135,7 +135,7 @@ Sempre que um pedido ultrapassar esses limites, o sistema deverá
 informar claramente suas limitações e, quando apropriado, orientar o
 usuário a procurar um profissional ou serviço competente.
 
-------------------------------------------------------------------------
+---
 
 **Supervisão Humana**
 
@@ -152,7 +152,7 @@ Sempre que necessário:
 
 - decisões automatizadas deverão ser passíveis de revisão.
 
-------------------------------------------------------------------------
+---
 
 **Transparência**
 
@@ -165,7 +165,7 @@ absolutas.
 
 Quando houver incerteza, ela deverá ser reconhecida.
 
-------------------------------------------------------------------------
+---
 
 **Autonomia do Usuário**
 
@@ -181,7 +181,7 @@ O usuário poderá:
 
 A plataforma deverá favorecer escolhas livres e informadas.
 
-------------------------------------------------------------------------
+---
 
 **Proteção de Dados**
 
@@ -212,7 +212,7 @@ Os princípios orientadores incluem:
 Sempre que possível, coletar apenas os dados estritamente necessários
 para a finalidade informada.
 
-------------------------------------------------------------------------
+---
 
 **Privacidade**
 
@@ -230,7 +230,7 @@ O usuário deverá compreender:
 
 - como poderá exercer os direitos previstos na legislação aplicável.
 
-------------------------------------------------------------------------
+---
 
 **Segurança da Informação**
 
@@ -256,7 +256,7 @@ risco, incluindo, quando pertinentes:
 A segurança deverá ser considerada desde a concepção do sistema
 (\"security by design\").
 
-------------------------------------------------------------------------
+---
 
 **Privacidade desde a Concepção**
 
@@ -274,7 +274,7 @@ Sempre que possível:
 
 - proteger dados sensíveis com controles adicionais.
 
-------------------------------------------------------------------------
+---
 
 **Não Discriminação**
 
@@ -284,7 +284,7 @@ características pessoais protegidas.
 Sempre que forem utilizados modelos automatizados, deverão ser adotadas
 medidas para identificar e mitigar vieses conhecidos.
 
-------------------------------------------------------------------------
+---
 
 **Explicabilidade**
 
@@ -292,7 +292,7 @@ Sempre que tecnicamente possível, recomendações automatizadas deverão
 ser acompanhadas de explicações compreensíveis sobre sua finalidade e
 limitações.
 
-------------------------------------------------------------------------
+---
 
 **Situações de Risco**
 
@@ -313,7 +313,7 @@ sofrimento intenso ou outra condição de risco --- a plataforma deverá:
 
 O VIVA não substitui serviços de urgência ou emergência.
 
-------------------------------------------------------------------------
+---
 
 **Desenvolvimento Responsável**
 
@@ -331,7 +331,7 @@ Toda nova funcionalidade envolvendo IA deverá ser avaliada quanto a:
 
 - conformidade com requisitos éticos e legais aplicáveis.
 
-------------------------------------------------------------------------
+---
 
 **Governança**
 
@@ -350,7 +350,7 @@ Sempre que possível, recomenda-se manter registros sobre:
 
 - histórico de alterações relevantes.
 
-------------------------------------------------------------------------
+---
 
 **Perguntas Obrigatórias**
 
@@ -377,7 +377,7 @@ responder:
 Se qualquer resposta indicar risco significativo, a funcionalidade
 deverá ser revista antes de sua implementação.
 
-------------------------------------------------------------------------
+---
 
 **Compromisso Institucional**
 

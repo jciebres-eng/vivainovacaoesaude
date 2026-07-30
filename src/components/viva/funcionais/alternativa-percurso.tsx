@@ -27,8 +27,7 @@ export function CartaoDeAlternativas({
       descricao={atividade.titulo}
     >
       <p className="viva-apoio text-text-primary">
-        Todas as formas abaixo valem igualmente. Escolha a que combina com o seu
-        momento.
+        Todas as formas abaixo valem igualmente. Escolha a que combina com o seu momento.
       </p>
 
       <ul className="mt-4 space-y-2">
@@ -88,9 +87,7 @@ function OpcaoDePercurso({
     >
       <span className="viva-legenda text-text-secondary">{rotulo}</span>
       <span className="viva-apoio text-text-primary">{texto}</span>
-      {selecionada ? (
-        <span className="viva-legenda text-text-secondary">escolhida</span>
-      ) : null}
+      {selecionada ? <span className="viva-legenda text-text-secondary">escolhida</span> : null}
     </button>
   );
 }

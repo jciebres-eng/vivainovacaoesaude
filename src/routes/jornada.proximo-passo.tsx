@@ -60,8 +60,8 @@ function ProximoPasso() {
       {j.proximoPassoId ? (
         <Card variante="experiencia" titulo="Passo guardado">
           <Nota>
-            Este passo ficou registrado no seu percurso. Ele não vira meta,
-            prazo nem lembrete automático.
+            Este passo ficou registrado no seu percurso. Ele não vira meta, prazo nem lembrete
+            automático.
           </Nota>
         </Card>
       ) : null}

@@ -170,11 +170,7 @@ export function RegistroDeExperiencia({
       </div>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <Botao
-          variante="principal"
-          disabled={!dados.atividade.trim()}
-          onClick={() => salvar()}
-        >
+        <Botao variante="principal" disabled={!dados.atividade.trim()} onClick={() => salvar()}>
           Salvar registro
         </Botao>
         {parte < partes.length - 1 ? (
@@ -187,10 +183,7 @@ export function RegistroDeExperiencia({
             Voltar
           </Botao>
         ) : null}
-        <Botao
-          variante="terciario"
-          onClick={() => salvar(onSalvarEContinuarDepois)}
-        >
+        <Botao variante="terciario" onClick={() => salvar(onSalvarEContinuarDepois)}>
           Salvar e continuar depois
         </Botao>
         <Botao variante="terciario" onClick={() => onAdicionarEstrategia?.(dados)}>

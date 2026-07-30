@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 import { AreaDeTexto, Botao, Card, Confirmacao } from "@/components/ds";
-import {
-  dataLegivel,
-  perguntasDeReflexao,
-  type ReflexaoDeConteudo,
-} from "@/lib/viva-biblioteca";
+import { dataLegivel, perguntasDeReflexao, type ReflexaoDeConteudo } from "@/lib/viva-biblioteca";
 
 /**
  * ReflexaoBibliotecaCard — registro pessoal sobre um conteúdo.
@@ -25,9 +21,7 @@ export function ReflexaoBibliotecaCard({
   onApagar?: (id: string) => void;
 }) {
   const [aberto, setAberto] = useState(Boolean(reflexao));
-  const [respostas, setRespostas] = useState<Record<string, string>>(
-    reflexao?.respostas ?? {},
-  );
+  const [respostas, setRespostas] = useState<Record<string, string>>(reflexao?.respostas ?? {});
   const [guardado, setGuardado] = useState(false);
 
   if (!aberto) {
@@ -76,11 +70,7 @@ export function ReflexaoBibliotecaCard({
         >
           Guardar esta reflexão
         </Botao>
-        <Botao
-          variante="terciario"
-          tamanho="compacto"
-          onClick={() => setAberto(false)}
-        >
+        <Botao variante="terciario" tamanho="compacto" onClick={() => setAberto(false)}>
           Registrar depois
         </Botao>
         {reflexao && onApagar ? (

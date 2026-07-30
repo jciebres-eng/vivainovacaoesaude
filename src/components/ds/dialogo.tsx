@@ -17,12 +17,7 @@ import { Botao, type VarianteBotao } from "./botao";
  * título, contexto, uma ação principal clara e a opção de cancelar.
  * Fechamento por teclado (Esc) e gerenciamento de foco vêm do Radix Dialog.
  */
-export type TipoDialogo =
-  | "confirmacao"
-  | "informacao"
-  | "aviso"
-  | "edicao"
-  | "exclusao";
+export type TipoDialogo = "confirmacao" | "informacao" | "aviso" | "edicao" | "exclusao";
 
 const acaoDoTipo: Record<TipoDialogo, VarianteBotao> = {
   confirmacao: "principal",
@@ -61,9 +56,7 @@ export function Dialogo({
     <Dialog open={aberto} onOpenChange={onAbertoChange}>
       <DialogContent className="rounded-3xl border-border-default bg-surface-default sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="viva-titulo-secao text-text-primary">
-            {titulo}
-          </DialogTitle>
+          <DialogTitle className="viva-titulo-secao text-text-primary">{titulo}</DialogTitle>
           <DialogDescription className="viva-apoio text-text-secondary">
             {contexto}
           </DialogDescription>
@@ -73,11 +66,7 @@ export function Dialogo({
 
         <DialogFooter className="mt-2 flex-row flex-wrap items-center gap-3 sm:justify-start">
           {onAcao ? (
-            <Botao
-              variante={acaoDoTipo[tipo]}
-              carregando={carregando}
-              onClick={onAcao}
-            >
+            <Botao variante={acaoDoTipo[tipo]} carregando={carregando} onClick={onAcao}>
               {rotuloAcao}
             </Botao>
           ) : null}

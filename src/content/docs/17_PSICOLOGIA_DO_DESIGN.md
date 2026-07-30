@@ -8,7 +8,7 @@
 
 **Versão 1.0**
 
-------------------------------------------------------------------------
+---
 
 **Finalidade**
 
@@ -20,7 +20,7 @@ Este documento não constitui um modelo clínico nem um protocolo terapêutico.
 
 Ele representa um framework de desenvolvimento para tecnologias digitais centradas na pessoa.
 
-------------------------------------------------------------------------
+---
 
 **Princípio Central**
 
@@ -30,7 +30,7 @@ Toda decisão de design comunica expectativas, produz experiências e pode facil
 
 Por essa razão, o design deve ser compreendido como parte integrante da responsabilidade ética do desenvolvimento de sistemas digitais.
 
-------------------------------------------------------------------------
+---
 
 **O Papel da Psicologia**
 
@@ -42,7 +42,7 @@ Ela não busca prolongar tempo de uso.
 
 Seu papel consiste em compreender como as pessoas percebem informações, organizam ações, tomam decisões e constroem autonomia em interação com ambientes digitais.
 
-------------------------------------------------------------------------
+---
 
 **O Objetivo do Design**
 
@@ -54,7 +54,7 @@ Uma boa interface reduz esforço desnecessário.
 
 Nunca aumenta complexidade.
 
-------------------------------------------------------------------------
+---
 
 **Redução da Ansiedade**
 
@@ -78,7 +78,7 @@ O design não elimina emoções humanas.
 
 Ele procura evitar que a própria interface seja fonte de sofrimento evitável.
 
-------------------------------------------------------------------------
+---
 
 **Redução da Sobrecarga Cognitiva**
 
@@ -98,7 +98,7 @@ manter hierarquia visual consistente.
 
 O excesso de informação representa uma barreira de acessibilidade.
 
-------------------------------------------------------------------------
+---
 
 **Previsibilidade**
 
@@ -118,7 +118,7 @@ Toda interação deve produzir sensação de orientação.
 
 Nunca de desorientação.
 
-------------------------------------------------------------------------
+---
 
 **Respeito à Neurodiversidade**
 
@@ -126,7 +126,7 @@ O VIVA reconhece que pessoas apresentam diferentes formas de perceber, organizar
 
 A plataforma deverá oferecer recursos de personalização que permitam diferentes modos de interação, respeitando preferências, necessidades e contextos individuais, sem pressupor um único padrão de funcionamento.
 
-------------------------------------------------------------------------
+---
 
 **Autonomia**
 
@@ -144,7 +144,7 @@ Apoia.
 
 Não substitui.
 
-------------------------------------------------------------------------
+---
 
 **Confiança**
 
@@ -164,7 +164,7 @@ A confiança não depende apenas da segurança técnica.
 
 Ela depende da honestidade da interface.
 
-------------------------------------------------------------------------
+---
 
 **Erros**
 
@@ -184,7 +184,7 @@ preservar a autoestima do usuário.
 
 Jamais utilizar linguagem culpabilizadora.
 
-------------------------------------------------------------------------
+---
 
 **Continuidade**
 
@@ -208,7 +208,7 @@ O retorno do usuário deve ocorrer porque percebe valor na experiência.
 
 Não porque foi condicionado.
 
-------------------------------------------------------------------------
+---
 
 **Design Centrado na Pessoa**
 
@@ -224,7 +224,7 @@ A interface respeita diferentes capacidades funcionais?
 
 Existe transparência suficiente?
 
-------------------------------------------------------------------------
+---
 
 **Tecnologia Humanizada**
 
@@ -246,7 +246,7 @@ Ela não mede seu sucesso pela quantidade de cliques.
 
 Mede pela qualidade da experiência produzida.
 
-------------------------------------------------------------------------
+---
 
 **Relação entre Psicologia e Engenharia**
 
@@ -264,7 +264,7 @@ A Ética estabelece seus limites.
 
 Esses elementos constituem um único sistema de desenvolvimento.
 
-------------------------------------------------------------------------
+---
 
 **Avaliação das Funcionalidades**
 
@@ -288,7 +288,7 @@ Respeita a dignidade da pessoa?
 
 Se alguma resposta indicar inconsistência, a solução deverá ser revisada.
 
-------------------------------------------------------------------------
+---
 
 **Modelo Integrado do VIVA**
 
@@ -308,7 +308,7 @@ A arquitetura conceitual do VIVA organiza-se em seis dimensões interdependentes
 
 Nenhuma dessas dimensões possui prioridade sobre a dignidade humana.
 
-------------------------------------------------------------------------
+---
 
 **Declaração Final**
 

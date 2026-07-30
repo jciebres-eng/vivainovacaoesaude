@@ -1,13 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Info, Lightbulb, Quote, Sparkles } from "lucide-react";
 
-
 import { Botao, Card } from "@/components/ds";
 import { cn } from "@/lib/utils";
-import type {
-  BlocoDeConteudo,
-  ConteudoDaBiblioteca,
-} from "@/lib/viva-biblioteca-dados";
+import type { BlocoDeConteudo, ConteudoDaBiblioteca } from "@/lib/viva-biblioteca-dados";
 
 /** Leitura em blocos curtos, com destaques discretos (documentos 04 e 14). */
 export function LeituraDoConteudo({
@@ -34,30 +30,18 @@ export function LeituraDoConteudo({
   );
 }
 
-function Bloco({
-  bloco,
-  destacado,
-}: {
-  bloco: BlocoDeConteudo;
-  destacado: boolean;
-}) {
+function Bloco({ bloco, destacado }: { bloco: BlocoDeConteudo; destacado: boolean }) {
   const moldura = destacado
     ? "rounded-2xl border-l-4 border-action-primary bg-surface-muted p-4"
     : undefined;
 
   if (bloco.tipo === "subtitulo") {
-    return (
-      <h3 className={cn("viva-subtitulo text-text-primary", moldura)}>
-        {bloco.texto}
-      </h3>
-    );
+    return <h3 className={cn("viva-subtitulo text-text-primary", moldura)}>{bloco.texto}</h3>;
   }
 
   if (bloco.tipo === "paragrafo") {
     return (
-      <p className={cn("max-w-[68ch] viva-texto text-text-primary", moldura)}>
-        {bloco.texto}
-      </p>
+      <p className={cn("max-w-[68ch] viva-texto text-text-primary", moldura)}>{bloco.texto}</p>
     );
   }
 
@@ -66,7 +50,10 @@ function Bloco({
       <ul className={cn("max-w-[68ch] space-y-2", moldura)}>
         {bloco.itens.map((item) => (
           <li key={item} className="flex gap-3 viva-texto text-text-primary">
-            <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-action-primary" />
+            <span
+              aria-hidden
+              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-action-primary"
+            />
             <span>{item}</span>
           </li>
         ))}
@@ -99,9 +86,7 @@ function Bloco({
           <Quote className="h-4 w-4" aria-hidden />
           {bloco.titulo ?? "Exemplo"}
         </figcaption>
-        <p className="mt-2 max-w-[62ch] viva-texto text-text-primary">
-          {bloco.texto}
-        </p>
+        <p className="mt-2 max-w-[62ch] viva-texto text-text-primary">{bloco.texto}</p>
       </figure>
     );
   }
@@ -117,11 +102,7 @@ function Bloco({
     );
   }
 
-  return (
-    <p className="max-w-[62ch] viva-legenda text-text-secondary">
-      {bloco.texto}
-    </p>
-  );
+  return <p className="max-w-[62ch] viva-legenda text-text-secondary">{bloco.texto}</p>;
 }
 
 /** "Estratégias que podem ajudar" ao final de cada conteúdo. */
@@ -145,14 +126,9 @@ export function EstrategiasDoConteudo({
         {conteudo.estrategias.map((e) => {
           const jaAdotada = adotadas.includes(e.id);
           return (
-            <li
-              key={e.id}
-              className="rounded-2xl border border-border-default p-4"
-            >
+            <li key={e.id} className="rounded-2xl border border-border-default p-4">
               <p className="viva-rotulo text-text-primary">{e.nome}</p>
-              <p className="mt-1 max-w-[62ch] viva-apoio text-text-secondary">
-                {e.comoAjuda}
-              </p>
+              <p className="mt-1 max-w-[62ch] viva-apoio text-text-secondary">{e.comoAjuda}</p>
               <div className="mt-3">
                 <Botao
                   variante={jaAdotada ? "terciario" : "secundario"}
@@ -160,9 +136,7 @@ export function EstrategiasDoConteudo({
                   disabled={jaAdotada}
                   onClick={() => onAdotar(e.id, e.nome, e.comoAjuda)}
                 >
-                  {jaAdotada
-                    ? "Já está nas suas estratégias"
-                    : "Adicionar às minhas estratégias"}
+                  {jaAdotada ? "Já está nas suas estratégias" : "Adicionar às minhas estratégias"}
                 </Botao>
               </div>
             </li>
@@ -198,12 +172,9 @@ export function TalvezSejaUtil({
               className="viva-tap block rounded-2xl border border-border-default p-4 hover:bg-surface-muted"
             >
               <span className="viva-rotulo text-text-primary">{c.titulo}</span>
-              <span className="mt-1 block viva-legenda text-text-secondary">
-                {c.resumo}
-              </span>
+              <span className="mt-1 block viva-legenda text-text-secondary">{c.resumo}</span>
             </Link>
           </li>
-
         ))}
       </ul>
       <p className="mt-4 viva-legenda text-text-secondary">

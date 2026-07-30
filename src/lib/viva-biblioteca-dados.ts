@@ -10,18 +10,11 @@
  * de apoio.
  */
 
-export type AreaDaBiblioteca =
-  | "mobilidade"
-  | "autorregulacao"
-  | "alimentacao"
-  | "saude";
+export type AreaDaBiblioteca = "mobilidade" | "autorregulacao" | "alimentacao" | "saude";
 
 export type Complexidade = "simples" | "intermediario" | "mais-detalhado";
 
-export const rotulosDeArea: Record<
-  AreaDaBiblioteca,
-  { nome: string; descricao: string }
-> = {
+export const rotulosDeArea: Record<AreaDaBiblioteca, { nome: string; descricao: string }> = {
   mobilidade: {
     nome: "Mobilidade",
     descricao: "Sair, chegar, comparar caminhos e lidar com imprevistos.",
@@ -123,8 +116,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
       },
       {
         tipo: "observacao",
-        texto:
-          "Comparar dois caminhos já é suficiente. Não é necessário mapear todas as opções.",
+        texto: "Comparar dois caminhos já é suficiente. Não é necessário mapear todas as opções.",
       },
     ],
     estrategias: [
@@ -139,8 +131,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Ter um plano B reduz o peso de um imprevisto.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual aspecto costuma pesar mais quando você escolhe um caminho?",
+    perguntaDeReflexao: "Qual aspecto costuma pesar mais quando você escolhe um caminho?",
     relacionados: ["rota-alternativa", "pedir-informacao", "lidar-com-atraso"],
   },
   {
@@ -201,13 +192,8 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Uma conferência curta reduz o retorno em casa.",
       },
     ],
-    perguntaDeReflexao:
-      "Existe algum trecho do caminho em que uma alternativa faria diferença?",
-    relacionados: [
-      "comparar-trajetos",
-      "pedir-informacao",
-      "organizar-documentos",
-    ],
+    perguntaDeReflexao: "Existe algum trecho do caminho em que uma alternativa faria diferença?",
+    relacionados: ["comparar-trajetos", "pedir-informacao", "organizar-documentos"],
   },
   {
     id: "pedir-informacao",
@@ -221,8 +207,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
     blocos: [
       {
         tipo: "paragrafo",
-        texto:
-          "Pedir informação pode ser feito de várias formas. Falar é apenas uma delas.",
+        texto: "Pedir informação pode ser feito de várias formas. Falar é apenas uma delas.",
       },
       { tipo: "subtitulo", texto: "Frases que podem ser preparadas" },
       {
@@ -236,13 +221,11 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
       {
         tipo: "exemplo",
         titulo: "Exemplo prático",
-        texto:
-          "Deixar a frase salva no celular permite mostrar a tela sem precisar falar.",
+        texto: "Deixar a frase salva no celular permite mostrar a tela sem precisar falar.",
       },
       {
         tipo: "observacao",
-        texto:
-          "Não responder e seguir adiante também é uma escolha legítima.",
+        texto: "Não responder e seguir adiante também é uma escolha legítima.",
       },
     ],
     estrategias: [
@@ -257,16 +240,14 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Guardar a pergunta permite retomá-la depois com calma.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual forma de pedir informação parece mais confortável para você?",
+    perguntaDeReflexao: "Qual forma de pedir informação parece mais confortável para você?",
     relacionados: ["rota-alternativa", "lidar-com-atraso", "preparar-consulta"],
   },
   {
     id: "lidar-com-atraso",
     titulo: "Como lidar com um atraso",
     area: "mobilidade",
-    resumo:
-      "Um atraso muda o plano, não o valor do que você estava tentando fazer.",
+    resumo: "Um atraso muda o plano, não o valor do que você estava tentando fazer.",
     minutos: 2,
     complexidade: "simples",
     etiquetas: ["imprevistos", "comunicação", "regulação"],
@@ -307,8 +288,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Uma frase resolve sem exigir explicações longas.",
       },
     ],
-    perguntaDeReflexao:
-      "O que costuma ajudar você quando um horário muda de repente?",
+    perguntaDeReflexao: "O que costuma ajudar você quando um horário muda de repente?",
     relacionados: ["planejar-pausas", "comparar-trajetos", "rota-alternativa"],
   },
 
@@ -325,8 +305,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
     blocos: [
       {
         tipo: "paragrafo",
-        texto:
-          "Uma pausa não precisa ser longa. Ela precisa ser possível no lugar onde você está.",
+        texto: "Uma pausa não precisa ser longa. Ela precisa ser possível no lugar onde você está.",
       },
       { tipo: "subtitulo", texto: "Formas de pausa" },
       {
@@ -362,13 +341,8 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Fone, boné ou um canto mais vazio mudam a intensidade do ambiente.",
       },
     ],
-    perguntaDeReflexao:
-      "Em que momento do dia uma pausa curta faria mais diferença?",
-    relacionados: [
-      "ambientes-intensos",
-      "estrategias-de-estimulos",
-      "organizar-rotina",
-    ],
+    perguntaDeReflexao: "Em que momento do dia uma pausa curta faria mais diferença?",
+    relacionados: ["ambientes-intensos", "estrategias-de-estimulos", "organizar-rotina"],
   },
   {
     id: "ambientes-intensos",
@@ -423,13 +397,8 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Ajustes simples mudam a intensidade percebida.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual ambiente você gostaria de preparar melhor antes da próxima visita?",
-    relacionados: [
-      "planejar-pausas",
-      "estrategias-de-estimulos",
-      "preparar-consulta",
-    ],
+    perguntaDeReflexao: "Qual ambiente você gostaria de preparar melhor antes da próxima visita?",
+    relacionados: ["planejar-pausas", "estrategias-de-estimulos", "preparar-consulta"],
   },
   {
     id: "estrategias-de-estimulos",
@@ -457,8 +426,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
       },
       {
         tipo: "observacao",
-        texto:
-          "Uma estratégia que não funcionou hoje não precisa ser descartada para sempre.",
+        texto: "Uma estratégia que não funcionou hoje não precisa ser descartada para sempre.",
       },
     ],
     estrategias: [
@@ -473,13 +441,8 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Permite escolher onde ficar e observar o espaço com calma.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual estratégia já ajudou você em alguma situação parecida?",
-    relacionados: [
-      "ambientes-intensos",
-      "planejar-pausas",
-      "registrar-efeitos",
-    ],
+    perguntaDeReflexao: "Qual estratégia já ajudou você em alguma situação parecida?",
+    relacionados: ["ambientes-intensos", "planejar-pausas", "registrar-efeitos"],
   },
   {
     id: "organizar-rotina",
@@ -493,8 +456,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
     blocos: [
       {
         tipo: "paragrafo",
-        texto:
-          "Uma rotina possível é aquela que continua funcionando em um dia de pouca energia.",
+        texto: "Uma rotina possível é aquela que continua funcionando em um dia de pouca energia.",
       },
       {
         tipo: "passos",
@@ -527,8 +489,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Tarefas menores cabem melhor em dias de pouca energia.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual ponto fixo faz sentido manter mesmo em um dia difícil?",
+    perguntaDeReflexao: "Qual ponto fixo faz sentido manter mesmo em um dia difícil?",
     relacionados: ["planejar-pausas", "planejar-compras", "organizar-refeicoes"],
   },
 
@@ -581,20 +542,14 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Notas curtas ajudam a lembrar depois.",
       },
     ],
-    perguntaDeReflexao:
-      "Quais alimentos costumam funcionar para você em dias difíceis?",
-    relacionados: [
-      "planejar-compras",
-      "organizar-refeicoes",
-      "perguntas-nutricionista",
-    ],
+    perguntaDeReflexao: "Quais alimentos costumam funcionar para você em dias difíceis?",
+    relacionados: ["planejar-compras", "organizar-refeicoes", "perguntas-nutricionista"],
   },
   {
     id: "planejar-compras",
     titulo: "Como planejar as compras da semana",
     area: "alimentacao",
-    resumo:
-      "Uma lista organizada por ordem do percurso reduz o tempo dentro do mercado.",
+    resumo: "Uma lista organizada por ordem do percurso reduz o tempo dentro do mercado.",
     minutos: 3,
     complexidade: "intermediario",
     etiquetas: ["compras", "planejamento", "ambiente"],
@@ -616,8 +571,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
       {
         tipo: "exemplo",
         titulo: "Exemplo prático",
-        texto:
-          "Lista em três blocos: hortifruti, secos, geladeira. Horário: início da manhã.",
+        texto: "Lista em três blocos: hortifruti, secos, geladeira. Horário: início da manhã.",
       },
       {
         tipo: "observacao",
@@ -636,20 +590,14 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Menos pessoas costuma significar menos estímulos.",
       },
     ],
-    perguntaDeReflexao:
-      "Que parte da compra costuma pesar mais para você?",
-    relacionados: [
-      "alimentos-tolerados",
-      "organizar-refeicoes",
-      "ambientes-intensos",
-    ],
+    perguntaDeReflexao: "Que parte da compra costuma pesar mais para você?",
+    relacionados: ["alimentos-tolerados", "organizar-refeicoes", "ambientes-intensos"],
   },
   {
     id: "perguntas-nutricionista",
     titulo: "Como preparar perguntas para a nutricionista",
     area: "alimentacao",
-    resumo:
-      "Perguntas escritas antes reduzem o esforço de lembrar durante a consulta.",
+    resumo: "Perguntas escritas antes reduzem o esforço de lembrar durante a consulta.",
     minutos: 2,
     complexidade: "simples",
     etiquetas: ["consulta", "comunicação", "preparação"],
@@ -669,8 +617,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
       },
       {
         tipo: "observacao",
-        texto:
-          "Você pode entregar a lista impressa ou mostrar na tela, se falar for difícil.",
+        texto: "Você pode entregar a lista impressa ou mostrar na tela, se falar for difícil.",
       },
     ],
     estrategias: [
@@ -687,18 +634,13 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
     ],
     perguntaDeReflexao:
       "Qual dúvida sobre alimentação você gostaria de levar a alguém de confiança?",
-    relacionados: [
-      "preparar-consulta",
-      "alimentos-tolerados",
-      "organizar-refeicoes",
-    ],
+    relacionados: ["preparar-consulta", "alimentos-tolerados", "organizar-refeicoes"],
   },
   {
     id: "organizar-refeicoes",
     titulo: "Como organizar refeições em dias variados",
     area: "alimentacao",
-    resumo:
-      "Ter duas ou três combinações prontas evita decidir do zero a cada refeição.",
+    resumo: "Ter duas ou três combinações prontas evita decidir do zero a cada refeição.",
     minutos: 2,
     complexidade: "simples",
     etiquetas: ["refeições", "rotina", "energia"],
@@ -719,8 +661,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
       {
         tipo: "exemplo",
         titulo: "Exemplo prático",
-        texto:
-          "Opção rápida: pão e queijo. Opção preparada: arroz, ovo e legume cozido.",
+        texto: "Opção rápida: pão e queijo. Opção preparada: arroz, ovo e legume cozido.",
       },
     ],
     estrategias: [
@@ -735,13 +676,8 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Poucas opções conhecidas reduzem decisões.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual refeição você gostaria de deixar mais simples nesta semana?",
-    relacionados: [
-      "planejar-compras",
-      "alimentos-tolerados",
-      "organizar-rotina",
-    ],
+    perguntaDeReflexao: "Qual refeição você gostaria de deixar mais simples nesta semana?",
+    relacionados: ["planejar-compras", "alimentos-tolerados", "organizar-rotina"],
   },
 
   /* ------------------------------------ saúde e organização pessoal */
@@ -793,20 +729,14 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Documentos separados na véspera reduzem a pressa.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual dúvida você gostaria de não esquecer na próxima consulta?",
-    relacionados: [
-      "organizar-documentos",
-      "registrar-efeitos",
-      "perguntas-nutricionista",
-    ],
+    perguntaDeReflexao: "Qual dúvida você gostaria de não esquecer na próxima consulta?",
+    relacionados: ["organizar-documentos", "registrar-efeitos", "perguntas-nutricionista"],
   },
   {
     id: "organizar-documentos",
     titulo: "Como organizar documentos pessoais",
     area: "saude",
-    resumo:
-      "Um lugar único e previsível para documentos evita busca de última hora.",
+    resumo: "Um lugar único e previsível para documentos evita busca de última hora.",
     minutos: 2,
     complexidade: "simples",
     etiquetas: ["documentos", "organização", "preparação"],
@@ -828,8 +758,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
       {
         tipo: "exemplo",
         titulo: "Exemplo prático",
-        texto:
-          "Uma pasta única na mochila e uma foto de cada documento no celular.",
+        texto: "Uma pasta única na mochila e uma foto de cada documento no celular.",
       },
       {
         tipo: "observacao",
@@ -848,24 +777,21 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Uma conferência curta evita retornos.",
       },
     ],
-    perguntaDeReflexao:
-      "Qual documento costuma faltar quando você precisa sair com pressa?",
+    perguntaDeReflexao: "Qual documento costuma faltar quando você precisa sair com pressa?",
     relacionados: ["preparar-consulta", "rota-alternativa", "registrar-duvidas"],
   },
   {
     id: "registrar-duvidas",
     titulo: "Como registrar dúvidas ao longo dos dias",
     area: "saude",
-    resumo:
-      "Dúvidas anotadas no momento em que surgem chegam inteiras à conversa certa.",
+    resumo: "Dúvidas anotadas no momento em que surgem chegam inteiras à conversa certa.",
     minutos: 2,
     complexidade: "simples",
     etiquetas: ["dúvidas", "registro", "comunicação"],
     blocos: [
       {
         tipo: "paragrafo",
-        texto:
-          "Uma dúvida costuma aparecer longe da consulta e desaparecer antes dela.",
+        texto: "Uma dúvida costuma aparecer longe da consulta e desaparecer antes dela.",
       },
       {
         tipo: "passos",
@@ -893,13 +819,8 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
         comoAjuda: "Uma leitura rápida recupera o contexto.",
       },
     ],
-    perguntaDeReflexao:
-      "Existe alguma dúvida que você vem adiando registrar?",
-    relacionados: [
-      "preparar-consulta",
-      "registrar-efeitos",
-      "organizar-documentos",
-    ],
+    perguntaDeReflexao: "Existe alguma dúvida que você vem adiando registrar?",
+    relacionados: ["preparar-consulta", "registrar-efeitos", "organizar-documentos"],
   },
   {
     id: "registrar-efeitos",
@@ -951,11 +872,7 @@ export const conteudosDaBiblioteca: ConteudoDaBiblioteca[] = [
     ],
     perguntaDeReflexao:
       "Existe algo que você tem percebido e gostaria de acompanhar por alguns dias?",
-    relacionados: [
-      "registrar-duvidas",
-      "preparar-consulta",
-      "estrategias-de-estimulos",
-    ],
+    relacionados: ["registrar-duvidas", "preparar-consulta", "estrategias-de-estimulos"],
   },
 ];
 
@@ -990,12 +907,7 @@ export function buscarConteudos({
     if (area && area !== "todas" && c.area !== area) return false;
     if (etiqueta && !c.etiquetas.includes(etiqueta)) return false;
     if (!texto) return true;
-    const campos = [
-      c.titulo,
-      c.resumo,
-      rotulosDeArea[c.area].nome,
-      ...c.etiquetas,
-    ]
+    const campos = [c.titulo, c.resumo, rotulosDeArea[c.area].nome, ...c.etiquetas]
       .join(" ")
       .toLowerCase();
     return campos.includes(texto);

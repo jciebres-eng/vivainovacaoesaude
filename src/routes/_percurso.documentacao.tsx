@@ -15,8 +15,7 @@ export const Route = createFileRoute("/_percurso/documentacao")({
       { property: "og:title", content: "Documentos do projeto VIVA" },
       {
         property: "og:description",
-        content:
-          "Os documentos que orientam cada decisão de design, linguagem e ética do VIVA.",
+        content: "Os documentos que orientam cada decisão de design, linguagem e ética do VIVA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -39,7 +38,7 @@ function DocumentacaoPage() {
           if (list.length === 0) return null;
           return (
             <section key={group.id}>
-              <h2 className="viva-subtitulo text-foreground">{group.label}</h2>
+              <h2 className="viva-subtitulo text-text-primary">{group.label}</h2>
               <p className="mt-2 max-w-[62ch] viva-legenda text-text-secondary">
                 {group.description}
               </p>
@@ -50,15 +49,13 @@ function DocumentacaoPage() {
                     <Link
                       to="/documentos/$slug"
                       params={{ slug: doc.slug }}
-                      className="viva-anim block rounded-2xl border border-border-default bg-surface-default p-5 shadow-suave hover:bg-secondary"
+                      className="viva-anim block rounded-2xl border border-border-default bg-surface-default p-5 shadow-suave hover:bg-background-secondary"
                     >
                       <span className="viva-legenda text-text-secondary">
                         Documento {doc.number} · leitura de {doc.minutes} minutos
                       </span>
-                      <h3 className="mt-1 viva-subtitulo text-card-foreground">
-                        {doc.title}
-                      </h3>
-                      <p className="mt-2 max-w-[62ch] viva-legenda text-card-foreground">
+                      <h3 className="mt-1 viva-subtitulo text-text-primary">{doc.title}</h3>
+                      <p className="mt-2 max-w-[62ch] viva-legenda text-text-primary">
                         {doc.summary}
                       </p>
                     </Link>
@@ -70,8 +67,7 @@ function DocumentacaoPage() {
         })}
 
         <Note>
-          Em caso de divergência entre a plataforma e estes documentos, o
-          documento prevalece.
+          Em caso de divergência entre a plataforma e estes documentos, o documento prevalece.
         </Note>
       </Screen>
     </>

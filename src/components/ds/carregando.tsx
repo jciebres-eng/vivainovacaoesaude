@@ -30,11 +30,7 @@ export function Esqueleto({
  * Tela em preparação: mantém o desenho da página (título, texto, cartão)
  * enquanto o conteúdo chega, com uma mensagem breve para leitores de tela.
  */
-export function TelaEmPreparacao({
-  mensagem = "Preparando esta etapa…",
-}: {
-  mensagem?: string;
-}) {
+export function TelaEmPreparacao({ mensagem = "Preparando esta etapa…" }: { mensagem?: string }) {
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-10 md:px-10 md:py-14">
       <p role="status" aria-live="polite" className="viva-legenda text-text-secondary">

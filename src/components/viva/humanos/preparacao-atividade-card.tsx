@@ -33,14 +33,9 @@ export function PreparacaoAtividadeCard({
   const [ajustando, setAjustando] = useState(false);
 
   const alternar = (id: string) =>
-    setMinhas((atual) =>
-      atual.includes(id) ? atual.filter((i) => i !== id) : [...atual, id],
-    );
+    setMinhas((atual) => (atual.includes(id) ? atual.filter((i) => i !== id) : [...atual, id]));
 
-  const opcoes = [
-    ...estrategias,
-    { id: "outra", rotulo: "Outra estratégia pessoal" },
-  ];
+  const opcoes = [...estrategias, { id: "outra", rotulo: "Outra estratégia pessoal" }];
 
   return (
     <Card
@@ -53,9 +48,7 @@ export function PreparacaoAtividadeCard({
         <section>
           <h3 className="viva-rotulo text-text-primary">Sobre esta atividade</h3>
           <p className="mt-1 viva-apoio text-text-primary">{atividade.nome}</p>
-          <p className="mt-1 viva-legenda text-text-secondary">
-            {atividade.finalidade}
-          </p>
+          <p className="mt-1 viva-legenda text-text-secondary">{atividade.finalidade}</p>
           <p className="mt-2 viva-legenda text-text-secondary">
             {atividade.descricao} São {atividade.etapas} etapas curtas.
           </p>
@@ -63,9 +56,7 @@ export function PreparacaoAtividadeCard({
 
         <section>
           <h3 className="viva-rotulo text-text-primary">Duração prevista</h3>
-          <p className="mt-1 viva-legenda text-text-secondary">
-            {atividade.duracao}
-          </p>
+          <p className="mt-1 viva-legenda text-text-secondary">{atividade.duracao}</p>
         </section>
 
         <div className="grid gap-6 sm:grid-cols-2">
@@ -79,17 +70,13 @@ export function PreparacaoAtividadeCard({
           </section>
 
           <section>
-            <h3 className="viva-rotulo text-text-primary">
-              Ambiente sugerido
-            </h3>
+            <h3 className="viva-rotulo text-text-primary">Ambiente sugerido</h3>
             <ul className="mt-1 space-y-1 viva-legenda text-text-secondary">
               {atividade.ambiente.map((a) => (
                 <li key={a}>{a}</li>
               ))}
             </ul>
-            <p className="mt-2 viva-legenda text-text-secondary">
-              São sugestões, não exigências.
-            </p>
+            <p className="mt-2 viva-legenda text-text-secondary">São sugestões, não exigências.</p>
           </section>
         </div>
 
@@ -112,11 +99,7 @@ export function PreparacaoAtividadeCard({
                 onChange={(e) => setOutra(e.target.value)}
               />
             ) : null}
-            <Botao
-              variante="secundario"
-              tamanho="compacto"
-              onClick={() => setAjustando(false)}
-            >
+            <Botao variante="secundario" tamanho="compacto" onClick={() => setAjustando(false)}>
               Concluir a preparação
             </Botao>
           </section>
@@ -144,19 +127,11 @@ export function PreparacaoAtividadeCard({
         }
         secundarias={
           <>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => setAjustando((a) => !a)}
-            >
+            <Botao variante="terciario" tamanho="compacto" onClick={() => setAjustando((a) => !a)}>
               {ajustando ? "Ocultar preparação" : "Ajustar preparação"}
             </Botao>
             {onSalvarParaDepois ? (
-              <Botao
-                variante="terciario"
-                tamanho="compacto"
-                onClick={onSalvarParaDepois}
-              >
+              <Botao variante="terciario" tamanho="compacto" onClick={onSalvarParaDepois}>
                 Salvar para depois
               </Botao>
             ) : null}
