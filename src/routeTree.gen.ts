@@ -20,6 +20,7 @@ import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetiv
 import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
 import { Route as PercursoPreparacaoRouteImport } from './routes/_percurso.preparacao'
+import { Route as PercursoProximoPassoRouteImport } from './routes/_percurso.proximo-passo'
 import { Route as PercursoRegistroRouteImport } from './routes/_percurso.registro'
 import { Route as PercursoRevisaoRouteImport } from './routes/_percurso.revisao'
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
@@ -84,6 +85,11 @@ const PercursoPreparacaoRoute = PercursoPreparacaoRouteImport.update({
   path: '/preparacao',
   getParentRoute: () => PercursoRoute,
 } as any)
+const PercursoProximoPassoRoute = PercursoProximoPassoRouteImport.update({
+  id: '/proximo-passo',
+  path: '/proximo-passo',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const PercursoRegistroRoute = PercursoRegistroRouteImport.update({
   id: '/registro',
   path: '/registro',
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
   '/preparacao': typeof PercursoPreparacaoRoute
+  '/proximo-passo': typeof PercursoProximoPassoRoute
   '/registro': typeof PercursoRegistroRoute
   '/revisao': typeof PercursoRevisaoRoute
   '/sistema': typeof PercursoSistemaRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
   '/preparacao': typeof PercursoPreparacaoRoute
+  '/proximo-passo': typeof PercursoProximoPassoRoute
   '/registro': typeof PercursoRegistroRoute
   '/revisao': typeof PercursoRevisaoRoute
   '/sistema': typeof PercursoSistemaRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/_percurso/opcoes': typeof PercursoOpcoesRoute
   '/_percurso/perfil': typeof PercursoPerfilRoute
   '/_percurso/preparacao': typeof PercursoPreparacaoRoute
+  '/_percurso/proximo-passo': typeof PercursoProximoPassoRoute
   '/_percurso/registro': typeof PercursoRegistroRoute
   '/_percurso/revisao': typeof PercursoRevisaoRoute
   '/_percurso/sistema': typeof PercursoSistemaRoute
@@ -211,6 +220,7 @@ export interface FileRouteTypes {
     | '/opcoes'
     | '/perfil'
     | '/preparacao'
+    | '/proximo-passo'
     | '/registro'
     | '/revisao'
     | '/sistema'
@@ -232,6 +242,7 @@ export interface FileRouteTypes {
     | '/opcoes'
     | '/perfil'
     | '/preparacao'
+    | '/proximo-passo'
     | '/registro'
     | '/revisao'
     | '/sistema'
@@ -254,6 +265,7 @@ export interface FileRouteTypes {
     | '/_percurso/opcoes'
     | '/_percurso/perfil'
     | '/_percurso/preparacao'
+    | '/_percurso/proximo-passo'
     | '/_percurso/registro'
     | '/_percurso/revisao'
     | '/_percurso/sistema'
@@ -350,6 +362,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoPreparacaoRouteImport
       parentRoute: typeof PercursoRoute
     }
+    '/_percurso/proximo-passo': {
+      id: '/_percurso/proximo-passo'
+      path: '/proximo-passo'
+      fullPath: '/proximo-passo'
+      preLoaderRoute: typeof PercursoProximoPassoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/_percurso/registro': {
       id: '/_percurso/registro'
       path: '/registro'
@@ -438,6 +457,7 @@ interface PercursoRouteChildren {
   PercursoOpcoesRoute: typeof PercursoOpcoesRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
   PercursoPreparacaoRoute: typeof PercursoPreparacaoRoute
+  PercursoProximoPassoRoute: typeof PercursoProximoPassoRoute
   PercursoRegistroRoute: typeof PercursoRegistroRoute
   PercursoRevisaoRoute: typeof PercursoRevisaoRoute
   PercursoSistemaRoute: typeof PercursoSistemaRoute
@@ -457,6 +477,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoOpcoesRoute: PercursoOpcoesRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,
   PercursoPreparacaoRoute: PercursoPreparacaoRoute,
+  PercursoProximoPassoRoute: PercursoProximoPassoRoute,
   PercursoRegistroRoute: PercursoRegistroRoute,
   PercursoRevisaoRoute: PercursoRevisaoRoute,
   PercursoSistemaRoute: PercursoSistemaRoute,
