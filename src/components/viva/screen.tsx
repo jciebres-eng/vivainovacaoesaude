@@ -34,14 +34,14 @@ export function ScreenHeader({
           <div className="flex shrink-0 items-center gap-2">
             <Link
               to="/afastamento"
-              className="viva-tap inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 viva-legenda text-muted-foreground hover:bg-secondary"
+              className="viva-tap inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border px-4 py-2 viva-legenda text-muted-foreground hover:bg-secondary"
             >
               <Pause className="h-3.5 w-3.5" aria-hidden />
               Pausar
             </Link>
             <Link
               to="/configuracoes"
-              className="viva-tap inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 viva-legenda text-muted-foreground hover:bg-secondary"
+              className="viva-tap inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border px-4 py-2 viva-legenda text-muted-foreground hover:bg-secondary"
             >
               <Settings2 className="h-3.5 w-3.5" aria-hidden />
               Ajustes
