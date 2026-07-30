@@ -75,7 +75,7 @@ function ReflexoesScreen() {
                     return (
                       <div key={p.chave}>
                         <dt className="viva-legenda text-text-secondary">
-                          {p.pergunta}
+                          {p.texto}
                         </dt>
                         <dd className="mt-1 max-w-[62ch] viva-texto text-text-primary">
                           {resposta}
