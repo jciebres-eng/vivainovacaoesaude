@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
+import { Route as PercursoAfastamentoRouteImport } from './routes/_percurso.afastamento'
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
 import { Route as PercursoEstrategiasRouteImport } from './routes/_percurso.estrategias'
@@ -35,6 +36,11 @@ const IndexRoute = IndexRouteImport.update({
 const PercursoRoute = PercursoRouteImport.update({
   id: '/_percurso',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PercursoAfastamentoRoute = PercursoAfastamentoRouteImport.update({
+  id: '/afastamento',
+  path: '/afastamento',
+  getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoBarreirasRoute = PercursoBarreirasRouteImport.update({
   id: '/barreiras',
@@ -117,6 +123,7 @@ const PercursoEstrategiasAdaptarEstrategiaIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/afastamento': typeof PercursoAfastamentoRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
   '/estrategias': typeof PercursoEstrategiasRouteWithChildren
@@ -135,6 +142,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/afastamento': typeof PercursoAfastamentoRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
   '/estrategias': typeof PercursoEstrategiasRouteWithChildren
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
+  '/_percurso/afastamento': typeof PercursoAfastamentoRoute
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/contexto': typeof PercursoContextoRoute
   '/_percurso/estrategias': typeof PercursoEstrategiasRouteWithChildren
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/afastamento'
     | '/barreiras'
     | '/contexto'
     | '/estrategias'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/afastamento'
     | '/barreiras'
     | '/contexto'
     | '/estrategias'
@@ -212,6 +223,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_percurso'
+    | '/_percurso/afastamento'
     | '/_percurso/barreiras'
     | '/_percurso/contexto'
     | '/_percurso/estrategias'
@@ -250,6 +262,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof PercursoRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_percurso/afastamento': {
+      id: '/_percurso/afastamento'
+      path: '/afastamento'
+      fullPath: '/afastamento'
+      preLoaderRoute: typeof PercursoAfastamentoRouteImport
+      parentRoute: typeof PercursoRoute
     }
     '/_percurso/barreiras': {
       id: '/_percurso/barreiras'
@@ -372,6 +391,7 @@ const PercursoEstrategiasRouteWithChildren =
   PercursoEstrategiasRoute._addFileChildren(PercursoEstrategiasRouteChildren)
 
 interface PercursoRouteChildren {
+  PercursoAfastamentoRoute: typeof PercursoAfastamentoRoute
   PercursoBarreirasRoute: typeof PercursoBarreirasRoute
   PercursoContextoRoute: typeof PercursoContextoRoute
   PercursoEstrategiasRoute: typeof PercursoEstrategiasRouteWithChildren
@@ -388,6 +408,7 @@ interface PercursoRouteChildren {
 }
 
 const PercursoRouteChildren: PercursoRouteChildren = {
+  PercursoAfastamentoRoute: PercursoAfastamentoRoute,
   PercursoBarreirasRoute: PercursoBarreirasRoute,
   PercursoContextoRoute: PercursoContextoRoute,
   PercursoEstrategiasRoute: PercursoEstrategiasRouteWithChildren,
