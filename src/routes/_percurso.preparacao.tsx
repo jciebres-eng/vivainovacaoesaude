@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { PreparacaoAtividadeCard } from "@/components/viva/humanos";
 import { useState } from "react";
 
 import {
