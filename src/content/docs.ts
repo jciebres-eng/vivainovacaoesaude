@@ -141,7 +141,15 @@ const meta: Record<
     summary:
       "Define o conteúdo inicial da biblioteca: informações breves e acessíveis, sem curso obrigatório, sequência fixa ou prescrição profissional.",
   },
+  "12_MAPA_DE_TELAS": {
+    title: "Mapa de Telas e Wireframes",
+    subtitle: "Organização, navegação e wireframes de baixa fidelidade",
+    group: "E",
+    summary:
+      "Apresenta o mapa de telas do protótipo e os wireframes que organizam conteúdos, campos, opções e navegação.",
+  },
 };
+
 
 
 
