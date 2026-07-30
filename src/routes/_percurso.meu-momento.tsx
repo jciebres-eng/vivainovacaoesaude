@@ -4,14 +4,17 @@ import { useMemo, useRef, useState } from "react";
 import { Botao } from "@/components/ds";
 import { Screen } from "@/components/viva/screen";
 import {
-  CartaoDeProximoPasso,
-  ContinuidadeDoPercurso,
   FormularioDeEstrategia,
   ReflexaoPosExperiencia,
   RegistroDeDuvida,
   RegistroDeExperiencia,
   SemProximoPasso,
 } from "@/components/viva/funcionais";
+import {
+  MeuMomentoCard,
+  ProximoPassoCard,
+  RetomarAtividadeCard,
+} from "@/components/viva/humanos";
 import {
   AvisoDeArmazenamento,
   BibliotecaRelacionada,
