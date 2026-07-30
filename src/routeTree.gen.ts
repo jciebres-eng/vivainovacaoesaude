@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
+import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
 import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const PercursoRoute = PercursoRouteImport.update({
   id: '/_percurso',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PercursoContextoRoute = PercursoContextoRouteImport.update({
+  id: '/contexto',
+  path: '/contexto',
+  getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoObjetivoRoute = PercursoObjetivoRouteImport.update({
   id: '/objetivo',
@@ -48,6 +54,7 @@ const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contexto': typeof PercursoContextoRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/perfil': typeof PercursoPerfilRoute
   '/sistema': typeof PercursoSistemaRoute
@@ -55,6 +62,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contexto': typeof PercursoContextoRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/perfil': typeof PercursoPerfilRoute
   '/sistema': typeof PercursoSistemaRoute
@@ -64,6 +72,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
+  '/_percurso/contexto': typeof PercursoContextoRoute
   '/_percurso/objetivo': typeof PercursoObjetivoRoute
   '/_percurso/perfil': typeof PercursoPerfilRoute
   '/_percurso/sistema': typeof PercursoSistemaRoute
@@ -71,13 +80,26 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/objetivo' | '/perfil' | '/sistema' | '/documentos/$slug'
+  fullPaths:
+    | '/'
+    | '/contexto'
+    | '/objetivo'
+    | '/perfil'
+    | '/sistema'
+    | '/documentos/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/objetivo' | '/perfil' | '/sistema' | '/documentos/$slug'
+  to:
+    | '/'
+    | '/contexto'
+    | '/objetivo'
+    | '/perfil'
+    | '/sistema'
+    | '/documentos/$slug'
   id:
     | '__root__'
     | '/'
     | '/_percurso'
+    | '/_percurso/contexto'
     | '/_percurso/objetivo'
     | '/_percurso/perfil'
     | '/_percurso/sistema'
@@ -105,6 +127,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof PercursoRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_percurso/contexto': {
+      id: '/_percurso/contexto'
+      path: '/contexto'
+      fullPath: '/contexto'
+      preLoaderRoute: typeof PercursoContextoRouteImport
+      parentRoute: typeof PercursoRoute
     }
     '/_percurso/objetivo': {
       id: '/_percurso/objetivo'
@@ -138,12 +167,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface PercursoRouteChildren {
+  PercursoContextoRoute: typeof PercursoContextoRoute
   PercursoObjetivoRoute: typeof PercursoObjetivoRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
   PercursoSistemaRoute: typeof PercursoSistemaRoute
 }
 
 const PercursoRouteChildren: PercursoRouteChildren = {
+  PercursoContextoRoute: PercursoContextoRoute,
   PercursoObjetivoRoute: PercursoObjetivoRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,
   PercursoSistemaRoute: PercursoSistemaRoute,
