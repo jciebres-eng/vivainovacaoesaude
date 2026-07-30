@@ -19,6 +19,8 @@ export type VarianteCard =
   | "biblioteca"
   | "registro"
   | "reflexao"
+  | "rotina"
+  | "experiencia"
   | "estado-atual"
   | "aviso";
 
@@ -30,6 +32,9 @@ const variantes: Record<VarianteCard, string> = {
   biblioteca: "border-border-default bg-surface-default",
   registro: "border-border-default bg-surface-muted",
   reflexao: "border-dashed border-border-default bg-surface-default",
+  rotina: "border-border-default bg-surface-muted",
+  experiencia:
+    "border-feedback-continuidade/40 bg-feedback-continuidade-suave/40",
   "estado-atual": "border-action-primary/40 bg-feedback-information/40",
   aviso: "border-transparent bg-feedback-attention",
 };
@@ -41,9 +46,12 @@ const textoDaVariante: Record<VarianteCard, string> = {
   biblioteca: "text-text-primary",
   registro: "text-text-primary",
   reflexao: "text-text-primary",
+  rotina: "text-text-primary",
+  experiencia: "text-text-primary",
   "estado-atual": "text-text-primary",
   aviso: "text-feedback-attention-foreground",
 };
+
 
 export function Card({
   variante = "informativo",
