@@ -264,11 +264,7 @@ export function BibliotecaRelacionada({
                 {c.categoria} · leitura de cerca de {c.minutos} minutos
               </p>
               <div className="mt-4 flex flex-wrap items-center gap-3">
-                <BotaoLink
-                  to="/biblioteca/$conteudoId"
-                  params={{ conteudoId: c.id }}
-                  tamanho="compacto"
-                >
+                <BotaoLink to={`/biblioteca/${c.id}`} tamanho="compacto">
                   Abrir
                 </BotaoLink>
                 <Botao
