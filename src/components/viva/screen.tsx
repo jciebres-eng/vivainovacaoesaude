@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkProps } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, Pause, Settings2 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -264,7 +264,7 @@ export function ScreenFooter({
       <div className="flex flex-wrap items-center gap-3">
         {backTo ? (
           <Link
-            to={backTo}
+            to={backTo as LinkProps["to"]}
             className="viva-tap inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground transition-colors hover:bg-secondary"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
@@ -273,7 +273,7 @@ export function ScreenFooter({
         ) : null}
         {nextTo ? (
           <Link
-            to={nextTo}
+            to={nextTo as LinkProps["to"]}
             className="viva-tap inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 sm:flex-none"
           >
             {nextLabel}
