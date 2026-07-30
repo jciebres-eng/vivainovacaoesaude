@@ -27,8 +27,14 @@ export const groups: DocGroup[] = [
     description:
       "Escopo do protótipo, jornada principal, catálogo de habilidades e instrumentos do usuário.",
   },
-
+  {
+    id: "C",
+    label: "Grupo C — Personalização",
+    description:
+      "Personas demonstrativas, contextos de uso e as regras que geram percursos personalizados.",
+  },
 ];
+
 
 export type VivaDoc = {
   slug: string;
