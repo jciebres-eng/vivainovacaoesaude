@@ -44,7 +44,7 @@ function ConteudoScreen() {
         <SectionCard>
           <p className="text-card-foreground">{conteudo.resumo}</p>
           <ol className="mt-4 space-y-3">
-            {conteudo.passos.map((p, i) => (
+            {conteudo.passos.map((p: string, i: number) => (
               <li key={p} className="flex gap-3 text-card-foreground">
                 <span
                   aria-hidden
