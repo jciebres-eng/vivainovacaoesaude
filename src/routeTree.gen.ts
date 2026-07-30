@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
+import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -28,6 +29,11 @@ const PercursoPerfilRoute = PercursoPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => PercursoRoute,
 } as any)
+const PercursoSistemaRoute = PercursoSistemaRouteImport.update({
+  id: '/sistema',
+  path: '/sistema',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
   id: '/documentos/$slug',
   path: '/documentos/$slug',
@@ -37,11 +43,13 @@ const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/perfil': typeof PercursoPerfilRoute
+  '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/perfil': typeof PercursoPerfilRoute
+  '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
 }
 export interface FileRoutesById {
@@ -49,15 +57,21 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
   '/_percurso/perfil': typeof PercursoPerfilRoute
+  '/_percurso/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/perfil' | '/documentos/$slug'
+  fullPaths: '/' | '/perfil' | '/sistema' | '/documentos/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/perfil' | '/documentos/$slug'
+  to: '/' | '/perfil' | '/sistema' | '/documentos/$slug'
   id:
-    '__root__' | '/' | '/_percurso' | '/_percurso/perfil' | '/documentos/$slug'
+    | '__root__'
+    | '/'
+    | '/_percurso'
+    | '/_percurso/perfil'
+    | '/_percurso/sistema'
+    | '/documentos/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -89,6 +103,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoPerfilRouteImport
       parentRoute: typeof PercursoRoute
     }
+    '/_percurso/sistema': {
+      id: '/_percurso/sistema'
+      path: '/sistema'
+      fullPath: '/sistema'
+      preLoaderRoute: typeof PercursoSistemaRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/documentos/$slug': {
       id: '/documentos/$slug'
       path: '/documentos/$slug'
@@ -101,10 +122,12 @@ declare module '@tanstack/react-router' {
 
 interface PercursoRouteChildren {
   PercursoPerfilRoute: typeof PercursoPerfilRoute
+  PercursoSistemaRoute: typeof PercursoSistemaRoute
 }
 
 const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoPerfilRoute: PercursoPerfilRoute,
+  PercursoSistemaRoute: PercursoSistemaRoute,
 }
 
 const PercursoRouteWithChildren = PercursoRoute._addFileChildren(
