@@ -147,7 +147,7 @@ function SideNav({
                   to={item.to}
                   aria-current={ativo ? "page" : undefined}
                   className={cn(
-                    "viva-anim flex items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem]",
+                    "viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem]",
                     ativo
                       ? "bg-accent font-semibold text-accent-foreground"
                       : "text-sidebar-foreground hover:bg-secondary",
@@ -192,7 +192,7 @@ function BottomNav({
 }) {
   return (
     <nav
-      aria-label="Navegação principal"
+      aria-label="Navegação principal (rodapé)"
       className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-card/95 backdrop-blur md:hidden"
     >
       <ul
