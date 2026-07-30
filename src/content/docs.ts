@@ -45,6 +45,18 @@ export const groups: DocGroup[] = [
     description:
       "Mapa de telas, navegação e wireframes de baixa fidelidade do protótipo.",
   },
+  {
+    id: "F",
+    label: "Grupo F — Identidade e design",
+    description:
+      "Identidade da experiência e design system humano que orientam a linguagem visual e sensorial do VIVA.",
+  },
+  {
+    id: "G",
+    label: "Grupo G — Ética, IA e governança",
+    description:
+      "Manifesto de inteligência artificial responsável e governança ética, científica e regulatória.",
+  },
 ];
 
 
