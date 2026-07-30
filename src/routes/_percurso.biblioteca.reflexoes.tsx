@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Botao, Card, EstadoDaInterface } from "@/components/ds";
 import { Screen, ScreenHeader } from "@/components/viva/screen";
-import { conteudoPorId, perguntasDeReflexao } from "@/lib/viva-biblioteca-dados";
-import { useBiblioteca } from "@/lib/viva-biblioteca";
+import { conteudoPorId } from "@/lib/viva-biblioteca-dados";
+import { perguntasDeReflexao, useBiblioteca } from "@/lib/viva-biblioteca";
+
 
 export const Route = createFileRoute("/_percurso/biblioteca/reflexoes")({
   head: () => ({
