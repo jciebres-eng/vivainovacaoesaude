@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   Chip,
   Note,
+  OrigemDaSugestao,
   Screen,
   ScreenFooter,
   ScreenHeader,
