@@ -33,11 +33,11 @@ const itensPrincipais: {
     combina: (p) => p === "/meu-momento" || p.startsWith("/meu-momento"),
   },
   {
-    to: "/perfil",
+    to: "/jornada",
     label: "Percurso",
     icon: RouteIcon,
     combina: (p) =>
-      steps.some((s) => p.startsWith(s.path)) &&
+      (p.startsWith("/jornada") || steps.some((s) => p.startsWith(s.path))) &&
       !p.startsWith("/meu-momento") &&
       !p.startsWith("/biblioteca") &&
       !p.startsWith("/linha-do-tempo"),

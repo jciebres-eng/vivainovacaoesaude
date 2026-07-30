@@ -33,11 +33,7 @@ export function ScreenHeader({
   return (
     <header className="viva-fade">
       {step ? (
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-          <p className="min-w-0 viva-legenda text-text-secondary">
-            Você está em{" "}
-            <span className="font-semibold text-text-primary">{step.short}</span>
-          </p>
+        <div className="flex flex-wrap items-center justify-end gap-2">
           <div className="flex shrink-0 items-center gap-2">
             <BotaoLink
               to="/afastamento"
@@ -48,12 +44,12 @@ export function ScreenHeader({
               Pausar
             </BotaoLink>
             <BotaoLink
-              to="/configuracoes"
+              to="/minha-experiencia"
               tamanho="compacto"
               icone={Settings2}
               className="text-text-secondary"
             >
-              Ajustes
+              Minha experiência
             </BotaoLink>
           </div>
         </div>

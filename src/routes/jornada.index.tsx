@@ -94,7 +94,7 @@ function Entrada() {
                 >
                   Explorar possibilidades
                 </BotaoLink>
-                <BotaoLink to="/" variante="terciario" tamanho="compacto">
+                <BotaoLink to="/meu-momento" variante="terciario" tamanho="compacto">
                   Agora não
                 </BotaoLink>
               </>
