@@ -51,31 +51,29 @@ function PerfilScreen() {
             return (
               <div
                 key={p.id}
-                className={`viva-anim rounded-2xl border p-5 ${
+                className={`viva-anim rounded-3xl border p-5 shadow-suave ${
                   ativo ? "border-primary bg-accent" : "border-border bg-card"
                 }`}
               >
-                <h2 className="text-lg font-semibold text-card-foreground">
-                  {p.nome}
-                </h2>
-                <p className="text-sm text-muted-foreground">{p.tema}</p>
-                <p className="mt-3 max-w-[58ch] text-sm text-card-foreground">
+                <h2 className="viva-subtitulo text-card-foreground">{p.nome}</h2>
+                <p className="viva-legenda text-muted-foreground">{p.tema}</p>
+                <p className="mt-3 max-w-[58ch] viva-legenda text-card-foreground">
                   {p.resumo}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   <button
                     type="button"
                     onClick={() => setEscolha("perfil", p.id)}
-                    className="viva-tap rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+                    aria-pressed={ativo}
+                    className={`viva-tap rounded-full border px-5 py-2.5 viva-legenda font-medium ${
+                      ativo
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card text-card-foreground hover:bg-secondary"
+                    }`}
                   >
-                    {ativo ? "Perfil selecionado" : "Selecionar"}
+                    {ativo ? "Perfil escolhido" : "Escolher este perfil"}
                   </button>
-                  <Link
-                    to="/documentacao"
-                    className="viva-tap rounded-full border border-border px-5 py-2.5 text-sm font-medium text-card-foreground hover:bg-secondary"
-                  >
-                    Ver resumo
-                  </Link>
+                  <TextAction to="/documentacao">Ver resumo</TextAction>
                 </div>
               </div>
             );
