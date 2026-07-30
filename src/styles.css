@@ -242,7 +242,11 @@
   }
 }
 
-/* ---------------------------------------------- escala tipográfica (doc 14) */
+/* ---------------------------------------------- escala tipográfica (doc 14)
+ * Oito estilos, nada além disso: título de página, título de seção,
+ * subtítulo, texto principal, texto de apoio, legenda, rótulo e texto
+ * de botão. Sem excesso de tamanhos ou pesos.
+ */
 
 @utility viva-titulo {
   font-size: 1.625rem;
@@ -252,6 +256,23 @@
   @media (min-width: 768px) {
     font-size: 1.9rem;
   }
+}
+
+/* Nome semântico preferido para o título da página */
+@utility viva-titulo-pagina {
+  font-size: 1.625rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  @media (min-width: 768px) {
+    font-size: 1.9rem;
+  }
+}
+
+@utility viva-titulo-secao {
+  font-size: 1.3rem;
+  line-height: 1.35;
+  font-weight: 600;
 }
 
 @utility viva-subtitulo {
@@ -266,10 +287,28 @@
   font-weight: 400;
 }
 
+@utility viva-apoio {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
 @utility viva-legenda {
   font-size: 0.875rem;
   line-height: 1.55;
   font-weight: 400;
+}
+
+@utility viva-rotulo {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+@utility viva-texto-botao {
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
 }
 
 /* --------------------------------------------------------- microinterações */
