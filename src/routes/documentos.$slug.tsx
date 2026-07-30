@@ -43,7 +43,7 @@ function DocumentoPage() {
           Voltar para a biblioteca
         </BotaoLink>
 
-        <header className="mt-8 border-b border-border pb-8">
+        <header className="mt-8 border-b border-border-default pb-8">
           <p className="viva-legenda font-medium text-text-secondary">
             Documento {doc.number} · Leitura estimada: {doc.minutes} minutos
           </p>
@@ -59,7 +59,7 @@ function DocumentoPage() {
           <Markdown>{doc.content}</Markdown>
         </article>
 
-        <nav aria-label="Navegação entre documentos" className="mt-14 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
+        <nav aria-label="Navegação entre documentos" className="mt-14 flex flex-col gap-3 border-t border-border-default pt-8 sm:flex-row sm:justify-between">
           {prev ? (
             <Link
               to="/documentos/$slug"

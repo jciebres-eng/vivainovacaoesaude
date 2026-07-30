@@ -60,7 +60,7 @@ function ProximoPassoScreen() {
 
         <Link
           to="/objetivo"
-          className="viva-tap inline-flex rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground hover:bg-secondary"
+          className="viva-tap inline-flex rounded-full border border-border-default bg-surface-default px-5 py-3 text-sm font-semibold text-card-foreground hover:bg-secondary"
         >
           Rever meu objetivo
         </Link>

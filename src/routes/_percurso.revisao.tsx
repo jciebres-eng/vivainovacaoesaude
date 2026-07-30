@@ -50,7 +50,7 @@ function RevisaoScreen() {
             <h2 className="text-lg font-semibold text-card-foreground">
               {e.titulo}
             </h2>
-            <p className="mt-1 text-sm text-muted-foreground">{e.situacao}</p>
+            <p className="mt-1 text-sm text-text-secondary">{e.situacao}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {decisoesRevisao.map((d) => (
                 <Chip

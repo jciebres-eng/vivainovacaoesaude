@@ -81,7 +81,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-dvh bg-background">
       <a
         href="#conteudo"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-card focus:px-4 focus:py-2 focus:text-card-foreground"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface-default focus:px-4 focus:py-2 focus:text-card-foreground"
       >
         Ir para o conteúdo
       </a>
@@ -113,7 +113,7 @@ function SideNav({
   foco: boolean;
 }) {
   return (
-    <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-border bg-sidebar md:flex">
+    <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-border-default bg-sidebar md:flex">
       <div className="px-5 py-7">
         <Link
           to="/"
@@ -130,7 +130,7 @@ function SideNav({
             <span className="block truncate viva-subtitulo text-sidebar-foreground">
               VIVA
             </span>
-            <span className="block truncate viva-legenda text-muted-foreground">
+            <span className="block truncate viva-legenda text-text-secondary">
               Demonstração
             </span>
           </span>
@@ -173,7 +173,7 @@ function SideNav({
           <SlidersHorizontal className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
           <span className="truncate">Minha experiência</span>
         </Link>
-        <p className="mt-3 px-2 viva-legenda text-muted-foreground">
+        <p className="mt-3 px-2 viva-legenda text-text-secondary">
           {foco
             ? "Modo foco: o menu está reduzido. Você pode voltar em Minha experiência."
             : "Você decide o ritmo. Pode sair e voltar quando quiser."}
@@ -193,7 +193,7 @@ function BottomNav({
   return (
     <nav
       aria-label="Navegação principal (rodapé)"
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-card/95 backdrop-blur md:hidden"
+      className="fixed inset-x-0 bottom-0 z-20 border-t border-border-default bg-surface-default/95 backdrop-blur md:hidden"
     >
       <ul
         className="mx-auto grid max-w-xl"
@@ -210,7 +210,7 @@ function BottomNav({
                 aria-current={ativo ? "page" : undefined}
                 className={cn(
                   "viva-anim flex min-h-[3.75rem] flex-col items-center justify-center gap-1 px-1 py-2 text-[0.68rem] font-medium",
-                  ativo ? "text-primary" : "text-muted-foreground",
+                  ativo ? "text-primary" : "text-text-secondary",
                 )}
               >
                 <item.icon className="h-5 w-5 shrink-0" aria-hidden />

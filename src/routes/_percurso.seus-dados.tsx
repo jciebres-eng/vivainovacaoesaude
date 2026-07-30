@@ -91,12 +91,12 @@ function SeusDadosPage() {
             <button
               type="button"
               onClick={() => setConfirmando(true)}
-              className="viva-tap mt-4 inline-flex rounded-full border border-border bg-card px-5 py-3 font-medium text-card-foreground hover:bg-secondary"
+              className="viva-tap mt-4 inline-flex rounded-full border border-border-default bg-surface-default px-5 py-3 font-medium text-card-foreground hover:bg-secondary"
             >
               Apagar meus dados deste dispositivo
             </button>
           ) : (
-            <div className="mt-4 rounded-2xl border border-border p-4">
+            <div className="mt-4 rounded-2xl border border-border-default p-4">
               <p className="text-card-foreground">
                 Deseja apagar suas escolhas e preferências guardadas neste
                 dispositivo?

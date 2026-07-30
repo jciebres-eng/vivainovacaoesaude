@@ -63,7 +63,7 @@ function SistemaScreen() {
 
         <button
           type="button"
-          className="viva-tap w-full rounded-2xl border border-dashed border-border px-5 py-4 text-sm font-medium text-muted-foreground hover:bg-secondary"
+          className="viva-tap w-full rounded-2xl border border-dashed border-border-default px-5 py-4 text-sm font-medium text-text-secondary hover:bg-secondary"
         >
           Editar resumo
         </button>

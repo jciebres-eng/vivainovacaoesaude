@@ -90,7 +90,7 @@ function HabilidadesScreen() {
         <div className="flex flex-wrap gap-3">
           <button
             type="button"
-            className="viva-tap rounded-full border border-dashed border-border px-5 py-3 text-sm font-medium text-muted-foreground hover:bg-secondary"
+            className="viva-tap rounded-full border border-dashed border-border-default px-5 py-3 text-sm font-medium text-text-secondary hover:bg-secondary"
           >
             Criar habilidade própria
           </button>
@@ -106,7 +106,7 @@ function HabilidadesScreen() {
         backTo="/opcoes"
         nextTo="/estrategias"
         extra={
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-text-secondary">
             Prefere seguir agora? Use “Continuar” sem selecionar nada.
           </p>
         }

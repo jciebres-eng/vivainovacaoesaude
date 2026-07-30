@@ -83,7 +83,7 @@ function PreparacaoScreen() {
         <button
           type="button"
           onClick={() => setVerResumo((v) => !v)}
-          className="viva-tap w-full rounded-2xl border border-border bg-card px-5 py-4 text-sm font-semibold text-card-foreground hover:bg-secondary"
+          className="viva-tap w-full rounded-2xl border border-border-default bg-surface-default px-5 py-4 text-sm font-semibold text-card-foreground hover:bg-secondary"
         >
           {verResumo ? "Ocultar resumo do plano" : "Ver resumo do plano"}
         </button>

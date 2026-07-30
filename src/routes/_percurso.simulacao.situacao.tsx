@@ -64,7 +64,7 @@ function SituacaoScreen() {
         <div className="flex flex-wrap gap-3">
           <Link
             to="/simulacao"
-            className="viva-tap rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground hover:bg-secondary"
+            className="viva-tap rounded-full border border-border-default bg-surface-default px-5 py-3 text-sm font-semibold text-card-foreground hover:bg-secondary"
           >
             Interromper simulação
           </Link>
