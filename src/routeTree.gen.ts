@@ -21,6 +21,7 @@ import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
 import { Route as PercursoPreparacaoRouteImport } from './routes/_percurso.preparacao'
 import { Route as PercursoRegistroRouteImport } from './routes/_percurso.registro'
+import { Route as PercursoRevisaoRouteImport } from './routes/_percurso.revisao'
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
 import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.biblioteca.index'
@@ -88,6 +89,11 @@ const PercursoRegistroRoute = PercursoRegistroRouteImport.update({
   path: '/registro',
   getParentRoute: () => PercursoRoute,
 } as any)
+const PercursoRevisaoRoute = PercursoRevisaoRouteImport.update({
+  id: '/revisao',
+  path: '/revisao',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const PercursoSistemaRoute = PercursoSistemaRouteImport.update({
   id: '/sistema',
   path: '/sistema',
@@ -139,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/perfil': typeof PercursoPerfilRoute
   '/preparacao': typeof PercursoPreparacaoRoute
   '/registro': typeof PercursoRegistroRoute
+  '/revisao': typeof PercursoRevisaoRoute
   '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
@@ -159,6 +166,7 @@ export interface FileRoutesByTo {
   '/perfil': typeof PercursoPerfilRoute
   '/preparacao': typeof PercursoPreparacaoRoute
   '/registro': typeof PercursoRegistroRoute
+  '/revisao': typeof PercursoRevisaoRoute
   '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
@@ -181,6 +189,7 @@ export interface FileRoutesById {
   '/_percurso/perfil': typeof PercursoPerfilRoute
   '/_percurso/preparacao': typeof PercursoPreparacaoRoute
   '/_percurso/registro': typeof PercursoRegistroRoute
+  '/_percurso/revisao': typeof PercursoRevisaoRoute
   '/_percurso/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
@@ -203,6 +212,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/preparacao'
     | '/registro'
+    | '/revisao'
     | '/sistema'
     | '/documentos/$slug'
     | '/biblioteca/$conteudoId'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/preparacao'
     | '/registro'
+    | '/revisao'
     | '/sistema'
     | '/documentos/$slug'
     | '/biblioteca/$conteudoId'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/_percurso/perfil'
     | '/_percurso/preparacao'
     | '/_percurso/registro'
+    | '/_percurso/revisao'
     | '/_percurso/sistema'
     | '/documentos/$slug'
     | '/_percurso/biblioteca/$conteudoId'
@@ -345,6 +357,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoRegistroRouteImport
       parentRoute: typeof PercursoRoute
     }
+    '/_percurso/revisao': {
+      id: '/_percurso/revisao'
+      path: '/revisao'
+      fullPath: '/revisao'
+      preLoaderRoute: typeof PercursoRevisaoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/_percurso/sistema': {
       id: '/_percurso/sistema'
       path: '/sistema'
@@ -420,6 +439,7 @@ interface PercursoRouteChildren {
   PercursoPerfilRoute: typeof PercursoPerfilRoute
   PercursoPreparacaoRoute: typeof PercursoPreparacaoRoute
   PercursoRegistroRoute: typeof PercursoRegistroRoute
+  PercursoRevisaoRoute: typeof PercursoRevisaoRoute
   PercursoSistemaRoute: typeof PercursoSistemaRoute
   PercursoBibliotecaConteudoIdRoute: typeof PercursoBibliotecaConteudoIdRoute
   PercursoSimulacaoSituacaoRoute: typeof PercursoSimulacaoSituacaoRoute
@@ -438,6 +458,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoPerfilRoute: PercursoPerfilRoute,
   PercursoPreparacaoRoute: PercursoPreparacaoRoute,
   PercursoRegistroRoute: PercursoRegistroRoute,
+  PercursoRevisaoRoute: PercursoRevisaoRoute,
   PercursoSistemaRoute: PercursoSistemaRoute,
   PercursoBibliotecaConteudoIdRoute: PercursoBibliotecaConteudoIdRoute,
   PercursoSimulacaoSituacaoRoute: PercursoSimulacaoSituacaoRoute,
