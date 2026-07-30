@@ -430,3 +430,73 @@
 .viva-doc strong {
   font-weight: 600;
 }
+
+/* ------------------------------------------- Minha experiência (Fase 5)
+ * Preferências explícitas da pessoa, aplicadas ao documento inteiro.
+ * Nada aqui é inferido: cada atributo vem de uma escolha consciente.
+ */
+
+/* Contraste aumentado — bordas e texto mais definidos, sem cores vibrantes */
+html[data-contraste="aumentado"] {
+  --foreground: oklch(0.18 0.012 210);
+  --card-foreground: oklch(0.18 0.012 210);
+  --muted-foreground: oklch(0.36 0.012 210);
+  --border: oklch(0.74 0.012 190);
+  --input: oklch(0.7 0.012 190);
+}
+
+html[data-contraste="aumentado"].dark {
+  --foreground: oklch(0.985 0.004 95);
+  --muted-foreground: oklch(0.88 0.008 95);
+  --border: oklch(0.58 0.016 200);
+  --input: oklch(0.58 0.016 200);
+}
+
+/* Espaçamento entre blocos — compacto, confortável ou ampliado */
+html[data-espaco="compacto"] {
+  --viva-ritmo: 0.75;
+}
+html[data-espaco="confortavel"] {
+  --viva-ritmo: 1;
+}
+html[data-espaco="ampliado"] {
+  --viva-ritmo: 1.4;
+}
+
+html[data-espaco="compacto"] body {
+  line-height: 1.6;
+}
+html[data-espaco="ampliado"] body {
+  line-height: 1.9;
+  letter-spacing: 0.006em;
+}
+
+/* Cantos das superfícies */
+html[data-cantos="discretos"] {
+  --radius: 0.35rem;
+}
+
+/* Movimento: sem transições nem animações */
+.viva-sem-animacao *,
+.viva-sem-animacao *::before,
+.viva-sem-animacao *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Sem efeitos decorativos: nada de desfoque, sombra ou gradiente */
+.viva-sem-decoracao *,
+.viva-sem-decoracao *::before,
+.viva-sem-decoracao *::after {
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  background-image: none !important;
+}
+
+@utility viva-espaco {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1.5rem * var(--viva-ritmo, 1));
+}
