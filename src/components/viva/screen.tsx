@@ -1,17 +1,21 @@
 import { Link, type LinkProps } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  ChevronDown,
-  Info,
-  Pause,
-  Settings2,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ChevronDown, Pause, Settings2 } from "lucide-react";
 import type { ReactNode } from "react";
 
+import {
+  BotaoLink,
+  Card,
+  Confirmacao as DSConfirmacao,
+  MarcadorDeContinuidade,
+  icone as tokenIcone,
+} from "@/components/ds";
 import { cn } from "@/lib/utils";
 import { steps, type Step } from "@/lib/viva-data";
+
+/**
+ * Blocos de tela do percurso. São composições finas sobre o Design System
+ * (`@/components/ds`) — nenhuma decisão visual nova é tomada aqui.
+ */
 
 /* ------------------------------------------------------------- cabeçalho */
 
@@ -28,33 +32,40 @@ export function ScreenHeader({
     <header className="viva-fade">
       {step ? (
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-          <p className="min-w-0 viva-legenda text-muted-foreground">
-            Você está em <span className="font-semibold text-foreground">{step.short}</span>
+          <p className="min-w-0 viva-legenda text-text-secondary">
+            Você está em{" "}
+            <span className="font-semibold text-text-primary">{step.short}</span>
           </p>
           <div className="flex shrink-0 items-center gap-2">
-            <Link
+            <BotaoLink
               to="/afastamento"
-              className="viva-tap inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border px-4 py-2 viva-legenda text-muted-foreground hover:bg-secondary"
+              tamanho="compacto"
+              icone={Pause}
+              className="text-text-secondary"
             >
-              <Pause className="h-3.5 w-3.5" aria-hidden />
               Pausar
-            </Link>
-            <Link
+            </BotaoLink>
+            <BotaoLink
               to="/configuracoes"
-              className="viva-tap inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border px-4 py-2 viva-legenda text-muted-foreground hover:bg-secondary"
+              tamanho="compacto"
+              icone={Settings2}
+              className="text-text-secondary"
             >
-              <Settings2 className="h-3.5 w-3.5" aria-hidden />
               Ajustes
-            </Link>
+            </BotaoLink>
           </div>
         </div>
       ) : null}
 
-      {step ? <Trajetoria current={step.step} /> : null}
+      {step ? (
+        <div className="mt-4">
+          <Trajetoria current={step.step} />
+        </div>
+      ) : null}
 
-      <h1 className="mt-6 viva-titulo text-foreground">{title}</h1>
+      <h1 className="mt-6 viva-titulo-pagina text-text-primary">{title}</h1>
       {intro ? (
-        <p className="mt-3 max-w-[58ch] text-muted-foreground">{intro}</p>
+        <p className="mt-3 max-w-[58ch] viva-texto text-text-secondary">{intro}</p>
       ) : null}
 
       {step ? (
@@ -68,53 +79,38 @@ export function ScreenHeader({
 
 /**
  * Trajetória, não progresso (documento 13, "Relação com o progresso").
- * Sem percentual, sem barra de desempenho, sem etapas restantes, sem atraso.
- * A orientação é textual: o que veio antes, onde você está, o que vem depois.
+ * Sem percentual, sem etapas restantes, sem atraso.
  */
 export function Trajetoria({ current }: { current: number }) {
-  const anterior = steps[current - 2];
-  const atual = steps[current - 1];
-  const proximo = steps[current];
-
   return (
-    <nav aria-label="Onde você está no percurso" className="mt-4">
-      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 viva-legenda text-muted-foreground">
-        <li>{anterior ? anterior.short : "Começo do percurso"}</li>
-        <li aria-hidden className="text-border">
-          ·
-        </li>
-        <li className="font-semibold text-foreground">
-          {atual ? atual.short : ""}
-          <span className="sr-only"> (você está aqui)</span>
-        </li>
-        <li aria-hidden className="text-border">
-          ·
-        </li>
-        <li>{proximo ? proximo.short : "Última parte do percurso"}</li>
-      </ol>
-    </nav>
+    <MarcadorDeContinuidade
+      anterior={steps[current - 2]?.short}
+      atual={steps[current - 1]?.short ?? ""}
+      proximo={steps[current]?.short}
+      rotulo="Onde você está no percurso"
+    />
   );
 }
 
 /** Índice do percurso: acessível de dentro, nunca como menu permanente. */
 export function IndicePercurso({ atual }: { atual: number }) {
   return (
-    <details className="rounded-2xl border border-border bg-card">
-      <summary className="viva-tap flex cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-5 py-4 viva-legenda font-medium text-card-foreground hover:bg-secondary">
+    <details className="rounded-2xl border border-border-default bg-surface-default">
+      <summary className="viva-tap flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-5 py-4 viva-legenda font-medium text-text-primary hover:bg-background-secondary">
         Ver todas as partes do percurso
-        <ChevronDown className="h-4 w-4 shrink-0" aria-hidden />
+        <ChevronDown className={cn(tokenIcone.padrao, "shrink-0")} aria-hidden />
       </summary>
-      <ul className="border-t border-border p-2">
+      <ul className="border-t border-border-default p-2">
         {steps.map((s) => (
           <li key={s.id}>
             <Link
               to={s.path as LinkProps["to"]}
               aria-current={s.step === atual ? "step" : undefined}
               className={cn(
-                "viva-anim flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 viva-legenda",
+                "viva-anim flex min-h-11 items-center justify-between gap-3 rounded-xl px-3 py-2.5 viva-legenda",
                 s.step === atual
-                  ? "bg-accent font-semibold text-accent-foreground"
-                  : "text-card-foreground hover:bg-secondary",
+                  ? "bg-feedback-information font-semibold text-feedback-information-foreground"
+                  : "text-text-primary hover:bg-background-secondary",
               )}
             >
               <span className="truncate">{s.short}</span>
@@ -135,6 +131,7 @@ export function Screen({ children }: { children: ReactNode }) {
   return <div className="viva-fade mt-8 space-y-6">{children}</div>;
 }
 
+/** Seção de conteúdo — card informativo do Design System. */
 export function SectionCard({
   title,
   hint,
@@ -147,40 +144,13 @@ export function SectionCard({
   className?: string;
 }) {
   return (
-    <section
-      className={cn(
-        "rounded-3xl border border-border bg-card p-5 shadow-suave md:p-6",
-        className,
-      )}
-    >
-      {title ? (
-        <h2 className="viva-subtitulo text-card-foreground">{title}</h2>
-      ) : null}
-      {hint ? (
-        <p className="mt-2 viva-legenda text-muted-foreground">{hint}</p>
-      ) : null}
-      <div className={title || hint ? "mt-4" : undefined}>{children}</div>
-    </section>
-  );
-}
-
-export function Note({ children }: { children: ReactNode }) {
-  return (
-    <p className="rounded-2xl bg-secondary px-4 py-3 viva-legenda text-secondary-foreground">
+    <Card variante="informativo" titulo={title} descricao={hint} className={className}>
       {children}
-    </p>
+    </Card>
   );
 }
 
-/** Aviso importante — amarelo suave, nunca urgência (doc 14). */
-export function Aviso({ children }: { children: ReactNode }) {
-  return (
-    <p className="flex items-start gap-2.5 rounded-2xl bg-atencao px-4 py-3 viva-legenda text-atencao-foreground">
-      <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-      <span>{children}</span>
-    </p>
-  );
-}
+export { Aviso, Nota as Note } from "@/components/ds";
 
 /**
  * Origem das sugestões (documentos 10 e 15): a pessoa sempre sabe de onde
@@ -188,34 +158,18 @@ export function Aviso({ children }: { children: ReactNode }) {
  */
 export function OrigemDaSugestao({ children }: { children?: ReactNode }) {
   return (
-    <p className="rounded-2xl border border-dashed border-border px-4 py-3 viva-legenda text-muted-foreground">
+    <p className="rounded-2xl border border-dashed border-border-default px-4 py-3 viva-legenda text-text-secondary">
       {children ??
         "Estas sugestões vêm de regras simples definidas neste protótipo, não de inteligência artificial. Você pode aceitar, ignorar ou modificar cada uma delas."}
     </p>
   );
 }
 
-/** Confirmação textual do resultado de uma ação (doc 13, Confirmações). */
-export function Confirmacao({
-  children,
-  visivel = true,
-}: {
+export function Confirmacao(props: {
   children: ReactNode;
   visivel?: boolean;
 }) {
-  return (
-    <p
-      role="status"
-      aria-live="polite"
-      className={cn(
-        "flex items-center gap-2 viva-legenda text-muted-foreground",
-        visivel ? "opacity-100" : "opacity-0",
-      )}
-    >
-      <Check className="h-3.5 w-3.5 shrink-0 text-salvia" aria-hidden />
-      <span>{children}</span>
-    </p>
-  );
+  return <DSConfirmacao {...props} />;
 }
 
 /* --------------------------------------------------------------- escolhas */
@@ -244,8 +198,8 @@ export function ChoiceItem({
       className={cn(
         "viva-tap flex w-full items-start gap-3 rounded-2xl border p-4 text-left",
         selected
-          ? "border-primary bg-accent"
-          : "border-border bg-card hover:bg-secondary",
+          ? "border-action-primary bg-feedback-information"
+          : "border-border-default bg-surface-default hover:bg-background-secondary",
       )}
     >
       <span
@@ -254,23 +208,23 @@ export function ChoiceItem({
           "mt-0.5 grid h-5 w-5 shrink-0 place-items-center border",
           multiple ? "rounded-md" : "rounded-full",
           selected
-            ? "border-primary bg-primary text-primary-foreground"
+            ? "border-action-primary bg-action-primary text-action-primary-foreground"
             : "border-input",
         )}
       >
-        {selected ? <Check className="h-3.5 w-3.5" /> : null}
+        {selected ? <Check className={tokenIcone.pequeno} /> : null}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block font-medium text-card-foreground">{label}</span>
+        <span className="block viva-rotulo text-text-primary">{label}</span>
         {description ? (
-          <span className="mt-1 block viva-legenda text-muted-foreground">
+          <span className="mt-1 block viva-legenda text-text-secondary">
             {description}
           </span>
         ) : null}
       </span>
       {/* Estado também em texto: nunca só cor (doc 14, Acessibilidade) */}
       {selected ? (
-        <span className="shrink-0 viva-legenda text-muted-foreground">
+        <span className="shrink-0 viva-legenda text-text-secondary">
           selecionado
         </span>
       ) : null}
@@ -282,6 +236,31 @@ export function ChoiceList({ children }: { children: ReactNode }) {
   return <div className="space-y-3">{children}</div>;
 }
 
+/* ---------------------------------------------------------------- campos */
+
+export {
+  AreaDeTexto as TextArea,
+  CampoTexto as TextInput,
+  CampoBusca,
+  CampoData,
+  CampoHorario,
+  CampoSelecao,
+  CaixaDeSelecao,
+  BotaoDeOpcao,
+  Interruptor,
+  ControleDeslizante,
+  Chip,
+  Botao,
+  BotaoLink,
+  BotaoIcone,
+  Card,
+  Dialogo,
+  IndicadorDeEstado,
+  EstadoDaInterface,
+  Carregando,
+} from "@/components/ds";
+
+/** Compatibilidade: envelope de campo com rótulo visível. */
 export function Field({
   label,
   hint,
@@ -292,56 +271,13 @@ export function Field({
   children: ReactNode;
 }) {
   return (
-    <label className="block">
-      <span className="block font-medium text-foreground">{label}</span>
+    <div className="block">
+      <span className="block viva-rotulo text-text-primary">{label}</span>
       {hint ? (
-        <span className="mt-1 block viva-legenda text-muted-foreground">
-          {hint}
-        </span>
+        <span className="mt-1 block viva-legenda text-text-secondary">{hint}</span>
       ) : null}
-      <span className="mt-2 block">{children}</span>
-    </label>
-  );
-}
-
-const campoBase =
-  "w-full rounded-2xl border border-input bg-card px-4 py-3 text-base text-foreground placeholder:text-muted-foreground disabled:opacity-55";
-
-export function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
-  return <input {...props} className={cn(campoBase, props.className)} />;
-}
-
-export function TextArea(
-  props: React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-) {
-  return (
-    <textarea {...props} className={cn("min-h-28", campoBase, props.className)} />
-  );
-}
-
-export function Chip({
-  label,
-  selected,
-  onClick,
-}: {
-  label: string;
-  selected?: boolean;
-  onClick?: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={selected}
-      className={cn(
-        "viva-tap rounded-full border px-4 py-2 viva-legenda font-medium",
-        selected
-          ? "border-primary bg-primary text-primary-foreground"
-          : "border-border bg-card text-card-foreground hover:bg-secondary",
-      )}
-    >
-      {label}
-    </button>
+      <div className="mt-2">{children}</div>
+    </div>
   );
 }
 
@@ -358,7 +294,7 @@ export function TextAction({
   to?: string;
 }) {
   const classe =
-    "viva-tap inline-flex items-center gap-2 rounded-xl px-2 py-2 viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground";
+    "viva-tap inline-flex min-h-11 items-center gap-2 rounded-xl px-2 py-2 viva-legenda font-medium text-text-secondary underline underline-offset-4 hover:text-text-primary";
   if (to) {
     return (
       <Link to={to as LinkProps["to"]} className={classe}>
@@ -391,30 +327,28 @@ export function ScreenFooter({
   extra?: ReactNode;
 }) {
   return (
-    <footer className="mt-10 border-t border-border pt-6">
+    <footer className="mt-10 border-t border-border-default pt-6">
       {extra ? <div className="mb-4">{extra}</div> : null}
+      {/* Um único botão principal por bloco de decisão (doc 14). */}
       <div className="flex flex-wrap items-center gap-3">
         {nextTo ? (
-          <Link
-            to={nextTo as LinkProps["to"]}
-            className="viva-tap inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground hover:bg-primary/90 sm:flex-none"
+          <BotaoLink
+            to={nextTo}
+            variante="principal"
+            icone={ArrowRight}
+            iconePosicao="fim"
           >
             {nextLabel}
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+          </BotaoLink>
         ) : null}
         {backTo ? (
-          <Link
-            to={backTo as LinkProps["to"]}
-            className="viva-tap inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3.5 viva-legenda font-medium text-card-foreground hover:bg-secondary"
-          >
-            <ArrowLeft className="h-4 w-4" aria-hidden />
+          <BotaoLink to={backTo} tamanho="compacto" icone={ArrowLeft}>
             {backLabel}
-          </Link>
+          </BotaoLink>
         ) : null}
       </div>
       {saved ? (
-        <p className="mt-4 viva-legenda text-muted-foreground">
+        <p className="mt-4 viva-legenda text-text-secondary">
           Suas escolhas ficam guardadas neste dispositivo. Você pode editar depois.
         </p>
       ) : null}
