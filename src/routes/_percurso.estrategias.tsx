@@ -46,15 +46,15 @@ function EstrategiasScreen() {
       />
 
       <Screen>
+        <OrigemDaSugestao />
+
         {estrategias.map((e) => (
           <div
             key={e.id}
-            className="viva-anim rounded-2xl border border-border bg-card p-5"
+            className="viva-anim rounded-3xl border border-border bg-card p-5 shadow-suave"
           >
-            <h2 className="text-lg font-semibold text-card-foreground">
-              {e.titulo}
-            </h2>
-            <p className="mt-2 max-w-[58ch] text-sm text-muted-foreground">
+            <h2 className="viva-subtitulo text-card-foreground">{e.titulo}</h2>
+            <p className="mt-2 max-w-[58ch] viva-legenda text-muted-foreground">
               {e.motivo}
             </p>
 
@@ -70,20 +70,16 @@ function EstrategiasScreen() {
             </div>
 
             <div className="mt-4">
-              <Link
-                to="/estrategias/adaptar/$estrategiaId"
-                params={{ estrategiaId: e.id }}
-                className="viva-tap inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-medium text-card-foreground hover:bg-secondary"
-              >
-                Adaptar estratégia
-              </Link>
+              <TextAction to="/estrategias/adaptar/$estrategiaId">
+                Adaptar esta estratégia
+              </TextAction>
             </div>
           </div>
         ))}
 
         <button
           type="button"
-          className="viva-tap w-full rounded-2xl border border-dashed border-border px-5 py-4 text-sm font-medium text-muted-foreground hover:bg-secondary"
+          className="viva-tap w-full rounded-2xl border border-dashed border-border px-5 py-4 viva-legenda font-medium text-muted-foreground hover:bg-secondary"
         >
           Criar outra estratégia
         </button>
