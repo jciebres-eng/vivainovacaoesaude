@@ -53,6 +53,13 @@ function SobrePage() {
       />
 
       <Screen>
+        <InformacaoSeguraCard
+          tipo="limite"
+          titulo={limiteDoViva.titulo}
+          mensagem={limiteDoViva.mensagem}
+          motivo={limiteDoViva.motivo}
+        />
+
         <SectionCard title="Para que serve">
           <p className="text-card-foreground">
             Ajudar a transformar um objetivo real da sua vida em passos que façam
