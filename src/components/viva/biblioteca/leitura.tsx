@@ -1,4 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import { Info, Lightbulb, Quote, Sparkles } from "lucide-react";
+
 
 import { Botao, Card } from "@/components/ds";
 import { cn } from "@/lib/utils";
