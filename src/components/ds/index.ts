@@ -14,3 +14,4 @@ export * from "./campos";
 export * from "./dialogo";
 export * from "./indicadores";
 export * from "./calendario";
+export * from "./carregando";
