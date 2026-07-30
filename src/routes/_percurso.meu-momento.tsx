@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useRef, useState } from "react";
 
-import { Botao, Card } from "@/components/ds";
+import { Botao } from "@/components/ds";
 import { Screen } from "@/components/viva/screen";
 import {
   CartaoDeProximoPasso,
@@ -21,6 +21,7 @@ import {
   PerguntaDeAbertura,
   PreferenciasDaHomeSecao,
   ReflexaoOpcional,
+  SecaoRecolhivel,
   RegistrosRecentes,
   montarRegistrosRecentes,
   type PossibilidadeDaHome,
@@ -336,36 +337,54 @@ function MeuMomentoPage() {
           onMudar={momento.definirPreferencia}
         />
 
-        <Card
-          variante="informativo"
-          titulo="Este espaço é seu"
-          descricao="O VIVA não avalia, não classifica e não interpreta o que você registra. Tudo fica guardado apenas neste dispositivo."
-        >
-          <div className="flex flex-wrap gap-3">
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => percurso.aplicarCenario("primeiro-acesso")}
-            >
-              Ver como fica no primeiro acesso
-            </Botao>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => percurso.aplicarCenario("atividade-iniciada")}
-            >
-              Ver com uma atividade iniciada
-            </Botao>
-            <Botao
-              variante="terciario"
-              tamanho="compacto"
-              onClick={() => percurso.aplicarCenario("apos-experiencia")}
-            >
-              Ver depois de uma experiência
-            </Botao>
-          </div>
-        </Card>
+        <p className="viva-legenda text-text-secondary">
+          O VIVA não avalia, não classifica e não interpreta o que você
+          registra. Tudo fica guardado apenas neste dispositivo.
+        </p>
+
+        <SecaoDeDemonstracao onAplicar={percurso.aplicarCenario} />
       </div>
     </Screen>
+  );
+}
+
+/** Trocador de cenário fictício, recolhido por padrão para não competir com o conteúdo. */
+function SecaoDeDemonstracao({
+  onAplicar,
+}: {
+  onAplicar: (cenario: "primeiro-acesso" | "atividade-iniciada" | "apos-experiencia") => void;
+}) {
+  const [aberto, setAberto] = useState(false);
+  return (
+    <SecaoRecolhivel
+      titulo="Ver esta página em outros momentos"
+      apoio="Demonstração com dados fictícios."
+      aberto={aberto}
+      onAlternar={() => setAberto((a) => !a)}
+    >
+      <div className="flex flex-wrap gap-3">
+        <Botao
+          variante="terciario"
+          tamanho="compacto"
+          onClick={() => onAplicar("primeiro-acesso")}
+        >
+          No primeiro acesso
+        </Botao>
+        <Botao
+          variante="terciario"
+          tamanho="compacto"
+          onClick={() => onAplicar("atividade-iniciada")}
+        >
+          Com uma atividade iniciada
+        </Botao>
+        <Botao
+          variante="terciario"
+          tamanho="compacto"
+          onClick={() => onAplicar("apos-experiencia")}
+        >
+          Depois de uma experiência
+        </Botao>
+      </div>
+    </SecaoRecolhivel>
   );
 }

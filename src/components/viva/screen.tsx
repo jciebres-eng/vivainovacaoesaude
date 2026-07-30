@@ -28,6 +28,8 @@ export function ScreenHeader({
   title: string;
   intro?: string;
 }) {
+  const anterior = step ? steps[step.step - 2] : undefined;
+
   return (
     <header className="viva-fade">
       {step ? (
@@ -54,6 +56,18 @@ export function ScreenHeader({
               Ajustes
             </BotaoLink>
           </div>
+        </div>
+      ) : null}
+
+      {anterior ? (
+        <div className="mt-3">
+          <Link
+            to={anterior.path as LinkProps["to"]}
+            className="viva-tap inline-flex min-h-11 items-center gap-2 rounded-xl px-2 py-2 viva-legenda font-medium text-text-secondary hover:text-text-primary"
+          >
+            <ArrowLeft className={cn(tokenIcone.padrao, "shrink-0")} aria-hidden />
+            Voltar para {anterior.short}
+          </Link>
         </div>
       ) : null}
 
