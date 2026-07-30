@@ -9,6 +9,7 @@ import {
   ScreenFooter,
   ScreenHeader,
   SectionCard,
+  TextAction,
 } from "@/components/viva/screen";
 import { getStep, opcoesSimulacao } from "@/lib/viva-data";
 
