@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 
 import { Note, Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
+import {
+  InformacaoSeguraCard,
+  limiteDoViva,
+} from "@/components/viva/humanos";
 
 export const Route = createFileRoute("/_percurso/sobre")({
   head: () => ({
