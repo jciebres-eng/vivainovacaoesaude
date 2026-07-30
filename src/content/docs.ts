@@ -216,8 +216,10 @@ function cleanMarkdown(raw: string): string {
 
 export const docs: VivaDoc[] = Object.entries(rawFiles)
   .map(([path, raw]) => {
-    const slug = path.replace("./docs/", "").replace(/\.md$/, "");
-    const info = meta[slug] ?? {
+    const arquivo = path.replace("./docs/", "").replace(/\.md$/, "");
+    // URL legível: 00_FILOSOFIA_DO_VIVA -> 00-filosofia-do-viva (doc 04, clareza).
+    const slug = arquivo.toLowerCase().replace(/_/g, "-");
+    const info = meta[arquivo] ?? {
       title: slug,
       group: "A",
       summary: "Documento da base VIVA.",
@@ -226,7 +228,7 @@ export const docs: VivaDoc[] = Object.entries(rawFiles)
     const words = content.split(/\s+/).length;
     return {
       slug,
-      number: slug.slice(0, 2),
+      number: arquivo.slice(0, 2),
       title: info.title,
       subtitle: info.subtitle,
       group: info.group,
