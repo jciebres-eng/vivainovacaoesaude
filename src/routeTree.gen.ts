@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
+import { Route as JornadaRouteImport } from './routes/jornada'
 import { Route as PercursoAfastamentoRouteImport } from './routes/_percurso.afastamento'
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoComponentesVivaRouteImport } from './routes/_percurso.componentes-viva'
@@ -32,6 +33,17 @@ import { Route as PercursoSeusDadosRouteImport } from './routes/_percurso.seus-d
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
 import { Route as PercursoSobreRouteImport } from './routes/_percurso.sobre'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
+import { Route as JornadaIndexRouteImport } from './routes/jornada.index'
+import { Route as JornadaAtividadeRouteImport } from './routes/jornada.atividade'
+import { Route as JornadaEncerramentoRouteImport } from './routes/jornada.encerramento'
+import { Route as JornadaLinhaDoTempoRouteImport } from './routes/jornada.linha-do-tempo'
+import { Route as JornadaMomentoRouteImport } from './routes/jornada.momento'
+import { Route as JornadaObjetivoRouteImport } from './routes/jornada.objetivo'
+import { Route as JornadaPreparacaoRouteImport } from './routes/jornada.preparacao'
+import { Route as JornadaProximoPassoRouteImport } from './routes/jornada.proximo-passo'
+import { Route as JornadaReflexaoRouteImport } from './routes/jornada.reflexao'
+import { Route as JornadaRegistroRouteImport } from './routes/jornada.registro'
+import { Route as JornadaResumoRouteImport } from './routes/jornada.resumo'
 import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.biblioteca.index'
 import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_percurso.biblioteca.$conteudoId'
 import { Route as PercursoSimulacaoIndexRouteImport } from './routes/_percurso.simulacao.index'
@@ -45,6 +57,11 @@ const IndexRoute = IndexRouteImport.update({
 } as any)
 const PercursoRoute = PercursoRouteImport.update({
   id: '/_percurso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JornadaRoute = JornadaRouteImport.update({
+  id: '/jornada',
+  path: '/jornada',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PercursoAfastamentoRoute = PercursoAfastamentoRouteImport.update({
@@ -152,6 +169,61 @@ const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
   path: '/documentos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JornadaIndexRoute = JornadaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaAtividadeRoute = JornadaAtividadeRouteImport.update({
+  id: '/atividade',
+  path: '/atividade',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaEncerramentoRoute = JornadaEncerramentoRouteImport.update({
+  id: '/encerramento',
+  path: '/encerramento',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaLinhaDoTempoRoute = JornadaLinhaDoTempoRouteImport.update({
+  id: '/linha-do-tempo',
+  path: '/linha-do-tempo',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaMomentoRoute = JornadaMomentoRouteImport.update({
+  id: '/momento',
+  path: '/momento',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaObjetivoRoute = JornadaObjetivoRouteImport.update({
+  id: '/objetivo',
+  path: '/objetivo',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaPreparacaoRoute = JornadaPreparacaoRouteImport.update({
+  id: '/preparacao',
+  path: '/preparacao',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaProximoPassoRoute = JornadaProximoPassoRouteImport.update({
+  id: '/proximo-passo',
+  path: '/proximo-passo',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaReflexaoRoute = JornadaReflexaoRouteImport.update({
+  id: '/reflexao',
+  path: '/reflexao',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaRegistroRoute = JornadaRegistroRouteImport.update({
+  id: '/registro',
+  path: '/registro',
+  getParentRoute: () => JornadaRoute,
+} as any)
+const JornadaResumoRoute = JornadaResumoRouteImport.update({
+  id: '/resumo',
+  path: '/resumo',
+  getParentRoute: () => JornadaRoute,
+} as any)
 const PercursoBibliotecaIndexRoute = PercursoBibliotecaIndexRouteImport.update({
   id: '/biblioteca/',
   path: '/biblioteca/',
@@ -183,6 +255,7 @@ const PercursoEstrategiasAdaptarEstrategiaIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/jornada': typeof JornadaRouteWithChildren
   '/afastamento': typeof PercursoAfastamentoRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/componentes-viva': typeof PercursoComponentesVivaRoute
@@ -204,6 +277,17 @@ export interface FileRoutesByFullPath {
   '/sistema': typeof PercursoSistemaRoute
   '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/jornada/atividade': typeof JornadaAtividadeRoute
+  '/jornada/encerramento': typeof JornadaEncerramentoRoute
+  '/jornada/linha-do-tempo': typeof JornadaLinhaDoTempoRoute
+  '/jornada/momento': typeof JornadaMomentoRoute
+  '/jornada/objetivo': typeof JornadaObjetivoRoute
+  '/jornada/preparacao': typeof JornadaPreparacaoRoute
+  '/jornada/proximo-passo': typeof JornadaProximoPassoRoute
+  '/jornada/reflexao': typeof JornadaReflexaoRoute
+  '/jornada/registro': typeof JornadaRegistroRoute
+  '/jornada/resumo': typeof JornadaResumoRoute
+  '/jornada/': typeof JornadaIndexRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca/': typeof PercursoBibliotecaIndexRoute
@@ -233,6 +317,17 @@ export interface FileRoutesByTo {
   '/sistema': typeof PercursoSistemaRoute
   '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/jornada/atividade': typeof JornadaAtividadeRoute
+  '/jornada/encerramento': typeof JornadaEncerramentoRoute
+  '/jornada/linha-do-tempo': typeof JornadaLinhaDoTempoRoute
+  '/jornada/momento': typeof JornadaMomentoRoute
+  '/jornada/objetivo': typeof JornadaObjetivoRoute
+  '/jornada/preparacao': typeof JornadaPreparacaoRoute
+  '/jornada/proximo-passo': typeof JornadaProximoPassoRoute
+  '/jornada/reflexao': typeof JornadaReflexaoRoute
+  '/jornada/registro': typeof JornadaRegistroRoute
+  '/jornada/resumo': typeof JornadaResumoRoute
+  '/jornada': typeof JornadaIndexRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca': typeof PercursoBibliotecaIndexRoute
@@ -243,6 +338,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
+  '/jornada': typeof JornadaRouteWithChildren
   '/_percurso/afastamento': typeof PercursoAfastamentoRoute
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/componentes-viva': typeof PercursoComponentesVivaRoute
@@ -264,6 +360,17 @@ export interface FileRoutesById {
   '/_percurso/sistema': typeof PercursoSistemaRoute
   '/_percurso/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/jornada/atividade': typeof JornadaAtividadeRoute
+  '/jornada/encerramento': typeof JornadaEncerramentoRoute
+  '/jornada/linha-do-tempo': typeof JornadaLinhaDoTempoRoute
+  '/jornada/momento': typeof JornadaMomentoRoute
+  '/jornada/objetivo': typeof JornadaObjetivoRoute
+  '/jornada/preparacao': typeof JornadaPreparacaoRoute
+  '/jornada/proximo-passo': typeof JornadaProximoPassoRoute
+  '/jornada/reflexao': typeof JornadaReflexaoRoute
+  '/jornada/registro': typeof JornadaRegistroRoute
+  '/jornada/resumo': typeof JornadaResumoRoute
+  '/jornada/': typeof JornadaIndexRoute
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/_percurso/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/_percurso/biblioteca/': typeof PercursoBibliotecaIndexRoute
@@ -274,6 +381,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/jornada'
     | '/afastamento'
     | '/barreiras'
     | '/componentes-viva'
@@ -295,6 +403,17 @@ export interface FileRouteTypes {
     | '/sistema'
     | '/sobre'
     | '/documentos/$slug'
+    | '/jornada/atividade'
+    | '/jornada/encerramento'
+    | '/jornada/linha-do-tempo'
+    | '/jornada/momento'
+    | '/jornada/objetivo'
+    | '/jornada/preparacao'
+    | '/jornada/proximo-passo'
+    | '/jornada/reflexao'
+    | '/jornada/registro'
+    | '/jornada/resumo'
+    | '/jornada/'
     | '/biblioteca/$conteudoId'
     | '/simulacao/situacao'
     | '/biblioteca/'
@@ -324,6 +443,17 @@ export interface FileRouteTypes {
     | '/sistema'
     | '/sobre'
     | '/documentos/$slug'
+    | '/jornada/atividade'
+    | '/jornada/encerramento'
+    | '/jornada/linha-do-tempo'
+    | '/jornada/momento'
+    | '/jornada/objetivo'
+    | '/jornada/preparacao'
+    | '/jornada/proximo-passo'
+    | '/jornada/reflexao'
+    | '/jornada/registro'
+    | '/jornada/resumo'
+    | '/jornada'
     | '/biblioteca/$conteudoId'
     | '/simulacao/situacao'
     | '/biblioteca'
@@ -333,6 +463,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_percurso'
+    | '/jornada'
     | '/_percurso/afastamento'
     | '/_percurso/barreiras'
     | '/_percurso/componentes-viva'
@@ -354,6 +485,17 @@ export interface FileRouteTypes {
     | '/_percurso/sistema'
     | '/_percurso/sobre'
     | '/documentos/$slug'
+    | '/jornada/atividade'
+    | '/jornada/encerramento'
+    | '/jornada/linha-do-tempo'
+    | '/jornada/momento'
+    | '/jornada/objetivo'
+    | '/jornada/preparacao'
+    | '/jornada/proximo-passo'
+    | '/jornada/reflexao'
+    | '/jornada/registro'
+    | '/jornada/resumo'
+    | '/jornada/'
     | '/_percurso/biblioteca/$conteudoId'
     | '/_percurso/simulacao/situacao'
     | '/_percurso/biblioteca/'
@@ -364,6 +506,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PercursoRoute: typeof PercursoRouteWithChildren
+  JornadaRoute: typeof JornadaRouteWithChildren
   DocumentosSlugRoute: typeof DocumentosSlugRoute
 }
 
@@ -381,6 +524,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof PercursoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jornada': {
+      id: '/jornada'
+      path: '/jornada'
+      fullPath: '/jornada'
+      preLoaderRoute: typeof JornadaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_percurso/afastamento': {
@@ -530,6 +680,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jornada/': {
+      id: '/jornada/'
+      path: '/'
+      fullPath: '/jornada/'
+      preLoaderRoute: typeof JornadaIndexRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/atividade': {
+      id: '/jornada/atividade'
+      path: '/atividade'
+      fullPath: '/jornada/atividade'
+      preLoaderRoute: typeof JornadaAtividadeRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/encerramento': {
+      id: '/jornada/encerramento'
+      path: '/encerramento'
+      fullPath: '/jornada/encerramento'
+      preLoaderRoute: typeof JornadaEncerramentoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/linha-do-tempo': {
+      id: '/jornada/linha-do-tempo'
+      path: '/linha-do-tempo'
+      fullPath: '/jornada/linha-do-tempo'
+      preLoaderRoute: typeof JornadaLinhaDoTempoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/momento': {
+      id: '/jornada/momento'
+      path: '/momento'
+      fullPath: '/jornada/momento'
+      preLoaderRoute: typeof JornadaMomentoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/objetivo': {
+      id: '/jornada/objetivo'
+      path: '/objetivo'
+      fullPath: '/jornada/objetivo'
+      preLoaderRoute: typeof JornadaObjetivoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/preparacao': {
+      id: '/jornada/preparacao'
+      path: '/preparacao'
+      fullPath: '/jornada/preparacao'
+      preLoaderRoute: typeof JornadaPreparacaoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/proximo-passo': {
+      id: '/jornada/proximo-passo'
+      path: '/proximo-passo'
+      fullPath: '/jornada/proximo-passo'
+      preLoaderRoute: typeof JornadaProximoPassoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/reflexao': {
+      id: '/jornada/reflexao'
+      path: '/reflexao'
+      fullPath: '/jornada/reflexao'
+      preLoaderRoute: typeof JornadaReflexaoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/registro': {
+      id: '/jornada/registro'
+      path: '/registro'
+      fullPath: '/jornada/registro'
+      preLoaderRoute: typeof JornadaRegistroRouteImport
+      parentRoute: typeof JornadaRoute
+    }
+    '/jornada/resumo': {
+      id: '/jornada/resumo'
+      path: '/resumo'
+      fullPath: '/jornada/resumo'
+      preLoaderRoute: typeof JornadaResumoRouteImport
+      parentRoute: typeof JornadaRoute
+    }
     '/_percurso/biblioteca/': {
       id: '/_percurso/biblioteca/'
       path: '/biblioteca'
@@ -638,9 +865,41 @@ const PercursoRouteWithChildren = PercursoRoute._addFileChildren(
   PercursoRouteChildren,
 )
 
+interface JornadaRouteChildren {
+  JornadaAtividadeRoute: typeof JornadaAtividadeRoute
+  JornadaEncerramentoRoute: typeof JornadaEncerramentoRoute
+  JornadaLinhaDoTempoRoute: typeof JornadaLinhaDoTempoRoute
+  JornadaMomentoRoute: typeof JornadaMomentoRoute
+  JornadaObjetivoRoute: typeof JornadaObjetivoRoute
+  JornadaPreparacaoRoute: typeof JornadaPreparacaoRoute
+  JornadaProximoPassoRoute: typeof JornadaProximoPassoRoute
+  JornadaReflexaoRoute: typeof JornadaReflexaoRoute
+  JornadaRegistroRoute: typeof JornadaRegistroRoute
+  JornadaResumoRoute: typeof JornadaResumoRoute
+  JornadaIndexRoute: typeof JornadaIndexRoute
+}
+
+const JornadaRouteChildren: JornadaRouteChildren = {
+  JornadaAtividadeRoute: JornadaAtividadeRoute,
+  JornadaEncerramentoRoute: JornadaEncerramentoRoute,
+  JornadaLinhaDoTempoRoute: JornadaLinhaDoTempoRoute,
+  JornadaMomentoRoute: JornadaMomentoRoute,
+  JornadaObjetivoRoute: JornadaObjetivoRoute,
+  JornadaPreparacaoRoute: JornadaPreparacaoRoute,
+  JornadaProximoPassoRoute: JornadaProximoPassoRoute,
+  JornadaReflexaoRoute: JornadaReflexaoRoute,
+  JornadaRegistroRoute: JornadaRegistroRoute,
+  JornadaResumoRoute: JornadaResumoRoute,
+  JornadaIndexRoute: JornadaIndexRoute,
+}
+
+const JornadaRouteWithChildren =
+  JornadaRoute._addFileChildren(JornadaRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PercursoRoute: PercursoRouteWithChildren,
+  JornadaRoute: JornadaRouteWithChildren,
   DocumentosSlugRoute: DocumentosSlugRoute,
 }
 export const routeTree = rootRouteImport
