@@ -46,6 +46,7 @@ import { Route as JornadaRegistroRouteImport } from './routes/jornada.registro'
 import { Route as JornadaResumoRouteImport } from './routes/jornada.resumo'
 import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.biblioteca.index'
 import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_percurso.biblioteca.$conteudoId'
+import { Route as PercursoBibliotecaMinhaRouteImport } from './routes/_percurso.biblioteca.minha'
 import { Route as PercursoSimulacaoIndexRouteImport } from './routes/_percurso.simulacao.index'
 import { Route as PercursoSimulacaoSituacaoRouteImport } from './routes/_percurso.simulacao.situacao'
 import { Route as PercursoEstrategiasAdaptarEstrategiaIdRouteImport } from './routes/_percurso.estrategias.adaptar.$estrategiaId'
@@ -235,6 +236,11 @@ const PercursoBibliotecaConteudoIdRoute =
     path: '/biblioteca/$conteudoId',
     getParentRoute: () => PercursoRoute,
   } as any)
+const PercursoBibliotecaMinhaRoute = PercursoBibliotecaMinhaRouteImport.update({
+  id: '/biblioteca/minha',
+  path: '/biblioteca/minha',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const PercursoSimulacaoIndexRoute = PercursoSimulacaoIndexRouteImport.update({
   id: '/simulacao/',
   path: '/simulacao/',
@@ -289,6 +295,7 @@ export interface FileRoutesByFullPath {
   '/jornada/resumo': typeof JornadaResumoRoute
   '/jornada/': typeof JornadaIndexRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
+  '/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca/': typeof PercursoBibliotecaIndexRoute
   '/simulacao/': typeof PercursoSimulacaoIndexRoute
@@ -329,6 +336,7 @@ export interface FileRoutesByTo {
   '/jornada/resumo': typeof JornadaResumoRoute
   '/jornada': typeof JornadaIndexRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
+  '/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca': typeof PercursoBibliotecaIndexRoute
   '/simulacao': typeof PercursoSimulacaoIndexRoute
@@ -372,6 +380,7 @@ export interface FileRoutesById {
   '/jornada/resumo': typeof JornadaResumoRoute
   '/jornada/': typeof JornadaIndexRoute
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
+  '/_percurso/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/_percurso/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/_percurso/biblioteca/': typeof PercursoBibliotecaIndexRoute
   '/_percurso/simulacao/': typeof PercursoSimulacaoIndexRoute
@@ -415,6 +424,7 @@ export interface FileRouteTypes {
     | '/jornada/resumo'
     | '/jornada/'
     | '/biblioteca/$conteudoId'
+    | '/biblioteca/minha'
     | '/simulacao/situacao'
     | '/biblioteca/'
     | '/simulacao/'
@@ -455,6 +465,7 @@ export interface FileRouteTypes {
     | '/jornada/resumo'
     | '/jornada'
     | '/biblioteca/$conteudoId'
+    | '/biblioteca/minha'
     | '/simulacao/situacao'
     | '/biblioteca'
     | '/simulacao'
@@ -497,6 +508,7 @@ export interface FileRouteTypes {
     | '/jornada/resumo'
     | '/jornada/'
     | '/_percurso/biblioteca/$conteudoId'
+    | '/_percurso/biblioteca/minha'
     | '/_percurso/simulacao/situacao'
     | '/_percurso/biblioteca/'
     | '/_percurso/simulacao/'
@@ -771,6 +783,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoBibliotecaConteudoIdRouteImport
       parentRoute: typeof PercursoRoute
     }
+    '/_percurso/biblioteca/minha': {
+      id: '/_percurso/biblioteca/minha'
+      path: '/biblioteca/minha'
+      fullPath: '/biblioteca/minha'
+      preLoaderRoute: typeof PercursoBibliotecaMinhaRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/_percurso/simulacao/': {
       id: '/_percurso/simulacao/'
       path: '/simulacao'
@@ -829,6 +848,7 @@ interface PercursoRouteChildren {
   PercursoSistemaRoute: typeof PercursoSistemaRoute
   PercursoSobreRoute: typeof PercursoSobreRoute
   PercursoBibliotecaConteudoIdRoute: typeof PercursoBibliotecaConteudoIdRoute
+  PercursoBibliotecaMinhaRoute: typeof PercursoBibliotecaMinhaRoute
   PercursoSimulacaoSituacaoRoute: typeof PercursoSimulacaoSituacaoRoute
   PercursoBibliotecaIndexRoute: typeof PercursoBibliotecaIndexRoute
   PercursoSimulacaoIndexRoute: typeof PercursoSimulacaoIndexRoute
@@ -856,6 +876,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoSistemaRoute: PercursoSistemaRoute,
   PercursoSobreRoute: PercursoSobreRoute,
   PercursoBibliotecaConteudoIdRoute: PercursoBibliotecaConteudoIdRoute,
+  PercursoBibliotecaMinhaRoute: PercursoBibliotecaMinhaRoute,
   PercursoSimulacaoSituacaoRoute: PercursoSimulacaoSituacaoRoute,
   PercursoBibliotecaIndexRoute: PercursoBibliotecaIndexRoute,
   PercursoSimulacaoIndexRoute: PercursoSimulacaoIndexRoute,
