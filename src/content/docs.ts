@@ -33,7 +33,14 @@ export const groups: DocGroup[] = [
     description:
       "Personas demonstrativas, contextos de uso e as regras que geram percursos personalizados.",
   },
+  {
+    id: "D",
+    label: "Grupo D — Conteúdo",
+    description:
+      "Biblioteca demonstrativa com informações curtas e acessíveis ligadas aos objetivos escolhidos.",
+  },
 ];
+
 
 
 export type VivaDoc = {
