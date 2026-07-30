@@ -28,7 +28,7 @@ describe("Design System Humano — acessibilidade", () => {
 
   it("campo de texto possui rótulo associado", async () => {
     const { container } = render(
-      <CampoTexto label="Como você prefere ser chamada?" value="" onChange={() => {}} />,
+      <CampoTexto rotulo="Como você prefere ser chamada?" defaultValue="" />,
     );
     expect(await axe(container)).toHaveNoViolations();
   });
