@@ -39,7 +39,8 @@ export function Dialogo({
   titulo,
   contexto,
   children,
-  rotuloAcao = "Confirmar",
+  /** Diga o que a ação faz: "Salvar este registro", nunca só "Confirmar". */
+  rotuloAcao = "Continuar",
   onAcao,
   rotuloCancelar = "Cancelar",
   carregando = false,
