@@ -1,6 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
-import { Note, Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
+import {
+  Note,
+  Screen,
+  ScreenHeader,
+  SectionCard,
+  TextAction,
+} from "@/components/viva/screen";
 import { conteudos } from "@/lib/viva-data";
 
 export const Route = createFileRoute("/_percurso/biblioteca/$conteudoId")({
