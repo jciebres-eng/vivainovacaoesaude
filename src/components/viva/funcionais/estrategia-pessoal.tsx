@@ -66,17 +66,17 @@ export function CartaoDeEstrategiaPessoal({
         <Chip
           label="Quero experimentar"
           selected={estrategia.queroExperimentar}
-          onSelect={() => onAlternarMarcador?.("queroExperimentar")}
+          onClick={() => onAlternarMarcador?.("queroExperimentar")}
         />
         <Chip
           label="Já utilizei"
           selected={estrategia.jaUtilizei}
-          onSelect={() => onAlternarMarcador?.("jaUtilizei")}
+          onClick={() => onAlternarMarcador?.("jaUtilizei")}
         />
         <Chip
           label="Foi útil para mim"
           selected={estrategia.foiUtil}
-          onSelect={() => onAlternarMarcador?.("foiUtil")}
+          onClick={() => onAlternarMarcador?.("foiUtil")}
         />
       </div>
 
