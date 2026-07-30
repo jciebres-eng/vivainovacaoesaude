@@ -38,7 +38,7 @@ export type CanalDeNotificacao =
   | "biblioteca"
   | "lembretes";
 export type ModoDeNavegacao = "guiado" | "exploracao" | "foco";
-export type Tema = "claro" | "escuro" | "automatico";
+export type Tema = "claro" | "escuro" | "baixo-estimulo" | "automatico";
 export type Contraste = "padrao" | "aumentado";
 export type Fonte = "padrao" | "ampliada";
 export type Espacamento = "compacto" | "confortavel" | "ampliado";
@@ -370,6 +370,7 @@ export function ExperienciaProvider({ children }: { children: ReactNode }) {
       (aparencia.tema === "automatico" && temaDoSistema === "escuro");
 
     raiz.classList.toggle("dark", escuro);
+    raiz.classList.toggle("viva-calmo", aparencia.tema === "baixo-estimulo");
     raiz.dataset.contraste = aparencia.contraste;
     raiz.dataset.texto = aparencia.fonte === "ampliada" ? "grande" : "padrao";
     raiz.dataset.espaco = aparencia.espacamento;
