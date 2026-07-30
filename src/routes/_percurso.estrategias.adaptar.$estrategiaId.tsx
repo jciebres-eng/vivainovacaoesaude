@@ -64,9 +64,7 @@ function AdaptarScreen() {
         </SectionCard>
 
         <SectionCard>
-          <Field label="Minha adaptação">
-            <TextArea defaultValue="Mostrar uma pergunta escrita" />
-          </Field>
+          <TextArea rotulo="Minha adaptação" defaultValue="Mostrar uma pergunta escrita" />
         </SectionCard>
 
         <div className="flex flex-wrap gap-3">

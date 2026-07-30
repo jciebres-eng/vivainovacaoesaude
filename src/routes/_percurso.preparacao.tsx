@@ -50,24 +50,12 @@ function PreparacaoScreen() {
       <Screen>
         <SectionCard>
           <div className="grid gap-5 md:grid-cols-2">
-            <Field label="Data">
-              <TextInput type="date" defaultValue="2026-07-30" />
-            </Field>
-            <Field label="Horário">
-              <TextInput type="time" defaultValue="17:00" />
-            </Field>
-            <Field label="Transporte principal">
-              <TextInput defaultValue="Ônibus" />
-            </Field>
-            <Field label="Estratégia sensorial">
-              <TextInput defaultValue="Protetor auditivo" />
-            </Field>
-            <Field label="Apoio">
-              <TextInput defaultValue="Mãe por mensagem" />
-            </Field>
-            <Field label="Plano alternativo">
-              <TextInput defaultValue="Transporte por aplicativo" />
-            </Field>
+            <TextInput rotulo="Data" type="date" defaultValue="2026-07-30" />
+            <TextInput rotulo="Horário" type="time" defaultValue="17:00" />
+            <TextInput rotulo="Transporte principal" defaultValue="Ônibus" />
+            <TextInput rotulo="Estratégia sensorial" defaultValue="Protetor auditivo" />
+            <TextInput rotulo="Apoio" defaultValue="Mãe por mensagem" />
+            <TextInput rotulo="Plano alternativo" defaultValue="Transporte por aplicativo" />
           </div>
         </SectionCard>
 

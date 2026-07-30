@@ -68,9 +68,7 @@ function RegistroScreen() {
         </ChoiceList>
 
         <SectionCard>
-          <Field label="O que aconteceu?">
-            <TextArea defaultValue="Perdi o primeiro ônibus e utilizei o seguinte." />
-          </Field>
+          <TextArea rotulo="O que aconteceu?" defaultValue="Perdi o primeiro ônibus e utilizei o seguinte." />
         </SectionCard>
 
         <SectionCard title="O que ajudou">

@@ -59,9 +59,7 @@ function SituacaoScreen() {
         </SectionCard>
 
         <SectionCard>
-          <Field label="Mensagem">
-            <TextArea defaultValue="Este ônibus passa perto da Faculdade Central?" />
-          </Field>
+          <TextArea rotulo="Mensagem" defaultValue="Este ônibus passa perto da Faculdade Central?" />
         </SectionCard>
 
         <div className="flex flex-wrap gap-3">
