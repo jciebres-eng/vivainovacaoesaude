@@ -34,6 +34,7 @@ export const Route = createFileRoute("/_percurso/estrategias")({
 
 function EstrategiasScreen() {
   const step = getStep("estrategias");
+  const [minhas, setMinhas] = useState<EstrategiaDemo[]>(estrategiasDemo);
   const [estado, setEstado] = useState<Record<string, string>>({
     mensagem: "Quero utilizar",
   });
