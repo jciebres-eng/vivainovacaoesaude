@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ChoiceItem,
   ChoiceList,
-  Field,
   Note,
   Screen,
   ScreenFooter,
@@ -63,12 +62,8 @@ function ObjetivoScreen() {
 
         <SectionCard>
           <div className="space-y-5">
-            <Field label="Meu objetivo">
-              <TextInput placeholder="Escreva com suas palavras" />
-            </Field>
-            <Field label="Por que isso é importante para você?">
-              <TextArea placeholder="Você pode responder depois" />
-            </Field>
+            <TextInput rotulo="Meu objetivo" placeholder="Escreva com suas palavras" />
+            <TextArea rotulo="Por que isso é importante para você?" placeholder="Você pode responder depois" />
           </div>
         </SectionCard>
 
