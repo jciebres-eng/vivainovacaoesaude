@@ -47,9 +47,9 @@ export const groups: DocGroup[] = [
   },
   {
     id: "F",
-    label: "Grupo F — Identidade e design",
+    label: "Grupo F — Identidade, design e psicologia",
     description:
-      "Identidade da experiência e design system humano que orientam a linguagem visual e sensorial do VIVA.",
+      "Identidade da experiência, design system humano e psicologia do design que orientam a linguagem visual, sensorial e comportamental do VIVA.",
   },
   {
     id: "G",
