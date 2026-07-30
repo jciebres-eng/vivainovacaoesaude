@@ -49,7 +49,7 @@ function DocumentacaoPage() {
                     <Link
                       to="/documentos/$slug"
                       params={{ slug: doc.slug }}
-                      className="viva-anim block rounded-2xl border border-border-default-default bg-surface-default p-5 shadow-suave hover:bg-background-secondary"
+                      className="viva-anim block rounded-2xl border border-border-default bg-surface-default p-5 shadow-suave hover:bg-background-secondary"
                     >
                       <span className="viva-legenda text-text-secondary">
                         Documento {doc.number} · leitura de {doc.minutes} minutos

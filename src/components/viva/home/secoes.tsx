@@ -92,7 +92,7 @@ export function PerguntaDeAbertura({
             <button
               type="button"
               onClick={p.onSelecionar}
-              className="viva-tap viva-anim w-full rounded-2xl border border-border-default-default bg-surface-default px-4 py-3 text-left viva-apoio text-text-primary hover:bg-background-secondary"
+              className="viva-tap viva-anim w-full rounded-2xl border border-border-default bg-surface-default px-4 py-3 text-left viva-apoio text-text-primary hover:bg-background-secondary"
             >
               {p.rotulo}
             </button>
@@ -118,7 +118,7 @@ export function PerguntaDeAbertura({
                   <button
                     type="button"
                     onClick={p.onSelecionar}
-                    className="viva-tap viva-anim w-full rounded-2xl border border-border-default-default bg-surface-muted px-4 py-3 text-left viva-apoio text-text-primary hover:bg-background-secondary"
+                    className="viva-tap viva-anim w-full rounded-2xl border border-border-default bg-surface-muted px-4 py-3 text-left viva-apoio text-text-primary hover:bg-background-secondary"
                   >
                     {p.rotulo}
                   </button>
@@ -331,7 +331,7 @@ export function MinhasEstrategias({
         {estrategias.slice(0, 3).map((e) => (
           <li
             key={e.id}
-            className="rounded-2xl border border-border-default-default bg-surface-muted px-4 py-3"
+            className="rounded-2xl border border-border-default bg-surface-muted px-4 py-3"
           >
             <p className="viva-apoio text-text-primary">{e.nome}</p>
             <p className="viva-legenda text-text-secondary">{e.quandoAjuda}</p>
@@ -386,7 +386,7 @@ export function RegistrosRecentes({
         {registros.slice(0, 3).map((r) => (
           <li
             key={r.id}
-            className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 rounded-2xl border border-border-default-default bg-surface-default px-4 py-3"
+            className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 rounded-2xl border border-border-default bg-surface-default px-4 py-3"
           >
             <span className="min-w-0 viva-apoio text-text-primary">{r.titulo}</span>
             <span className="shrink-0 viva-legenda text-text-secondary">{r.quando}</span>

@@ -296,7 +296,7 @@ export function Interruptor({
           "viva-tap min-h-11 shrink-0 rounded-full border px-5 py-2.5 viva-legenda font-medium",
           valor
             ? "border-action-primary bg-action-primary text-action-primary-foreground"
-            : "border-border-default-default bg-surface-default text-text-secondary",
+            : "border-border-default bg-surface-default text-text-secondary",
         )}
       >
         {valor ? textoLigado : textoDesligado}

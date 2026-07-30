@@ -81,7 +81,7 @@ function Bloco({ bloco, destacado }: { bloco: BlocoDeConteudo; destacado: boolea
 
   if (bloco.tipo === "exemplo") {
     return (
-      <figure className="rounded-2xl border border-border-default-default bg-surface-muted p-4">
+      <figure className="rounded-2xl border border-border-default bg-surface-muted p-4">
         <figcaption className="flex items-center gap-2 viva-legenda text-text-secondary">
           <Quote className="h-4 w-4" aria-hidden />
           {bloco.titulo ?? "Exemplo"}
@@ -126,7 +126,7 @@ export function EstrategiasDoConteudo({
         {conteudo.estrategias.map((e) => {
           const jaAdotada = adotadas.includes(e.id);
           return (
-            <li key={e.id} className="rounded-2xl border border-border-default-default p-4">
+            <li key={e.id} className="rounded-2xl border border-border-default p-4">
               <p className="viva-rotulo text-text-primary">{e.nome}</p>
               <p className="mt-1 max-w-[62ch] viva-apoio text-text-secondary">{e.comoAjuda}</p>
               <div className="mt-3">
@@ -169,7 +169,7 @@ export function TalvezSejaUtil({
             <Link
               to="/biblioteca/$conteudoId"
               params={{ conteudoId: c.id }}
-              className="viva-tap block rounded-2xl border border-border-default-default p-4 hover:bg-surface-muted"
+              className="viva-tap block rounded-2xl border border-border-default p-4 hover:bg-surface-muted"
             >
               <span className="viva-rotulo text-text-primary">{c.titulo}</span>
               <span className="mt-1 block viva-legenda text-text-secondary">{c.resumo}</span>

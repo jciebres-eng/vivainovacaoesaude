@@ -51,7 +51,7 @@ export function GrupoDeOpcoes<T extends string>({
                 "viva-tap min-h-11 rounded-2xl border px-4 py-3 text-left",
                 ativo
                   ? "border-action-primary bg-accent text-text-primary"
-                  : "border-border-default-default bg-surface-default text-text-secondary hover:bg-background-secondary",
+                  : "border-border-default bg-surface-default text-text-secondary hover:bg-background-secondary",
               )}
             >
               <span className="flex items-baseline justify-between gap-2">
@@ -80,7 +80,7 @@ export function AvisoDeAjuste({
   return (
     <div aria-live="polite" className="min-h-0">
       {mensagem ? (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border-default-default bg-background-secondary px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border-default bg-background-secondary px-4 py-3">
           <p className="viva-legenda text-text-secondary">{mensagem}</p>
           <button
             type="button"

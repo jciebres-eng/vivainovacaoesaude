@@ -123,7 +123,7 @@ function SobrePage() {
           </Link>
           <Link
             to="/documentacao"
-            className="viva-tap inline-flex rounded-full border border-border-default-default bg-surface-default px-5 py-3.5 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
+            className="viva-tap inline-flex rounded-full border border-border-default bg-surface-default px-5 py-3.5 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
           >
             Ler os documentos do projeto
           </Link>

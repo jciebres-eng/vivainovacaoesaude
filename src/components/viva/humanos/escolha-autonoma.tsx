@@ -71,7 +71,7 @@ export function EscolhaAutonomaGroup({
                 "viva-tap flex min-h-11 cursor-pointer items-start gap-3 rounded-2xl border px-4 py-3",
                 marcada
                   ? "border-action-primary bg-feedback-information/50"
-                  : "border-border-default-default bg-surface-default hover:bg-background-secondary",
+                  : "border-border-default bg-surface-default hover:bg-background-secondary",
                 (opcao.desabilitada || desabilitado) && "cursor-not-allowed opacity-55",
                 "focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--ring)]",
               )}

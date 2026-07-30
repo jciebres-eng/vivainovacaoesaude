@@ -82,7 +82,7 @@ function OpcaoDePercurso({
       className={
         selecionada
           ? "viva-tap flex w-full flex-col gap-1 rounded-2xl border border-action-primary bg-feedback-information p-4 text-left"
-          : "viva-tap flex w-full flex-col gap-1 rounded-2xl border border-border-default-default bg-surface-default p-4 text-left hover:bg-background-secondary"
+          : "viva-tap flex w-full flex-col gap-1 rounded-2xl border border-border-default bg-surface-default p-4 text-left hover:bg-background-secondary"
       }
     >
       <span className="viva-legenda text-text-secondary">{rotulo}</span>

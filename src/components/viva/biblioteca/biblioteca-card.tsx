@@ -41,7 +41,7 @@ export function BibliotecaCard({
   return (
     <article
       className={cn(
-        "rounded-3xl border border-border-default-default bg-surface-default shadow-suave",
+        "rounded-3xl border border-border-default bg-surface-default shadow-suave",
         compacto ? "p-4" : "p-5 md:p-6",
       )}
     >

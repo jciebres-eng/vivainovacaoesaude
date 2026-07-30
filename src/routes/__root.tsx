@@ -63,7 +63,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           </button>
           <a
             href="/"
-            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full border border-border-default-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
+            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full border border-border-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
           >
             Voltar para o início
           </a>

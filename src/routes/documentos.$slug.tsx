@@ -43,7 +43,7 @@ function DocumentoPage() {
           Voltar para a biblioteca
         </BotaoLink>
 
-        <header className="mt-8 border-b border-border-default-default pb-8">
+        <header className="mt-8 border-b border-border-default pb-8">
           <p className="viva-legenda font-medium text-text-secondary">
             Documento {doc.number} · Leitura estimada: {doc.minutes} minutos
           </p>
@@ -59,13 +59,13 @@ function DocumentoPage() {
 
         <nav
           aria-label="Navegação entre documentos"
-          className="mt-14 flex flex-col gap-3 border-t border-border-default-default pt-8 sm:flex-row sm:justify-between"
+          className="mt-14 flex flex-col gap-3 border-t border-border-default pt-8 sm:flex-row sm:justify-between"
         >
           {prev ? (
             <Link
               to="/documentos/$slug"
               params={{ slug: prev.slug }}
-              className="viva-tap rounded-2xl border border-border-default-default bg-surface-default px-4 py-3 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
+              className="viva-tap rounded-2xl border border-border-default bg-surface-default px-4 py-3 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
             >
               ← Documento {prev.number}: {prev.title}
             </Link>
@@ -76,7 +76,7 @@ function DocumentoPage() {
             <Link
               to="/documentos/$slug"
               params={{ slug: next.slug }}
-              className="viva-tap rounded-2xl border border-border-default-default bg-surface-default px-4 py-3 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
+              className="viva-tap rounded-2xl border border-border-default bg-surface-default px-4 py-3 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
             >
               Documento {next.number}: {next.title} →
             </Link>

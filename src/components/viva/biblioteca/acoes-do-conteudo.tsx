@@ -153,7 +153,7 @@ export function AcaoAdaptar({
             return (
               <li
                 key={`${bloco.tipo}-${i}`}
-                className="rounded-2xl border border-border-default-default p-3"
+                className="rounded-2xl border border-border-default p-3"
               >
                 <p className="viva-legenda text-text-secondary">{rotulo}…</p>
                 <div className="mt-2 flex flex-wrap gap-3">
