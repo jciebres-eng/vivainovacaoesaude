@@ -52,7 +52,9 @@ export const Route = createFileRoute("/_percurso/biblioteca/$conteudoId")({
 });
 
 function ConteudoScreen() {
-  const conteudo = Route.useLoaderData();
+  const { conteudoId } = Route.useParams();
+  const conteudo = conteudoPorId(conteudoId)!;
+
   const {
     dados,
     registrarAcesso,
