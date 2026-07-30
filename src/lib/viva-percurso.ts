@@ -671,5 +671,6 @@ export function usePercurso() {
     salvarDuvida,
     removerDuvida,
     restaurarDemonstracao,
+    aplicarCenario,
   };
 }
