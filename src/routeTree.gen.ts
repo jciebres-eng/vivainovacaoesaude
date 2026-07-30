@@ -16,6 +16,7 @@ import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barrei
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
 import { Route as PercursoEstrategiasRouteImport } from './routes/_percurso.estrategias'
 import { Route as PercursoHabilidadesRouteImport } from './routes/_percurso.habilidades'
+import { Route as PercursoLinhaDoTempoRouteImport } from './routes/_percurso.linha-do-tempo'
 import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
 import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
@@ -63,6 +64,11 @@ const PercursoEstrategiasRoute = PercursoEstrategiasRouteImport.update({
 const PercursoHabilidadesRoute = PercursoHabilidadesRouteImport.update({
   id: '/habilidades',
   path: '/habilidades',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoLinhaDoTempoRoute = PercursoLinhaDoTempoRouteImport.update({
+  id: '/linha-do-tempo',
+  path: '/linha-do-tempo',
   getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoObjetivoRoute = PercursoObjetivoRouteImport.update({
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/contexto': typeof PercursoContextoRoute
   '/estrategias': typeof PercursoEstrategiasRouteWithChildren
   '/habilidades': typeof PercursoHabilidadesRoute
+  '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/contexto': typeof PercursoContextoRoute
   '/estrategias': typeof PercursoEstrategiasRouteWithChildren
   '/habilidades': typeof PercursoHabilidadesRoute
+  '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/_percurso/contexto': typeof PercursoContextoRoute
   '/_percurso/estrategias': typeof PercursoEstrategiasRouteWithChildren
   '/_percurso/habilidades': typeof PercursoHabilidadesRoute
+  '/_percurso/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
   '/_percurso/objetivo': typeof PercursoObjetivoRoute
   '/_percurso/opcoes': typeof PercursoOpcoesRoute
   '/_percurso/perfil': typeof PercursoPerfilRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/contexto'
     | '/estrategias'
     | '/habilidades'
+    | '/linha-do-tempo'
     | '/objetivo'
     | '/opcoes'
     | '/perfil'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/contexto'
     | '/estrategias'
     | '/habilidades'
+    | '/linha-do-tempo'
     | '/objetivo'
     | '/opcoes'
     | '/perfil'
@@ -261,6 +272,7 @@ export interface FileRouteTypes {
     | '/_percurso/contexto'
     | '/_percurso/estrategias'
     | '/_percurso/habilidades'
+    | '/_percurso/linha-do-tempo'
     | '/_percurso/objetivo'
     | '/_percurso/opcoes'
     | '/_percurso/perfil'
@@ -332,6 +344,13 @@ declare module '@tanstack/react-router' {
       path: '/habilidades'
       fullPath: '/habilidades'
       preLoaderRoute: typeof PercursoHabilidadesRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/_percurso/linha-do-tempo': {
+      id: '/_percurso/linha-do-tempo'
+      path: '/linha-do-tempo'
+      fullPath: '/linha-do-tempo'
+      preLoaderRoute: typeof PercursoLinhaDoTempoRouteImport
       parentRoute: typeof PercursoRoute
     }
     '/_percurso/objetivo': {
@@ -453,6 +472,7 @@ interface PercursoRouteChildren {
   PercursoContextoRoute: typeof PercursoContextoRoute
   PercursoEstrategiasRoute: typeof PercursoEstrategiasRouteWithChildren
   PercursoHabilidadesRoute: typeof PercursoHabilidadesRoute
+  PercursoLinhaDoTempoRoute: typeof PercursoLinhaDoTempoRoute
   PercursoObjetivoRoute: typeof PercursoObjetivoRoute
   PercursoOpcoesRoute: typeof PercursoOpcoesRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
@@ -473,6 +493,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoContextoRoute: PercursoContextoRoute,
   PercursoEstrategiasRoute: PercursoEstrategiasRouteWithChildren,
   PercursoHabilidadesRoute: PercursoHabilidadesRoute,
+  PercursoLinhaDoTempoRoute: PercursoLinhaDoTempoRoute,
   PercursoObjetivoRoute: PercursoObjetivoRoute,
   PercursoOpcoesRoute: PercursoOpcoesRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,
