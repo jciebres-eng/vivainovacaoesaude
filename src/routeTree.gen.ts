@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
+import { Route as PercursoRouteImport } from './routes/percurso'
 import { Route as PercursoAfastamentoRouteImport } from './routes/_percurso.afastamento'
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoComponentesVivaRouteImport } from './routes/_percurso.componentes-viva'
@@ -32,6 +33,17 @@ import { Route as PercursoSeusDadosRouteImport } from './routes/_percurso.seus-d
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
 import { Route as PercursoSobreRouteImport } from './routes/_percurso.sobre'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
+import { Route as PercursoIndexRouteImport } from './routes/percurso.index'
+import { Route as PercursoAtividadeRouteImport } from './routes/percurso.atividade'
+import { Route as PercursoEncerramentoRouteImport } from './routes/percurso.encerramento'
+import { Route as PercursoLinhaDoTempoRouteImport } from './routes/percurso.linha-do-tempo'
+import { Route as PercursoMomentoRouteImport } from './routes/percurso.momento'
+import { Route as PercursoObjetivoRouteImport } from './routes/percurso.objetivo'
+import { Route as PercursoPreparacaoRouteImport } from './routes/percurso.preparacao'
+import { Route as PercursoProximoPassoRouteImport } from './routes/percurso.proximo-passo'
+import { Route as PercursoReflexaoRouteImport } from './routes/percurso.reflexao'
+import { Route as PercursoRegistroRouteImport } from './routes/percurso.registro'
+import { Route as PercursoResumoRouteImport } from './routes/percurso.resumo'
 import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.biblioteca.index'
 import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_percurso.biblioteca.$conteudoId'
 import { Route as PercursoSimulacaoIndexRouteImport } from './routes/_percurso.simulacao.index'
@@ -45,6 +57,11 @@ const IndexRoute = IndexRouteImport.update({
 } as any)
 const PercursoRoute = PercursoRouteImport.update({
   id: '/_percurso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PercursoRoute = PercursoRouteImport.update({
+  id: '/percurso',
+  path: '/percurso',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PercursoAfastamentoRoute = PercursoAfastamentoRouteImport.update({
@@ -152,6 +169,61 @@ const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
   path: '/documentos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PercursoIndexRoute = PercursoIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoAtividadeRoute = PercursoAtividadeRouteImport.update({
+  id: '/atividade',
+  path: '/atividade',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoEncerramentoRoute = PercursoEncerramentoRouteImport.update({
+  id: '/encerramento',
+  path: '/encerramento',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoLinhaDoTempoRoute = PercursoLinhaDoTempoRouteImport.update({
+  id: '/linha-do-tempo',
+  path: '/linha-do-tempo',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoMomentoRoute = PercursoMomentoRouteImport.update({
+  id: '/momento',
+  path: '/momento',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoObjetivoRoute = PercursoObjetivoRouteImport.update({
+  id: '/objetivo',
+  path: '/objetivo',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoPreparacaoRoute = PercursoPreparacaoRouteImport.update({
+  id: '/preparacao',
+  path: '/preparacao',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoProximoPassoRoute = PercursoProximoPassoRouteImport.update({
+  id: '/proximo-passo',
+  path: '/proximo-passo',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoReflexaoRoute = PercursoReflexaoRouteImport.update({
+  id: '/reflexao',
+  path: '/reflexao',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoRegistroRoute = PercursoRegistroRouteImport.update({
+  id: '/registro',
+  path: '/registro',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoResumoRoute = PercursoResumoRouteImport.update({
+  id: '/resumo',
+  path: '/resumo',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const PercursoBibliotecaIndexRoute = PercursoBibliotecaIndexRouteImport.update({
   id: '/biblioteca/',
   path: '/biblioteca/',
@@ -183,6 +255,7 @@ const PercursoEstrategiasAdaptarEstrategiaIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/percurso': typeof PercursoRouteWithChildren
   '/afastamento': typeof PercursoAfastamentoRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/componentes-viva': typeof PercursoComponentesVivaRoute
@@ -204,6 +277,17 @@ export interface FileRoutesByFullPath {
   '/sistema': typeof PercursoSistemaRoute
   '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/percurso/atividade': typeof PercursoAtividadeRoute
+  '/percurso/encerramento': typeof PercursoEncerramentoRoute
+  '/percurso/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
+  '/percurso/momento': typeof PercursoMomentoRoute
+  '/percurso/objetivo': typeof PercursoObjetivoRoute
+  '/percurso/preparacao': typeof PercursoPreparacaoRoute
+  '/percurso/proximo-passo': typeof PercursoProximoPassoRoute
+  '/percurso/reflexao': typeof PercursoReflexaoRoute
+  '/percurso/registro': typeof PercursoRegistroRoute
+  '/percurso/resumo': typeof PercursoResumoRoute
+  '/percurso/': typeof PercursoIndexRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca/': typeof PercursoBibliotecaIndexRoute
@@ -233,6 +317,17 @@ export interface FileRoutesByTo {
   '/sistema': typeof PercursoSistemaRoute
   '/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/percurso/atividade': typeof PercursoAtividadeRoute
+  '/percurso/encerramento': typeof PercursoEncerramentoRoute
+  '/percurso/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
+  '/percurso/momento': typeof PercursoMomentoRoute
+  '/percurso/objetivo': typeof PercursoObjetivoRoute
+  '/percurso/preparacao': typeof PercursoPreparacaoRoute
+  '/percurso/proximo-passo': typeof PercursoProximoPassoRoute
+  '/percurso/reflexao': typeof PercursoReflexaoRoute
+  '/percurso/registro': typeof PercursoRegistroRoute
+  '/percurso/resumo': typeof PercursoResumoRoute
+  '/percurso': typeof PercursoIndexRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/biblioteca': typeof PercursoBibliotecaIndexRoute
@@ -243,6 +338,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
+  '/percurso': typeof PercursoRouteWithChildren
   '/_percurso/afastamento': typeof PercursoAfastamentoRoute
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/componentes-viva': typeof PercursoComponentesVivaRoute
@@ -264,6 +360,17 @@ export interface FileRoutesById {
   '/_percurso/sistema': typeof PercursoSistemaRoute
   '/_percurso/sobre': typeof PercursoSobreRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/percurso/atividade': typeof PercursoAtividadeRoute
+  '/percurso/encerramento': typeof PercursoEncerramentoRoute
+  '/percurso/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
+  '/percurso/momento': typeof PercursoMomentoRoute
+  '/percurso/objetivo': typeof PercursoObjetivoRoute
+  '/percurso/preparacao': typeof PercursoPreparacaoRoute
+  '/percurso/proximo-passo': typeof PercursoProximoPassoRoute
+  '/percurso/reflexao': typeof PercursoReflexaoRoute
+  '/percurso/registro': typeof PercursoRegistroRoute
+  '/percurso/resumo': typeof PercursoResumoRoute
+  '/percurso/': typeof PercursoIndexRoute
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/_percurso/simulacao/situacao': typeof PercursoSimulacaoSituacaoRoute
   '/_percurso/biblioteca/': typeof PercursoBibliotecaIndexRoute
@@ -274,6 +381,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/percurso'
     | '/afastamento'
     | '/barreiras'
     | '/componentes-viva'
@@ -295,6 +403,17 @@ export interface FileRouteTypes {
     | '/sistema'
     | '/sobre'
     | '/documentos/$slug'
+    | '/percurso/atividade'
+    | '/percurso/encerramento'
+    | '/percurso/linha-do-tempo'
+    | '/percurso/momento'
+    | '/percurso/objetivo'
+    | '/percurso/preparacao'
+    | '/percurso/proximo-passo'
+    | '/percurso/reflexao'
+    | '/percurso/registro'
+    | '/percurso/resumo'
+    | '/percurso/'
     | '/biblioteca/$conteudoId'
     | '/simulacao/situacao'
     | '/biblioteca/'
@@ -324,6 +443,17 @@ export interface FileRouteTypes {
     | '/sistema'
     | '/sobre'
     | '/documentos/$slug'
+    | '/percurso/atividade'
+    | '/percurso/encerramento'
+    | '/percurso/linha-do-tempo'
+    | '/percurso/momento'
+    | '/percurso/objetivo'
+    | '/percurso/preparacao'
+    | '/percurso/proximo-passo'
+    | '/percurso/reflexao'
+    | '/percurso/registro'
+    | '/percurso/resumo'
+    | '/percurso'
     | '/biblioteca/$conteudoId'
     | '/simulacao/situacao'
     | '/biblioteca'
@@ -333,6 +463,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_percurso'
+    | '/percurso'
     | '/_percurso/afastamento'
     | '/_percurso/barreiras'
     | '/_percurso/componentes-viva'
@@ -354,6 +485,17 @@ export interface FileRouteTypes {
     | '/_percurso/sistema'
     | '/_percurso/sobre'
     | '/documentos/$slug'
+    | '/percurso/atividade'
+    | '/percurso/encerramento'
+    | '/percurso/linha-do-tempo'
+    | '/percurso/momento'
+    | '/percurso/objetivo'
+    | '/percurso/preparacao'
+    | '/percurso/proximo-passo'
+    | '/percurso/reflexao'
+    | '/percurso/registro'
+    | '/percurso/resumo'
+    | '/percurso/'
     | '/_percurso/biblioteca/$conteudoId'
     | '/_percurso/simulacao/situacao'
     | '/_percurso/biblioteca/'
@@ -363,6 +505,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PercursoRoute: typeof PercursoRouteWithChildren
   PercursoRoute: typeof PercursoRouteWithChildren
   DocumentosSlugRoute: typeof DocumentosSlugRoute
 }
@@ -380,6 +523,13 @@ declare module '@tanstack/react-router' {
       id: '/_percurso'
       path: ''
       fullPath: '/'
+      preLoaderRoute: typeof PercursoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/percurso': {
+      id: '/percurso'
+      path: '/percurso'
+      fullPath: '/percurso'
       preLoaderRoute: typeof PercursoRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -530,6 +680,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/percurso/': {
+      id: '/percurso/'
+      path: '/'
+      fullPath: '/percurso/'
+      preLoaderRoute: typeof PercursoIndexRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/atividade': {
+      id: '/percurso/atividade'
+      path: '/atividade'
+      fullPath: '/percurso/atividade'
+      preLoaderRoute: typeof PercursoAtividadeRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/encerramento': {
+      id: '/percurso/encerramento'
+      path: '/encerramento'
+      fullPath: '/percurso/encerramento'
+      preLoaderRoute: typeof PercursoEncerramentoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/linha-do-tempo': {
+      id: '/percurso/linha-do-tempo'
+      path: '/linha-do-tempo'
+      fullPath: '/percurso/linha-do-tempo'
+      preLoaderRoute: typeof PercursoLinhaDoTempoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/momento': {
+      id: '/percurso/momento'
+      path: '/momento'
+      fullPath: '/percurso/momento'
+      preLoaderRoute: typeof PercursoMomentoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/objetivo': {
+      id: '/percurso/objetivo'
+      path: '/objetivo'
+      fullPath: '/percurso/objetivo'
+      preLoaderRoute: typeof PercursoObjetivoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/preparacao': {
+      id: '/percurso/preparacao'
+      path: '/preparacao'
+      fullPath: '/percurso/preparacao'
+      preLoaderRoute: typeof PercursoPreparacaoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/proximo-passo': {
+      id: '/percurso/proximo-passo'
+      path: '/proximo-passo'
+      fullPath: '/percurso/proximo-passo'
+      preLoaderRoute: typeof PercursoProximoPassoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/reflexao': {
+      id: '/percurso/reflexao'
+      path: '/reflexao'
+      fullPath: '/percurso/reflexao'
+      preLoaderRoute: typeof PercursoReflexaoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/registro': {
+      id: '/percurso/registro'
+      path: '/registro'
+      fullPath: '/percurso/registro'
+      preLoaderRoute: typeof PercursoRegistroRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/percurso/resumo': {
+      id: '/percurso/resumo'
+      path: '/resumo'
+      fullPath: '/percurso/resumo'
+      preLoaderRoute: typeof PercursoResumoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/_percurso/biblioteca/': {
       id: '/_percurso/biblioteca/'
       path: '/biblioteca'
@@ -638,8 +865,41 @@ const PercursoRouteWithChildren = PercursoRoute._addFileChildren(
   PercursoRouteChildren,
 )
 
+interface PercursoRouteChildren {
+  PercursoAtividadeRoute: typeof PercursoAtividadeRoute
+  PercursoEncerramentoRoute: typeof PercursoEncerramentoRoute
+  PercursoLinhaDoTempoRoute: typeof PercursoLinhaDoTempoRoute
+  PercursoMomentoRoute: typeof PercursoMomentoRoute
+  PercursoObjetivoRoute: typeof PercursoObjetivoRoute
+  PercursoPreparacaoRoute: typeof PercursoPreparacaoRoute
+  PercursoProximoPassoRoute: typeof PercursoProximoPassoRoute
+  PercursoReflexaoRoute: typeof PercursoReflexaoRoute
+  PercursoRegistroRoute: typeof PercursoRegistroRoute
+  PercursoResumoRoute: typeof PercursoResumoRoute
+  PercursoIndexRoute: typeof PercursoIndexRoute
+}
+
+const PercursoRouteChildren: PercursoRouteChildren = {
+  PercursoAtividadeRoute: PercursoAtividadeRoute,
+  PercursoEncerramentoRoute: PercursoEncerramentoRoute,
+  PercursoLinhaDoTempoRoute: PercursoLinhaDoTempoRoute,
+  PercursoMomentoRoute: PercursoMomentoRoute,
+  PercursoObjetivoRoute: PercursoObjetivoRoute,
+  PercursoPreparacaoRoute: PercursoPreparacaoRoute,
+  PercursoProximoPassoRoute: PercursoProximoPassoRoute,
+  PercursoReflexaoRoute: PercursoReflexaoRoute,
+  PercursoRegistroRoute: PercursoRegistroRoute,
+  PercursoResumoRoute: PercursoResumoRoute,
+  PercursoIndexRoute: PercursoIndexRoute,
+}
+
+const PercursoRouteWithChildren = PercursoRoute._addFileChildren(
+  PercursoRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PercursoRoute: PercursoRouteWithChildren,
   PercursoRoute: PercursoRouteWithChildren,
   DocumentosSlugRoute: DocumentosSlugRoute,
 }
