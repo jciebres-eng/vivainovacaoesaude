@@ -127,7 +127,15 @@ const meta: Record<
     summary:
       "Define o motor inicial de personalização por regras condicionais, sem inteligência artificial real na primeira versão.",
   },
+  "11_BIBLIOTECA_DEMONSTRATIVA": {
+    title: "Biblioteca Demonstrativa Inicial",
+    subtitle: "Conteúdo curto, acessível e vinculado aos objetivos",
+    group: "D",
+    summary:
+      "Define o conteúdo inicial da biblioteca: informações breves e acessíveis, sem curso obrigatório, sequência fixa ou prescrição profissional.",
+  },
 };
+
 
 
 
