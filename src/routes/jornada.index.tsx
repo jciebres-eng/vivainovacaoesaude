@@ -80,7 +80,7 @@ function Entrada() {
           </Nota>
           <AcoesAutonomas
             principal={
-              <BotaoLink to="/jornada/momento" variante="principal">
+              <BotaoLink to="/jornada/objetivo" variante="principal">
                 Começar um novo percurso
               </BotaoLink>
             }
@@ -140,7 +140,7 @@ function Entrada() {
 function rotaDaEtapa(etapa: string) {
   switch (etapa) {
     case "momento":
-      return "/jornada/momento";
+      return "/jornada/objetivo";
     case "objetivo":
       return "/jornada/objetivo";
     case "resumo":
