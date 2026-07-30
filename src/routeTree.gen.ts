@@ -20,6 +20,7 @@ import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
 import { Route as PercursoSistemaRouteImport } from './routes/_percurso.sistema'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
+import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.biblioteca.index'
 import { Route as PercursoEstrategiasAdaptarEstrategiaIdRouteImport } from './routes/_percurso.estrategias.adaptar.$estrategiaId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -76,6 +77,11 @@ const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
   path: '/documentos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PercursoBibliotecaIndexRoute = PercursoBibliotecaIndexRouteImport.update({
+  id: '/biblioteca/',
+  path: '/biblioteca/',
+  getParentRoute: () => PercursoRoute,
+} as any)
 const PercursoEstrategiasAdaptarEstrategiaIdRoute =
   PercursoEstrategiasAdaptarEstrategiaIdRouteImport.update({
     id: '/adaptar/$estrategiaId',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/perfil': typeof PercursoPerfilRoute
   '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/biblioteca/': typeof PercursoBibliotecaIndexRoute
   '/estrategias/adaptar/$estrategiaId': typeof PercursoEstrategiasAdaptarEstrategiaIdRoute
 }
 export interface FileRoutesByTo {
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/perfil': typeof PercursoPerfilRoute
   '/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/biblioteca': typeof PercursoBibliotecaIndexRoute
   '/estrategias/adaptar/$estrategiaId': typeof PercursoEstrategiasAdaptarEstrategiaIdRoute
 }
 export interface FileRoutesById {
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/_percurso/perfil': typeof PercursoPerfilRoute
   '/_percurso/sistema': typeof PercursoSistemaRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
+  '/_percurso/biblioteca/': typeof PercursoBibliotecaIndexRoute
   '/_percurso/estrategias/adaptar/$estrategiaId': typeof PercursoEstrategiasAdaptarEstrategiaIdRoute
 }
 export interface FileRouteTypes {
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/sistema'
     | '/documentos/$slug'
+    | '/biblioteca/'
     | '/estrategias/adaptar/$estrategiaId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/sistema'
     | '/documentos/$slug'
+    | '/biblioteca'
     | '/estrategias/adaptar/$estrategiaId'
   id:
     | '__root__'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/_percurso/perfil'
     | '/_percurso/sistema'
     | '/documentos/$slug'
+    | '/_percurso/biblioteca/'
     | '/_percurso/estrategias/adaptar/$estrategiaId'
   fileRoutesById: FileRoutesById
 }
@@ -252,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_percurso/biblioteca/': {
+      id: '/_percurso/biblioteca/'
+      path: '/biblioteca'
+      fullPath: '/biblioteca/'
+      preLoaderRoute: typeof PercursoBibliotecaIndexRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/_percurso/estrategias/adaptar/$estrategiaId': {
       id: '/_percurso/estrategias/adaptar/$estrategiaId'
       path: '/adaptar/$estrategiaId'
@@ -283,6 +302,7 @@ interface PercursoRouteChildren {
   PercursoOpcoesRoute: typeof PercursoOpcoesRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
   PercursoSistemaRoute: typeof PercursoSistemaRoute
+  PercursoBibliotecaIndexRoute: typeof PercursoBibliotecaIndexRoute
 }
 
 const PercursoRouteChildren: PercursoRouteChildren = {
@@ -294,6 +314,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoOpcoesRoute: PercursoOpcoesRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,
   PercursoSistemaRoute: PercursoSistemaRoute,
+  PercursoBibliotecaIndexRoute: PercursoBibliotecaIndexRoute,
 }
 
 const PercursoRouteWithChildren = PercursoRoute._addFileChildren(
