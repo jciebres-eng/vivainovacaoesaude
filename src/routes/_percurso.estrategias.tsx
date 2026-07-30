@@ -49,6 +49,30 @@ function EstrategiasScreen() {
       <Screen>
         <OrigemDaSugestao />
 
+        <section aria-label="Minhas estratégias" className="space-y-4">
+          <h2 className="viva-subtitulo text-foreground">Minhas estratégias</h2>
+          {minhas.map((e) => (
+            <EstrategiaPessoalCard
+              key={e.id}
+              estrategia={e}
+              onAlternarPessoal={(id) =>
+                setMinhas((p) =>
+                  p.map((i) => (i.id === id ? { ...i, pessoal: !i.pessoal } : i)),
+                )
+              }
+              onAlternarPreparacao={(id) =>
+                setMinhas((p) =>
+                  p.map((i) =>
+                    i.id === id ? { ...i, naPreparacao: !i.naPreparacao } : i,
+                  ),
+                )
+              }
+              onRemover={(id) => setMinhas((p) => p.filter((i) => i.id !== id))}
+            />
+          ))}
+        </section>
+
+
         {estrategias.map((e) => (
           <div
             key={e.id}
