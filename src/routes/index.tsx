@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
 
 function Inicio() {
   return (
-    <main className="min-h-screen bg-background px-6 py-16 md:px-10 md:py-24">
+    <main className="min-h-dvh bg-background px-6 py-16 md:px-10 md:py-24">
       <div className="viva-fade mx-auto max-w-2xl">
         <span
           aria-hidden
