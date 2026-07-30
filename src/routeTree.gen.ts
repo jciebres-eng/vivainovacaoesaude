@@ -15,6 +15,7 @@ import { Route as PercursoAfastamentoRouteImport } from './routes/_percurso.afas
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoConfiguracoesRouteImport } from './routes/_percurso.configuracoes'
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
+import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
 import { Route as PercursoEstrategiasRouteImport } from './routes/_percurso.estrategias'
 import { Route as PercursoHabilidadesRouteImport } from './routes/_percurso.habilidades'
 import { Route as PercursoLinhaDoTempoRouteImport } from './routes/_percurso.linha-do-tempo'
@@ -62,6 +63,11 @@ const PercursoConfiguracoesRoute = PercursoConfiguracoesRouteImport.update({
 const PercursoContextoRoute = PercursoContextoRouteImport.update({
   id: '/contexto',
   path: '/contexto',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoDocumentacaoRoute = PercursoDocumentacaoRouteImport.update({
+  id: '/documentacao',
+  path: '/documentacao',
   getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoEstrategiasRoute = PercursoEstrategiasRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/barreiras': typeof PercursoBarreirasRoute
   '/configuracoes': typeof PercursoConfiguracoesRoute
   '/contexto': typeof PercursoContextoRoute
+  '/documentacao': typeof PercursoDocumentacaoRoute
   '/estrategias': typeof PercursoEstrategiasRouteWithChildren
   '/habilidades': typeof PercursoHabilidadesRoute
   '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
@@ -195,6 +202,7 @@ export interface FileRoutesByTo {
   '/barreiras': typeof PercursoBarreirasRoute
   '/configuracoes': typeof PercursoConfiguracoesRoute
   '/contexto': typeof PercursoContextoRoute
+  '/documentacao': typeof PercursoDocumentacaoRoute
   '/estrategias': typeof PercursoEstrategiasRouteWithChildren
   '/habilidades': typeof PercursoHabilidadesRoute
   '/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
@@ -223,6 +231,7 @@ export interface FileRoutesById {
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/configuracoes': typeof PercursoConfiguracoesRoute
   '/_percurso/contexto': typeof PercursoContextoRoute
+  '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
   '/_percurso/estrategias': typeof PercursoEstrategiasRouteWithChildren
   '/_percurso/habilidades': typeof PercursoHabilidadesRoute
   '/_percurso/linha-do-tempo': typeof PercursoLinhaDoTempoRoute
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/barreiras'
     | '/configuracoes'
     | '/contexto'
+    | '/documentacao'
     | '/estrategias'
     | '/habilidades'
     | '/linha-do-tempo'
@@ -277,6 +287,7 @@ export interface FileRouteTypes {
     | '/barreiras'
     | '/configuracoes'
     | '/contexto'
+    | '/documentacao'
     | '/estrategias'
     | '/habilidades'
     | '/linha-do-tempo'
@@ -304,6 +315,7 @@ export interface FileRouteTypes {
     | '/_percurso/barreiras'
     | '/_percurso/configuracoes'
     | '/_percurso/contexto'
+    | '/_percurso/documentacao'
     | '/_percurso/estrategias'
     | '/_percurso/habilidades'
     | '/_percurso/linha-do-tempo'
@@ -373,6 +385,13 @@ declare module '@tanstack/react-router' {
       path: '/contexto'
       fullPath: '/contexto'
       preLoaderRoute: typeof PercursoContextoRouteImport
+      parentRoute: typeof PercursoRoute
+    }
+    '/_percurso/documentacao': {
+      id: '/_percurso/documentacao'
+      path: '/documentacao'
+      fullPath: '/documentacao'
+      preLoaderRoute: typeof PercursoDocumentacaoRouteImport
       parentRoute: typeof PercursoRoute
     }
     '/_percurso/estrategias': {
@@ -528,6 +547,7 @@ interface PercursoRouteChildren {
   PercursoBarreirasRoute: typeof PercursoBarreirasRoute
   PercursoConfiguracoesRoute: typeof PercursoConfiguracoesRoute
   PercursoContextoRoute: typeof PercursoContextoRoute
+  PercursoDocumentacaoRoute: typeof PercursoDocumentacaoRoute
   PercursoEstrategiasRoute: typeof PercursoEstrategiasRouteWithChildren
   PercursoHabilidadesRoute: typeof PercursoHabilidadesRoute
   PercursoLinhaDoTempoRoute: typeof PercursoLinhaDoTempoRoute
@@ -552,6 +572,7 @@ const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoBarreirasRoute: PercursoBarreirasRoute,
   PercursoConfiguracoesRoute: PercursoConfiguracoesRoute,
   PercursoContextoRoute: PercursoContextoRoute,
+  PercursoDocumentacaoRoute: PercursoDocumentacaoRoute,
   PercursoEstrategiasRoute: PercursoEstrategiasRouteWithChildren,
   PercursoHabilidadesRoute: PercursoHabilidadesRoute,
   PercursoLinhaDoTempoRoute: PercursoLinhaDoTempoRoute,
