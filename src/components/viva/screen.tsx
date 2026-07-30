@@ -68,35 +68,31 @@ export function ScreenHeader({
 
 /**
  * Trajetória, não progresso (documento 13, "Relação com o progresso").
- * Sem percentual, sem contagem de etapas restantes, sem ideia de atraso.
- * A informação também existe em texto, nunca apenas em cor.
+ * Sem percentual, sem barra de desempenho, sem etapas restantes, sem atraso.
+ * A orientação é textual: o que veio antes, onde você está, o que vem depois.
  */
 export function Trajetoria({ current }: { current: number }) {
   const anterior = steps[current - 2];
+  const atual = steps[current - 1];
   const proximo = steps[current];
 
   return (
-    <div className="mt-4">
-      <ul className="flex items-center gap-1.5" aria-hidden>
-        {steps.map((s) => (
-          <li
-            key={s.id}
-            className={cn(
-              "h-1.5 flex-1 rounded-full",
-              s.step < current
-                ? "bg-salvia"
-                : s.step === current
-                  ? "bg-primary"
-                  : "bg-secondary",
-            )}
-          />
-        ))}
-      </ul>
-      <p className="mt-2 viva-legenda text-muted-foreground">
-        {anterior ? `Antes: ${anterior.short}. ` : "Começo do percurso. "}
-        {proximo ? `Depois: ${proximo.short}.` : "Última parte do percurso."}
-      </p>
-    </div>
+    <nav aria-label="Onde você está no percurso" className="mt-4">
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 viva-legenda text-muted-foreground">
+        <li>{anterior ? anterior.short : "Começo do percurso"}</li>
+        <li aria-hidden className="text-border">
+          ·
+        </li>
+        <li className="font-semibold text-foreground">
+          {atual ? atual.short : ""}
+          <span className="sr-only"> (você está aqui)</span>
+        </li>
+        <li aria-hidden className="text-border">
+          ·
+        </li>
+        <li>{proximo ? proximo.short : "Última parte do percurso"}</li>
+      </ol>
+    </nav>
   );
 }
 
