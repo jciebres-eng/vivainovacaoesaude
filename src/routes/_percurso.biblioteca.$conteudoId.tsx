@@ -1,6 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
-import { Note, Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
+import {
+  Note,
+  Screen,
+  ScreenHeader,
+  SectionCard,
+  TextAction,
+} from "@/components/viva/screen";
 import { conteudos } from "@/lib/viva-data";
 
 export const Route = createFileRoute("/_percurso/biblioteca/$conteudoId")({
@@ -48,7 +54,7 @@ function ConteudoScreen() {
               <li key={p} className="flex gap-3 text-card-foreground">
                 <span
                   aria-hidden
-                  className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground"
+                  className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-secondary viva-legenda font-semibold text-secondary-foreground"
                 >
                   {i + 1}
                 </span>
@@ -58,22 +64,21 @@ function ConteudoScreen() {
           </ol>
         </SectionCard>
 
-        <div className="flex flex-wrap gap-2">
-          {[
-            "Salvar",
-            "Marcar como útil",
-            "Comentar",
-            "Registrar dúvida",
-            "Adicionar estratégia ao plano",
-          ].map((acao) => (
-            <button
-              key={acao}
-              type="button"
-              className="viva-tap rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-card-foreground hover:bg-secondary"
-            >
-              {acao}
-            </button>
-          ))}
+        {/* Uma ação principal, duas secundárias, o resto em texto (doc 13) */}
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            className="viva-tap rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
+          >
+            Adicionar ao meu plano
+          </button>
+          <button
+            type="button"
+            className="viva-tap rounded-full border border-border bg-card px-5 py-3 viva-legenda font-medium text-card-foreground hover:bg-secondary"
+          >
+            Salvar
+          </button>
+          <TextAction>Registrar uma dúvida</TextAction>
         </div>
 
         <Note>
@@ -83,7 +88,7 @@ function ConteudoScreen() {
 
         <Link
           to="/biblioteca"
-          className="viva-tap inline-flex rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground hover:bg-secondary"
+          className="viva-tap inline-flex rounded-full border border-border bg-card px-5 py-3 viva-legenda font-medium text-card-foreground hover:bg-secondary"
         >
           ← Voltar para a biblioteca
         </Link>

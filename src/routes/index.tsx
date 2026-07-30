@@ -1,125 +1,77 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { docs, docsByGroup, groups } from "@/content/docs";
+import { Leaf } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Biblioteca VIVA — Base documental da solução" },
+      { title: "VIVA — apoio ao desenvolvimento funcional no dia a dia" },
       {
         name: "description",
         content:
-          "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva.",
+          "O VIVA ajuda a transformar um objetivo do seu dia a dia em passos possíveis, no seu ritmo. Sem cobrança, sem comparação, sem pressa.",
       },
-      { property: "og:title", content: "Biblioteca VIVA — Base documental da solução" },
+      {
+        property: "og:title",
+        content: "VIVA — apoio ao desenvolvimento funcional no dia a dia",
+      },
       {
         property: "og:description",
         content:
-          "Biblioteca de referência do VIVA: visão da solução, problema social, princípios éticos e requisitos de experiência neuroinclusiva.",
+          "Um ambiente digital calmo, acessível e centrado na autonomia das pessoas.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Biblioteca,
+  component: Inicio,
 });
 
-function Biblioteca() {
+function Inicio() {
   return (
-    <main className="min-h-screen bg-background px-6 py-14 md:px-10">
-      <div className="mx-auto max-w-3xl">
-        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-          VIVA
-        </p>
-        <h1 className="mt-3 text-3xl font-bold leading-tight text-foreground md:text-4xl">
-          Biblioteca da solução
-        </h1>
-        <p className="mt-4 max-w-[62ch] text-muted-foreground">
-          Aqui ficam os documentos que definem o VIVA — Sistema Operacional Humano
-          para o Desenvolvimento Funcional. Eles são a fonte de autoridade do
-          projeto: em caso de conflito, o documento prevalece.
+    <main className="min-h-screen bg-background px-6 py-16 md:px-10 md:py-24">
+      <div className="viva-fade mx-auto max-w-2xl">
+        <span
+          aria-hidden
+          className="grid h-12 w-12 place-items-center rounded-full bg-salvia-suave text-salvia"
+        >
+          <Leaf className="h-5 w-5" />
+        </span>
+
+        <h1 className="mt-8 viva-titulo text-foreground">VIVA</h1>
+        <p className="mt-4 max-w-[52ch] text-muted-foreground">
+          Um espaço para organizar, no seu ritmo, algo que você deseja realizar
+          no dia a dia. Sem cobrança, sem comparação e sem pressa.
         </p>
 
-        <div className="mt-8 rounded-2xl border border-border bg-card p-6">
-          <h2 className="text-lg font-semibold text-card-foreground">
-            Protótipo navegável
-          </h2>
-          <p className="mt-2 max-w-[62ch] text-sm text-muted-foreground">
-            Percurso demonstrativo com as 16 etapas do mapa de telas, dados
-            fictícios e ajustes sensoriais.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              to="/perfil"
-              className="viva-tap inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
-            >
-              Iniciar percurso
-            </Link>
-            <Link
-              to="/linha-do-tempo"
-              className="viva-tap inline-flex rounded-full border border-border px-5 py-3 text-sm font-medium text-card-foreground hover:bg-secondary"
-            >
-              Ver trajetória
-            </Link>
-            <Link
-              to="/configuracoes"
-              className="viva-tap inline-flex rounded-full border border-border px-5 py-3 text-sm font-medium text-card-foreground hover:bg-secondary"
-            >
-              Ajustes sensoriais
-            </Link>
-          </div>
+        <div className="mt-10">
+          <Link
+            to="/perfil"
+            className="viva-tap inline-flex w-full items-center justify-center rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
+          >
+            Começar
+          </Link>
         </div>
 
-        <div className="mt-6 rounded-lg border border-border bg-card p-4">
-          <p className="text-sm text-card-foreground">
-            <strong>{docs.length} documentos</strong> publicados, organizados nos
-            grupos A a E.
-          </p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Link
+            to="/sobre"
+            className="viva-tap viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          >
+            Sobre o VIVA e seus limites
+          </Link>
+          <Link
+            to="/configuracoes"
+            className="viva-tap viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          >
+            Ajustar leitura, cor e movimento
+          </Link>
         </div>
 
-        {groups.map((group) => {
-          const list = docsByGroup(group.id);
-          if (list.length === 0) return null;
-          return (
-            <section key={group.id} className="mt-12">
-              <h2 className="text-xl font-semibold text-foreground">
-                {group.label}
-              </h2>
-              <p className="mt-2 max-w-[62ch] text-sm text-muted-foreground">
-                {group.description}
-              </p>
-
-              <ul className="mt-6 space-y-4">
-                {list.map((doc) => (
-                  <li key={doc.slug}>
-                    <Link
-                      to="/documentos/$slug"
-                      params={{ slug: doc.slug }}
-                      className="block rounded-lg border border-border bg-card p-5 transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    >
-                      <span className="text-sm font-medium text-muted-foreground">
-                        Documento {doc.number}
-                      </span>
-                      <h3 className="mt-1 text-lg font-semibold text-card-foreground">
-                        {doc.title}
-                      </h3>
-                      {doc.subtitle ? (
-                        <p className="mt-1 text-sm text-muted-foreground">
-                          {doc.subtitle}
-                        </p>
-                      ) : null}
-                      <p className="mt-3 max-w-[62ch] text-sm text-card-foreground">
-                        {doc.summary}
-                      </p>
-                      <p className="mt-4 text-sm text-muted-foreground">
-                        Leitura estimada: {doc.minutes} minutos
-                      </p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          );
-        })}
+        <p className="mt-16 max-w-[52ch] viva-legenda text-muted-foreground">
+          Demonstração com dados fictícios. O VIVA não faz diagnóstico e não
+          substitui acompanhamento profissional. Suas escolhas ficam apenas neste
+          dispositivo.
+        </p>
       </div>
     </main>
   );
