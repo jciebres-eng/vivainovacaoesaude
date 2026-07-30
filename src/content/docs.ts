@@ -167,6 +167,33 @@ const meta: Record<
     summary:
       "Apresenta o mapa de telas do protótipo e os wireframes que organizam conteúdos, campos, opções e navegação.",
   },
+  "13_IDENTIDADE_DA_EXPERIENCIA": {
+    title: "Identidade da Experiência",
+    subtitle: "Linguagem, tom e sensação de uso",
+    group: "F",
+    summary:
+      "Define a identidade da experiência VIVA: como a plataforma se comunica, o ritmo de uso e a sensação que deve provocar em quem a utiliza.",
+  },
+  "14_DESIGN_SYSTEM_HUMANO": {
+    title: "Design System Humano",
+    subtitle: "Princípios visuais, sensoriais e de componentes",
+    group: "F",
+    summary:
+      "Estabelece o sistema de design humano do VIVA: cores calmas, tipografia legível, espaçamento, componentes e comportamento visual acessível.",
+  },
+  "15_MANIFESTO_DE_IA_RESPONSAVEL": {
+    title: "Manifesto de IA Responsável",
+    subtitle: "Ética digital, privacidade e governança de dados",
+    group: "G",
+    summary:
+      "Define os limites e compromissos do uso de inteligência artificial, ética digital, privacidade e governança de dados no VIVA.",
+  },
+  "16_GOVERNANCA_ETICA_CIENTIFICA_E_REGULATORIA": {
+    title: "Governança Ética, Científica e Regulatória",
+    group: "G",
+    summary:
+      "Apresenta a estrutura de governança do VIVA: fundamentação científica, revisão ética e conformidade regulatória.",
+  },
 };
 
 
