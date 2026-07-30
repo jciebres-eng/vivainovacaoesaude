@@ -2,25 +2,61 @@ import { Link, useRouterState, type LinkProps } from "@tanstack/react-router";
 import {
   BookOpen,
   Clock3,
-  Compass,
-  FileText,
-  Home,
+  Leaf,
+  Route as RouteIcon,
   Settings2,
-  Sparkles,
+  ShieldCheck,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 import { steps } from "@/lib/viva-data";
 
 type To = LinkProps["to"];
 
-const atalhos: { to: To; label: string; icon: typeof Home }[] = [
-  { to: "/", label: "Início", icon: Home },
-  { to: "/biblioteca", label: "Biblioteca", icon: BookOpen },
-  { to: "/linha-do-tempo", label: "Linha do tempo", icon: Clock3 },
-  { to: "/configuracoes", label: "Ajustes", icon: Settings2 },
-  { to: "/documentacao", label: "Documentos", icon: FileText },
+/**
+ * Navegação: no máximo cinco itens principais (documento 14, Navegação).
+ * As 16 etapas do percurso não são menu — vivem dentro do próprio percurso.
+ */
+const itensPrincipais: {
+  to: To;
+  label: string;
+  icon: typeof BookOpen;
+  combina: (p: string) => boolean;
+}[] = [
+  {
+    to: "/perfil",
+    label: "Percurso",
+    icon: RouteIcon,
+    combina: (p) => steps.some((s) => p.startsWith(s.path)) && !p.startsWith("/biblioteca") && !p.startsWith("/linha-do-tempo"),
+  },
+  {
+    to: "/biblioteca",
+    label: "Biblioteca",
+    icon: BookOpen,
+    combina: (p) => p.startsWith("/biblioteca"),
+  },
+  {
+    to: "/linha-do-tempo",
+    label: "Trajetória",
+    icon: Clock3,
+    combina: (p) => p.startsWith("/linha-do-tempo"),
+  },
+  {
+    to: "/configuracoes",
+    label: "Ajustes",
+    icon: Settings2,
+    combina: (p) => p.startsWith("/configuracoes"),
+  },
+  {
+    to: "/sobre",
+    label: "Sobre o VIVA",
+    icon: ShieldCheck,
+    combina: (p) =>
+      p.startsWith("/sobre") ||
+      p.startsWith("/seus-dados") ||
+      p.startsWith("/documenta"),
+  },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -28,10 +64,19 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-background">
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-card focus:px-4 focus:py-2 focus:text-card-foreground"
+      >
+        Ir para o conteúdo
+      </a>
       <div className="mx-auto flex w-full max-w-7xl">
         <SideNav pathname={pathname} />
         <div className="min-w-0 flex-1">
-          <main className="px-5 pb-28 pt-8 md:px-10 md:pb-16 md:pt-12">
+          <main
+            id="conteudo"
+            className="px-5 pb-28 pt-8 md:px-10 md:pb-16 md:pt-12"
+          >
             <div className="mx-auto max-w-3xl">{children}</div>
           </main>
         </div>
@@ -42,91 +87,49 @@ export function AppShell({ children }: { children: ReactNode }) {
 }
 
 function SideNav({ pathname }: { pathname: string }) {
-  const [aberto, setAberto] = useState(true);
-
   return (
-    <aside
-      className={cn(
-        "viva-anim sticky top-0 hidden h-screen shrink-0 flex-col border-r border-border bg-sidebar md:flex",
-        aberto ? "w-72" : "w-[4.5rem]",
-      )}
-    >
-      <div className="flex items-center gap-2 px-4 py-6">
+    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-border bg-sidebar md:flex">
+      <div className="px-5 py-7">
         <Link
           to="/"
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground"
-          aria-label="VIVA — início"
+          className="flex items-center gap-3 rounded-xl"
+          aria-label="VIVA — página inicial"
         >
-          <Sparkles className="h-4 w-4" aria-hidden />
-        </Link>
-        {aberto ? (
-          <div className="min-w-0">
-            <p className="truncate font-bold tracking-tight text-sidebar-foreground">
+          <span
+            aria-hidden
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-salvia-suave text-salvia"
+          >
+            <Leaf className="h-4 w-4" />
+          </span>
+          <span className="min-w-0">
+            <span className="block truncate viva-subtitulo text-sidebar-foreground">
               VIVA
-            </p>
-            <p className="truncate text-xs text-muted-foreground">
+            </span>
+            <span className="block truncate viva-legenda text-muted-foreground">
               Demonstração
-            </p>
-          </div>
-        ) : null}
+            </span>
+          </span>
+        </Link>
       </div>
 
-      <nav className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
-        {aberto ? (
-          <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-            Percurso
-          </p>
-        ) : null}
+      <nav aria-label="Navegação principal" className="min-h-0 flex-1 px-3">
         <ul className="space-y-1">
-          {steps.map((s) => {
-            const ativo = pathname === s.path;
+          {itensPrincipais.map((item) => {
+            const ativo = item.combina(pathname);
             return (
-              <li key={s.id}>
+              <li key={item.label}>
                 <Link
-                  to={s.path as To}
+                  to={item.to}
+                  aria-current={ativo ? "page" : undefined}
                   className={cn(
-                    "viva-anim flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors",
+                    "viva-anim flex items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem]",
                     ativo
                       ? "bg-accent font-semibold text-accent-foreground"
                       : "text-sidebar-foreground hover:bg-secondary",
                   )}
                 >
-                  <span
-                    aria-hidden
-                    className={cn(
-                      "grid h-6 w-6 shrink-0 place-items-center rounded-full border text-xs",
-                      ativo
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border text-muted-foreground",
-                    )}
-                  >
-                    {s.step}
-                  </span>
-                  {aberto ? <span className="truncate">{s.short}</span> : null}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <div className="my-4 border-t border-border" />
-
-        <ul className="space-y-1">
-          {atalhos.map((a) => {
-            const ativo = pathname === a.to;
-            return (
-              <li key={a.label}>
-                <Link
-                  to={a.to}
-                  className={cn(
-                    "viva-anim flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors",
-                    ativo
-                      ? "bg-accent font-semibold text-accent-foreground"
-                      : "text-sidebar-foreground hover:bg-secondary",
-                  )}
-                >
-                  <a.icon className="h-4 w-4 shrink-0" aria-hidden />
-                  {aberto ? <span className="truncate">{a.label}</span> : null}
+                  <item.icon className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
+                  <span className="truncate">{item.label}</span>
                 </Link>
               </li>
             );
@@ -134,47 +137,36 @@ function SideNav({ pathname }: { pathname: string }) {
         </ul>
       </nav>
 
-      <button
-        type="button"
-        onClick={() => setAberto((v) => !v)}
-        className="m-3 flex items-center justify-center gap-2 rounded-xl border border-border px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-secondary"
-      >
-        <Compass className="h-3.5 w-3.5" aria-hidden />
-        {aberto ? "Recolher menu" : null}
-      </button>
+      <p className="px-5 pb-6 viva-legenda text-muted-foreground">
+        Você decide o ritmo. Pode sair e voltar quando quiser.
+      </p>
     </aside>
   );
 }
 
 function BottomNav({ pathname }: { pathname: string }) {
-  const atual = steps.find((s) => s.path === pathname);
-  const percurso = atual ?? steps[0];
-
-  const itens: { to: To; label: string; icon: typeof Home }[] = [
-    { to: percurso.path as To, label: "Percurso", icon: Compass },
-    { to: "/biblioteca", label: "Biblioteca", icon: BookOpen },
-    { to: "/linha-do-tempo", label: "Trajetória", icon: Clock3 },
-    { to: "/configuracoes", label: "Ajustes", icon: Settings2 },
-  ];
-
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-card/95 backdrop-blur md:hidden">
-      <ul className="mx-auto grid max-w-md grid-cols-4">
-        {itens.map((item) => {
-          const ativo =
-            pathname === item.to ||
-            (item.label === "Percurso" && Boolean(atual));
+    <nav
+      aria-label="Navegação principal"
+      className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-card/95 backdrop-blur md:hidden"
+    >
+      <ul className="mx-auto grid max-w-xl grid-cols-5">
+        {itensPrincipais.map((item) => {
+          const ativo = item.combina(pathname);
           return (
             <li key={item.label}>
               <Link
                 to={item.to}
+                aria-current={ativo ? "page" : undefined}
                 className={cn(
-                  "flex flex-col items-center gap-1 py-3 text-[0.7rem] font-medium transition-colors",
+                  "viva-anim flex min-h-[3.75rem] flex-col items-center justify-center gap-1 px-1 py-2 text-[0.68rem] font-medium",
                   ativo ? "text-primary" : "text-muted-foreground",
                 )}
               >
-                <item.icon className="h-5 w-5" aria-hidden />
-                {item.label}
+                <item.icon className="h-5 w-5 shrink-0" aria-hidden />
+                <span className="truncate">
+                  {item.label === "Sobre o VIVA" ? "Sobre" : item.label}
+                </span>
               </Link>
             </li>
           );
