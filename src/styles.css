@@ -62,23 +62,27 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.5rem;
+  /* VIVA — paleta calma, adulta, baixo estímulo (doc 04, 5.2) */
+  --background: oklch(0.985 0.006 95);
+  --foreground: oklch(0.24 0.02 240);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.24 0.02 240);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --popover-foreground: oklch(0.24 0.02 240);
+  --primary: oklch(0.42 0.06 210);
+  --primary-foreground: oklch(0.985 0.006 95);
+  --secondary: oklch(0.945 0.012 200);
+  --secondary-foreground: oklch(0.3 0.03 220);
+  --muted: oklch(0.955 0.008 100);
+  --muted-foreground: oklch(0.45 0.02 240);
+  --accent: oklch(0.93 0.02 180);
+  --accent-foreground: oklch(0.28 0.04 220);
+  --destructive: oklch(0.48 0.14 25);
+  --destructive-foreground: oklch(0.985 0.006 95);
+  --border: oklch(0.88 0.012 200);
+  --input: oklch(0.88 0.012 200);
+  --ring: oklch(0.42 0.06 210);
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
@@ -141,4 +145,60 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@layer base {
+  html {
+    font-family: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  }
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+}
+
+/* Leitura de documentos: hierarquia clara, espaçamento generoso, sem decoração */
+.viva-doc h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+.viva-doc h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.viva-doc h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.viva-doc p {
+  margin-bottom: 1.15rem;
+  max-width: 68ch;
+}
+.viva-doc ul,
+.viva-doc ol {
+  margin-bottom: 1.15rem;
+  padding-left: 1.5rem;
+  max-width: 68ch;
+}
+.viva-doc li {
+  margin-bottom: 0.5rem;
+  list-style: disc;
+}
+.viva-doc ol li {
+  list-style: decimal;
+}
+.viva-doc hr {
+  margin: 2.5rem 0;
+  border-color: var(--border);
+}
+.viva-doc strong {
+  font-weight: 700;
 }
