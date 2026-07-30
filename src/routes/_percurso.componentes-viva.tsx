@@ -121,7 +121,13 @@ function ComponentesVivaPage() {
               {estrategia ? (
                 <CartaoDeEstrategiaPessoal
                   estrategia={estrategia}
-                  onAtualizar={percurso.salvarEstrategia}
+                  onAlternarMarcador={(marcador) =>
+                    percurso.salvarEstrategia({
+                      ...estrategia,
+                      [marcador]: !estrategia[marcador],
+                    })
+                  }
+                  onRemover={() => percurso.removerEstrategia(estrategia.id)}
                 />
               ) : (
                 <SemEstrategias />
