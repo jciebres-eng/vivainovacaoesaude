@@ -72,7 +72,36 @@ const meta: Record<
     summary:
       "Requisitos de clareza, previsibilidade, controle, personalização, modo de baixo estímulo e comunicação neuroinclusiva.",
   },
+  "05_ESCOPO_DEMONSTRATIVO": {
+    title: "Escopo do Protótipo Demonstrativo",
+    subtitle: "O que a primeira versão demonstra",
+    group: "B",
+    summary:
+      "Delimita o que o protótipo demonstra e o que fica fora do escopo: transformar um objetivo de vida em um percurso personalizado e navegável.",
+  },
+  "07_JORNADA_PRINCIPAL": {
+    title: "Jornada Principal do Usuário",
+    subtitle: "O percurso do objetivo à prática",
+    group: "B",
+    summary:
+      "Descreve o percurso que transforma um objetivo real de vida em passos aplicáveis no cotidiano, etapa por etapa.",
+  },
+  "08_CATALOGO_DE_HABILIDADES": {
+    title: "Catálogo Inicial de Habilidades",
+    subtitle: "Habilidades que quero desenvolver",
+    group: "B",
+    summary:
+      "Define o catálogo inicial de habilidades, sempre vinculado a objetivos significativos escolhidos pela pessoa.",
+  },
+  "09_INSTRUMENTOS_DO_USUARIO": {
+    title: "Instrumentos do Usuário",
+    subtitle: "Formulários, registros e espaços de expressão",
+    group: "B",
+    summary:
+      "Apresenta os instrumentos usados no percurso para identificar objetivos, reconhecer barreiras e escolher estratégias.",
+  },
 };
+
 
 function cleanMarkdown(raw: string): string {
   return raw
