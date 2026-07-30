@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 
 import { Note, Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
+import { PausaConscienteCard } from "@/components/viva/humanos";
 import { getStep, planoResumo } from "@/lib/viva-data";
 
 export const Route = createFileRoute("/_percurso/afastamento")({
