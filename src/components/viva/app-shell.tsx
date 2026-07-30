@@ -5,12 +5,14 @@ import {
   Leaf,
   Route as RouteIcon,
   ShieldCheck,
+  SlidersHorizontal,
   Sunrise,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 import { steps } from "@/lib/viva-data";
+import { useExperiencia } from "@/lib/viva-experiencia";
 
 type To = LinkProps["to"];
 
@@ -65,6 +67,15 @@ const itensPrincipais: {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { preferencias } = useExperiencia();
+  // Modo foco: o menu fica reduzido ao essencial. Nada é removido do app —
+  // a pessoa continua alcançando tudo pelo próprio conteúdo das telas.
+  const foco = preferencias.navegacao === "foco";
+  const itens = foco
+    ? itensPrincipais.filter(
+        (i) => i.label === "Meu momento" || i.label === "Percurso",
+      )
+    : itensPrincipais;
 
   return (
     <div className="min-h-dvh bg-background">
@@ -75,7 +86,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         Ir para o conteúdo
       </a>
       <div className="mx-auto flex w-full max-w-7xl">
-        <SideNav pathname={pathname} />
+        <SideNav pathname={pathname} itens={itens} foco={foco} />
         <div className="min-w-0 flex-1">
           <main
             id="conteudo"
@@ -85,12 +96,22 @@ export function AppShell({ children }: { children: ReactNode }) {
           </main>
         </div>
       </div>
-      <BottomNav pathname={pathname} />
+      <BottomNav pathname={pathname} itens={itens} />
     </div>
   );
 }
 
-function SideNav({ pathname }: { pathname: string }) {
+type ItemDeNavegacao = (typeof itensPrincipais)[number];
+
+function SideNav({
+  pathname,
+  itens,
+  foco,
+}: {
+  pathname: string;
+  itens: ItemDeNavegacao[];
+  foco: boolean;
+}) {
   return (
     <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-border bg-sidebar md:flex">
       <div className="px-5 py-7">
@@ -118,7 +139,7 @@ function SideNav({ pathname }: { pathname: string }) {
 
       <nav aria-label="Navegação principal" className="min-h-0 flex-1 px-3">
         <ul className="space-y-1">
-          {itensPrincipais.map((item) => {
+          {itens.map((item) => {
             const ativo = item.combina(pathname);
             return (
               <li key={item.label}>
@@ -141,21 +162,46 @@ function SideNav({ pathname }: { pathname: string }) {
         </ul>
       </nav>
 
-      <p className="px-5 pb-6 viva-legenda text-muted-foreground">
-        Você decide o ritmo. Pode sair e voltar quando quiser.
-      </p>
+      <div className="px-3 pb-6">
+        <Link
+          to="/minha-experiencia"
+          aria-current={
+            pathname.startsWith("/minha-experiencia") ? "page" : undefined
+          }
+          className="viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem] text-sidebar-foreground hover:bg-secondary"
+        >
+          <SlidersHorizontal className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
+          <span className="truncate">Minha experiência</span>
+        </Link>
+        <p className="mt-3 px-2 viva-legenda text-muted-foreground">
+          {foco
+            ? "Modo foco: o menu está reduzido. Você pode voltar em Minha experiência."
+            : "Você decide o ritmo. Pode sair e voltar quando quiser."}
+        </p>
+      </div>
     </aside>
   );
 }
 
-function BottomNav({ pathname }: { pathname: string }) {
+function BottomNav({
+  pathname,
+  itens,
+}: {
+  pathname: string;
+  itens: ItemDeNavegacao[];
+}) {
   return (
     <nav
       aria-label="Navegação principal"
       className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-card/95 backdrop-blur md:hidden"
     >
-      <ul className="mx-auto grid max-w-xl grid-cols-5">
-        {itensPrincipais.map((item) => {
+      <ul
+        className="mx-auto grid max-w-xl"
+        style={{
+          gridTemplateColumns: `repeat(${itens.length}, minmax(0, 1fr))`,
+        }}
+      >
+        {itens.map((item) => {
           const ativo = item.combina(pathname);
           return (
             <li key={item.label}>
