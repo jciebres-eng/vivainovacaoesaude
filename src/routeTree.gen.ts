@@ -22,7 +22,6 @@ import { Route as JornadaIndexRouteImport } from './routes/jornada.index'
 import { Route as JornadaAtividadeRouteImport } from './routes/jornada.atividade'
 import { Route as JornadaEncerramentoRouteImport } from './routes/jornada.encerramento'
 import { Route as JornadaLinhaDoTempoRouteImport } from './routes/jornada.linha-do-tempo'
-import { Route as JornadaMomentoRouteImport } from './routes/jornada.momento'
 import { Route as JornadaObjetivoRouteImport } from './routes/jornada.objetivo'
 import { Route as JornadaPreparacaoRouteImport } from './routes/jornada.preparacao'
 import { Route as JornadaProximoPassoRouteImport } from './routes/jornada.proximo-passo'
@@ -99,11 +98,6 @@ const JornadaLinhaDoTempoRoute = JornadaLinhaDoTempoRouteImport.update({
   path: '/linha-do-tempo',
   getParentRoute: () => JornadaRoute,
 } as any)
-const JornadaMomentoRoute = JornadaMomentoRouteImport.update({
-  id: '/momento',
-  path: '/momento',
-  getParentRoute: () => JornadaRoute,
-} as any)
 const JornadaObjetivoRoute = JornadaObjetivoRouteImport.update({
   id: '/objetivo',
   path: '/objetivo',
@@ -169,7 +163,6 @@ export interface FileRoutesByFullPath {
   '/jornada/atividade': typeof JornadaAtividadeRoute
   '/jornada/encerramento': typeof JornadaEncerramentoRoute
   '/jornada/linha-do-tempo': typeof JornadaLinhaDoTempoRoute
-  '/jornada/momento': typeof JornadaMomentoRoute
   '/jornada/objetivo': typeof JornadaObjetivoRoute
   '/jornada/preparacao': typeof JornadaPreparacaoRoute
   '/jornada/proximo-passo': typeof JornadaProximoPassoRoute
@@ -193,7 +186,6 @@ export interface FileRoutesByTo {
   '/jornada/atividade': typeof JornadaAtividadeRoute
   '/jornada/encerramento': typeof JornadaEncerramentoRoute
   '/jornada/linha-do-tempo': typeof JornadaLinhaDoTempoRoute
-  '/jornada/momento': typeof JornadaMomentoRoute
   '/jornada/objetivo': typeof JornadaObjetivoRoute
   '/jornada/preparacao': typeof JornadaPreparacaoRoute
   '/jornada/proximo-passo': typeof JornadaProximoPassoRoute
@@ -220,7 +212,6 @@ export interface FileRoutesById {
   '/jornada/atividade': typeof JornadaAtividadeRoute
   '/jornada/encerramento': typeof JornadaEncerramentoRoute
   '/jornada/linha-do-tempo': typeof JornadaLinhaDoTempoRoute
-  '/jornada/momento': typeof JornadaMomentoRoute
   '/jornada/objetivo': typeof JornadaObjetivoRoute
   '/jornada/preparacao': typeof JornadaPreparacaoRoute
   '/jornada/proximo-passo': typeof JornadaProximoPassoRoute
@@ -247,7 +238,6 @@ export interface FileRouteTypes {
     | '/jornada/atividade'
     | '/jornada/encerramento'
     | '/jornada/linha-do-tempo'
-    | '/jornada/momento'
     | '/jornada/objetivo'
     | '/jornada/preparacao'
     | '/jornada/proximo-passo'
@@ -271,7 +261,6 @@ export interface FileRouteTypes {
     | '/jornada/atividade'
     | '/jornada/encerramento'
     | '/jornada/linha-do-tempo'
-    | '/jornada/momento'
     | '/jornada/objetivo'
     | '/jornada/preparacao'
     | '/jornada/proximo-passo'
@@ -297,7 +286,6 @@ export interface FileRouteTypes {
     | '/jornada/atividade'
     | '/jornada/encerramento'
     | '/jornada/linha-do-tempo'
-    | '/jornada/momento'
     | '/jornada/objetivo'
     | '/jornada/preparacao'
     | '/jornada/proximo-passo'
@@ -411,13 +399,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JornadaLinhaDoTempoRouteImport
       parentRoute: typeof JornadaRoute
     }
-    '/jornada/momento': {
-      id: '/jornada/momento'
-      path: '/momento'
-      fullPath: '/jornada/momento'
-      preLoaderRoute: typeof JornadaMomentoRouteImport
-      parentRoute: typeof JornadaRoute
-    }
     '/jornada/objetivo': {
       id: '/jornada/objetivo'
       path: '/objetivo'
@@ -523,7 +504,6 @@ interface JornadaRouteChildren {
   JornadaAtividadeRoute: typeof JornadaAtividadeRoute
   JornadaEncerramentoRoute: typeof JornadaEncerramentoRoute
   JornadaLinhaDoTempoRoute: typeof JornadaLinhaDoTempoRoute
-  JornadaMomentoRoute: typeof JornadaMomentoRoute
   JornadaObjetivoRoute: typeof JornadaObjetivoRoute
   JornadaPreparacaoRoute: typeof JornadaPreparacaoRoute
   JornadaProximoPassoRoute: typeof JornadaProximoPassoRoute
@@ -537,7 +517,6 @@ const JornadaRouteChildren: JornadaRouteChildren = {
   JornadaAtividadeRoute: JornadaAtividadeRoute,
   JornadaEncerramentoRoute: JornadaEncerramentoRoute,
   JornadaLinhaDoTempoRoute: JornadaLinhaDoTempoRoute,
-  JornadaMomentoRoute: JornadaMomentoRoute,
   JornadaObjetivoRoute: JornadaObjetivoRoute,
   JornadaPreparacaoRoute: JornadaPreparacaoRoute,
   JornadaProximoPassoRoute: JornadaProximoPassoRoute,
