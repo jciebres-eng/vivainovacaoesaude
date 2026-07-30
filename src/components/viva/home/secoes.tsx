@@ -4,7 +4,6 @@ import {
   ChevronDown,
   Leaf,
   Settings2,
-  UserRound,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
@@ -67,9 +66,6 @@ export function CabecalhoDaHome({
         </Botao>
         <BotaoLink to="/minha-experiencia" tamanho="compacto" icone={Settings2}>
           Minha experiência
-        </BotaoLink>
-        <BotaoLink to="/perfil" tamanho="compacto" icone={UserRound}>
-          Perfil
         </BotaoLink>
       </div>
     </header>
