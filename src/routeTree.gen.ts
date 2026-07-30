@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
+import { Route as PercursoHabilidadesRouteImport } from './routes/_percurso.habilidades'
 import { Route as PercursoObjetivoRouteImport } from './routes/_percurso.objetivo'
 import { Route as PercursoOpcoesRouteImport } from './routes/_percurso.opcoes'
 import { Route as PercursoPerfilRouteImport } from './routes/_percurso.perfil'
@@ -36,6 +37,11 @@ const PercursoBarreirasRoute = PercursoBarreirasRouteImport.update({
 const PercursoContextoRoute = PercursoContextoRouteImport.update({
   id: '/contexto',
   path: '/contexto',
+  getParentRoute: () => PercursoRoute,
+} as any)
+const PercursoHabilidadesRoute = PercursoHabilidadesRouteImport.update({
+  id: '/habilidades',
+  path: '/habilidades',
   getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoObjetivoRoute = PercursoObjetivoRouteImport.update({
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
+  '/habilidades': typeof PercursoHabilidadesRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/barreiras': typeof PercursoBarreirasRoute
   '/contexto': typeof PercursoContextoRoute
+  '/habilidades': typeof PercursoHabilidadesRoute
   '/objetivo': typeof PercursoObjetivoRoute
   '/opcoes': typeof PercursoOpcoesRoute
   '/perfil': typeof PercursoPerfilRoute
@@ -90,6 +98,7 @@ export interface FileRoutesById {
   '/_percurso': typeof PercursoRouteWithChildren
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
   '/_percurso/contexto': typeof PercursoContextoRoute
+  '/_percurso/habilidades': typeof PercursoHabilidadesRoute
   '/_percurso/objetivo': typeof PercursoObjetivoRoute
   '/_percurso/opcoes': typeof PercursoOpcoesRoute
   '/_percurso/perfil': typeof PercursoPerfilRoute
@@ -102,6 +111,7 @@ export interface FileRouteTypes {
     | '/'
     | '/barreiras'
     | '/contexto'
+    | '/habilidades'
     | '/objetivo'
     | '/opcoes'
     | '/perfil'
@@ -112,6 +122,7 @@ export interface FileRouteTypes {
     | '/'
     | '/barreiras'
     | '/contexto'
+    | '/habilidades'
     | '/objetivo'
     | '/opcoes'
     | '/perfil'
@@ -123,6 +134,7 @@ export interface FileRouteTypes {
     | '/_percurso'
     | '/_percurso/barreiras'
     | '/_percurso/contexto'
+    | '/_percurso/habilidades'
     | '/_percurso/objetivo'
     | '/_percurso/opcoes'
     | '/_percurso/perfil'
@@ -166,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PercursoContextoRouteImport
       parentRoute: typeof PercursoRoute
     }
+    '/_percurso/habilidades': {
+      id: '/_percurso/habilidades'
+      path: '/habilidades'
+      fullPath: '/habilidades'
+      preLoaderRoute: typeof PercursoHabilidadesRouteImport
+      parentRoute: typeof PercursoRoute
+    }
     '/_percurso/objetivo': {
       id: '/_percurso/objetivo'
       path: '/objetivo'
@@ -207,6 +226,7 @@ declare module '@tanstack/react-router' {
 interface PercursoRouteChildren {
   PercursoBarreirasRoute: typeof PercursoBarreirasRoute
   PercursoContextoRoute: typeof PercursoContextoRoute
+  PercursoHabilidadesRoute: typeof PercursoHabilidadesRoute
   PercursoObjetivoRoute: typeof PercursoObjetivoRoute
   PercursoOpcoesRoute: typeof PercursoOpcoesRoute
   PercursoPerfilRoute: typeof PercursoPerfilRoute
@@ -216,6 +236,7 @@ interface PercursoRouteChildren {
 const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoBarreirasRoute: PercursoBarreirasRoute,
   PercursoContextoRoute: PercursoContextoRoute,
+  PercursoHabilidadesRoute: PercursoHabilidadesRoute,
   PercursoObjetivoRoute: PercursoObjetivoRoute,
   PercursoOpcoesRoute: PercursoOpcoesRoute,
   PercursoPerfilRoute: PercursoPerfilRoute,
