@@ -56,6 +56,12 @@ export function ScreenHeader({
       {intro ? (
         <p className="mt-3 max-w-[58ch] text-muted-foreground">{intro}</p>
       ) : null}
+
+      {step ? (
+        <div className="mt-6">
+          <IndicePercurso atual={step.step} />
+        </div>
+      ) : null}
     </header>
   );
 }
