@@ -14,7 +14,6 @@ import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as JornadaRouteImport } from './routes/jornada'
 import { Route as PercursoAfastamentoRouteImport } from './routes/_percurso.afastamento'
 import { Route as PercursoBarreirasRouteImport } from './routes/_percurso.barreiras'
-import { Route as PercursoComponentesVivaRouteImport } from './routes/_percurso.componentes-viva'
 import { Route as PercursoConfiguracoesRouteImport } from './routes/_percurso.configuracoes'
 import { Route as PercursoContextoRouteImport } from './routes/_percurso.contexto'
 import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
@@ -75,11 +74,6 @@ const PercursoAfastamentoRoute = PercursoAfastamentoRouteImport.update({
 const PercursoBarreirasRoute = PercursoBarreirasRouteImport.update({
   id: '/barreiras',
   path: '/barreiras',
-  getParentRoute: () => PercursoRoute,
-} as any)
-const PercursoComponentesVivaRoute = PercursoComponentesVivaRouteImport.update({
-  id: '/componentes-viva',
-  path: '/componentes-viva',
   getParentRoute: () => PercursoRoute,
 } as any)
 const PercursoConfiguracoesRoute = PercursoConfiguracoesRouteImport.update({
@@ -278,7 +272,6 @@ export interface FileRoutesByFullPath {
   '/jornada': typeof JornadaRouteWithChildren
   '/afastamento': typeof PercursoAfastamentoRoute
   '/barreiras': typeof PercursoBarreirasRoute
-  '/componentes-viva': typeof PercursoComponentesVivaRoute
   '/configuracoes': typeof PercursoConfiguracoesRoute
   '/contexto': typeof PercursoContextoRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
@@ -321,7 +314,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/afastamento': typeof PercursoAfastamentoRoute
   '/barreiras': typeof PercursoBarreirasRoute
-  '/componentes-viva': typeof PercursoComponentesVivaRoute
   '/configuracoes': typeof PercursoConfiguracoesRoute
   '/contexto': typeof PercursoContextoRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
@@ -367,7 +359,6 @@ export interface FileRoutesById {
   '/jornada': typeof JornadaRouteWithChildren
   '/_percurso/afastamento': typeof PercursoAfastamentoRoute
   '/_percurso/barreiras': typeof PercursoBarreirasRoute
-  '/_percurso/componentes-viva': typeof PercursoComponentesVivaRoute
   '/_percurso/configuracoes': typeof PercursoConfiguracoesRoute
   '/_percurso/contexto': typeof PercursoContextoRoute
   '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
@@ -413,7 +404,6 @@ export interface FileRouteTypes {
     | '/jornada'
     | '/afastamento'
     | '/barreiras'
-    | '/componentes-viva'
     | '/configuracoes'
     | '/contexto'
     | '/documentacao'
@@ -456,7 +446,6 @@ export interface FileRouteTypes {
     | '/'
     | '/afastamento'
     | '/barreiras'
-    | '/componentes-viva'
     | '/configuracoes'
     | '/contexto'
     | '/documentacao'
@@ -501,7 +490,6 @@ export interface FileRouteTypes {
     | '/jornada'
     | '/_percurso/afastamento'
     | '/_percurso/barreiras'
-    | '/_percurso/componentes-viva'
     | '/_percurso/configuracoes'
     | '/_percurso/contexto'
     | '/_percurso/documentacao'
@@ -583,13 +571,6 @@ declare module '@tanstack/react-router' {
       path: '/barreiras'
       fullPath: '/barreiras'
       preLoaderRoute: typeof PercursoBarreirasRouteImport
-      parentRoute: typeof PercursoRoute
-    }
-    '/_percurso/componentes-viva': {
-      id: '/_percurso/componentes-viva'
-      path: '/componentes-viva'
-      fullPath: '/componentes-viva'
-      preLoaderRoute: typeof PercursoComponentesVivaRouteImport
       parentRoute: typeof PercursoRoute
     }
     '/_percurso/configuracoes': {
@@ -869,7 +850,6 @@ const PercursoEstrategiasRouteWithChildren =
 interface PercursoRouteChildren {
   PercursoAfastamentoRoute: typeof PercursoAfastamentoRoute
   PercursoBarreirasRoute: typeof PercursoBarreirasRoute
-  PercursoComponentesVivaRoute: typeof PercursoComponentesVivaRoute
   PercursoConfiguracoesRoute: typeof PercursoConfiguracoesRoute
   PercursoContextoRoute: typeof PercursoContextoRoute
   PercursoDocumentacaoRoute: typeof PercursoDocumentacaoRoute
@@ -899,7 +879,6 @@ interface PercursoRouteChildren {
 const PercursoRouteChildren: PercursoRouteChildren = {
   PercursoAfastamentoRoute: PercursoAfastamentoRoute,
   PercursoBarreirasRoute: PercursoBarreirasRoute,
-  PercursoComponentesVivaRoute: PercursoComponentesVivaRoute,
   PercursoConfiguracoesRoute: PercursoConfiguracoesRoute,
   PercursoContextoRoute: PercursoContextoRoute,
   PercursoDocumentacaoRoute: PercursoDocumentacaoRoute,
