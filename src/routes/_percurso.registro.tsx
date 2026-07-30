@@ -1,17 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import {
-  ChoiceItem,
-  ChoiceList,
   Note,
   Screen,
   ScreenFooter,
   ScreenHeader,
-  SectionCard,
-  TextArea,
 } from "@/components/viva/screen";
-import { ajudou, dificultou, getStep, resultadosExperiencia } from "@/lib/viva-data";
+import { RegistroExperienciaCard } from "@/components/viva/humanos";
+import { getStep } from "@/lib/viva-data";
 
 export const Route = createFileRoute("/_percurso/registro")({
   head: () => ({
@@ -36,67 +32,22 @@ export const Route = createFileRoute("/_percurso/registro")({
 
 function RegistroScreen() {
   const step = getStep("registro");
-  const [resultado, setResultado] = useState(resultadosExperiencia[1]);
-  const [ajudaram, setAjudaram] = useState<string[]>(ajudou);
-  const [dificultaram, setDificultaram] = useState<string[]>([
-    "Lotação",
-    "Identificação do ponto",
-  ]);
-
-  const alternar = (lista: string[], set: (v: string[]) => void, item: string) =>
-    set(lista.includes(item) ? lista.filter((i) => i !== item) : [...lista, item]);
+  const navigate = useNavigate();
 
   return (
     <>
       <ScreenHeader
         step={step}
         title={step.title}
-        intro="Escolha o que descreve melhor o que aconteceu. Você pode registrar depois."
+        intro="Descreva o que aconteceu com suas palavras. Você pode registrar depois."
       />
 
       <Screen>
-        <ChoiceList>
-          {resultadosExperiencia.map((r) => (
-            <ChoiceItem
-              key={r}
-              label={r}
-              selected={resultado === r}
-              onSelect={() => setResultado(r)}
-            />
-          ))}
-        </ChoiceList>
-
-        <SectionCard>
-          <TextArea rotulo="O que aconteceu?" defaultValue="Perdi o primeiro ônibus e utilizei o seguinte." />
-        </SectionCard>
-
-        <SectionCard title="O que ajudou">
-          <ChoiceList>
-            {ajudou.map((a) => (
-              <ChoiceItem
-                key={a}
-                label={a}
-                multiple
-                selected={ajudaram.includes(a)}
-                onSelect={() => alternar(ajudaram, setAjudaram, a)}
-              />
-            ))}
-          </ChoiceList>
-        </SectionCard>
-
-        <SectionCard title="O que dificultou">
-          <ChoiceList>
-            {dificultou.map((d) => (
-              <ChoiceItem
-                key={d}
-                label={d}
-                multiple
-                selected={dificultaram.includes(d)}
-                onSelect={() => alternar(dificultaram, setDificultaram, d)}
-              />
-            ))}
-          </ChoiceList>
-        </SectionCard>
+        <RegistroExperienciaCard
+          onSalvar={() => navigate({ to: "/revisao" })}
+          onRegistrarDepois={() => navigate({ to: "/meu-momento" })}
+          onDispensar={() => navigate({ to: "/meu-momento" })}
+        />
 
         <Note>
           Interromper ou não realizar também são registros legítimos do percurso.
@@ -107,3 +58,4 @@ function RegistroScreen() {
     </>
   );
 }
+

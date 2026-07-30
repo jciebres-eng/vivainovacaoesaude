@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { PreparacaoAtividadeCard } from "@/components/viva/humanos";
 import { useState } from "react";
 
 import {
@@ -35,6 +36,7 @@ export const Route = createFileRoute("/_percurso/preparacao")({
 
 function PreparacaoScreen() {
   const step = getStep("preparacao");
+  const navigate = useNavigate();
   const [pausa, setPausa] = useState("Sim");
   const [verResumo, setVerResumo] = useState(false);
 
@@ -47,7 +49,14 @@ function PreparacaoScreen() {
       />
 
       <Screen>
-        <SectionCard>
+        <PreparacaoAtividadeCard
+          onComecar={() => navigate({ to: "/simulacao" })}
+          onSalvarParaDepois={() => navigate({ to: "/meu-momento" })}
+          onVoltar={() => navigate({ to: "/biblioteca" })}
+        />
+
+        <SectionCard title="Ajustar detalhes do plano">
+
           <div className="grid gap-5 md:grid-cols-2">
             <TextInput rotulo="Data" type="date" defaultValue="2026-07-30" />
             <TextInput rotulo="Horário" type="time" defaultValue="17:00" />

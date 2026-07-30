@@ -9,6 +9,11 @@ import {
   ScreenFooter,
   ScreenHeader,
 } from "@/components/viva/screen";
+import {
+  EstrategiaPessoalCard,
+  estrategiasDemo,
+  type EstrategiaDemo,
+} from "@/components/viva/humanos";
 import { estrategias, getStep, respostasEstrategia } from "@/lib/viva-data";
 
 export const Route = createFileRoute("/_percurso/estrategias")({
@@ -34,6 +39,7 @@ export const Route = createFileRoute("/_percurso/estrategias")({
 
 function EstrategiasScreen() {
   const step = getStep("estrategias");
+  const [minhas, setMinhas] = useState<EstrategiaDemo[]>(estrategiasDemo);
   const [estado, setEstado] = useState<Record<string, string>>({
     mensagem: "Quero utilizar",
   });
@@ -48,6 +54,30 @@ function EstrategiasScreen() {
 
       <Screen>
         <OrigemDaSugestao />
+
+        <section aria-label="Minhas estratégias" className="space-y-4">
+          <h2 className="viva-subtitulo text-foreground">Minhas estratégias</h2>
+          {minhas.map((e) => (
+            <EstrategiaPessoalCard
+              key={e.id}
+              estrategia={e}
+              onAlternarPessoal={(id) =>
+                setMinhas((p) =>
+                  p.map((i) => (i.id === id ? { ...i, pessoal: !i.pessoal } : i)),
+                )
+              }
+              onAlternarPreparacao={(id) =>
+                setMinhas((p) =>
+                  p.map((i) =>
+                    i.id === id ? { ...i, naPreparacao: !i.naPreparacao } : i,
+                  ),
+                )
+              }
+              onRemover={(id) => setMinhas((p) => p.filter((i) => i.id !== id))}
+            />
+          ))}
+        </section>
+
 
         {estrategias.map((e) => (
           <div

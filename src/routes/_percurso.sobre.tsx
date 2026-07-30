@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 
 import { Note, Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
+import {
+  InformacaoSeguraCard,
+  limiteDoViva,
+} from "@/components/viva/humanos";
 
 export const Route = createFileRoute("/_percurso/sobre")({
   head: () => ({
@@ -53,6 +57,13 @@ function SobrePage() {
       />
 
       <Screen>
+        <InformacaoSeguraCard
+          tipo="limite"
+          titulo={limiteDoViva.titulo}
+          mensagem={limiteDoViva.mensagem}
+          motivo={limiteDoViva.motivo}
+        />
+
         <SectionCard title="Para que serve">
           <p className="text-card-foreground">
             Ajudar a transformar um objetivo real da sua vida em passos que façam
