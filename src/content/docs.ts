@@ -194,6 +194,13 @@ const meta: Record<
     summary:
       "Apresenta a estrutura de governança do VIVA: fundamentação científica, revisão ética e conformidade regulatória.",
   },
+  "17_PSICOLOGIA_DO_DESIGN": {
+    title: "Psicologia do Design",
+    subtitle: "Framework para desenvolvimento de tecnologias humanizadas",
+    group: "F",
+    summary:
+      "Princípios psicológicos que orientam a experiência, a arquitetura da informação e a interação do VIVA: a interface influencia comportamento e faz parte da responsabilidade ética do desenvolvimento.",
+  },
 };
 
 
