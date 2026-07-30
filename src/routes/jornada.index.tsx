@@ -15,7 +15,7 @@ import {
 } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/")({
+export const Route = createFileRoute("/jornada/")({
   head: () => ({
     meta: [
       { title: "Percurso — VIVA" },
@@ -62,11 +62,11 @@ function Entrada() {
               : "Você começou a organizar este objetivo."
           }
           onContinuar={() => navigate({ to: rotaDaEtapa(j.etapa) })}
-          onRevisar={() => navigate({ to: "/percurso/atividade" })}
+          onRevisar={() => navigate({ to: "/jornada/atividade" })}
           onRetomarDepois={() => jornada.salvarParaDepois(objetivo.nome)}
           onEncerrar={() => {
             jornada.encerrar(objetivo.nome);
-            navigate({ to: "/percurso/encerramento" });
+            navigate({ to: "/jornada/encerramento" });
           }}
         />
       ) : (
@@ -81,14 +81,14 @@ function Entrada() {
           </Nota>
           <AcoesAutonomas
             principal={
-              <BotaoLink to="/percurso/momento" variante="principal">
+              <BotaoLink to="/jornada/momento" variante="principal">
                 Começar um novo percurso
               </BotaoLink>
             }
             secundarias={
               <>
                 <BotaoLink
-                  to="/percurso/objetivo"
+                  to="/jornada/objetivo"
                   variante="terciario"
                   tamanho="compacto"
                 >
@@ -130,7 +130,7 @@ function Entrada() {
         acao={
           <div className="flex flex-wrap gap-3">
             <BotaoLink
-              to="/percurso/linha-do-tempo"
+              to="/jornada/linha-do-tempo"
               variante="secundario"
               tamanho="compacto"
             >
@@ -153,24 +153,24 @@ function Entrada() {
 function rotaDaEtapa(etapa: string) {
   switch (etapa) {
     case "momento":
-      return "/percurso/momento";
+      return "/jornada/momento";
     case "objetivo":
-      return "/percurso/objetivo";
+      return "/jornada/objetivo";
     case "resumo":
-      return "/percurso/resumo";
+      return "/jornada/resumo";
     case "preparacao":
-      return "/percurso/preparacao";
+      return "/jornada/preparacao";
     case "atividade":
-      return "/percurso/atividade";
+      return "/jornada/atividade";
     case "registro":
-      return "/percurso/registro";
+      return "/jornada/registro";
     case "reflexao":
-      return "/percurso/reflexao";
+      return "/jornada/reflexao";
     case "proximo-passo":
-      return "/percurso/proximo-passo";
+      return "/jornada/proximo-passo";
     case "encerramento":
-      return "/percurso/encerramento";
+      return "/jornada/encerramento";
     default:
-      return "/percurso";
+      return "/jornada";
   }
 }

@@ -6,7 +6,7 @@ import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { objetivoPorId, passosDoPercurso } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/proximo-passo")({
+export const Route = createFileRoute("/jornada/proximo-passo")({
   head: () => ({
     meta: [
       { title: "Próximo passo — Percurso VIVA" },
@@ -37,7 +37,7 @@ function ProximoPasso() {
     <QuadroDoPercurso
       titulo="Qual é o próximo pequeno passo possível?"
       finalidade="Esta é apenas uma possibilidade. Você pode escolher outra ou encerrar por agora."
-      voltarPara="/percurso/reflexao"
+      voltarPara="/jornada/reflexao"
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
       depois="Ao escolher, o passo fica guardado no seu percurso. Nada é cobrado depois."
     >
@@ -47,14 +47,14 @@ function ProximoPasso() {
           jornada.escolherProximoPasso(passo.id, `${nome}: ${passo.titulo}`);
           if (passo.id === "encerrar") {
             jornada.encerrar(nome);
-            navigate({ to: "/percurso/encerramento" });
+            navigate({ to: "/jornada/encerramento" });
           }
         }}
         onAdiar={() => {
           jornada.salvarParaDepois(nome);
-          navigate({ to: "/percurso" });
+          navigate({ to: "/jornada" });
         }}
-        onRecusar={() => navigate({ to: "/percurso" })}
+        onRecusar={() => navigate({ to: "/jornada" })}
       />
 
       {j.proximoPassoId ? (
@@ -73,7 +73,7 @@ function ProximoPasso() {
               <Botao
                 variante="terciario"
                 tamanho="compacto"
-                onClick={() => navigate({ to: "/percurso/objetivo" })}
+                onClick={() => navigate({ to: "/jornada/objetivo" })}
               >
                 Escolher por conta própria
               </Botao>
@@ -82,7 +82,7 @@ function ProximoPasso() {
                 tamanho="compacto"
                 onClick={() => {
                   jornada.encerrar(nome);
-                  navigate({ to: "/percurso/encerramento" });
+                  navigate({ to: "/jornada/encerramento" });
                 }}
               >
                 Encerrar por hoje

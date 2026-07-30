@@ -10,7 +10,7 @@ import {
 } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/reflexao")({
+export const Route = createFileRoute("/jornada/reflexao")({
   head: () => ({
     meta: [
       { title: "Reflexão — Percurso VIVA" },
@@ -77,7 +77,7 @@ function Reflexao() {
     <QuadroDoPercurso
       titulo="Observar esta experiência"
       finalidade="Aqui aparece somente o que você registrou. A plataforma não interpreta nem classifica nada."
-      voltarPara="/percurso/registro"
+      voltarPara="/jornada/registro"
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
       depois="Depois desta tela, você poderá escolher um próximo pequeno passo — ou encerrar por hoje."
     >
@@ -86,12 +86,12 @@ function Reflexao() {
         respostas={j.reflexao?.respostas}
         onGuardar={(respostas) => {
           jornada.guardarReflexao(respostas, nome);
-          navigate({ to: "/percurso/proximo-passo" });
+          navigate({ to: "/jornada/proximo-passo" });
         }}
-        onEditarRegistro={() => navigate({ to: "/percurso/registro" })}
+        onEditarRegistro={() => navigate({ to: "/jornada/registro" })}
         onPular={() => {
           jornada.irPara("proximo-passo");
-          navigate({ to: "/percurso/proximo-passo" });
+          navigate({ to: "/jornada/proximo-passo" });
         }}
         onRemoverResumo={() => jornada.removerReflexao()}
       />
@@ -104,7 +104,7 @@ function Reflexao() {
               tamanho="compacto"
               onClick={() => {
                 jornada.irPara("proximo-passo");
-                navigate({ to: "/percurso/proximo-passo" });
+                navigate({ to: "/jornada/proximo-passo" });
               }}
             >
               Ir para o próximo passo

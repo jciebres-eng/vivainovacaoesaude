@@ -7,7 +7,7 @@ import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { etapasDaAtividade, objetivoPorId } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/atividade")({
+export const Route = createFileRoute("/jornada/atividade")({
   head: () => ({
     meta: [
       { title: "Atividade — Percurso VIVA" },
@@ -44,12 +44,12 @@ function Atividade() {
       <QuadroDoPercurso
         titulo="Nenhuma atividade aberta"
         finalidade="Escolha um objetivo para começar um percurso."
-        voltarPara="/percurso"
+        voltarPara="/jornada"
       >
         <Card variante="informativo">
           <Botao
             variante="principal"
-            onClick={() => navigate({ to: "/percurso/objetivo" })}
+            onClick={() => navigate({ to: "/jornada/objetivo" })}
           >
             Escolher um objetivo
           </Botao>
@@ -66,15 +66,15 @@ function Atividade() {
       <QuadroDoPercurso
         titulo="Pausa"
         finalidade="Seu percurso foi preservado. Você pode continuar agora ou retomar em outro momento."
-        voltarPara="/percurso"
+        voltarPara="/jornada"
         baixaEstimulacao={baixa}
       >
         <PausaConscienteCard
           onContinuarDepois={() => setPausa(false)}
-          onVoltarAoInicio={() => navigate({ to: "/percurso" })}
+          onVoltarAoInicio={() => navigate({ to: "/jornada" })}
           onFecharAtividade={() => {
             jornada.encerrar(objetivo.nome);
-            navigate({ to: "/percurso/encerramento" });
+            navigate({ to: "/jornada/encerramento" });
           }}
           linkEstrategias="/estrategias"
         />
@@ -91,7 +91,7 @@ function Atividade() {
       titulo={etapa.titulo}
       finalidade={etapa.instrucao}
       etapa={`Etapa ${indice + 1} de ${etapas.length}`}
-      voltarPara={indice === 0 ? "/percurso/preparacao" : undefined}
+      voltarPara={indice === 0 ? "/jornada/preparacao" : undefined}
       aoVoltar={
         indice === 0
           ? undefined
@@ -103,7 +103,7 @@ function Atividade() {
       }}
       aoSalvarParaDepois={() => {
         jornada.salvarParaDepois(objetivo.nome);
-        navigate({ to: "/percurso" });
+        navigate({ to: "/jornada" });
       }}
       baixaEstimulacao={baixa}
       depois={
@@ -135,7 +135,7 @@ function Atividade() {
                 if (ultima) {
                   jornada.concluirAtividade(objetivo.nome);
                   jornada.irPara("registro");
-                  navigate({ to: "/percurso/registro" });
+                  navigate({ to: "/jornada/registro" });
                 } else {
                   jornada.irParaEtapaDaAtividade(indice + 1);
                   setAjuda(false);
@@ -194,7 +194,7 @@ function Atividade() {
                     if (ultima) {
                       jornada.concluirAtividade(objetivo.nome);
                       jornada.irPara("registro");
-                      navigate({ to: "/percurso/registro" });
+                      navigate({ to: "/jornada/registro" });
                     } else {
                       jornada.irParaEtapaDaAtividade(indice + 1);
                     }

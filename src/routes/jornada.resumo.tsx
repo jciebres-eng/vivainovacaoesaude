@@ -6,7 +6,7 @@ import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { objetivoPorId } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/resumo")({
+export const Route = createFileRoute("/jornada/resumo")({
   head: () => ({
     meta: [
       { title: "Sobre esta atividade — Percurso VIVA" },
@@ -37,12 +37,12 @@ function ResumoDoObjetivo() {
       <QuadroDoPercurso
         titulo="Nenhum objetivo escolhido"
         finalidade="Você pode escolher uma situação para preparar quando quiser."
-        voltarPara="/percurso"
+        voltarPara="/jornada"
       >
         <Card variante="informativo">
           <Botao
             variante="principal"
-            onClick={() => navigate({ to: "/percurso/objetivo" })}
+            onClick={() => navigate({ to: "/jornada/objetivo" })}
           >
             Escolher um objetivo
           </Botao>
@@ -55,7 +55,7 @@ function ResumoDoObjetivo() {
     <QuadroDoPercurso
       titulo={objetivo.nome}
       finalidade={objetivo.paraQue}
-      voltarPara="/percurso/objetivo"
+      voltarPara="/jornada/objetivo"
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
       depois="Depois deste resumo, você verá a tela de preparação, com materiais, ambiente e estratégias."
     >
@@ -88,7 +88,7 @@ function ResumoDoObjetivo() {
               variante="principal"
               onClick={() => {
                 jornada.irPara("preparacao");
-                navigate({ to: "/percurso/preparacao" });
+                navigate({ to: "/jornada/preparacao" });
               }}
             >
               Preparar esta atividade
@@ -99,7 +99,7 @@ function ResumoDoObjetivo() {
               <Botao
                 variante="terciario"
                 tamanho="compacto"
-                onClick={() => navigate({ to: "/percurso/objetivo" })}
+                onClick={() => navigate({ to: "/jornada/objetivo" })}
               >
                 Escolher outro objetivo
               </Botao>
@@ -108,7 +108,7 @@ function ResumoDoObjetivo() {
                 tamanho="compacto"
                 onClick={() => {
                   jornada.salvarParaDepois(objetivo.nome);
-                  navigate({ to: "/percurso" });
+                  navigate({ to: "/jornada" });
                 }}
               >
                 Salvar para depois

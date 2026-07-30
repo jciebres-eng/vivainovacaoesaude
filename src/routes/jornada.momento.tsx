@@ -13,7 +13,7 @@ import {
 } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/momento")({
+export const Route = createFileRoute("/jornada/momento")({
   head: () => ({
     meta: [
       { title: "Meu momento — Percurso VIVA" },
@@ -40,14 +40,14 @@ function Momento() {
 
   const seguir = () => {
     jornada.irPara("objetivo");
-    navigate({ to: "/percurso/objetivo" });
+    navigate({ to: "/jornada/objetivo" });
   };
 
   return (
     <QuadroDoPercurso
       titulo="Meu momento"
       finalidade="Se quiser, reconheça como você está antes de escolher uma atividade."
-      voltarPara="/percurso"
+      voltarPara="/jornada"
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
       depois="Depois desta tela, você poderá escolher uma situação para preparar."
     >

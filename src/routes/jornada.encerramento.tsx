@@ -6,7 +6,7 @@ import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { objetivoPorId, passosDoPercurso } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/encerramento")({
+export const Route = createFileRoute("/jornada/encerramento")({
   head: () => ({
     meta: [
       { title: "Encerrar por hoje — Percurso VIVA" },
@@ -37,7 +37,7 @@ function Encerramento() {
     <QuadroDoPercurso
       titulo="Seu percurso foi registrado"
       finalidade="Quando retornar, você poderá continuar deste ponto ou escolher outro objetivo."
-      voltarPara="/percurso"
+      voltarPara="/jornada"
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
     >
       <Card variante="informativo" titulo="O que ficou guardado">
@@ -58,14 +58,14 @@ function Encerramento() {
 
         <AcoesAutonomas
           principal={
-            <BotaoLink to="/percurso" variante="principal">
+            <BotaoLink to="/jornada" variante="principal">
               Voltar ao início
             </BotaoLink>
           }
           secundarias={
             <>
               <BotaoLink
-                to="/percurso/linha-do-tempo"
+                to="/jornada/linha-do-tempo"
                 variante="terciario"
                 tamanho="compacto"
               >
@@ -90,7 +90,7 @@ function Encerramento() {
               tamanho="compacto"
               onClick={() => {
                 jornada.reiniciarPercurso();
-                navigate({ to: "/percurso" });
+                navigate({ to: "/jornada" });
               }}
             >
               Começar novamente
@@ -100,7 +100,7 @@ function Encerramento() {
               tamanho="compacto"
               onClick={() => {
                 jornada.apagarTudo();
-                navigate({ to: "/percurso" });
+                navigate({ to: "/jornada" });
               }}
             >
               Apagar os dados demonstrativos

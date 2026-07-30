@@ -45,7 +45,7 @@ function Inicio() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Link
-            to="/percurso"
+            to="/jornada"
             className="viva-tap inline-flex w-full items-center justify-center rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
           >
             Começar meu percurso

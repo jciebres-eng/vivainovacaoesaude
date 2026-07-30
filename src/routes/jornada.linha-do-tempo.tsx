@@ -11,7 +11,7 @@ import {
   type EstadoDoRegistro,
 } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/linha-do-tempo")({
+export const Route = createFileRoute("/jornada/linha-do-tempo")({
   head: () => ({
     meta: [
       { title: "Meu percurso — Linha do tempo VIVA" },
@@ -53,7 +53,7 @@ function LinhaDoTempoDoPercurso() {
     <QuadroDoPercurso
       titulo="Meu percurso"
       finalidade="Um registro pessoal do que aconteceu. Não é relatório, ranking nem medida de produtividade."
-      voltarPara="/percurso"
+      voltarPara="/jornada"
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
     >
       {eventos.length === 0 ? (
@@ -62,7 +62,7 @@ function LinhaDoTempoDoPercurso() {
           titulo="Ainda não há registros"
           descricao="Quando você começar um percurso, o que acontecer aparecerá aqui."
         >
-          <BotaoLink to="/percurso" variante="principal">
+          <BotaoLink to="/jornada" variante="principal">
             Ir para o início do percurso
           </BotaoLink>
         </Card>

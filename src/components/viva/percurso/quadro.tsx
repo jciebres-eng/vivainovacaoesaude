@@ -67,7 +67,7 @@ export function QuadroDoPercurso({
         ) : null}
 
         <Link
-          to="/percurso"
+          to="/jornada"
           className="viva-tap inline-flex min-h-11 items-center gap-2 rounded-full px-3 viva-legenda text-text-secondary hover:bg-background-secondary"
         >
           <Home className="size-4" aria-hidden />

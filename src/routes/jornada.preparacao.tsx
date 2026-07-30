@@ -15,7 +15,7 @@ import {
 } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/preparacao")({
+export const Route = createFileRoute("/jornada/preparacao")({
   head: () => ({
     meta: [
       { title: "Preparação — Percurso VIVA" },
@@ -49,12 +49,12 @@ function Preparacao() {
       <QuadroDoPercurso
         titulo="Nada em preparação"
         finalidade="Escolha um objetivo para ver a preparação."
-        voltarPara="/percurso"
+        voltarPara="/jornada"
       >
         <Card variante="informativo">
           <Botao
             variante="principal"
-            onClick={() => navigate({ to: "/percurso/objetivo" })}
+            onClick={() => navigate({ to: "/jornada/objetivo" })}
           >
             Escolher um objetivo
           </Botao>
@@ -69,10 +69,10 @@ function Preparacao() {
     <QuadroDoPercurso
       titulo="Antes de começar"
       finalidade="Saber o que vem pela frente costuma deixar o começo mais tranquilo."
-      voltarPara="/percurso/resumo"
+      voltarPara="/jornada/resumo"
       aoSalvarParaDepois={() => {
         jornada.salvarParaDepois(objetivo.nome);
-        navigate({ to: "/percurso" });
+        navigate({ to: "/jornada" });
       }}
       baixaEstimulacao={baixa}
       depois={detalhes.depois}
@@ -92,13 +92,13 @@ function Preparacao() {
         onComecar={(escolhidas) => {
           jornada.ajustarPreparacao({ estrategias: escolhidas });
           jornada.comecarAtividade(objetivo.nome);
-          navigate({ to: "/percurso/atividade" });
+          navigate({ to: "/jornada/atividade" });
         }}
         onSalvarParaDepois={() => {
           jornada.salvarParaDepois(objetivo.nome);
-          navigate({ to: "/percurso" });
+          navigate({ to: "/jornada" });
         }}
-        onVoltar={() => navigate({ to: "/percurso/resumo" })}
+        onVoltar={() => navigate({ to: "/jornada/resumo" })}
       />
 
       {!baixa ? (
@@ -182,7 +182,7 @@ function Preparacao() {
             variante="principal"
             onClick={() => {
               jornada.comecarAtividade(objetivo.nome);
-              navigate({ to: "/percurso/atividade" });
+              navigate({ to: "/jornada/atividade" });
             }}
           >
             Começar quando estiver pronto
@@ -192,7 +192,7 @@ function Preparacao() {
           <Botao
             variante="terciario"
             tamanho="compacto"
-            onClick={() => navigate({ to: "/percurso/resumo" })}
+            onClick={() => navigate({ to: "/jornada/resumo" })}
           >
             Voltar
           </Botao>

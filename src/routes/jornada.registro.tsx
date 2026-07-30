@@ -9,7 +9,7 @@ import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { objetivoPorId } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/registro")({
+export const Route = createFileRoute("/jornada/registro")({
   head: () => ({
     meta: [
       { title: "Registrar como foi — Percurso VIVA" },
@@ -40,7 +40,7 @@ function Registro() {
     <QuadroDoPercurso
       titulo="Esta atividade chegou ao fim"
       finalidade="Agora você pode registrar como foi e decidir se gostaria de ajustar algo."
-      voltarPara="/percurso/atividade"
+      voltarPara="/jornada/atividade"
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
       depois="Depois do registro, você poderá observar a experiência em uma reflexão curta."
     >
@@ -57,11 +57,11 @@ function Registro() {
             },
             nome,
           );
-          navigate({ to: "/percurso/reflexao" });
+          navigate({ to: "/jornada/reflexao" });
         }}
         onRegistrarDepois={() => {
           jornada.salvarParaDepois(nome);
-          navigate({ to: "/percurso" });
+          navigate({ to: "/jornada" });
         }}
       />
 
@@ -72,14 +72,14 @@ function Registro() {
               <Botao
                 variante="terciario"
                 tamanho="compacto"
-                onClick={() => navigate({ to: "/percurso/atividade" })}
+                onClick={() => navigate({ to: "/jornada/atividade" })}
               >
                 Revisar a atividade
               </Botao>
               <Botao
                 variante="terciario"
                 tamanho="compacto"
-                onClick={() => navigate({ to: "/percurso" })}
+                onClick={() => navigate({ to: "/jornada" })}
               >
                 Voltar ao início
               </Botao>

@@ -7,7 +7,7 @@ import { QuadroDoPercurso } from "@/components/viva/percurso/quadro";
 import { categorias, objetivos } from "@/lib/viva-jornada-dados";
 import { jornada, useJornada } from "@/lib/viva-jornada";
 
-export const Route = createFileRoute("/percurso/objetivo")({
+export const Route = createFileRoute("/jornada/objetivo")({
   head: () => ({
     meta: [
       { title: "Escolher um objetivo — Percurso VIVA" },
@@ -41,7 +41,7 @@ function EscolhaDoObjetivo() {
     <QuadroDoPercurso
       titulo="O que você gostaria de preparar?"
       finalidade="Qual situação faz sentido trabalhar agora? Você poderá mudar essa escolha depois."
-      voltarPara={categoriaId ? undefined : "/percurso/momento"}
+      voltarPara={categoriaId ? undefined : "/jornada/momento"}
       aoVoltar={categoriaId ? () => setCategoriaId(null) : undefined}
       baixaEstimulacao={j.preparacao.baixaEstimulacao}
       depois="Depois de escolher, você verá um resumo breve da atividade antes de começar."
@@ -100,7 +100,7 @@ function EscolhaDoObjetivo() {
                 onClick={() => {
                   if (!escolhido) return;
                   jornada.escolherObjetivo(escolhido.id, escolhido.nome);
-                  navigate({ to: "/percurso/resumo" });
+                  navigate({ to: "/jornada/resumo" });
                 }}
               >
                 Escolher este objetivo
@@ -118,7 +118,7 @@ function EscolhaDoObjetivo() {
                 <Botao
                   variante="terciario"
                   tamanho="compacto"
-                  onClick={() => navigate({ to: "/percurso" })}
+                  onClick={() => navigate({ to: "/jornada" })}
                 >
                   Decidir depois
                 </Botao>
