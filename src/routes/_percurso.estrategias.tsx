@@ -71,9 +71,13 @@ function EstrategiasScreen() {
             </div>
 
             <div className="mt-4">
-              <TextAction to="/estrategias/adaptar/$estrategiaId">
+              <Link
+                to="/estrategias/adaptar/$estrategiaId"
+                params={{ estrategiaId: e.id }}
+                className="viva-tap inline-flex items-center gap-2 rounded-xl px-2 py-2 viva-legenda font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground"
+              >
                 Adaptar esta estratégia
-              </TextAction>
+              </Link>
             </div>
           </div>
         ))}
