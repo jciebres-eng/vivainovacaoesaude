@@ -93,7 +93,7 @@ function ConteudoScreen() {
   );
 
   const experiencias = useMemo(() => {
-    const doPercurso = percurso.dados.experiencias.map((e) => ({
+    const doPercurso = percurso.experiencias.map((e) => ({
       valor: e.atividade,
       label: e.atividade,
     }));
@@ -107,7 +107,8 @@ function ConteudoScreen() {
           },
           { valor: "Um deslocamento recente", label: "Um deslocamento recente" },
         ];
-  }, [percurso.dados.experiencias]);
+  }, [percurso.experiencias]);
+
 
   return (
     <>
