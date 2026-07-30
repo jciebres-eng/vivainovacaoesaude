@@ -113,7 +113,7 @@ function Entrada() {
           {demonstracoesFuturas.map((d) => (
             <li
               key={d.id}
-              className="rounded-2xl border border-border-default bg-surface-default px-4 py-3"
+              className="rounded-2xl border border-border-default-default bg-surface-default px-4 py-3"
             >
               <p className="viva-rotulo text-text-primary">{d.nome}</p>
               <p className="viva-legenda text-text-secondary">{d.apoio}</p>

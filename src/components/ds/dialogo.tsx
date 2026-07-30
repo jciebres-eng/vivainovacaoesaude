@@ -59,7 +59,7 @@ export function Dialogo({
 }) {
   return (
     <Dialog open={aberto} onOpenChange={onAbertoChange}>
-      <DialogContent className="rounded-3xl border-border-default bg-surface-default sm:max-w-md">
+      <DialogContent className="rounded-3xl border-border-default-default bg-surface-default sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="viva-titulo-secao text-text-primary">
             {titulo}

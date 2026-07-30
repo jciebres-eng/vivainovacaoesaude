@@ -18,7 +18,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md">
-        <h1 className="viva-titulo text-foreground">
+        <h1 className="viva-titulo text-text-primary">
           Esta página não está aqui
         </h1>
         <p className="mt-3 text-text-secondary">
@@ -28,7 +28,7 @@ function NotFoundComponent() {
         <div className="mt-8">
           <Link
             to="/"
-            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
+            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-action-primary px-6 py-3 font-semibold text-action-primary-foreground hover:bg-action-primary-hover"
           >
             Voltar para o início
           </Link>
@@ -48,7 +48,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md">
-        <h1 className="viva-titulo text-foreground">
+        <h1 className="viva-titulo text-text-primary">
           Não foi possível abrir esta página
         </h1>
         <p className="mt-3 text-text-secondary">
@@ -63,13 +63,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
+            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-action-primary px-6 py-3 font-semibold text-action-primary-foreground hover:bg-action-primary-hover"
           >
             Tentar novamente
           </button>
           <a
             href="/"
-            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full border border-border-default bg-surface-default px-5 py-3 viva-legenda font-medium text-card-foreground hover:bg-secondary"
+            className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full border border-border-default-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-background-secondary"
           >
             Voltar para o início
           </a>

@@ -39,7 +39,7 @@ function Inicio() {
           <Leaf className="h-5 w-5" />
         </span>
 
-        <h1 className="mt-8 viva-titulo text-foreground">VIVA</h1>
+        <h1 className="mt-8 viva-titulo text-text-primary">VIVA</h1>
         <p className="mt-4 max-w-[52ch] viva-texto text-text-secondary">
           Um espaço para organizar, no seu ritmo, algo que você deseja realizar
           no dia a dia. Sem cobrança, sem comparação e sem pressa.

@@ -41,7 +41,7 @@ export function BibliotecaCard({
   return (
     <article
       className={cn(
-        "rounded-3xl border border-border-default bg-surface-default shadow-suave",
+        "rounded-3xl border border-border-default-default bg-surface-default shadow-suave",
         compacto ? "p-4" : "p-5 md:p-6",
       )}
     >
@@ -119,7 +119,7 @@ export function BibliotecaCard({
         <Link
           to="/biblioteca/$conteudoId"
           params={{ conteudoId: conteudo.id }}
-          className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-action-primary px-6 py-3 viva-texto-botao font-semibold text-action-primary-foreground hover:bg-action-primary/90"
+          className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-action-primary px-6 py-3 viva-texto-botao font-semibold text-action-primary-foreground hover:bg-action-primary-hover"
         >
           Abrir conteúdo
         </Link>

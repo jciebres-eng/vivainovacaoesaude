@@ -57,7 +57,7 @@ export function CartaoDeEstrategiaPessoal({
       </dl>
 
       {estrategia.observacoes ? (
-        <p className="mt-3 border-l-2 border-border-default pl-4 viva-apoio text-text-primary">
+        <p className="mt-3 border-l-2 border-border-default-default pl-4 viva-apoio text-text-primary">
           {estrategia.observacoes}
         </p>
       ) : null}

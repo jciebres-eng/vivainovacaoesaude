@@ -35,14 +35,14 @@ export type VarianteCard =
   | "aviso";
 
 const variantes: Record<VarianteCard, string> = {
-  informativo: "border-border-default bg-surface-default",
+  informativo: "border-border-default-default bg-surface-default",
   "proximo-passo":
     "border-feedback-continuidade/40 bg-feedback-continuidade-suave/50",
-  habilidade: "border-border-default bg-surface-default",
-  biblioteca: "border-border-default bg-surface-default",
-  registro: "border-border-default bg-surface-muted",
-  reflexao: "border-dashed border-border-default bg-surface-default",
-  rotina: "border-border-default bg-surface-muted",
+  habilidade: "border-border-default-default bg-surface-default",
+  biblioteca: "border-border-default-default bg-surface-default",
+  registro: "border-border-default-default bg-surface-muted",
+  reflexao: "border-dashed border-border-default-default bg-surface-default",
+  rotina: "border-border-default-default bg-surface-muted",
   experiencia:
     "border-feedback-continuidade/40 bg-feedback-continuidade-suave/40",
   "estado-atual": "border-action-primary/40 bg-feedback-information/40",
@@ -215,7 +215,7 @@ export function CardDeReflexao({
       acao={acao}
     >
       {resposta ? (
-        <blockquote className="border-l-2 border-border-default pl-4 viva-apoio text-text-primary">
+        <blockquote className="border-l-2 border-border-default-default pl-4 viva-apoio text-text-primary">
           {resposta}
         </blockquote>
       ) : null}

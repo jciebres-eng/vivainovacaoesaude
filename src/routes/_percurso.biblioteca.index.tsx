@@ -156,7 +156,7 @@ function BibliotecaScreen() {
                 key={a}
                 type="button"
                 onClick={() => setArea(a)}
-                className="viva-tap rounded-3xl border border-border-default bg-surface-default p-5 text-left hover:bg-surface-muted"
+                className="viva-tap rounded-3xl border border-border-default-default bg-surface-default p-5 text-left hover:bg-surface-muted"
               >
                 <span className="viva-subtitulo text-text-primary">
                   {rotulosDeArea[a].nome}
@@ -221,13 +221,13 @@ function BibliotecaScreen() {
           <div className="flex flex-wrap gap-3">
             <Link
               to="/biblioteca/minha"
-              className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default bg-surface-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
+              className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default-default bg-surface-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
             >
               Minha Biblioteca
             </Link>
             <Link
               to="/biblioteca/reflexoes"
-              className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default bg-surface-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
+              className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default-default bg-surface-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
             >
               Minhas Reflexões
             </Link>

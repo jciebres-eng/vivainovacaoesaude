@@ -236,7 +236,7 @@ export function EstadoDaInterface({
   return (
     <div
       role={tipo === "erro" || tipo === "sem-conexao" ? "alert" : "status"}
-      className="rounded-3xl border border-dashed border-border-default bg-surface-default p-6 text-center"
+      className="rounded-3xl border border-dashed border-border-default-default bg-surface-default p-6 text-center"
     >
       <p className="viva-subtitulo text-text-primary">{titulo ?? padrao.titulo}</p>
       <p className="mt-2 viva-apoio text-text-secondary">{texto ?? padrao.texto}</p>

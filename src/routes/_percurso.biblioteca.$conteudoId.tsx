@@ -302,7 +302,7 @@ function ConteudoScreen() {
 
         <Link
           to="/biblioteca"
-          className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
+          className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
         >
           Voltar para a biblioteca
         </Link>

@@ -39,7 +39,7 @@ function DocumentacaoPage() {
           if (list.length === 0) return null;
           return (
             <section key={group.id}>
-              <h2 className="viva-subtitulo text-foreground">{group.label}</h2>
+              <h2 className="viva-subtitulo text-text-primary">{group.label}</h2>
               <p className="mt-2 max-w-[62ch] viva-legenda text-text-secondary">
                 {group.description}
               </p>
@@ -50,15 +50,15 @@ function DocumentacaoPage() {
                     <Link
                       to="/documentos/$slug"
                       params={{ slug: doc.slug }}
-                      className="viva-anim block rounded-2xl border border-border-default bg-surface-default p-5 shadow-suave hover:bg-secondary"
+                      className="viva-anim block rounded-2xl border border-border-default-default bg-surface-default p-5 shadow-suave hover:bg-background-secondary"
                     >
                       <span className="viva-legenda text-text-secondary">
                         Documento {doc.number} · leitura de {doc.minutes} minutos
                       </span>
-                      <h3 className="mt-1 viva-subtitulo text-card-foreground">
+                      <h3 className="mt-1 viva-subtitulo text-text-primary">
                         {doc.title}
                       </h3>
-                      <p className="mt-2 max-w-[62ch] viva-legenda text-card-foreground">
+                      <p className="mt-2 max-w-[62ch] viva-legenda text-text-primary">
                         {doc.summary}
                       </p>
                     </Link>

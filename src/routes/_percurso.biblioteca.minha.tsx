@@ -118,7 +118,7 @@ function MinhaBibliotecaScreen() {
                       <Link
                         to="/biblioteca/$conteudoId"
                         params={{ conteudoId: c.id }}
-                        className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
+                        className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
                       >
                         Abrir sua versão
                       </Link>
@@ -147,7 +147,7 @@ function MinhaBibliotecaScreen() {
                       <Link
                         to="/biblioteca/$conteudoId"
                         params={{ conteudoId: c.id }}
-                        className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
+                        className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default-default px-5 py-2.5 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
                       >
                         Abrir conteúdo
                       </Link>
@@ -193,7 +193,7 @@ function MinhaBibliotecaScreen() {
 
         <Link
           to="/biblioteca"
-          className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
+          className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
         >
           Voltar para a biblioteca
         </Link>
@@ -211,7 +211,7 @@ function Vazio({ texto }: { texto: string }) {
       acao={
         <Link
           to="/biblioteca"
-          className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
+          className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default-default bg-surface-default px-5 py-3 viva-legenda font-medium text-text-primary hover:bg-surface-muted"
         >
           Ver conteúdos
         </Link>

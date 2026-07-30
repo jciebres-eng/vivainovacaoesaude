@@ -15,7 +15,7 @@ export const cores = {
   surfaceMuted: "bg-surface-muted",
   textPrimary: "text-text-primary",
   textSecondary: "text-text-secondary",
-  borderDefault: "border-border-default",
+  borderDefault: "border-border-default-default",
   actionPrimary: "bg-action-primary text-action-primary-foreground",
   actionSecondary: "bg-surface-default text-text-primary",
   feedbackInformation: "bg-feedback-information text-feedback-information-foreground",

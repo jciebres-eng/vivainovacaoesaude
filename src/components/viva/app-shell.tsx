@@ -109,7 +109,7 @@ function SideNav({
   foco: boolean;
 }) {
   return (
-    <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-border-default bg-sidebar md:flex">
+    <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-border-default-default bg-sidebar md:flex">
       <div className="px-5 py-7">
         <Link
           to="/"
@@ -146,7 +146,7 @@ function SideNav({
                     "viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem]",
                     ativo
                       ? "bg-accent font-semibold text-accent-foreground"
-                      : "text-sidebar-foreground hover:bg-secondary",
+                      : "text-sidebar-foreground hover:bg-background-secondary",
                   )}
                 >
                   <item.icon className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
@@ -164,7 +164,7 @@ function SideNav({
           aria-current={
             pathname.startsWith("/minha-experiencia") ? "page" : undefined
           }
-          className="viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem] text-sidebar-foreground hover:bg-secondary"
+          className="viva-anim flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-[0.95rem] text-sidebar-foreground hover:bg-background-secondary"
         >
           <SlidersHorizontal className="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden />
           <span className="truncate">Minha experiência</span>
@@ -189,7 +189,7 @@ function BottomNav({
   return (
     <nav
       aria-label="Navegação principal (rodapé)"
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-border-default bg-surface-default/95 backdrop-blur md:hidden"
+      className="fixed inset-x-0 bottom-0 z-20 border-t border-border-default-default bg-surface-default/95 backdrop-blur md:hidden"
     >
       <ul
         className="mx-auto grid max-w-xl"

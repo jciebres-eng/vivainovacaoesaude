@@ -27,9 +27,9 @@ const base =
 
 const variantes: Record<VarianteBotao, string> = {
   principal:
-    "bg-action-primary text-action-primary-foreground hover:bg-action-primary/90 active:bg-action-primary/95",
+    "bg-action-primary text-action-primary-foreground hover:bg-action-primary-hover active:bg-action-primary/95",
   secundario:
-    "border border-border-default bg-surface-default text-text-primary hover:bg-background-secondary",
+    "border border-border-default-default bg-surface-default text-text-primary hover:bg-background-secondary",
   terciario:
     "text-text-secondary underline underline-offset-4 hover:text-text-primary",
   destrutivo:
@@ -172,7 +172,7 @@ export function Chip({
         "viva-tap min-h-11 rounded-full border px-4 py-2 viva-legenda font-medium",
         selected
           ? "border-action-primary bg-action-primary text-action-primary-foreground"
-          : "border-border-default bg-surface-default text-text-primary hover:bg-background-secondary",
+          : "border-border-default-default bg-surface-default text-text-primary hover:bg-background-secondary",
       )}
     >
       {label}
