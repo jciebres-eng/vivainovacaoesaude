@@ -47,9 +47,9 @@ export const groups: DocGroup[] = [
   },
   {
     id: "F",
-    label: "Grupo F — Identidade e design",
+    label: "Grupo F — Identidade, design e psicologia",
     description:
-      "Identidade da experiência e design system humano que orientam a linguagem visual e sensorial do VIVA.",
+      "Identidade da experiência, design system humano e psicologia do design que orientam a linguagem visual, sensorial e comportamental do VIVA.",
   },
   {
     id: "G",
@@ -193,6 +193,13 @@ const meta: Record<
     group: "G",
     summary:
       "Apresenta a estrutura de governança do VIVA: fundamentação científica, revisão ética e conformidade regulatória.",
+  },
+  "17_PSICOLOGIA_DO_DESIGN": {
+    title: "Psicologia do Design",
+    subtitle: "Framework para desenvolvimento de tecnologias humanizadas",
+    group: "F",
+    summary:
+      "Princípios psicológicos que orientam a experiência, a arquitetura da informação e a interação do VIVA: a interface influencia comportamento e faz parte da responsabilidade ética do desenvolvimento.",
   },
 };
 
