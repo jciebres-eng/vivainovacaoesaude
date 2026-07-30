@@ -39,10 +39,40 @@ function Biblioteca() {
           projeto: em caso de conflito, o documento prevalece.
         </p>
 
+        <div className="mt-8 rounded-2xl border border-border bg-card p-6">
+          <h2 className="text-lg font-semibold text-card-foreground">
+            Protótipo navegável
+          </h2>
+          <p className="mt-2 max-w-[62ch] text-sm text-muted-foreground">
+            Percurso demonstrativo com as 16 etapas do mapa de telas, dados
+            fictícios e ajustes sensoriais.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              to="/perfil"
+              className="viva-tap inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+            >
+              Iniciar percurso
+            </Link>
+            <Link
+              to="/linha-do-tempo"
+              className="viva-tap inline-flex rounded-full border border-border px-5 py-3 text-sm font-medium text-card-foreground hover:bg-secondary"
+            >
+              Ver trajetória
+            </Link>
+            <Link
+              to="/configuracoes"
+              className="viva-tap inline-flex rounded-full border border-border px-5 py-3 text-sm font-medium text-card-foreground hover:bg-secondary"
+            >
+              Ajustes sensoriais
+            </Link>
+          </div>
+        </div>
+
         <div className="mt-6 rounded-lg border border-border bg-card p-4">
           <p className="text-sm text-card-foreground">
-            <strong>{docs.length} documentos</strong> publicados de 12 previstos.
-            Os grupos seguintes serão adicionados conforme forem enviados.
+            <strong>{docs.length} documentos</strong> publicados, organizados nos
+            grupos A a E.
           </p>
         </div>
 
