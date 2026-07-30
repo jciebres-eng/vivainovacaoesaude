@@ -62,6 +62,38 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --shadow-suave: 0 1px 2px oklch(0.3 0.02 200 / 0.04), 0 8px 24px -16px oklch(0.3 0.02 200 / 0.16);
   --shadow-suave-alta: 0 2px 4px oklch(0.3 0.02 200 / 0.05), 0 14px 32px -18px oklch(0.3 0.02 200 / 0.22);
+
+  /* ------------------------------------------------------------------
+   * Paleta semântica do Design System (documento 14).
+   * Estes são os nomes que os componentes devem usar. As cores brutas
+   * continuam definidas uma única vez em :root, .dark e .viva-calmo.
+   * ------------------------------------------------------------------ */
+  --color-background-primary: var(--background);
+  --color-background-secondary: var(--secondary);
+  --color-surface-default: var(--card);
+  --color-surface-muted: var(--muted);
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-border-default: var(--border);
+  --color-action-primary: var(--primary);
+  --color-action-primary-foreground: var(--primary-foreground);
+  --color-action-secondary: var(--secondary);
+  --color-action-secondary-foreground: var(--secondary-foreground);
+  --color-feedback-information: var(--accent);
+  --color-feedback-information-foreground: var(--accent-foreground);
+  --color-feedback-attention: var(--atencao);
+  --color-feedback-attention-foreground: var(--atencao-foreground);
+  --color-feedback-continuidade: var(--salvia);
+  --color-feedback-continuidade-suave: var(--salvia-suave);
+  --color-feedback-error: var(--destructive);
+  --color-feedback-error-foreground: var(--destructive-foreground);
+  --color-focus-ring: var(--ring);
+
+  /* Duração de animação — sempre breve (doc 04) */
+  --duracao-imediata: 120ms;
+  --duracao-rapida: 160ms;
+  --duracao-padrao: 180ms;
+  --duracao-entrada: 260ms;
 }
 
 :root {
