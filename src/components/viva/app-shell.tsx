@@ -11,7 +11,6 @@ import {
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
-import { steps } from "@/lib/viva-data";
 import { useExperiencia } from "@/lib/viva-experiencia";
 
 type To = LinkProps["to"];
@@ -37,10 +36,7 @@ const itensPrincipais: {
     label: "Percurso",
     icon: RouteIcon,
     combina: (p) =>
-      (p.startsWith("/jornada") || steps.some((s) => p.startsWith(s.path))) &&
-      !p.startsWith("/meu-momento") &&
-      !p.startsWith("/biblioteca") &&
-      !p.startsWith("/linha-do-tempo"),
+      p.startsWith("/jornada") && !p.startsWith("/jornada/linha-do-tempo"),
   },
   {
     to: "/biblioteca",
@@ -49,10 +45,10 @@ const itensPrincipais: {
     combina: (p) => p.startsWith("/biblioteca"),
   },
   {
-    to: "/linha-do-tempo",
+    to: "/jornada/linha-do-tempo",
     label: "Trajetória",
     icon: Clock3,
-    combina: (p) => p.startsWith("/linha-do-tempo"),
+    combina: (p) => p.startsWith("/jornada/linha-do-tempo"),
   },
   {
     to: "/sobre",
@@ -81,7 +77,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-dvh bg-background">
       <a
         href="#conteudo"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface-default focus:px-4 focus:py-2 focus:text-card-foreground"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface-default focus:px-4 focus:py-2 focus:text-text-primary"
       >
         Ir para o conteúdo
       </a>

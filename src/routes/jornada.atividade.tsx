@@ -76,7 +76,7 @@ function Atividade() {
             jornada.encerrar(objetivo.nome);
             navigate({ to: "/jornada/encerramento" });
           }}
-          linkEstrategias="/estrategias"
+          linkEstrategias="/biblioteca/minha"
         />
         <Nota>
           Nada foi perdido: suas respostas continuam guardadas neste

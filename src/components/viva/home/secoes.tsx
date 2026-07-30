@@ -206,7 +206,7 @@ export function ComoEstouAgora({
               <Botao variante="terciario" tamanho="compacto" onClick={onConteudoCurto}>
                 Explorar um conteúdo curto
               </Botao>
-              <BotaoLink to="/afastamento" variante="terciario" tamanho="compacto">
+              <BotaoLink to="/jornada/encerramento" variante="terciario" tamanho="compacto">
                 Encerrar por enquanto
               </BotaoLink>
             </div>
@@ -376,7 +376,7 @@ export function MinhasEstrategias({
         ))}
       </ul>
       <Link
-        to="/estrategias"
+        to="/biblioteca/minha"
         className="viva-tap inline-block viva-legenda font-medium text-text-secondary underline underline-offset-4 hover:text-text-primary"
       >
         Ver minhas estratégias
@@ -421,7 +421,7 @@ export function RegistrosRecentes({
         ))}
       </ul>
       <div className="flex flex-wrap items-center gap-3">
-        <BotaoLink to="/linha-do-tempo" variante="terciario" tamanho="compacto">
+        <BotaoLink to="/jornada/linha-do-tempo" variante="terciario" tamanho="compacto">
           Ver meu percurso
         </BotaoLink>
         <Botao variante="terciario" tamanho="compacto" onClick={onOcultar}>

@@ -147,7 +147,7 @@ function MeuMomentoPage() {
     {
       id: "percurso",
       rotulo: "Ver meu percurso até aqui",
-      onSelecionar: () => navigate({ to: "/linha-do-tempo" }),
+      onSelecionar: () => navigate({ to: "/jornada/linha-do-tempo" }),
     },
     {
       id: "pausa",
