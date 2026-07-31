@@ -9,7 +9,7 @@
  * Toda ação de gesto tem equivalente por botão e por teclado, e todo
  * resultado é anunciado por leitor de tela.
  */
-import { Check, Undo2, X } from "lucide-react";
+import { Check, ChevronUp, Undo2, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -20,9 +20,12 @@ export type ItemDaPilha = {
   /** Nome curto usado nos avisos acessíveis. */
   rotulo: string;
   conteudo: ReactNode;
+  /** Conteúdo revelado ao deslizar para cima ou tocar em "Ver detalhes". */
+  detalhes?: ReactNode;
 };
 
 const LIMITE = 96;
+
 
 export function JourneySwipeDeck({
   itens,
