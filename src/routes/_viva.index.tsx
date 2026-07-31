@@ -106,6 +106,8 @@ function Inicio() {
 
           <CampoDoAgente onEnviar={(texto) => setIntencao(texto)} />
 
+          <CatalogoDeSituacoes titulo="Ou escolha uma situação" />
+
           <section aria-labelledby="conteudos-home" className="space-y-3">
             <h2 id="conteudos-home" className="viva-subtitulo text-text-primary">
               Conteúdos que podem ajudar
@@ -131,6 +133,7 @@ function Inicio() {
           >
             Iniciar demonstração guiada
           </Link>
+
         </>
       )}
 
