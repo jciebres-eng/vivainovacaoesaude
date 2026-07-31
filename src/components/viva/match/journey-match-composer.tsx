@@ -57,7 +57,7 @@ export function JourneyMatchComposer({
   const concluido = !categoria;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5" data-fluxo={motor.fluxo} data-rodada={motor.rodada}>
       <header className="space-y-1">
         <p className="viva-legenda text-text-secondary">
           {concluido
@@ -101,7 +101,11 @@ export function JourneyMatchComposer({
           ) : (
             <Deck
               itens={motor.opcoesDaRodada}
-              onAceitar={(item) => void motor.aceitar(item)}
+              onAceitar={async (item) => {
+                // Uma escolha aceita conclui a rodada e abre a próxima pergunta.
+                await motor.aceitar(item);
+                motor.avancar();
+              }}
               onDescartar={(item) => void motor.descartar(item)}
               onDesfazer={() => void motor.desfazer()}
               podeDesfazer={podeDesfazer}

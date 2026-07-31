@@ -66,11 +66,24 @@ export function SwipeMatchDeck({
   const dicaAgoraNao = useTransform(x, [-120, -24], [1, 0]);
 
   const atual = itens[indice];
-  const proximos = itens.slice(indice + 1, indice + Math.max(1, modo.cardsSimultaneos));
+  /** Pelo menos dois cards de profundidade: a pilha precisa parecer pilha. */
+  const emProfundidade = Math.max(2, modo.cardsSimultaneos - 1);
+  const proximos = itens.slice(indice + 1, indice + 1 + emProfundidade);
+  const restantes = Math.max(0, itens.length - indice);
 
+  /**
+   * Cada rodada do match troca o conjunto de itens: a pilha volta ao primeiro
+   * card. Sem isso o índice antigo apontava para fora do novo baralho e o
+   * deck aparecia vazio.
+   */
+  const assinatura = `${itens[0]?.categoria ?? "vazio"}:${itens.length}`;
+  const assinaturaAnterior = useRef(assinatura);
   useEffect(() => {
-    setIndice(0);
-  }, [itens.length === 0]);
+    if (assinaturaAnterior.current !== assinatura) {
+      assinaturaAnterior.current = assinatura;
+      setIndice(0);
+    }
+  }, [assinatura]);
 
   useEffect(() => {
     setDetalhesAbertos(false);
@@ -91,11 +104,14 @@ export function SwipeMatchDeck({
       const concluir = () => {
         if (acao === "aceito") onAceitar(atual);
         else onDescartar(atual);
-        setIndice((i) => {
-          const proximo = i + 1;
-          if (proximo >= itens.length) onFim?.();
-          return proximo;
-        });
+        /**
+         * Quem decide sai do baralho da rodada (o motor filtra o que já foi
+         * aceito ou descartado). Por isso a pilha volta ao topo em vez de
+         * avançar o índice — antes o card seguinte era pulado.
+         */
+        setIndice(0);
+        x.set(0);
+        if (itens.length <= 1) onFim?.();
       };
       if (semMovimento) {
         concluir();
@@ -122,20 +138,28 @@ export function SwipeMatchDeck({
 
   return (
     <div className="mx-auto w-full max-w-md">
-      <div className="relative">
+      <p className="mb-2 text-center viva-legenda text-[var(--profile-muted)]" aria-live="polite">
+        {restantes === 1
+          ? "Última opção desta escolha"
+          : `${restantes} opções nesta escolha`}
+      </p>
+      <div className="relative pb-7">
         {proximos.map((item, i) => (
           <div
             key={item.id}
             aria-hidden
             className="pointer-events-none absolute inset-x-0 top-0 origin-top"
             style={{
-              transform: `translateY(${(i + 1) * 10}px) scale(${1 - (i + 1) * 0.03})`,
-              opacity: 0.45 - i * 0.15,
+              transform: `translateY(${(i + 1) * 13}px) scale(${1 - (i + 1) * 0.035})`,
+              opacity: semMovimento ? 0.4 : 0.6 - i * 0.2,
+              filter: "saturate(0.9)",
             }}
           >
             <MatchCard item={item} />
           </div>
         ))}
+
+
 
         <motion.div
           role="group"
@@ -211,61 +235,76 @@ export function SwipeMatchDeck({
         </motion.div>
       </div>
 
-      {atual.detalhes ? (
-        <div className="mt-3">
+      <div className="mt-3">
+        <button
+          type="button"
+          onClick={() => setDetalhesAbertos((a) => !a)}
+          aria-expanded={detalhesAbertos}
+          className="viva-tap inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--profile-border)] px-4 viva-legenda text-[var(--profile-text)]"
+        >
+          <ChevronUp
+            className={cn("h-4 w-4 transition-transform", detalhesAbertos && "rotate-180")}
+            aria-hidden
+          />
+          {detalhesAbertos ? "Ocultar detalhes" : "Ver detalhes"}
+        </button>
+        {detalhesAbertos ? (
+          <div
+            className="mt-2 border border-[var(--profile-border)] p-3 viva-legenda text-[var(--profile-text)]"
+            style={{ borderRadius: "var(--profile-radius)" }}
+          >
+            {atual.detalhes ?? descricaoAcessivel(atual)}
+          </div>
+        ) : null}
+      </div>
+
+      {/* Todo gesto tem um botão equivalente, com rótulo visível. */}
+      <div className="mt-4 flex items-start justify-center gap-4">
+        <div className="flex w-20 flex-col items-center gap-1">
           <button
             type="button"
-            onClick={() => setDetalhesAbertos((a) => !a)}
-            aria-expanded={detalhesAbertos}
-            className="viva-tap inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--profile-border)] px-4 viva-legenda text-[var(--profile-text)]"
+            onClick={() => decidir("descartado")}
+            aria-label={rotuloDescartar ?? rotulos.descartar}
+            className="viva-tap grid h-14 w-14 place-items-center rounded-full border border-[var(--profile-border)] bg-[var(--profile-surface)] text-[var(--profile-muted)]"
           >
-            <ChevronUp
-              className={cn("h-4 w-4 transition-transform", detalhesAbertos && "rotate-180")}
-              aria-hidden
-            />
-            {detalhesAbertos ? "Ocultar detalhes" : "Ver detalhes"}
+            <X className="h-6 w-6" aria-hidden />
           </button>
-          {detalhesAbertos ? (
-            <div
-              className="mt-2 border border-[var(--profile-border)] p-3 viva-legenda text-[var(--profile-text)]"
-              style={{ borderRadius: "var(--profile-radius)" }}
-            >
-              {atual.detalhes}
-            </div>
-          ) : null}
+          <span aria-hidden className="text-center viva-legenda text-[var(--profile-muted)]">
+            Agora não
+          </span>
         </div>
-      ) : null}
-
-      <div className="mt-4 flex items-center justify-center gap-3">
-        <button
-          type="button"
-          onClick={() => decidir("descartado")}
-          aria-label={rotuloDescartar ?? rotulos.descartar}
-          className="viva-tap grid h-14 w-14 place-items-center rounded-full border border-[var(--profile-border)] bg-[var(--profile-surface)] text-[var(--profile-muted)]"
-        >
-          <X className="h-6 w-6" aria-hidden />
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            onDesfazer?.();
-            setIndice((i) => Math.max(0, i - 1));
-          }}
-          disabled={!podeDesfazer}
-          aria-label="Desfazer a última escolha"
-          className="viva-tap grid h-12 w-12 place-items-center rounded-full border border-[var(--profile-border)] text-[var(--profile-muted)] disabled:opacity-40"
-        >
-          <Undo2 className="h-5 w-5" aria-hidden />
-        </button>
-        <button
-          type="button"
-          onClick={() => decidir("aceito")}
-          aria-label={rotuloAceitar ?? rotulos.aceitar}
-          className="viva-tap grid h-14 w-14 place-items-center rounded-full bg-[var(--profile-primary)] text-[var(--profile-surface)]"
-        >
-          <Check className="h-6 w-6" aria-hidden />
-        </button>
+        <div className="flex w-20 flex-col items-center gap-1">
+          <button
+            type="button"
+            onClick={() => {
+              onDesfazer?.();
+              setIndice(0);
+            }}
+            disabled={!podeDesfazer}
+            aria-label="Desfazer a última escolha"
+            className="viva-tap grid h-14 w-14 place-items-center rounded-full border border-[var(--profile-border)] text-[var(--profile-muted)] disabled:opacity-40"
+          >
+            <Undo2 className="h-5 w-5" aria-hidden />
+          </button>
+          <span aria-hidden className="text-center viva-legenda text-[var(--profile-muted)]">
+            Desfazer
+          </span>
+        </div>
+        <div className="flex w-20 flex-col items-center gap-1">
+          <button
+            type="button"
+            onClick={() => decidir("aceito")}
+            aria-label={rotuloAceitar ?? rotulos.aceitar}
+            className="viva-tap grid h-14 w-14 place-items-center rounded-full bg-[var(--profile-primary)] text-[var(--profile-surface)]"
+          >
+            <Check className="h-6 w-6" aria-hidden />
+          </button>
+          <span aria-hidden className="text-center viva-legenda text-[var(--profile-muted)]">
+            Adicionar
+          </span>
+        </div>
       </div>
+
 
       <p className="mt-2 text-center viva-legenda text-[var(--profile-muted)]">
         Deslize para o lado, para cima (detalhes), toque no card, use os botões ou as setas do
