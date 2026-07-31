@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import { CampoDoAgente } from "@/components/viva/agente";
 import { SeloDemonstrativo } from "@/components/viva/selo-demonstrativo";
+import { CatalogoDeSituacoes } from "@/components/viva/situacoes";
+
 import { JourneyMatchComposer } from "@/components/viva/visual";
 import { useAgente } from "@/lib/viva-agente";
 import { conteudosDaBiblioteca } from "@/lib/viva-biblioteca-dados";
