@@ -149,11 +149,11 @@ export function PainelDeAcompanhamento({
         {precisoes.map((opcao) => (
           <BotaoDeOpcao
             key={opcao.id}
-            name="precisao"
+            nome="precisao"
             rotulo={opcao.titulo}
             apoio={opcao.mostra.join(" · ")}
-            checked={precisao === opcao.id}
-            onChange={() => setPrecisao(opcao.id)}
+            selecionado={precisao === opcao.id}
+            onSelect={() => setPrecisao(opcao.id)}
           />
         ))}
       </fieldset>
@@ -163,10 +163,10 @@ export function PainelDeAcompanhamento({
         {duracoes.map((opcao) => (
           <BotaoDeOpcao
             key={opcao.minutos}
-            name="duracao"
+            nome="duracao"
             rotulo={opcao.rotulo}
-            checked={minutos === opcao.minutos}
-            onChange={() => setMinutos(opcao.minutos)}
+            selecionado={minutos === opcao.minutos}
+            onSelect={() => setMinutos(opcao.minutos)}
           />
         ))}
       </fieldset>
