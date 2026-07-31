@@ -155,6 +155,30 @@
   --sidebar-accent-foreground: oklch(0.3 0.035 210);
   --sidebar-border: oklch(0.9 0.011 180);
   --sidebar-ring: oklch(0.47 0.055 205);
+
+  /*
+   * Tokens do modo de experiência (ProfileExperienceEngine, documento 10).
+   * Estes valores são o ponto de partida no servidor; ao carregar, o modo
+   * escolhido pela pessoa substitui cada um deles na raiz do documento.
+   */
+  --profile-background: oklch(0.972 0.014 96);
+  --profile-surface: oklch(0.992 0.006 96);
+  --profile-card: oklch(0.996 0.004 96);
+  --profile-primary: oklch(0.5 0.062 205);
+  --profile-secondary: oklch(0.93 0.026 190);
+  --profile-accent: oklch(0.86 0.05 155);
+  --profile-text: oklch(0.29 0.018 215);
+  --profile-muted: oklch(0.5 0.018 215);
+  --profile-border: oklch(0.9 0.014 180);
+  --profile-radius: 1.75rem;
+  --profile-spacing: 1.15rem;
+  --profile-card-scale: 1;
+  --profile-motion-duration: 320ms;
+  --profile-motion-intensity: 1;
+  --profile-media-ratio: 70%;
+  --profile-information-density: 0.9;
+  --profile-assistant-scale: 1;
+  --profile-assistant-glow: 0.16;
 }
 
 /* Modo escuro: cinza aquecido, nunca preto absoluto */
