@@ -66,9 +66,19 @@ export function JourneyMatchComposer({
       <header>
         <p className="viva-legenda text-[var(--profile-muted)]">Seu percurso está se formando</p>
         <h2 className="viva-titulo text-[var(--profile-text)]">{intencao}</h2>
+        {!pronto ? (
+          <p className="mt-1 viva-legenda text-[var(--profile-muted)]">
+            Escolha {Math.min(etapa + 1, ordem.length)} de {ordem.length} ·{" "}
+            {rotulosDaDecisao[categoria].titulo}
+          </p>
+        ) : null}
       </header>
 
-      <TrilhaDoPercurso pecas={aceitas} totalDeEtapas={ordem.length} etapaAtual={etapa} />
+      <div className="space-y-2">
+        <h3 className="viva-subtitulo text-[var(--profile-text)]">Meu percurso</h3>
+        <TrilhaDoPercurso pecas={aceitas} totalDeEtapas={ordem.length} etapaAtual={etapa} />
+      </div>
+
 
       {pronto ? (
         <div className="space-y-3">
