@@ -61,12 +61,15 @@ function PerfilPagina() {
       <header>
         <h1 className="viva-titulo-pagina text-text-primary">Perfil</h1>
         <p className="mt-2 viva-texto text-text-secondary">
-          Você está usando o perfil de demonstração de {perfil.nome}. Trocar de perfil reorganiza a
-          experiência inteira.
+          Você está usando o perfil de demonstração de {perfil.nome}. Ele acessa todas as situações e
+          recursos: o que muda a experiência são suas preferências.
         </p>
       </header>
 
-      <SeletorDePerfil titulo="Trocar de perfil" />
+      <CartaoDoPerfil />
+
+      <PreferenciasDoPerfil />
+
 
       <SeletorDeModo />
 
