@@ -7,6 +7,7 @@
  * irreversível (hash) do token.
  */
 import { supabase } from "@/integrations/supabase/client";
+import { perfilAtualId } from "@/lib/perfil-atual";
 
 export type PrecisaoDeAcompanhamento = "step_only" | "approximate" | "exact";
 
@@ -84,8 +85,7 @@ export async function criarSessaoDeAcompanhamento(entrada: {
   const hash = await resumo(token);
   const expiraEm = new Date(Date.now() + entrada.minutos * 60_000).toISOString();
 
-  const { data: sessaoAuth } = await supabase.auth.getUser();
-  const dono = sessaoAuth.user?.id;
+  const dono = await perfilAtualId();
   if (!dono) throw new Error("sem_perfil");
 
   const { data, error } = await supabase
