@@ -20,6 +20,14 @@ import {
   type ReactNode,
 } from "react";
 
+import {
+  aplicarEvento,
+  estadoInicial,
+  type ContextoDaMaquina,
+  type EstadoDoAssistente,
+  type EventoDoAssistente,
+} from "@/lib/assistant/estados";
+
 export type EstadoDoAgente =
   | "disponivel"
   | "ouvindo"
