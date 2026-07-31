@@ -15,6 +15,8 @@ import { VivaProvider } from "../lib/viva-store";
 import { ExperienciaProvider } from "../lib/viva-experiencia";
 import { PerfilProvider } from "@/lib/viva-perfis";
 import { AgenteProvider } from "@/lib/viva-agente";
+import { ModoProvider } from "@/lib/viva-modos";
+import { ProfileMorphTransition } from "@/components/viva/visual/abertura-imersiva";
 
 function NotFoundComponent() {
   return (
