@@ -21,7 +21,9 @@ export function CascaViva({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { trocando } = usePerfil();
   const { preferencias } = useExperiencia();
-  const baixaEstimulacao = preferencias.estimulos === "baixo";
+  const baixaEstimulacao =
+    preferencias.aparencia.tema === "baixo-estimulo" || preferencias.movimento.reduzirAnimacoes;
+
 
   return (
     <div className="min-h-dvh bg-background">
