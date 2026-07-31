@@ -4,7 +4,6 @@ import { Botao } from "@/components/ds/botao";
 import { Interruptor } from "@/components/ds/campos";
 import { AvisoDeAjuste, GrupoDeOpcoes } from "@/components/viva/experiencia/controles";
 import { Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
-import { personas } from "@/lib/viva-data";
 import {
   estrategiasSugeridas,
   rotulosDeCanal,
