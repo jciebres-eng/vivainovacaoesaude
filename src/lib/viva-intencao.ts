@@ -20,7 +20,6 @@ export type Contexto = {
   titulo: string;
   /** Frase devolvida à pessoa: "Entendi: você quer…" */
   confirmacao: string;
-  perfilSugerido?: string;
   exemplos: string[];
 };
 
@@ -29,35 +28,30 @@ export const contextos: Record<IdDeContexto, Contexto> = {
     id: "compras",
     titulo: "Ida ao mercado",
     confirmacao: "você quer organizar uma ida ao mercado",
-    perfilSugerido: "carla",
     exemplos: ["Preciso ir ao mercado.", "Quero organizar minhas compras."],
   },
   mobilidade: {
     id: "mobilidade",
     titulo: "Transporte público",
     confirmacao: "você quer se preparar para usar o transporte público",
-    perfilSugerido: "daniel",
     exemplos: ["Quero pegar um ônibus.", "Preciso ir de metrô."],
   },
   saude: {
     id: "saude",
     titulo: "Consulta de saúde",
     confirmacao: "você quer se preparar para uma consulta",
-    perfilSugerido: "helena",
     exemplos: ["Tenho uma consulta.", "Vou ao médico amanhã."],
   },
   trabalho: {
     id: "trabalho",
     titulo: "Situação de trabalho",
     confirmacao: "você quer se preparar para uma situação de trabalho",
-    perfilSugerido: "ana",
     exemplos: ["Preciso me preparar para uma reunião."],
   },
   academico: {
     id: "academico",
     titulo: "Contexto acadêmico",
     confirmacao: "você quer se preparar para um dia na universidade",
-    perfilSugerido: "bruno",
     exemplos: ["Tenho aula na faculdade."],
   },
   indefinido: {
