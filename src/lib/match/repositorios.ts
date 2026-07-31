@@ -292,8 +292,11 @@ export class MockSharingRepository implements SharingRepository {
   }
 }
 
-/** Ponto único de acesso. Trocar aqui troca em toda a aplicação. */
-export const repositorios = {
+/* ------------------------------------------------------------------ */
+/* Fonte de dados: aparelho ou nuvem                                   */
+/* ------------------------------------------------------------------ */
+
+const locais = {
   situacoes: new MockSituationRepository() as SituationRepository,
   jornadas: new MockJourneyRepository() as JourneyRepository,
   perfil: new MockProfileRepository() as ProfileRepository,
@@ -301,6 +304,51 @@ export const repositorios = {
   localizacao: new MockLocationRepository() as LocationRepository,
   compartilhamento: new MockSharingRepository() as SharingRepository,
 };
+
+let atuais = { ...locais };
+
+/** Quem está identificado passa a guardar o percurso na nuvem da própria conta. */
+export function usarNuvem(fontes: {
+  situacoes: SituationRepository;
+  jornadas: JourneyRepository;
+  perfil: ProfileRepository;
+  compartilhamento: SharingRepository;
+}) {
+  atuais = { ...locais, ...fontes };
+}
+
+/** Volta para o aparelho: modo demonstrativo, sem conta e sem servidor. */
+export function usarAparelho() {
+  atuais = { ...locais };
+}
+
+export const repositoriosLocais = locais;
+
+/**
+ * Ponto único de acesso. Nenhuma tela sabe se o dado vem do aparelho ou da
+ * nuvem — a troca acontece aqui, em silêncio.
+ */
+export const repositorios = {
+  get situacoes() {
+    return atuais.situacoes;
+  },
+  get jornadas() {
+    return atuais.jornadas;
+  },
+  get perfil() {
+    return atuais.perfil;
+  },
+  get midia() {
+    return atuais.midia;
+  },
+  get localizacao() {
+    return atuais.localizacao;
+  },
+  get compartilhamento() {
+    return atuais.compartilhamento;
+  },
+};
+
 
 /** Aplica uma escolha aceita na jornada, criando a etapa correspondente. */
 export function aplicarEscolha(jornada: Journey, item: ItemDeMatch, aceito: boolean): Journey {

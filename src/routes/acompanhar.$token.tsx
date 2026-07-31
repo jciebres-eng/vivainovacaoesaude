@@ -1,21 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HandHeart } from "lucide-react";
+import { useEffect, useState } from "react";
 
-import { Botao, Card, Nota } from "@/components/ds";
-import { MapaSimulado } from "@/components/viva/trajeto";
+import { Card, Nota } from "@/components/ds";
+import { MapaDoPercurso } from "@/components/viva/localizacao/mapa-do-percurso";
 import {
-  contatosDemonstrativos,
-  minutosRestantes,
-  niveis,
-  trajeto as acoes,
-  useTrajetoPorToken,
-} from "@/lib/viva-trajeto";
+  lerAcompanhamento,
+  precisoes,
+  type LeituraDeAcompanhamento,
+} from "@/lib/compartilhamento/sessoes";
 
 /**
- * TrustedJourneyViewer — tela de quem acompanha.
- *
- * Mostra apenas o que a pessoa autorizou, nada além. Sem histórico, sem
- * registros pessoais, sem contato de terceiros (documentos 03, 15 e 16).
+ * Tela de quem acompanha: mostra apenas o que a pessoa autorizou, por tempo
+ * limitado, sem histórico e sem dados de terceiros (documentos 03, 15 e 16).
  */
 export const Route = createFileRoute("/acompanhar/$token")({
   head: () => ({
@@ -39,11 +35,41 @@ export const Route = createFileRoute("/acompanhar/$token")({
   component: Acompanhar,
 });
 
+const situacoes: Record<string, string> = {
+  executing: "Em percurso",
+  paused: "Em pausa",
+  completed: "Concluiu o percurso",
+  ready: "Prestes a começar",
+  draft: "Preparando o percurso",
+};
+
 function Acompanhar() {
   const { token } = Route.useParams();
-  const { trajeto: t, valido } = useTrajetoPorToken(token);
+  const [leitura, setLeitura] = useState<LeituraDeAcompanhamento | null>(null);
 
-  if (!valido) {
+  useEffect(() => {
+    let vivo = true;
+    const buscar = () =>
+      void lerAcompanhamento(token).then((resposta) => {
+        if (vivo) setLeitura(resposta);
+      });
+    buscar();
+    const intervalo = window.setInterval(buscar, 45_000);
+    return () => {
+      vivo = false;
+      window.clearInterval(intervalo);
+    };
+  }, [token]);
+
+  if (!leitura) {
+    return (
+      <main className="mx-auto min-h-dvh w-full max-w-xl bg-background px-5 py-12">
+        <p className="viva-legenda text-text-secondary">Abrindo o acompanhamento…</p>
+      </main>
+    );
+  }
+
+  if (leitura.status !== "active") {
     return (
       <main className="mx-auto min-h-dvh w-full max-w-xl bg-background px-5 py-12">
         <h1 className="viva-titulo text-text-primary">Este acompanhamento terminou</h1>
@@ -56,34 +82,33 @@ function Acompanhar() {
     );
   }
 
-  const contato = contatosDemonstrativos.find((c) => c.id === t.compartilhamento.contatoId);
-  const nivel = t.compartilhamento.nivel;
-  const mostraReferencia = nivel === "referencias" || nivel === "localizacao";
-  const mostraLocal = nivel === "localizacao" && !t.compartilhamento.localizacaoPausada;
-  const situacao = t.concluido ? "Concluiu o percurso" : t.emPausa ? "Em pausa" : "Em percurso";
+  const nivel = precisoes.find((p) => p.id === leitura.precision);
 
   return (
     <main className="mx-auto min-h-dvh w-full max-w-xl bg-background px-5 py-10">
       <header>
-        <p className="viva-legenda text-text-secondary">
-          Acompanhamento temporário · {contato?.nome ?? "convidado"}
-        </p>
-        <h1 className="mt-1 viva-titulo text-text-primary">{situacao}</h1>
+        <p className="viva-legenda text-text-secondary">Acompanhamento temporário</p>
+        <h1 className="mt-1 viva-titulo text-text-primary">
+          {situacoes[leitura.journey.status] ?? "Em percurso"}
+        </h1>
         <p className="mt-2 viva-apoio text-text-secondary">
-          Este acesso termina em {minutosRestantes(t.compartilhamento)} minutos.
+          Este acesso termina às{" "}
+          {new Date(leitura.expires_at).toLocaleTimeString("pt-BR", {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+          .
         </p>
       </header>
 
       <div className="mt-6 space-y-5">
         <Card variante="informativo" titulo="O que você pode ver">
           <ul className="space-y-1">
-            {niveis
-              .find((n) => n.id === nivel)
-              ?.mostra.map((item) => (
-                <li key={item} className="viva-apoio text-text-secondary">
-                  • {item}
-                </li>
-              ))}
+            {nivel?.mostra.map((item) => (
+              <li key={item} className="viva-apoio text-text-secondary">
+                • {item}
+              </li>
+            ))}
           </ul>
           <Nota>
             Você não tem acesso a registros pessoais, histórico ou conteúdos da pessoa. O
@@ -91,49 +116,34 @@ function Acompanhar() {
           </Nota>
         </Card>
 
-        {mostraReferencia && t.etapas[t.etapaAtual] ? (
+        {leitura.journey.step_label ? (
           <Card variante="proximo-passo" titulo="Onde a pessoa está no percurso">
-            <p className="viva-texto text-text-primary">{t.etapas[t.etapaAtual].referencia}</p>
+            <p className="viva-texto text-text-primary">{leitura.journey.step_label}</p>
           </Card>
         ) : null}
 
-        {mostraLocal ? (
-          <MapaSimulado etapas={t.etapas} etapaAtual={t.etapaAtual} pausado={t.emPausa} />
-        ) : null}
-
-        {nivel === "localizacao" && t.compartilhamento.localizacaoPausada ? (
-          <Card variante="aviso" titulo="Localização pausada">
+        {leitura.location ? (
+          <MapaDoPercurso
+            pontos={[
+              {
+                latitude: leitura.location.latitude,
+                longitude: leitura.location.longitude,
+                titulo:
+                  leitura.precision === "approximate"
+                    ? "Região aproximada da pessoa"
+                    : "Onde a pessoa está agora",
+              },
+            ]}
+            descricao="Mapa com a localização compartilhada"
+          />
+        ) : (
+          <Card variante="informativo" titulo="Sem localização agora">
             <p className="viva-apoio text-text-secondary">
-              A pessoa pausou a localização. Isso é uma escolha legítima e não indica problema.
+              A pessoa escolheu não compartilhar localização, ou pausou o envio. Isso é uma escolha
+              legítima e não indica problema.
             </p>
           </Card>
-        ) : null}
-
-        {t.pedidos.length > 0 ? (
-          <Card variante="informativo" titulo="Mensagens da pessoa">
-            <ul className="space-y-3">
-              {t.pedidos.map((p) => (
-                <li key={p.id} className="rounded-2xl bg-surface-muted p-4">
-                  <p className="viva-apoio text-text-primary">{p.texto}</p>
-                  <div className="mt-3">
-                    {p.respondido ? (
-                      <p className="viva-legenda text-text-secondary">Você já respondeu.</p>
-                    ) : (
-                      <Botao
-                        variante="secundario"
-                        tamanho="compacto"
-                        icone={HandHeart}
-                        onClick={() => acoes.responderPedido(p.id)}
-                      >
-                        Avisar que estou a caminho
-                      </Botao>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        ) : null}
+        )}
       </div>
     </main>
   );

@@ -16,6 +16,7 @@ import { ExperienciaProvider } from "../lib/viva-experiencia";
 import { PerfilProvider } from "@/lib/viva-perfis";
 import { AgenteProvider } from "@/lib/viva-agente";
 import { ModoProvider } from "@/lib/viva-modos";
+import { SessaoProvider } from "@/lib/viva-sessao";
 import { ProfileMorphTransition } from "@/components/viva/visual/abertura-imersiva";
 
 function NotFoundComponent() {
@@ -153,6 +154,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SessaoProvider>
       <VivaProvider>
         <ExperienciaProvider>
           <ModoProvider>
@@ -166,6 +168,7 @@ function RootComponent() {
           </ModoProvider>
         </ExperienciaProvider>
       </VivaProvider>
+      </SessaoProvider>
     </QueryClientProvider>
   );
 }
