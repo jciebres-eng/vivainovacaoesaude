@@ -1,30 +1,27 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, Mic, Play, RotateCcw } from "lucide-react";
+import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
+import { BookOpen, History, Play, Star } from "lucide-react";
 
-import {
-  BibliotecaRelacionada,
-  ResumoDoPercurso,
-  SeletorDePerfil,
-  SuperficieDeCartao,
-} from "@/components/viva/mobile";
-import { useMontagem } from "@/lib/viva-montagem";
+import { Botao, Card } from "@/components/ds";
+import { CampoDoAgente, LeituraDoAgente } from "@/components/viva/agente";
+import { SeletorDePerfil } from "@/components/viva/mobile";
 import { usePerfil } from "@/lib/viva-perfis";
-import { catalogoDoPerfil } from "@/lib/viva-catalogo";
-import { useTrajeto } from "@/lib/viva-trajeto";
+import { memoriaDoCopiloto, percursos, rotulosDeEstado, usePercursos } from "@/lib/viva-percursos";
+import { situacoesSugeridas, sugerirSituacoes, type Situacao } from "@/lib/viva-situacoes";
+import { useState } from "react";
 
 export const Route = createFileRoute("/_movel/")({
   head: () => ({
     meta: [
-      { title: "VIVA — Como posso ajudar você agora?" },
+      { title: "VIVA — Copiloto neuroinclusivo de percursos" },
       {
         name: "description",
         content:
-          "Um apoio calmo para organizar o dia: escolha o que faz sentido agora e monte seu percurso em passos curtos, no seu ritmo.",
+          "Diga o que precisa: o VIVA organiza um percurso funcional em passos curtos, com estratégias, leituras e planos alternativos. Tudo fica neste aparelho.",
       },
-      { property: "og:title", content: "VIVA — Como posso ajudar você agora?" },
+      { property: "og:title", content: "VIVA — Copiloto neuroinclusivo de percursos" },
       {
         property: "og:description",
-        content: "Escolha o que faz sentido agora e monte seu percurso em passos curtos.",
+        content: "Fale, escreva ou toque: um percurso possível, no seu ritmo, sem cobrança.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,101 +32,15 @@ export const Route = createFileRoute("/_movel/")({
 
 function Inicio() {
   const { perfil } = usePerfil();
-  const { estado, iniciado, carregado } = useMontagem(perfil.id);
-  const catalogo = catalogoDoPerfil(perfil);
-  const trajetoAtivo = useTrajeto();
+  const navigate = useNavigate();
+  const { emAndamento, lista, favoritos } = usePercursos();
+  const [intencao, setIntencao] = useState<string | null>(null);
+  const memoria = memoriaDoCopiloto();
 
-  const blocos = {
-    continuar:
-      carregado && iniciado ? (
-        <SuperficieDeCartao key="continuar" destacado>
-          <h2 className="viva-titulo-secao text-text-primary">Continuar de onde parou</h2>
-          <div className="mt-3">
-            <ResumoDoPercurso estado={estado} catalogo={catalogo} />
-          </div>
-          <Link
-            to="/montar"
-            className="viva-tap mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-destaque px-6 viva-texto-botao font-semibold text-action-primary-foreground"
-          >
-            <Play className="h-5 w-5" aria-hidden />
-            Continuar
-          </Link>
-          <Link
-            to="/meu-percurso"
-            className="viva-tap mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full viva-legenda font-medium text-text-secondary underline underline-offset-4"
-          >
-            Ver meu percurso
-          </Link>
-        </SuperficieDeCartao>
-      ) : null,
-
-    novo: (
-      <SuperficieDeCartao key="novo" destacado={!iniciado}>
-        <h2 className="viva-titulo-secao text-text-primary">Montar um percurso</h2>
-        <p className="mt-2 viva-apoio text-text-secondary">
-          Um cartão de cada vez. Você escolhe o que entra, o que fica para depois e o que não faz
-          sentido agora.
-        </p>
-        <Link
-          to="/montar"
-          className="viva-tap mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-destaque px-6 viva-texto-botao font-semibold text-action-primary-foreground"
-        >
-          {iniciado ? (
-            <>
-              <RotateCcw className="h-5 w-5" aria-hidden />
-              Rever as escolhas
-            </>
-          ) : (
-            <>
-              Começar
-              <ArrowRight className="h-5 w-5" aria-hidden />
-            </>
-          )}
-        </Link>
-      </SuperficieDeCartao>
-    ),
-
-    estrategias: (
-      <section key="estrategias" aria-labelledby="estrategias-titulo">
-        <h2 id="estrategias-titulo" className="viva-titulo-secao text-text-primary">
-          Estratégias que podem ajudar hoje
-        </h2>
-        <ul className="mt-3 space-y-2">
-          {perfil.estrategias.slice(0, 3).map((e) => (
-            <li key={e.id}>
-              <SuperficieDeCartao className="flex items-start gap-3 p-4">
-                <span
-                  aria-hidden
-                  className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-destaque-suave text-destaque-texto"
-                >
-                  <e.icone className="h-4 w-4" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block viva-apoio font-semibold text-text-primary">
-                    {e.titulo}
-                  </span>
-                  <span className="block viva-legenda text-text-secondary">{e.frase}</span>
-                </span>
-              </SuperficieDeCartao>
-            </li>
-          ))}
-        </ul>
-      </section>
-    ),
-
-    biblioteca: (
-      <div key="biblioteca">
-        <BibliotecaRelacionada ids={perfil.conteudos} titulo="Para ler com calma" />
-        <Link
-          to="/biblioteca"
-          className="viva-tap mt-3 inline-flex min-h-11 items-center gap-2 rounded-full viva-legenda font-medium text-text-secondary underline underline-offset-4"
-        >
-          <BookOpen className="h-4 w-4" aria-hidden />
-          Ver toda a biblioteca
-        </Link>
-      </div>
-    ),
-  };
+  function abrir(situacao: Situacao) {
+    const novo = percursos.criar(situacao, intencao ?? "");
+    navigate({ to: "/percurso/$id", params: { id: novo.id }, search: { fase: "preparar" } });
+  }
 
   return (
     <div className="space-y-8">
@@ -139,39 +50,91 @@ function Inicio() {
         <p className="mt-3 viva-texto text-text-secondary">{perfil.perguntaDeAbertura}</p>
       </header>
 
-      {trajetoAtivo.contexto && !trajetoAtivo.concluido ? (
-        <SuperficieDeCartao destacado>
-          <h2 className="viva-titulo-secao text-text-primary">Percurso em andamento</h2>
-          <p className="mt-2 viva-apoio text-text-secondary">
-            {trajetoAtivo.titulo}
-            {trajetoAtivo.emPausa ? " · em pausa" : ""}
-          </p>
-          <Link
-            to="/realizar"
-            className="viva-tap mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-destaque px-6 viva-texto-botao font-semibold text-action-primary-foreground"
-          >
-            <Play className="h-5 w-5" aria-hidden />
-            Voltar ao percurso
-          </Link>
-        </SuperficieDeCartao>
+      {emAndamento.length > 0 ? (
+        <Card variante="proximo-passo" titulo="Percurso em andamento">
+          {emAndamento.map((p) => (
+            <div key={p.id} className="mt-2">
+              <p className="viva-apoio text-text-primary">
+                {p.titulo} · {rotulosDeEstado[p.estado]}
+              </p>
+              <Link
+                to="/percurso/$id"
+                params={{ id: p.id }}
+                search={{ fase: "realizar" }}
+                className="viva-tap mt-3 inline-flex min-h-12 items-center gap-2 rounded-full bg-destaque px-6 viva-texto-botao font-semibold text-action-primary-foreground"
+              >
+                <Play className="h-5 w-5" aria-hidden />
+                Voltar ao percurso
+              </Link>
+            </div>
+          ))}
+        </Card>
       ) : null}
 
-      <SuperficieDeCartao>
-        <h2 className="viva-titulo-secao text-text-primary">Dizer o que preciso</h2>
-        <p className="mt-2 viva-apoio text-text-secondary">
-          Fale, escreva ou escolha com toques. Nada é gravado e tudo fica neste aparelho.
-        </p>
-        <Link
-          to="/falar"
-          className="viva-tap mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-border-default px-6 viva-texto-botao font-semibold text-text-primary"
-        >
-          <Mic className="h-5 w-5" aria-hidden />
-          Falar o que preciso
-        </Link>
-      </SuperficieDeCartao>
+      {intencao ? (
+        <LeituraDoAgente
+          intencao={intencao}
+          sugestoes={sugerirSituacoes(intencao)}
+          onEscolher={abrir}
+          onCorrigir={() => setIntencao(null)}
+        />
+      ) : (
+        <>
+          <CampoDoAgente onEnviar={setIntencao} />
 
-      {perfil.ordemDaHome.map((bloco) => blocos[bloco])}
+          <section aria-labelledby="situacoes-titulo">
+            <h2 id="situacoes-titulo" className="viva-titulo-secao text-text-primary">
+              Situações comuns
+            </h2>
+            <p className="mt-1 viva-legenda text-text-secondary">
+              Tocar em uma delas leva ao mesmo lugar que falar ou escrever.
+            </p>
+            <ul className="mt-3 space-y-2">
+              {situacoesSugeridas(5).map((s) => (
+                <li key={s.id}>
+                  <button
+                    type="button"
+                    onClick={() => abrir(s)}
+                    className="viva-tap w-full rounded-2xl border border-border-default bg-surface-default p-4 text-left"
+                  >
+                    <span className="block viva-apoio font-semibold text-text-primary">
+                      {s.titulo}
+                    </span>
+                    <span className="block viva-legenda text-text-secondary">{s.resumo}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      )}
 
+      {memoria.estrategiasFrequentes.length > 0 ? (
+        <Card variante="informativo" titulo="O que você costuma escolher">
+          <p className="viva-apoio text-text-secondary">
+            Isto vem só dos seus próprios percursos neste aparelho. Nada é deduzido sobre você.
+          </p>
+          <ul className="mt-3 space-y-1 viva-legenda text-text-secondary">
+            {memoria.estrategiasFrequentes.slice(0, 3).map((e) => (
+              <li key={e.titulo} className="text-text-primary">
+                {e.titulo}
+              </li>
+            ))}
+          </ul>
+        </Card>
+      ) : null}
+
+      <div className="flex flex-wrap gap-3">
+        <Botao variante="secundario" tamanho="compacto" icone={History} onClick={() => navigate({ to: "/meu-percurso" })}>
+          Meus percursos ({lista.length})
+        </Botao>
+        <Botao variante="secundario" tamanho="compacto" icone={Star} onClick={() => navigate({ to: "/favoritos" })}>
+          Favoritos ({favoritos.length})
+        </Botao>
+        <Botao variante="secundario" tamanho="compacto" icone={BookOpen} onClick={() => navigate({ to: "/biblioteca" })}>
+          Biblioteca
+        </Botao>
+      </div>
 
       <SeletorDePerfil />
 
