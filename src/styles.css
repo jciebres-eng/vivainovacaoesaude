@@ -374,6 +374,88 @@
   }
 }
 
+/* ------------------------------------------ assistente digital (documento 19)
+ * Movimentos discretos: respiração, flutuação e brilho suave. Cada animação
+ * comunica um estado; nenhuma é decorativa. Em modo de baixa estimulação ou
+ * com movimento reduzido, tudo abaixo é neutralizado pelas regras seguintes.
+ */
+.viva-agente-respira {
+  animation: viva-respirar 5.5s ease-in-out infinite;
+}
+.viva-agente-ondula {
+  animation: viva-ondular 2.4s ease-in-out infinite;
+}
+.viva-agente-pulsa {
+  animation: viva-pulsar 1.8s ease-in-out infinite;
+}
+.viva-agente-gira {
+  animation: viva-girar 9s linear infinite;
+}
+.viva-agente-assenta {
+  animation: viva-entrada 320ms ease-out both;
+}
+.viva-agente-brilho {
+  animation: viva-brilhar 6s ease-in-out infinite;
+}
+
+@keyframes viva-respirar {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.035) translateY(-2px);
+  }
+}
+
+@keyframes viva-ondular {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.06) rotate(3deg);
+  }
+}
+
+@keyframes viva-pulsar {
+  0%,
+  100% {
+    opacity: 0.82;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes viva-girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes viva-brilhar {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Baixa estimulação: o agente permanece visível, apenas parado. */
+.viva-calmo .viva-agente-respira,
+.viva-calmo .viva-agente-ondula,
+.viva-calmo .viva-agente-pulsa,
+.viva-calmo .viva-agente-gira,
+.viva-calmo .viva-agente-brilho,
+.viva-sem-decoracao .viva-agente-brilho {
+  animation: none;
+}
+
+
+
 /* Redução de animação: por preferência da pessoa ou do sistema */
 .viva-sem-animacao *,
 .viva-sem-animacao *::before,
