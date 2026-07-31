@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { BookOpen, FileText, Shield, SlidersHorizontal } from "lucide-react";
 
-import { SeletorDePerfil, SuperficieDeCartao } from "@/components/viva/mobile";
+import { CartaoDoPerfil, PreferenciasDoPerfil, SuperficieDeCartao } from "@/components/viva/mobile";
 import { SeletorDeModo } from "@/components/viva/visual";
 import { usePerfil } from "@/lib/viva-perfis";
 
