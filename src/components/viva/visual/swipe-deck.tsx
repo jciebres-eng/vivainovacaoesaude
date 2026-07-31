@@ -149,28 +149,48 @@ export function JourneySwipeDeck({
               e.preventDefault();
               decidir("descartado");
             }
+            if (e.key === "ArrowUp" && atual.detalhes) {
+              e.preventDefault();
+              setDetalhesAbertos((a) => !a);
+            }
           }}
           onPointerDown={(e) => {
             if (intensidade === 0) return;
             inicio.current = e.clientX;
+            inicioY.current = e.clientY;
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
           }}
           onPointerMove={(e) => {
             if (inicio.current == null) return;
             setArrasto(e.clientX - inicio.current);
+            if (inicioY.current != null) setArrastoVertical(e.clientY - inicioY.current);
           }}
           onPointerUp={() => {
             if (inicio.current == null) return;
             const d = arrasto;
+            const dy = arrastoVertical;
             inicio.current = null;
+            inicioY.current = null;
+            setArrastoVertical(0);
+            if (dy < -LIMITE && Math.abs(dy) > Math.abs(d)) {
+              setArrasto(0);
+              if (atual.detalhes) {
+                setDetalhesAbertos(true);
+                setAviso(`Detalhes de ${atual.rotulo} abertos.`);
+              }
+              return;
+            }
             if (d > LIMITE) decidir("aceito");
             else if (d < -LIMITE) decidir("descartado");
             else setArrasto(0);
           }}
           onPointerCancel={() => {
             inicio.current = null;
+            inicioY.current = null;
             setArrasto(0);
+            setArrastoVertical(0);
           }}
+
           className={cn(
             "relative z-10 touch-pan-y outline-none",
             "focus-visible:ring-2 focus-visible:ring-[var(--profile-primary)] focus-visible:ring-offset-2",
