@@ -119,7 +119,7 @@ export function AcoesDoCartao({
         type="button"
         onClick={onIncluir}
         aria-label={`${rotuloIncluir}: ${nomeDoCartao}`}
-        className="viva-tap col-span-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-destaque px-6 py-3 viva-texto-botao font-semibold text-white"
+        className="viva-tap col-span-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-destaque px-6 py-3 viva-texto-botao font-semibold text-action-primary-foreground"
       >
         <Check className="h-5 w-5" aria-hidden />
         {rotuloIncluir}
