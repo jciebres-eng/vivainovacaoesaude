@@ -17,11 +17,9 @@ import {
  */
 
 export function CartaoDoPerfil() {
-  const { perfil, preferencias } = usePerfil();
-  const ativos = gruposDePreferencia.filter((g) => {
-    const valor = preferencias[g.chave];
-    return Array.isArray(valor) ? valor.length > 0 : true;
-  }).length;
+  const { perfil } = usePerfil();
+  const ativos = gruposDePreferencia.length;
+
 
   return (
     <section
