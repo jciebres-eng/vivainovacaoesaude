@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MovelRouteImport } from './routes/_movel'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as JornadaRouteImport } from './routes/jornada'
 import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
@@ -32,6 +33,10 @@ import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_perc
 import { Route as PercursoBibliotecaMinhaRouteImport } from './routes/_percurso.biblioteca.minha'
 import { Route as PercursoBibliotecaReflexoesRouteImport } from './routes/_percurso.biblioteca.reflexoes'
 
+const MovelRoute = MovelRouteImport.update({
+  id: '/_movel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PercursoRoute = PercursoRouteImport.update({
   id: '/_percurso',
   getParentRoute: () => rootRouteImport,
@@ -194,6 +199,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_movel': typeof MovelRoute
   '/_percurso': typeof PercursoRouteWithChildren
   '/jornada': typeof JornadaRouteWithChildren
   '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
@@ -267,6 +273,7 @@ export interface FileRouteTypes {
     | '/biblioteca'
   id:
     | '__root__'
+    | '/_movel'
     | '/_percurso'
     | '/jornada'
     | '/_percurso/documentacao'
@@ -292,6 +299,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  MovelRoute: typeof MovelRoute
   PercursoRoute: typeof PercursoRouteWithChildren
   JornadaRoute: typeof JornadaRouteWithChildren
   DocumentosSlugRoute: typeof DocumentosSlugRoute
@@ -299,6 +307,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_movel': {
+      id: '/_movel'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof MovelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_percurso': {
       id: '/_percurso'
       path: ''
@@ -514,6 +529,7 @@ const JornadaRouteWithChildren =
   JornadaRoute._addFileChildren(JornadaRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  MovelRoute: MovelRoute,
   PercursoRoute: PercursoRouteWithChildren,
   JornadaRoute: JornadaRouteWithChildren,
   DocumentosSlugRoute: DocumentosSlugRoute,
