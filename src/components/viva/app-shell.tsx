@@ -11,6 +11,7 @@ import {
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
+import { BarraMobile } from "@/components/viva/mobile/barra-mobile";
 import { useExperiencia } from "@/lib/viva-experiencia";
 
 type To = LinkProps["to"];
@@ -84,7 +85,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           </main>
         </div>
       </div>
-      <BottomNav pathname={pathname} itens={itens} />
+      {/* Barra inferior unificada com a experiência móvel. */}
+      <BarraMobile />
     </div>
   );
 }
