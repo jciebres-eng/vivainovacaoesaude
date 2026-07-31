@@ -200,6 +200,13 @@ const meta: Record<string, { title: string; subtitle?: string; group: string; su
     summary:
       "Princípios psicológicos que orientam a experiência, a arquitetura da informação e a interação do VIVA: a interface influencia comportamento e faz parte da responsabilidade ética do desenvolvimento.",
   },
+  "19_ARQUITETURA_DO_ASSISTENTE_DIGITAL": {
+    title: "Arquitetura do Assistente Digital",
+    subtitle: "DNA do copiloto de percursos funcionais",
+    group: "H",
+    summary:
+      "Define identidade, missão, limites de atuação, regras de interação, acessibilidade e governança do assistente digital: um copiloto que transforma intenções em percursos organizados, sem diagnosticar ou prescrever.",
+  },
 };
 
 function cleanMarkdown(raw: string): string {
