@@ -403,7 +403,9 @@ export class SupabaseProfileRepository implements ProfileRepository {
       registro.extras = { ...((data?.extras ?? {}) as Record<string, unknown>), [chave]: valor };
     }
 
-    await supabase.from("user_preferences").upsert(registro, { onConflict: "profile_id" });
+    await supabase
+      .from("user_preferences")
+      .upsert(registro as never, { onConflict: "profile_id" });
     return this.preferencias();
   }
 }
