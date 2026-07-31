@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Pause, Play, ShieldCheck, Star, StarOff } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { PainelDoAgente } from "@/components/viva/agente";
 import { useAgente, type EstadoDoAgente } from "@/lib/viva-agente";
 
 import { AreaDeTexto, Botao, Card, Nota } from "@/components/ds";
@@ -82,7 +81,6 @@ function PaginaDoPercurso() {
 
   return (
     <div className="space-y-6">
-      <PainelDoAgente frase={fasesDoPercurso.find((f) => f.id === fase)?.convite} />
       <header>
         <p className="viva-legenda text-text-secondary">Percurso</p>
         <h1 className="mt-1 viva-titulo-pagina text-text-primary">{percurso.titulo}</h1>
