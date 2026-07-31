@@ -44,7 +44,7 @@ const passos: { titulo: string; texto: string; nota?: string }[] = [
   {
     titulo: "A intenção",
     texto:
-      "Na tela inicial, Alex escreve: “preciso me preparar para minha primeira reunião presencial”. Ela poderia também escolher uma situação pronta ou usar a voz.",
+      "Na tela inicial, Alex escreve: “preciso me preparar para minha primeira reunião presencial”. Poderia também escolher uma situação pronta ou usar a voz.",
   },
   {
     titulo: "O contexto",
@@ -59,7 +59,7 @@ const passos: { titulo: string; texto: string; nota?: string }[] = [
   {
     titulo: "As estratégias",
     texto:
-      "Aparecem possibilidades curtas: chegar um pouco antes, levar frases prontas, combinar pausas. Alex aceita as que combinam com ela e descarta o resto.",
+      "Aparecem possibilidades curtas: chegar um pouco antes, levar frases prontas, combinar pausas. Alex aceita as que combinam e descarta o resto.",
     nota: "Não existe resposta certa ou errada: são possibilidades.",
   },
   {
@@ -75,7 +75,7 @@ const passos: { titulo: string; texto: string; nota?: string }[] = [
   {
     titulo: "A simulação",
     texto:
-      "Opcional: Alex passa mentalmente pelas etapas, escolhendo entre respostas possíveis. Nada é avaliado — ela pode adaptar qualquer resposta ou criar a própria.",
+      "Opcional: Alex passa mentalmente pelas etapas, escolhendo entre respostas possíveis. Nada é avaliado — é possível adaptar qualquer resposta ou criar a própria.",
   },
   {
     titulo: "A execução",
@@ -85,7 +85,7 @@ const passos: { titulo: string; texto: string; nota?: string }[] = [
   {
     titulo: "O registro",
     texto:
-      "Depois, Alex conta como foi com as próprias palavras: o que ajudou, o que poderia ser diferente. Sem notas, sem pontuação, e ela pode pular.",
+      "Depois, Alex conta como foi com as próprias palavras: o que ajudou, o que poderia ser diferente. Sem notas, sem pontuação, e pode pular.",
   },
   {
     titulo: "A evolução",
