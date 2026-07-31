@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as MovelRouteImport } from './routes/_movel'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as JornadaRouteImport } from './routes/jornada'
+import { Route as MovelIndexRouteImport } from './routes/_movel.index'
 import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
 import { Route as PercursoMeuMomentoRouteImport } from './routes/_percurso.meu-momento'
 import { Route as PercursoMinhaExperienciaRouteImport } from './routes/_percurso.minha-experiencia'
@@ -45,6 +46,11 @@ const JornadaRoute = JornadaRouteImport.update({
   id: '/jornada',
   path: '/jornada',
   getParentRoute: () => rootRouteImport,
+} as any)
+const MovelIndexRoute = MovelIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MovelRoute,
 } as any)
 const PercursoDocumentacaoRoute = PercursoDocumentacaoRouteImport.update({
   id: '/documentacao',
@@ -151,7 +157,7 @@ const PercursoBibliotecaReflexoesRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof PercursoRouteWithChildren
+  '/': typeof MovelIndexRoute
   '/jornada': typeof JornadaRouteWithChildren
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
@@ -175,7 +181,7 @@ export interface FileRoutesByFullPath {
   '/biblioteca/': typeof PercursoBibliotecaIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof PercursoRouteWithChildren
+  '/': typeof MovelIndexRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
@@ -199,7 +205,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_movel': typeof MovelRoute
+  '/_movel': typeof MovelRouteWithChildren
   '/_percurso': typeof PercursoRouteWithChildren
   '/jornada': typeof JornadaRouteWithChildren
   '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
@@ -217,6 +223,7 @@ export interface FileRoutesById {
   '/jornada/reflexao': typeof JornadaReflexaoRoute
   '/jornada/registro': typeof JornadaRegistroRoute
   '/jornada/resumo': typeof JornadaResumoRoute
+  '/_movel/': typeof MovelIndexRoute
   '/jornada/': typeof JornadaIndexRoute
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/_percurso/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
@@ -291,6 +298,7 @@ export interface FileRouteTypes {
     | '/jornada/reflexao'
     | '/jornada/registro'
     | '/jornada/resumo'
+    | '/_movel/'
     | '/jornada/'
     | '/_percurso/biblioteca/$conteudoId'
     | '/_percurso/biblioteca/minha'
@@ -299,7 +307,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  MovelRoute: typeof MovelRoute
+  MovelRoute: typeof MovelRouteWithChildren
   PercursoRoute: typeof PercursoRouteWithChildren
   JornadaRoute: typeof JornadaRouteWithChildren
   DocumentosSlugRoute: typeof DocumentosSlugRoute
@@ -327,6 +335,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/jornada'
       preLoaderRoute: typeof JornadaRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_movel/': {
+      id: '/_movel/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof MovelIndexRouteImport
+      parentRoute: typeof MovelRoute
     }
     '/_percurso/documentacao': {
       id: '/_percurso/documentacao'
@@ -471,6 +486,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface MovelRouteChildren {
+  MovelIndexRoute: typeof MovelIndexRoute
+}
+
+const MovelRouteChildren: MovelRouteChildren = {
+  MovelIndexRoute: MovelIndexRoute,
+}
+
+const MovelRouteWithChildren = MovelRoute._addFileChildren(MovelRouteChildren)
+
 interface PercursoRouteChildren {
   PercursoDocumentacaoRoute: typeof PercursoDocumentacaoRoute
   PercursoMeuMomentoRoute: typeof PercursoMeuMomentoRoute
@@ -529,7 +554,7 @@ const JornadaRouteWithChildren =
   JornadaRoute._addFileChildren(JornadaRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  MovelRoute: MovelRoute,
+  MovelRoute: MovelRouteWithChildren,
   PercursoRoute: PercursoRouteWithChildren,
   JornadaRoute: JornadaRouteWithChildren,
   DocumentosSlugRoute: DocumentosSlugRoute,
