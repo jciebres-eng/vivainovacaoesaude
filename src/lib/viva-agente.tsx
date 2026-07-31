@@ -257,6 +257,17 @@ export function AgenteProvider({ children }: { children: ReactNode }) {
 
   const irPara = useCallback((proximo: EstadoDoAgente) => setEstado(proximo), []);
 
+  // A máquina de estados evita piscadas: cada estado tem permanência mínima.
+  const maquina = useRef<ContextoDaMaquina>(estadoInicial(0));
+  const enviar = useCallback((evento: EventoDoAssistente) => {
+    const agora = typeof performance !== "undefined" ? performance.now() : Date.now();
+    const proximo = aplicarEvento(maquina.current, evento, agora);
+    if (proximo === maquina.current) return;
+    maquina.current = proximo;
+    const visivel = estadoPorEvento[evento];
+    if (visivel) setEstado(visivel);
+  }, []);
+
   const estadoEfetivo: EstadoDoAgente =
     presenca === "desativado"
       ? "desativado"
@@ -274,10 +285,21 @@ export function AgenteProvider({ children }: { children: ReactNode }) {
       memoriaAutorizada,
       online,
       irPara,
+      estadoTecnicoAtual: estadoTecnico[estadoEfetivo],
+      enviar,
       definirPresenca,
       autorizarMemoria,
     }),
-    [estadoEfetivo, presenca, memoriaAutorizada, online, irPara, definirPresenca, autorizarMemoria],
+    [
+      estadoEfetivo,
+      presenca,
+      memoriaAutorizada,
+      online,
+      irPara,
+      enviar,
+      definirPresenca,
+      autorizarMemoria,
+    ],
   );
 
   return <Contexto.Provider value={valor}>{children}</Contexto.Provider>;
