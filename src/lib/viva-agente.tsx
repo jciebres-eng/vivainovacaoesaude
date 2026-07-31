@@ -16,9 +16,18 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
+
+import {
+  aplicarEvento,
+  estadoInicial,
+  type ContextoDaMaquina,
+  type EstadoDoAssistente,
+  type EventoDoAssistente,
+} from "@/lib/assistant/estados";
 
 export type EstadoDoAgente =
   | "disponivel"
@@ -120,6 +129,47 @@ export const estadosDoAgente: Record<EstadoDoAgente, DescricaoDeEstado> = {
   },
 };
 
+/**
+ * Ponte entre os estados em português usados pela interface e os nomes
+ * técnicos da AssistantStateMachine, que nomeiam os ativos de animação.
+ */
+export const estadoTecnico: Record<EstadoDoAgente, EstadoDoAssistente> = {
+  disponivel: "idle",
+  ouvindo: "listening",
+  pensando: "transcribing",
+  interpretando: "processing",
+  organizando: "organizing",
+  "mostrando-percurso": "suggesting",
+  "mostrando-estrategia": "suggesting",
+  "aguardando-decisao": "waiting",
+  acompanhando: "guiding",
+  concluido: "completed",
+  erro: "error",
+  offline: "offline",
+  silencioso: "silent",
+  desativado: "disabled",
+};
+
+/** Eventos da máquina traduzidos para o estado visível da interface. */
+const estadoPorEvento: Partial<Record<EventoDoAssistente, EstadoDoAgente>> = {
+  APP_READY: "disponivel",
+  VOICE_STARTED: "ouvindo",
+  VOICE_STOPPED: "pensando",
+  TRANSCRIPTION_STARTED: "pensando",
+  TRANSCRIPTION_READY: "interpretando",
+  INTENT_PROCESSING: "interpretando",
+  INTENT_UNCLEAR: "aguardando-decisao",
+  JOURNEY_BUILDING: "organizando",
+  JOURNEY_READY: "mostrando-percurso",
+  USER_CONFIRMATION_REQUIRED: "aguardando-decisao",
+  USER_CONFIRMED: "organizando",
+  JOURNEY_STARTED: "acompanhando",
+  JOURNEY_PAUSED: "aguardando-decisao",
+  JOURNEY_COMPLETED: "concluido",
+  GENERIC_ERROR: "erro",
+  USER_DISMISSED_ERROR: "disponivel",
+};
+
 const CHAVE = "viva:agente:v1";
 
 type Guardado = { presenca: PresencaDoAgente; memoriaAutorizada: boolean };
@@ -147,6 +197,10 @@ type ValorDoAgente = {
   online: boolean;
   /** Muda o estado do agente. Ignorado quando o agente está desativado. */
   irPara: (estado: EstadoDoAgente) => void;
+  /** Estado técnico correspondente, usado pelas animações do assistente. */
+  estadoTecnicoAtual: EstadoDoAssistente;
+  /** Envia um evento à máquina de estados do assistente. */
+  enviar: (evento: EventoDoAssistente) => void;
   definirPresenca: (presenca: PresencaDoAgente) => void;
   autorizarMemoria: (autorizada: boolean) => void;
 };
@@ -204,6 +258,17 @@ export function AgenteProvider({ children }: { children: ReactNode }) {
 
   const irPara = useCallback((proximo: EstadoDoAgente) => setEstado(proximo), []);
 
+  // A máquina de estados evita piscadas: cada estado tem permanência mínima.
+  const maquina = useRef<ContextoDaMaquina>(estadoInicial(0));
+  const enviar = useCallback((evento: EventoDoAssistente) => {
+    const agora = typeof performance !== "undefined" ? performance.now() : Date.now();
+    const proximo = aplicarEvento(maquina.current, evento, agora);
+    if (proximo === maquina.current) return;
+    maquina.current = proximo;
+    const visivel = estadoPorEvento[evento];
+    if (visivel) setEstado(visivel);
+  }, []);
+
   const estadoEfetivo: EstadoDoAgente =
     presenca === "desativado"
       ? "desativado"
@@ -221,10 +286,21 @@ export function AgenteProvider({ children }: { children: ReactNode }) {
       memoriaAutorizada,
       online,
       irPara,
+      estadoTecnicoAtual: estadoTecnico[estadoEfetivo],
+      enviar,
       definirPresenca,
       autorizarMemoria,
     }),
-    [estadoEfetivo, presenca, memoriaAutorizada, online, irPara, definirPresenca, autorizarMemoria],
+    [
+      estadoEfetivo,
+      presenca,
+      memoriaAutorizada,
+      online,
+      irPara,
+      enviar,
+      definirPresenca,
+      autorizarMemoria,
+    ],
   );
 
   return <Contexto.Provider value={valor}>{children}</Contexto.Provider>;

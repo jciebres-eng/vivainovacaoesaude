@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Botao, Card } from "@/components/ds";
 import { CampoDoAgente, LeituraDoAgente, PainelDoAgente } from "@/components/viva/agente";
+import { SeloDemonstrativo } from "@/components/viva/selo-demonstrativo";
 import { usePerfil } from "@/lib/viva-perfis";
 import { useAgente } from "@/lib/viva-agente";
 import {
@@ -189,10 +190,10 @@ function Inicio() {
         </Botao>
       </div>
 
-      <p className="viva-legenda text-text-secondary">
-        Demonstração com dados fictícios. Tudo fica apenas neste dispositivo e o VIVA não substitui
-        acompanhamento profissional.
-      </p>
+      <SeloDemonstrativo
+        sempreVisivel
+        texto="Demonstração com dados fictícios. Tudo fica apenas neste dispositivo e o VIVA não substitui acompanhamento profissional."
+      />
     </div>
   );
 }

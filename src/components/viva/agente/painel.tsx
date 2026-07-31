@@ -44,7 +44,7 @@ export function PainelDoAgente({ frase }: { frase?: string }) {
   if (presenca === "minimizado") {
     return (
       <section aria-label="Assistente" className="flex items-center gap-3">
-        <FormaViva tamanho={40} />
+        <FormaViva tamanho="minimized" />
         <p className="viva-legenda text-text-secondary">{descricao.rotulo}</p>
         <button
           type="button"
@@ -63,7 +63,7 @@ export function PainelDoAgente({ frase }: { frase?: string }) {
       className="rounded-3xl border border-border-default bg-surface-default p-5 shadow-suave"
     >
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4">
-        <FormaViva tamanho={72} className="shrink-0" />
+        <FormaViva tamanho="medium" className="shrink-0" />
         <div className="min-w-0">
           <p className="viva-legenda text-text-secondary" aria-live="polite">
             {descricao.rotulo}
