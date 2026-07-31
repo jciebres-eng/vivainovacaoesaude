@@ -56,6 +56,12 @@ export const groups: DocGroup[] = [
     description:
       "Manifesto de inteligência artificial responsável e governança ética, científica e regulatória.",
   },
+  {
+    id: "H",
+    label: "Grupo H — Arquitetura do assistente",
+    description:
+      "Arquitetura conceitual, funcional, ética e comportamental do copiloto de percursos funcionais.",
+  },
 ];
 
 export type VivaDoc = {
@@ -193,6 +199,13 @@ const meta: Record<string, { title: string; subtitle?: string; group: string; su
     group: "F",
     summary:
       "Princípios psicológicos que orientam a experiência, a arquitetura da informação e a interação do VIVA: a interface influencia comportamento e faz parte da responsabilidade ética do desenvolvimento.",
+  },
+  "19_ARQUITETURA_DO_ASSISTENTE_DIGITAL": {
+    title: "Arquitetura do Assistente Digital",
+    subtitle: "DNA do copiloto de percursos funcionais",
+    group: "H",
+    summary:
+      "Define identidade, missão, limites de atuação, regras de interação, acessibilidade e governança do assistente digital: um copiloto que transforma intenções em percursos organizados, sem diagnosticar ou prescrever.",
   },
 };
 
