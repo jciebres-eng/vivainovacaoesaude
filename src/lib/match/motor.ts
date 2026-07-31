@@ -53,7 +53,9 @@ export function useJourneyMatchEngine(opcoes: {
             const existentes = await repositorios.jornadas.listar();
             atual =
               existentes.find(
-                (j) => j.situacaoId === situacao.id && j.estado === "rascunho",
+                (j) =>
+                  j.estado === "rascunho" &&
+                  (j.situacaoId === situacao.id || j.situacaoId === situacao.situacaoId),
               ) ?? (await repositorios.jornadas.criar(situacao));
           }
         }
