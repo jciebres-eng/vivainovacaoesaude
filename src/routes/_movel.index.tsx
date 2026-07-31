@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, Play, RotateCcw } from "lucide-react";
+import { ArrowRight, BookOpen, Mic, Play, RotateCcw } from "lucide-react";
 
 import {
   BibliotecaRelacionada,
@@ -10,6 +10,7 @@ import {
 import { useMontagem } from "@/lib/viva-montagem";
 import { usePerfil } from "@/lib/viva-perfis";
 import { catalogoDoPerfil } from "@/lib/viva-catalogo";
+import { useTrajeto } from "@/lib/viva-trajeto";
 
 export const Route = createFileRoute("/_movel/")({
   head: () => ({
@@ -36,6 +37,7 @@ function Inicio() {
   const { perfil } = usePerfil();
   const { estado, iniciado, carregado } = useMontagem(perfil.id);
   const catalogo = catalogoDoPerfil(perfil);
+  const trajetoAtivo = useTrajeto();
 
   const blocos = {
     continuar:

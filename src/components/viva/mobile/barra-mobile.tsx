@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { usePerfil } from "@/lib/viva-perfis";
 import { PersonalizandoExperiencia } from "./perfis";
+import { AberturaDinamica } from "./abertura";
 
 /**
  * BarraMobile — quatro áreas, nada escondido, nada profundo
@@ -21,7 +22,11 @@ const areas: {
     to: "/meu-percurso",
     label: "Meu percurso",
     icone: RouteIcon,
-    combina: (p) => p.startsWith("/meu-percurso") || p.startsWith("/montar"),
+    combina: (p) => p.startsWith("/meu-percurso") ||
+      p.startsWith("/montar") ||
+      p.startsWith("/falar") ||
+      p.startsWith("/realizar") ||
+      p.startsWith("/compartilhar"),
   },
   {
     to: "/biblioteca",
@@ -91,6 +96,7 @@ export function CascaMobile({ children }: { children: ReactNode }) {
       >
         Ir para o conteúdo
       </a>
+      <AberturaDinamica />
       {trocando ? <PersonalizandoExperiencia /> : null}
       <main id="conteudo" className="mx-auto w-full max-w-xl px-5 pb-32 pt-8 md:max-w-2xl md:pt-12">
         {children}
