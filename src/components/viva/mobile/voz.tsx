@@ -1,5 +1,5 @@
 import { Keyboard, Mic, MicOff, Square } from "lucide-react";
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 
 import { Botao, Card, AreaDeTexto, Nota } from "@/components/ds";
 import { exemplosDeFala, interpretarIntencao, type Interpretacao } from "@/lib/viva-intencao";
@@ -72,7 +72,7 @@ export function EntradaPorVoz({
             rotulo="O que você precisa agora"
             apoio="Uma frase basta. Nada aqui é enviado para fora deste dispositivo."
             value={valor}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
               voz.escrever(e.target.value);
               setTexto(e.target.value);
             }}
