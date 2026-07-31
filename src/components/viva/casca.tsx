@@ -22,11 +22,14 @@ export function CascaViva({ children }: { children: ReactNode }) {
   const { trocando } = usePerfil();
   const { preferencias } = useExperiencia();
   const baixaEstimulacao =
-    preferencias.aparencia.tema === "baixo-estimulo" || preferencias.movimento.reduzirAnimacoes;
+    preferencias.aparencia.tema === "baixo-estimulo" ||
+    preferencias.aparencia.tema === "escuro-calmo" ||
+    preferencias.aparencia.tema === "contraste-escuro" ||
+    preferencias.movimento.reduzirAnimacoes;
 
 
   return (
-    <div className="min-h-dvh bg-background">
+    <div className="viva-ambiente min-h-dvh bg-background">
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface-default focus:px-4 focus:py-2 focus:text-text-primary"
@@ -57,12 +60,12 @@ export function CascaViva({ children }: { children: ReactNode }) {
 
 function NavLateral({ pathname }: { pathname: string }) {
   return (
-    <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col border-r border-border-default bg-sidebar md:flex">
+    <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col border-r border-border-subtle bg-sidebar/80 backdrop-blur-md md:flex">
       <div className="px-5 py-7">
         <Link to="/" className="flex items-center gap-3 rounded-xl" aria-label="VIVA — início">
           <span
             aria-hidden
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-salvia-suave text-salvia"
+            className="viva-brilho grid h-9 w-9 shrink-0 place-items-center rounded-full bg-destaque-suave text-destaque-texto"
           >
             <Leaf className="h-4 w-4" />
           </span>

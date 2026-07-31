@@ -30,7 +30,23 @@ export type IntensidadeDeNotificacao = "silencioso" | "essencial" | "moderado" |
 export type CanalDeNotificacao =
   "continuidade" | "preparacao" | "revisao" | "biblioteca" | "lembretes";
 export type ModoDeNavegacao = "guiado" | "exploracao" | "foco";
-export type Tema = "claro" | "escuro" | "baixo-estimulo" | "automatico";
+/**
+ * Temas do VIVA Luminous Human Interface (documentos 20 e 28).
+ * Os nomes antigos ("claro", "escuro", "baixo-estimulo") continuam válidos
+ * para não perder preferências já salvas neste dispositivo.
+ */
+export type Tema =
+  | "luminoso"
+  | "escuro-calmo"
+  | "claro"
+  | "claro-suave"
+  | "contraste-escuro"
+  | "contraste-claro"
+  | "automatico"
+  | "escuro"
+  | "baixo-estimulo";
+export type Brilho = "sem" | "discreto" | "equilibrado" | "luminoso";
+export type Transparencia = "sem" | "discreta" | "moderada";
 export type Contraste = "padrao" | "aumentado";
 export type Fonte = "padrao" | "ampliada";
 export type Espacamento = "compacto" | "confortavel" | "ampliado";
@@ -50,6 +66,8 @@ export type Preferencias = {
   navegacao: ModoDeNavegacao;
   aparencia: {
     tema: Tema;
+    brilho: Brilho;
+    transparencia: Transparencia;
     contraste: Contraste;
     fonte: Fonte;
     espacamento: Espacamento;
@@ -98,7 +116,9 @@ export const preferenciasPadrao: Preferencias = {
   },
   navegacao: "exploracao",
   aparencia: {
-    tema: "claro",
+    tema: "luminoso",
+    brilho: "equilibrado",
+    transparencia: "moderada",
     contraste: "padrao",
     fonte: "padrao",
     espacamento: "confortavel",
@@ -348,12 +368,28 @@ export function ExperienciaProvider({ children }: { children: ReactNode }) {
     const raiz = document.documentElement;
     const { aparencia, movimento, leitura, navegacao } = preferencias;
 
-    const escuro =
-      aparencia.tema === "escuro" ||
-      (aparencia.tema === "automatico" && temaDoSistema === "escuro");
+    // Nomes antigos continuam funcionando; "automatico" segue o aparelho.
+    const resolvido =
+      aparencia.tema === "automatico"
+        ? temaDoSistema === "escuro"
+          ? "luminoso"
+          : "claro"
+        : aparencia.tema === "escuro"
+          ? "luminoso"
+          : aparencia.tema === "baixo-estimulo"
+            ? "escuro-calmo"
+            : aparencia.tema;
 
+    const escuro =
+      resolvido === "luminoso" ||
+      resolvido === "escuro-calmo" ||
+      resolvido === "contraste-escuro";
+
+    raiz.dataset.tema = resolvido;
+    raiz.dataset.brilho = aparencia.brilho ?? "equilibrado";
+    raiz.dataset.transparencia = aparencia.transparencia ?? "moderada";
     raiz.classList.toggle("dark", escuro);
-    raiz.classList.toggle("viva-calmo", aparencia.tema === "baixo-estimulo");
+    raiz.classList.toggle("viva-calmo", resolvido === "escuro-calmo");
     raiz.dataset.contraste = aparencia.contraste;
     raiz.dataset.texto = aparencia.fonte === "ampliada" ? "grande" : "padrao";
     raiz.dataset.espaco = aparencia.espacamento;

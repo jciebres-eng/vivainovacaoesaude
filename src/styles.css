@@ -76,6 +76,17 @@
   --color-text-primary: var(--foreground);
   --color-text-secondary: var(--muted-foreground);
   --color-border-default: var(--border);
+  --color-border-subtle: var(--viva-border-subtle, var(--border));
+  --color-border-emphasis: var(--viva-border-emphasis, var(--border));
+  --color-surface-elevated: var(--viva-bg-surface-elevated, var(--card));
+  /* Acentos luminosos do VIVA — usar sempre junto de ícone e rótulo */
+  --color-viva-violeta: var(--viva-accent-primary, var(--primary));
+  --color-viva-azul: var(--viva-accent-secondary, var(--primary));
+  --color-viva-ciano: var(--viva-accent-cyan, var(--primary));
+  --color-viva-verde: var(--viva-accent-green, var(--salvia));
+  --color-viva-ambar: var(--viva-accent-amber, var(--atencao));
+  --color-viva-coral: var(--viva-accent-coral, var(--destructive));
+  --color-viva-magenta: var(--viva-accent-magenta, var(--primary));
   --color-action-primary: var(--primary);
   --color-action-primary-foreground: var(--primary-foreground);
   --color-action-primary-hover: color-mix(in oklab, var(--primary) 88%, var(--foreground));
@@ -615,4 +626,422 @@ html[data-cantos="discretos"] {
   display: flex;
   flex-direction: column;
   gap: calc(1.5rem * var(--viva-ritmo, 1));
+}
+
+/* ==========================================================================
+ * VIVA Luminous Human Interface
+ *
+ * Camada de tokens `--viva-*` (documento 20). Nenhum componente escreve cor
+ * crua: tudo passa por estes nomes. Cada tema redefine os tokens `--viva-*`
+ * e, em seguida, remapeia os tokens semânticos já usados pelo app
+ * (--background, --card, --primary, --border...), de modo que a interface
+ * inteira acompanha a troca de tema sem reescrever componentes.
+ *
+ * Nenhum significado depende só de cor: cor sempre acompanha ícone, rótulo,
+ * forma e estado nos componentes.
+ * ========================================================================== */
+
+:root {
+  /* intensidades ajustáveis pela pessoa */
+  --viva-glow-intensity: 1;
+  --viva-glass-intensity: 1;
+
+  /* espaço */
+  --viva-space-1: 0.25rem;
+  --viva-space-2: 0.5rem;
+  --viva-space-3: 0.75rem;
+  --viva-space-4: 1rem;
+  --viva-space-6: 1.5rem;
+  --viva-space-8: 2rem;
+  --viva-space-12: 3rem;
+
+  /* raios */
+  --viva-radius-sm: 0.5rem;
+  --viva-radius-md: 0.875rem;
+  --viva-radius-lg: 1.25rem;
+  --viva-radius-xl: 1.75rem;
+  --viva-radius-pill: 999px;
+
+  /* movimento */
+  --viva-motion-fast: 140ms;
+  --viva-motion-normal: 240ms;
+  --viva-motion-slow: 420ms;
+  --viva-ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+  --viva-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --viva-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* sombras e brilho — recalculados por tema */
+  --viva-shadow-sm: 0 1px 2px oklch(0.2 0.02 250 / 0.06);
+  --viva-shadow-md: 0 8px 24px -14px oklch(0.2 0.02 250 / 0.18);
+  --viva-shadow-lg: 0 20px 48px -24px oklch(0.2 0.02 250 / 0.26);
+  --viva-shadow-floating: 0 24px 60px -26px oklch(0.2 0.02 250 / 0.34);
+  --viva-glow-sm: 0 0 0 1px oklch(1 0 0 / 0);
+  --viva-glow-md: none;
+  --viva-glow-lg: none;
+}
+
+/* -------------------------------------------------- escuro luminoso (demo) */
+html[data-tema="luminoso"] {
+  --viva-bg-canvas: oklch(0.17 0.028 265);
+  --viva-bg-surface: oklch(0.215 0.032 264);
+  --viva-bg-surface-elevated: oklch(0.255 0.036 264);
+  --viva-bg-overlay: oklch(0.13 0.03 265 / 0.72);
+  --viva-bg-glass: oklch(0.28 0.036 264 / calc(0.5 * var(--viva-glass-intensity)));
+
+  --viva-text-primary: oklch(0.965 0.006 265);
+  --viva-text-secondary: oklch(0.82 0.018 260);
+  --viva-text-muted: oklch(0.7 0.02 260);
+  --viva-text-disabled: oklch(0.6 0.02 260);
+
+  --viva-border-subtle: oklch(0.35 0.03 264 / 0.6);
+  --viva-border-default: oklch(0.4 0.035 264);
+  --viva-border-emphasis: oklch(0.55 0.05 264);
+  --viva-focus-ring: oklch(0.8 0.14 290);
+
+  --viva-accent-primary: oklch(0.68 0.19 295);
+  --viva-accent-secondary: oklch(0.7 0.16 255);
+  --viva-accent-cyan: oklch(0.78 0.12 205);
+  --viva-accent-green: oklch(0.75 0.14 155);
+  --viva-accent-amber: oklch(0.8 0.13 80);
+  --viva-accent-coral: oklch(0.68 0.16 25);
+  --viva-accent-magenta: oklch(0.72 0.17 330);
+
+  --viva-state-success: var(--viva-accent-green);
+  --viva-state-warning: var(--viva-accent-amber);
+  --viva-state-error: var(--viva-accent-coral);
+  --viva-state-info: var(--viva-accent-secondary);
+
+  --viva-shadow-sm: 0 1px 2px oklch(0.08 0.02 265 / 0.5);
+  --viva-shadow-md: 0 10px 28px -16px oklch(0.06 0.02 265 / 0.7);
+  --viva-shadow-lg: 0 24px 56px -26px oklch(0.06 0.02 265 / 0.8);
+  --viva-shadow-floating: 0 28px 70px -28px oklch(0.05 0.02 265 / 0.85);
+  --viva-glow-sm: 0 0 12px -2px color-mix(in oklab, var(--viva-accent-primary) calc(28% * var(--viva-glow-intensity)), transparent);
+  --viva-glow-md: 0 0 26px -4px color-mix(in oklab, var(--viva-accent-primary) calc(34% * var(--viva-glow-intensity)), transparent);
+  --viva-glow-lg: 0 0 54px -6px color-mix(in oklab, var(--viva-accent-primary) calc(40% * var(--viva-glow-intensity)), transparent);
+}
+
+/* --------------------------------------- escuro de baixa estimulação */
+html[data-tema="escuro-calmo"] {
+  --viva-bg-canvas: oklch(0.2 0.012 262);
+  --viva-bg-surface: oklch(0.245 0.013 262);
+  --viva-bg-surface-elevated: oklch(0.275 0.014 262);
+  --viva-bg-overlay: oklch(0.16 0.012 262 / 0.86);
+  --viva-bg-glass: oklch(0.275 0.014 262);
+
+  --viva-text-primary: oklch(0.94 0.004 262);
+  --viva-text-secondary: oklch(0.8 0.008 262);
+  --viva-text-muted: oklch(0.69 0.01 262);
+  --viva-text-disabled: oklch(0.6 0.01 262);
+
+  --viva-border-subtle: oklch(0.36 0.012 262);
+  --viva-border-default: oklch(0.4 0.014 262);
+  --viva-border-emphasis: oklch(0.5 0.018 262);
+  --viva-focus-ring: oklch(0.8 0.06 250);
+
+  --viva-accent-primary: oklch(0.7 0.06 275);
+  --viva-accent-secondary: oklch(0.7 0.05 250);
+  --viva-accent-cyan: oklch(0.74 0.05 205);
+  --viva-accent-green: oklch(0.72 0.05 155);
+  --viva-accent-amber: oklch(0.78 0.06 85);
+  --viva-accent-coral: oklch(0.66 0.08 25);
+  --viva-accent-magenta: oklch(0.7 0.06 330);
+
+  --viva-state-success: var(--viva-accent-green);
+  --viva-state-warning: var(--viva-accent-amber);
+  --viva-state-error: var(--viva-accent-coral);
+  --viva-state-info: var(--viva-accent-secondary);
+
+  --viva-shadow-sm: none;
+  --viva-shadow-md: 0 6px 18px -14px oklch(0.1 0.01 262 / 0.6);
+  --viva-shadow-lg: 0 10px 24px -18px oklch(0.1 0.01 262 / 0.6);
+  --viva-shadow-floating: 0 12px 28px -18px oklch(0.1 0.01 262 / 0.6);
+  --viva-glow-sm: none;
+  --viva-glow-md: none;
+  --viva-glow-lg: none;
+}
+
+/* ------------------------------------------------------- claro diurno */
+html[data-tema="claro"] {
+  --viva-bg-canvas: oklch(0.975 0.008 250);
+  --viva-bg-surface: oklch(0.995 0.003 250);
+  --viva-bg-surface-elevated: oklch(1 0 0);
+  --viva-bg-overlay: oklch(0.3 0.02 260 / 0.32);
+  --viva-bg-glass: oklch(1 0 0 / calc(0.72 * var(--viva-glass-intensity)));
+
+  --viva-text-primary: oklch(0.28 0.02 262);
+  --viva-text-secondary: oklch(0.45 0.02 262);
+  --viva-text-muted: oklch(0.55 0.018 262);
+  --viva-text-disabled: oklch(0.62 0.016 262);
+
+  --viva-border-subtle: oklch(0.9 0.01 250);
+  --viva-border-default: oklch(0.87 0.012 250);
+  --viva-border-emphasis: oklch(0.76 0.02 250);
+  --viva-focus-ring: oklch(0.5 0.16 290);
+
+  --viva-accent-primary: oklch(0.5 0.17 292);
+  --viva-accent-secondary: oklch(0.52 0.15 255);
+  --viva-accent-cyan: oklch(0.55 0.1 205);
+  --viva-accent-green: oklch(0.52 0.12 155);
+  --viva-accent-amber: oklch(0.6 0.12 75);
+  --viva-accent-coral: oklch(0.55 0.15 25);
+  --viva-accent-magenta: oklch(0.53 0.16 330);
+
+  --viva-state-success: var(--viva-accent-green);
+  --viva-state-warning: var(--viva-accent-amber);
+  --viva-state-error: var(--viva-accent-coral);
+  --viva-state-info: var(--viva-accent-secondary);
+
+  --viva-glow-sm: none;
+  --viva-glow-md: none;
+  --viva-glow-lg: none;
+}
+
+/* --------------------------------------------------------- claro suave */
+html[data-tema="claro-suave"] {
+  --viva-bg-canvas: oklch(0.968 0.005 250);
+  --viva-bg-surface: oklch(0.99 0.002 250);
+  --viva-bg-surface-elevated: oklch(0.998 0.001 250);
+  --viva-bg-overlay: oklch(0.35 0.01 260 / 0.28);
+  --viva-bg-glass: oklch(0.99 0.002 250);
+
+  --viva-text-primary: oklch(0.3 0.012 262);
+  --viva-text-secondary: oklch(0.47 0.012 262);
+  --viva-text-muted: oklch(0.56 0.01 262);
+  --viva-text-disabled: oklch(0.63 0.01 262);
+
+  --viva-border-subtle: oklch(0.905 0.005 250);
+  --viva-border-default: oklch(0.88 0.006 250);
+  --viva-border-emphasis: oklch(0.78 0.01 250);
+  --viva-focus-ring: oklch(0.48 0.08 262);
+
+  --viva-accent-primary: oklch(0.48 0.07 275);
+  --viva-accent-secondary: oklch(0.5 0.06 250);
+  --viva-accent-cyan: oklch(0.53 0.05 205);
+  --viva-accent-green: oklch(0.5 0.06 155);
+  --viva-accent-amber: oklch(0.58 0.07 78);
+  --viva-accent-coral: oklch(0.53 0.09 25);
+  --viva-accent-magenta: oklch(0.51 0.07 330);
+
+  --viva-state-success: var(--viva-accent-green);
+  --viva-state-warning: var(--viva-accent-amber);
+  --viva-state-error: var(--viva-accent-coral);
+  --viva-state-info: var(--viva-accent-secondary);
+
+  --viva-shadow-sm: none;
+  --viva-shadow-md: 0 6px 16px -14px oklch(0.3 0.01 262 / 0.18);
+  --viva-shadow-lg: 0 10px 22px -18px oklch(0.3 0.01 262 / 0.2);
+  --viva-shadow-floating: 0 12px 26px -18px oklch(0.3 0.01 262 / 0.22);
+  --viva-glow-sm: none;
+  --viva-glow-md: none;
+  --viva-glow-lg: none;
+}
+
+/* ------------------------------------------------ alto contraste escuro */
+html[data-tema="contraste-escuro"] {
+  --viva-bg-canvas: oklch(0.12 0.015 265);
+  --viva-bg-surface: oklch(0.16 0.018 265);
+  --viva-bg-surface-elevated: oklch(0.2 0.02 265);
+  --viva-bg-overlay: oklch(0.1 0.015 265 / 0.95);
+  --viva-bg-glass: oklch(0.16 0.018 265);
+
+  --viva-text-primary: oklch(1 0 0);
+  --viva-text-secondary: oklch(0.94 0.005 265);
+  --viva-text-muted: oklch(0.86 0.008 265);
+  --viva-text-disabled: oklch(0.76 0.01 265);
+
+  --viva-border-subtle: oklch(0.75 0.02 265);
+  --viva-border-default: oklch(0.88 0.015 265);
+  --viva-border-emphasis: oklch(1 0 0);
+  --viva-focus-ring: oklch(0.9 0.19 100);
+
+  --viva-accent-primary: oklch(0.82 0.16 295);
+  --viva-accent-secondary: oklch(0.84 0.14 250);
+  --viva-accent-cyan: oklch(0.88 0.12 205);
+  --viva-accent-green: oklch(0.86 0.16 150);
+  --viva-accent-amber: oklch(0.9 0.16 90);
+  --viva-accent-coral: oklch(0.78 0.18 25);
+  --viva-accent-magenta: oklch(0.82 0.17 330);
+
+  --viva-state-success: var(--viva-accent-green);
+  --viva-state-warning: var(--viva-accent-amber);
+  --viva-state-error: var(--viva-accent-coral);
+  --viva-state-info: var(--viva-accent-secondary);
+
+  --viva-shadow-sm: none;
+  --viva-shadow-md: none;
+  --viva-shadow-lg: none;
+  --viva-shadow-floating: none;
+  --viva-glow-sm: none;
+  --viva-glow-md: none;
+  --viva-glow-lg: none;
+}
+
+/* ------------------------------------------------- alto contraste claro */
+html[data-tema="contraste-claro"] {
+  --viva-bg-canvas: oklch(1 0 0);
+  --viva-bg-surface: oklch(1 0 0);
+  --viva-bg-surface-elevated: oklch(0.98 0.002 250);
+  --viva-bg-overlay: oklch(0.2 0.01 260 / 0.6);
+  --viva-bg-glass: oklch(1 0 0);
+
+  --viva-text-primary: oklch(0.13 0.01 262);
+  --viva-text-secondary: oklch(0.22 0.01 262);
+  --viva-text-muted: oklch(0.3 0.01 262);
+  --viva-text-disabled: oklch(0.4 0.01 262);
+
+  --viva-border-subtle: oklch(0.4 0.02 262);
+  --viva-border-default: oklch(0.24 0.02 262);
+  --viva-border-emphasis: oklch(0.13 0.01 262);
+  --viva-focus-ring: oklch(0.35 0.2 290);
+
+  --viva-accent-primary: oklch(0.36 0.2 292);
+  --viva-accent-secondary: oklch(0.36 0.18 255);
+  --viva-accent-cyan: oklch(0.38 0.12 210);
+  --viva-accent-green: oklch(0.36 0.14 155);
+  --viva-accent-amber: oklch(0.42 0.14 70);
+  --viva-accent-coral: oklch(0.42 0.19 25);
+  --viva-accent-magenta: oklch(0.38 0.19 330);
+
+  --viva-state-success: var(--viva-accent-green);
+  --viva-state-warning: var(--viva-accent-amber);
+  --viva-state-error: var(--viva-accent-coral);
+  --viva-state-info: var(--viva-accent-secondary);
+
+  --viva-shadow-sm: none;
+  --viva-shadow-md: none;
+  --viva-shadow-lg: none;
+  --viva-shadow-floating: none;
+  --viva-glow-sm: none;
+  --viva-glow-md: none;
+  --viva-glow-lg: none;
+}
+
+/* ==========================================================================
+ * Ponte: os tokens semânticos que os componentes já usam passam a ler a
+ * camada --viva-*. Assim toda a aplicação muda junto com o tema, sem
+ * reescrever componente algum.
+ * ========================================================================== */
+html[data-tema] {
+  --background: var(--viva-bg-canvas);
+  --foreground: var(--viva-text-primary);
+  --card: var(--viva-bg-surface);
+  --card-foreground: var(--viva-text-primary);
+  --popover: var(--viva-bg-surface-elevated);
+  --popover-foreground: var(--viva-text-primary);
+
+  --primary: var(--viva-accent-primary);
+  --primary-foreground: var(--viva-bg-canvas);
+  --secondary: var(--viva-bg-surface-elevated);
+  --secondary-foreground: var(--viva-text-primary);
+  --muted: var(--viva-bg-surface-elevated);
+  --muted-foreground: var(--viva-text-secondary);
+  --accent: var(--viva-bg-surface-elevated);
+  --accent-foreground: var(--viva-text-primary);
+
+  --salvia: var(--viva-state-success);
+  --salvia-foreground: var(--viva-bg-canvas);
+  --salvia-suave: color-mix(in oklab, var(--viva-state-success) 18%, var(--viva-bg-surface));
+
+  --atencao: color-mix(in oklab, var(--viva-state-warning) 26%, var(--viva-bg-surface));
+  --atencao-foreground: var(--viva-text-primary);
+
+  --destructive: var(--viva-state-error);
+  --destructive-foreground: var(--viva-bg-canvas);
+
+  --border: var(--viva-border-default);
+  --input: var(--viva-border-emphasis);
+  --ring: var(--viva-focus-ring);
+
+  --sidebar: var(--viva-bg-surface);
+  --sidebar-foreground: var(--viva-text-primary);
+  --sidebar-primary: var(--viva-accent-primary);
+  --sidebar-primary-foreground: var(--viva-bg-canvas);
+  --sidebar-accent: var(--viva-bg-surface-elevated);
+  --sidebar-accent-foreground: var(--viva-text-primary);
+  --sidebar-border: var(--viva-border-subtle);
+  --sidebar-ring: var(--viva-focus-ring);
+
+  /* motor de modos de experiência acompanha o tema */
+  --profile-background: var(--viva-bg-canvas);
+  --profile-surface: var(--viva-bg-surface);
+  --profile-card: var(--viva-bg-surface-elevated);
+  --profile-primary: var(--viva-accent-primary);
+  --profile-secondary: var(--viva-bg-surface-elevated);
+  --profile-accent: var(--viva-accent-cyan);
+  --profile-text: var(--viva-text-primary);
+  --profile-muted: var(--viva-text-secondary);
+  --profile-border: var(--viva-border-default);
+}
+
+/* Intensidades ajustáveis (documento 28). */
+html[data-brilho="sem"] {
+  --viva-glow-intensity: 0;
+}
+html[data-brilho="discreto"] {
+  --viva-glow-intensity: 0.55;
+}
+html[data-brilho="luminoso"] {
+  --viva-glow-intensity: 1.35;
+}
+html[data-transparencia="sem"] {
+  --viva-glass-intensity: 0;
+}
+html[data-transparencia="discreta"] {
+  --viva-glass-intensity: 0.6;
+}
+
+/* Superfícies do VIVA — profundidade sem peso. */
+@utility viva-superficie {
+  background: var(--viva-bg-surface, var(--card));
+  border: 1px solid var(--viva-border-subtle, var(--border));
+  border-radius: var(--viva-radius-lg);
+  box-shadow: var(--viva-shadow-md);
+}
+
+@utility viva-superficie-elevada {
+  background: var(--viva-bg-surface-elevated, var(--card));
+  border: 1px solid var(--viva-border-default, var(--border));
+  border-radius: var(--viva-radius-xl);
+  box-shadow: var(--viva-shadow-lg);
+}
+
+@utility viva-vidro {
+  background: var(--viva-bg-glass, var(--card));
+  border: 1px solid var(--viva-border-subtle, var(--border));
+  backdrop-filter: blur(14px);
+}
+
+@utility viva-brilho {
+  box-shadow: var(--viva-glow-md);
+}
+
+/* Iluminação ambiental do fundo — removida em baixa estimulação, alto
+   contraste e quando a pessoa desliga efeitos decorativos. */
+@utility viva-ambiente {
+  position: relative;
+  isolation: isolate;
+}
+
+html[data-tema="luminoso"] .viva-ambiente::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      60% 45% at 12% 0%,
+      color-mix(in oklab, var(--viva-accent-primary) calc(16% * var(--viva-glow-intensity)), transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 40% at 90% 8%,
+      color-mix(in oklab, var(--viva-accent-secondary) calc(12% * var(--viva-glow-intensity)), transparent),
+      transparent 72%
+    );
+}
+
+html.viva-sem-decoracao .viva-ambiente::before,
+html[data-brilho="sem"] .viva-ambiente::before {
+  display: none;
 }

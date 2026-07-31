@@ -212,12 +212,27 @@ function MinhaExperienciaScreen() {
             colunas={2}
             legenda="Tema"
             opcoes={[
-              { id: "claro", rotulo: "Claro" },
-              { id: "escuro", rotulo: "Escuro" },
               {
-                id: "baixo-estimulo",
-                rotulo: "Baixa estimulação",
-                apoio: "Cor quase ausente.",
+                id: "luminoso",
+                rotulo: "Escuro luminoso",
+                apoio: "Fundo profundo com acentos suaves.",
+              },
+              {
+                id: "escuro-calmo",
+                rotulo: "Escuro de baixa estimulação",
+                apoio: "Sem brilho, sem fundos animados.",
+              },
+              { id: "claro", rotulo: "Claro diurno" },
+              { id: "claro-suave", rotulo: "Claro suave", apoio: "Cor quase ausente." },
+              {
+                id: "contraste-escuro",
+                rotulo: "Alto contraste escuro",
+                apoio: "Bordas fortes, sem transparência.",
+              },
+              {
+                id: "contraste-claro",
+                rotulo: "Alto contraste claro",
+                apoio: "Bordas fortes, sem transparência.",
               },
               {
                 id: "automatico",
@@ -228,6 +243,32 @@ function MinhaExperienciaScreen() {
             valor={p.aparencia.tema}
             onEscolher={(tema) => ajustar({ aparencia: { tema } }, "A aparência foi ajustada.")}
           />
+          <GrupoDeOpcoes
+            colunas={2}
+            legenda="Intensidade do brilho"
+            opcoes={[
+              { id: "sem", rotulo: "Sem brilho" },
+              { id: "discreto", rotulo: "Discreto" },
+              { id: "equilibrado", rotulo: "Equilibrado" },
+              { id: "luminoso", rotulo: "Luminoso" },
+            ]}
+            valor={p.aparencia.brilho}
+            onEscolher={(brilho) => ajustar({ aparencia: { brilho } }, "O brilho foi ajustado.")}
+          />
+          <GrupoDeOpcoes
+            colunas={3}
+            legenda="Transparência"
+            opcoes={[
+              { id: "sem", rotulo: "Sem" },
+              { id: "discreta", rotulo: "Discreta" },
+              { id: "moderada", rotulo: "Moderada" },
+            ]}
+            valor={p.aparencia.transparencia}
+            onEscolher={(transparencia) =>
+              ajustar({ aparencia: { transparencia } }, "A transparência foi ajustada.")
+            }
+          />
+
           <GrupoDeOpcoes
             colunas={2}
             legenda="Contraste"
