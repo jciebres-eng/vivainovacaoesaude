@@ -22,10 +22,10 @@ const areas: {
     to: "/meu-percurso",
     label: "Meu percurso",
     icone: RouteIcon,
-    combina: (p) => p.startsWith("/meu-percurso") ||
-      p.startsWith("/montar") ||
-      p.startsWith("/falar") ||
-      p.startsWith("/realizar") ||
+    combina: (p) =>
+      p.startsWith("/meu-percurso") ||
+      p.startsWith("/percurso") ||
+      p.startsWith("/favoritos") ||
       p.startsWith("/compartilhar"),
   },
   {

@@ -151,7 +151,7 @@ function Compartilhar() {
       )}
 
       <Card variante="informativo" titulo="Voltar ao percurso">
-        <Botao variante="secundario" onClick={() => navigate({ to: "/realizar" })}>
+        <Botao variante="secundario" onClick={() => navigate({ to: "/meu-percurso" })}>
           Voltar para o percurso
         </Botao>
       </Card>
