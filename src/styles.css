@@ -93,6 +93,13 @@
   --color-feedback-error-foreground: var(--destructive-foreground);
   --color-focus-ring: var(--ring);
 
+  /* Destaque do perfil em uso: muda de pessoa para pessoa, sem trocar a
+     identidade do VIVA (documento 10). Definido em tempo de execução. */
+  --color-destaque: var(--destaque, var(--primary));
+  --color-destaque-suave: var(--destaque-suave, var(--secondary));
+  --color-destaque-texto: var(--destaque-texto, var(--primary));
+
+
   /* Duração de animação — sempre breve (doc 04) */
   --duracao-imediata: 120ms;
   --duracao-rapida: 160ms;

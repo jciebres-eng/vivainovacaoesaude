@@ -11,6 +11,7 @@ import {
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
+import { BarraMobile } from "@/components/viva/mobile/barra-mobile";
 import { useExperiencia } from "@/lib/viva-experiencia";
 
 type To = LinkProps["to"];
@@ -84,7 +85,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           </main>
         </div>
       </div>
-      <BottomNav pathname={pathname} itens={itens} />
+      {/* Barra inferior unificada com a experiência móvel. */}
+      <BarraMobile />
     </div>
   );
 }
@@ -162,42 +164,5 @@ function SideNav({
         </p>
       </div>
     </aside>
-  );
-}
-
-function BottomNav({ pathname, itens }: { pathname: string; itens: ItemDeNavegacao[] }) {
-  return (
-    <nav
-      aria-label="Navegação principal (rodapé)"
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-border-default bg-surface-default/95 backdrop-blur md:hidden"
-    >
-      <ul
-        className="mx-auto grid max-w-xl"
-        style={{
-          gridTemplateColumns: `repeat(${itens.length}, minmax(0, 1fr))`,
-        }}
-      >
-        {itens.map((item) => {
-          const ativo = item.combina(pathname);
-          return (
-            <li key={item.label}>
-              <Link
-                to={item.to}
-                aria-current={ativo ? "page" : undefined}
-                className={cn(
-                  "viva-anim flex min-h-[3.75rem] flex-col items-center justify-center gap-1 px-1 py-2 text-[0.68rem] font-medium",
-                  ativo ? "text-primary" : "text-text-secondary",
-                )}
-              >
-                <item.icon className="h-5 w-5 shrink-0" aria-hidden />
-                <span className="truncate">
-                  {item.label === "Sobre o VIVA" ? "Sobre" : item.label}
-                </span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
   );
 }
