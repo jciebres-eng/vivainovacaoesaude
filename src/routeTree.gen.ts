@@ -13,6 +13,7 @@ import { Route as MovelRouteImport } from './routes/_movel'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as JornadaRouteImport } from './routes/jornada'
 import { Route as MovelIndexRouteImport } from './routes/_movel.index'
+import { Route as MovelMontarRouteImport } from './routes/_movel.montar'
 import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
 import { Route as PercursoMeuMomentoRouteImport } from './routes/_percurso.meu-momento'
 import { Route as PercursoMinhaExperienciaRouteImport } from './routes/_percurso.minha-experiencia'
@@ -50,6 +51,11 @@ const JornadaRoute = JornadaRouteImport.update({
 const MovelIndexRoute = MovelIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => MovelRoute,
+} as any)
+const MovelMontarRoute = MovelMontarRouteImport.update({
+  id: '/montar',
+  path: '/montar',
   getParentRoute: () => MovelRoute,
 } as any)
 const PercursoDocumentacaoRoute = PercursoDocumentacaoRouteImport.update({
@@ -159,6 +165,7 @@ const PercursoBibliotecaReflexoesRoute =
 export interface FileRoutesByFullPath {
   '/': typeof MovelIndexRoute
   '/jornada': typeof JornadaRouteWithChildren
+  '/montar': typeof MovelMontarRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof MovelIndexRoute
+  '/montar': typeof MovelMontarRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
@@ -208,6 +216,7 @@ export interface FileRoutesById {
   '/_movel': typeof MovelRouteWithChildren
   '/_percurso': typeof PercursoRouteWithChildren
   '/jornada': typeof JornadaRouteWithChildren
+  '/_movel/montar': typeof MovelMontarRoute
   '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
   '/_percurso/meu-momento': typeof PercursoMeuMomentoRoute
   '/_percurso/minha-experiencia': typeof PercursoMinhaExperienciaRoute
@@ -235,6 +244,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/jornada'
+    | '/montar'
     | '/documentacao'
     | '/meu-momento'
     | '/minha-experiencia'
@@ -258,6 +268,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/montar'
     | '/documentacao'
     | '/meu-momento'
     | '/minha-experiencia'
@@ -283,6 +294,7 @@ export interface FileRouteTypes {
     | '/_movel'
     | '/_percurso'
     | '/jornada'
+    | '/_movel/montar'
     | '/_percurso/documentacao'
     | '/_percurso/meu-momento'
     | '/_percurso/minha-experiencia'
@@ -341,6 +353,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof MovelIndexRouteImport
+      parentRoute: typeof MovelRoute
+    }
+    '/_movel/montar': {
+      id: '/_movel/montar'
+      path: '/montar'
+      fullPath: '/montar'
+      preLoaderRoute: typeof MovelMontarRouteImport
       parentRoute: typeof MovelRoute
     }
     '/_percurso/documentacao': {
@@ -487,10 +506,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface MovelRouteChildren {
+  MovelMontarRoute: typeof MovelMontarRoute
   MovelIndexRoute: typeof MovelIndexRoute
 }
 
 const MovelRouteChildren: MovelRouteChildren = {
+  MovelMontarRoute: MovelMontarRoute,
   MovelIndexRoute: MovelIndexRoute,
 }
 
