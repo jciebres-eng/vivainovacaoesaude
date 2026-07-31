@@ -56,6 +56,12 @@ export const groups: DocGroup[] = [
     description:
       "Manifesto de inteligência artificial responsável e governança ética, científica e regulatória.",
   },
+  {
+    id: "H",
+    label: "Grupo H — Arquitetura do assistente",
+    description:
+      "Arquitetura conceitual, funcional, ética e comportamental do copiloto de percursos funcionais.",
+  },
 ];
 
 export type VivaDoc = {
