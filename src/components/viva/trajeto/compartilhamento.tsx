@@ -93,16 +93,14 @@ export function LinkTemporario({ token }: { token: string }) {
         >
           {copiado ? "Link copiado" : "Copiar link"}
         </Botao>
-        <Botao
-          variante="principal"
-          tamanho="compacto"
-          comoLink
-          to="/acompanhar/$token"
-          params={{ token }}
+        <a
+          href={`/acompanhar/${token}`}
           target="_blank"
+          rel="noreferrer"
+          className="viva-tap inline-flex min-h-11 items-center justify-center rounded-full bg-action-primary px-4 py-2.5 viva-legenda font-semibold text-action-primary-foreground"
         >
           Ver o que a pessoa vê
-        </Botao>
+        </a>
       </div>
       <Nota>
         O link deixa de funcionar quando o tempo escolhido termina, quando o percurso é concluído
