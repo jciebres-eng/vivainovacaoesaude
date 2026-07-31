@@ -126,7 +126,7 @@ function Demonstracao() {
         texto="Este é um ambiente demonstrativo. Não insira dados pessoais ou clínicos reais."
       />
 
-      <Card variante="destacado" titulo={atual.titulo} descricao={atual.nota}>
+      <Card variante="proximo-passo" titulo={atual.titulo} descricao={atual.nota}>
         <p aria-live="polite" className="viva-texto text-text-primary">
           {atual.texto}
         </p>
