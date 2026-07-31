@@ -120,6 +120,47 @@ export const estadosDoAgente: Record<EstadoDoAgente, DescricaoDeEstado> = {
   },
 };
 
+/**
+ * Ponte entre os estados em português usados pela interface e os nomes
+ * técnicos da AssistantStateMachine, que nomeiam os ativos de animação.
+ */
+export const estadoTecnico: Record<EstadoDoAgente, EstadoDoAssistente> = {
+  disponivel: "idle",
+  ouvindo: "listening",
+  pensando: "transcribing",
+  interpretando: "processing",
+  organizando: "organizing",
+  "mostrando-percurso": "suggesting",
+  "mostrando-estrategia": "suggesting",
+  "aguardando-decisao": "waiting",
+  acompanhando: "guiding",
+  concluido: "completed",
+  erro: "error",
+  offline: "offline",
+  silencioso: "silent",
+  desativado: "disabled",
+};
+
+/** Eventos da máquina traduzidos para o estado visível da interface. */
+const estadoPorEvento: Partial<Record<EventoDoAssistente, EstadoDoAgente>> = {
+  APP_READY: "disponivel",
+  VOICE_STARTED: "ouvindo",
+  VOICE_STOPPED: "pensando",
+  TRANSCRIPTION_STARTED: "pensando",
+  TRANSCRIPTION_READY: "interpretando",
+  INTENT_PROCESSING: "interpretando",
+  INTENT_UNCLEAR: "aguardando-decisao",
+  JOURNEY_BUILDING: "organizando",
+  JOURNEY_READY: "mostrando-percurso",
+  USER_CONFIRMATION_REQUIRED: "aguardando-decisao",
+  USER_CONFIRMED: "organizando",
+  JOURNEY_STARTED: "acompanhando",
+  JOURNEY_PAUSED: "aguardando-decisao",
+  JOURNEY_COMPLETED: "concluido",
+  GENERIC_ERROR: "erro",
+  USER_DISMISSED_ERROR: "disponivel",
+};
+
 const CHAVE = "viva:agente:v1";
 
 type Guardado = { presenca: PresencaDoAgente; memoriaAutorizada: boolean };
