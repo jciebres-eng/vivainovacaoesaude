@@ -27,16 +27,16 @@ const itensPrincipais: {
   combina: (p: string) => boolean;
 }[] = [
   {
-    to: "/meu-momento",
-    label: "Meu momento",
+    to: "/",
+    label: "Início",
     icon: Sunrise,
-    combina: (p) => p === "/meu-momento" || p.startsWith("/meu-momento"),
+    combina: (p) => p === "/",
   },
   {
-    to: "/jornada",
-    label: "Percurso",
+    to: "/meu-percurso",
+    label: "Meus percursos",
     icon: RouteIcon,
-    combina: (p) => p.startsWith("/jornada") && !p.startsWith("/jornada/linha-do-tempo"),
+    combina: (p) => p.startsWith("/meu-percurso") || p.startsWith("/percurso"),
   },
   {
     to: "/biblioteca",
@@ -45,10 +45,10 @@ const itensPrincipais: {
     combina: (p) => p.startsWith("/biblioteca"),
   },
   {
-    to: "/jornada/linha-do-tempo",
-    label: "Trajetória",
+    to: "/favoritos",
+    label: "Favoritos",
     icon: Clock3,
-    combina: (p) => p.startsWith("/jornada/linha-do-tempo"),
+    combina: (p) => p.startsWith("/favoritos"),
   },
   {
     to: "/sobre",
