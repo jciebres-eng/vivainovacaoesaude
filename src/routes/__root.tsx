@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { VivaProvider } from "../lib/viva-store";
 import { ExperienciaProvider } from "../lib/viva-experiencia";
 import { PerfilProvider } from "@/lib/viva-perfis";
+import { AgenteProvider } from "@/lib/viva-agente";
 
 function NotFoundComponent() {
   return (
