@@ -47,14 +47,22 @@ export function JourneySwipeDeck({
   const { modo, movimentoReduzido } = useModo();
   const [indice, setIndice] = useState(0);
   const [arrasto, setArrasto] = useState(0);
+  const [arrastoVertical, setArrastoVertical] = useState(0);
+  const [detalhesAbertos, setDetalhesAbertos] = useState(false);
   const [saindo, setSaindo] = useState<"aceito" | "descartado" | null>(null);
   const [aviso, setAviso] = useState("");
   const [ultimo, setUltimo] = useState<{ id: string; acao: "aceito" | "descartado" } | null>(null);
   const inicio = useRef<number | null>(null);
+  const inicioY = useRef<number | null>(null);
 
   useEffect(() => {
     setIndice(0);
   }, [itens.length === 0]);
+
+  useEffect(() => {
+    setDetalhesAbertos(false);
+  }, [indice]);
+
 
   const intensidade = movimentoReduzido ? 0 : modo.intensidadeDoMovimento;
   const atual = itens[indice];
