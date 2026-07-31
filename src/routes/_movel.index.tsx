@@ -5,8 +5,14 @@ import { Botao, Card } from "@/components/ds";
 import { CampoDoAgente, LeituraDoAgente } from "@/components/viva/agente";
 import { SeletorDePerfil } from "@/components/viva/mobile";
 import { usePerfil } from "@/lib/viva-perfis";
-import { memoriaDoCopiloto, percursos, rotulosDeEstado, usePercursos } from "@/lib/viva-percursos";
-import { situacoesSugeridas, sugerirSituacoes, type Situacao } from "@/lib/viva-situacoes";
+import {
+  memoriaDoCopiloto,
+  percursos,
+  rotulosDeEstado,
+  situacoesSugeridas,
+  usePercursos,
+} from "@/lib/viva-percursos";
+import { sugerirSituacoes, type Situacao } from "@/lib/viva-situacoes";
 import { useState } from "react";
 
 export const Route = createFileRoute("/_movel/")({
