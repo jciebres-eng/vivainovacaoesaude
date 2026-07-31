@@ -11,12 +11,35 @@
 import type { CenaVisual } from "@/components/viva/visual/visual-base";
 
 export type CategoriaDeDecisao =
+  | "objetivo"
   | "local"
   | "forma"
   | "rota"
+  | "barreira"
   | "estrategia"
+  | "treinamento"
   | "conteudo"
+  | "acompanhamento"
   | "alternativa";
+
+/**
+ * Ordem canônica da montagem: objetivo, contexto, barreiras, estratégias,
+ * treinamento, conteúdos, acompanhamento e plano alternativo. Cada etapa é
+ * uma pergunta por vez e pode ser pulada.
+ */
+export const ordemCanonicaDeDecisao: CategoriaDeDecisao[] = [
+  "objetivo",
+  "local",
+  "forma",
+  "rota",
+  "barreira",
+  "estrategia",
+  "treinamento",
+  "conteudo",
+  "acompanhamento",
+  "alternativa",
+];
+
 
 export type MidiaDaEtapa =
   | { tipo: "video"; titulo: string; duracao: string; legenda: string; transcricao: string }
@@ -40,13 +63,24 @@ export type Peca = {
 };
 
 export const rotulosDaDecisao: Record<CategoriaDeDecisao, { titulo: string; pergunta: string }> = {
+  objetivo: { titulo: "Objetivo", pergunta: "O que você quer que aconteça?" },
   local: { titulo: "Local", pergunta: "Onde isso acontece?" },
   forma: { titulo: "Forma de realização", pergunta: "Como você quer fazer?" },
   rota: { titulo: "Rota", pergunta: "Por qual caminho?" },
+  barreira: {
+    titulo: "O que pode dificultar",
+    pergunta: "O que pode tornar essa situação mais difícil para você?",
+  },
   estrategia: { titulo: "Estratégias", pergunta: "O que ajuda no caminho?" },
+  treinamento: { titulo: "Treinamento", pergunta: "Quer ensaiar alguma parte antes?" },
   conteudo: { titulo: "Conteúdos", pergunta: "Quer ver algo antes?" },
+  acompanhamento: {
+    titulo: "Acompanhamento",
+    pergunta: "Quer algum acompanhamento durante a realização?",
+  },
   alternativa: { titulo: "Plano alternativo", pergunta: "E se mudar de ideia?" },
 };
+
 
 const p = (peca: Peca): Peca => peca;
 
@@ -270,13 +304,216 @@ const alternativas: Peca[] = [
   }),
 ];
 
+/** Objetivos possíveis — sempre no lugar de "metas" ou "desempenho". */
+const objetivos: Peca[] = [
+  p({
+    id: "objetivo-conhecer",
+    categoria: "objetivo",
+    titulo: "Conhecer o lugar antes",
+    apoio: "Chegar sabendo como é",
+    porque: "Antecipar o ambiente reduz o imprevisto.",
+    cena: "lugar",
+  }),
+  p({
+    id: "objetivo-resolver",
+    categoria: "objetivo",
+    titulo: "Resolver o que preciso",
+    apoio: "Uma coisa só, do começo ao fim",
+    porque: "Um objetivo por percurso deixa cada passo mais claro.",
+    cena: "atividade",
+  }),
+  p({
+    id: "objetivo-participar",
+    categoria: "objetivo",
+    titulo: "Participar do meu jeito",
+    apoio: "Sem precisar acompanhar tudo",
+    porque: "Participar parcialmente também é participar.",
+    cena: "atividade",
+  }),
+  p({
+    id: "objetivo-ir-e-voltar",
+    categoria: "objetivo",
+    titulo: "Ir e voltar com tranquilidade",
+    apoio: "O caminho é a parte principal",
+    porque: "Quando o deslocamento é o desafio, ele vira o objetivo.",
+    cena: "rota",
+  }),
+  p({
+    id: "objetivo-treinar",
+    categoria: "objetivo",
+    titulo: "Treinar antes de fazer de verdade",
+    apoio: "Ensaio, sem compromisso",
+    porque: "Ensaiar não é avaliação: é preparação.",
+    cena: "estrategia",
+  }),
+];
+
+/**
+ * Barreiras — o que pode dificultar a SITUAÇÃO. Nunca uma limitação da
+ * pessoa, nunca um diagnóstico (documentos 00, 03 e 17).
+ */
+const barreiras: Peca[] = [
+  p({
+    id: "barreira-ruido",
+    categoria: "barreira",
+    titulo: "Barulho no ambiente",
+    apoio: "Som alto ou constante",
+    porque: "Saber disso antes permite escolher horário e proteção sensorial.",
+    cena: "estrategia",
+  }),
+  p({
+    id: "barreira-luz",
+    categoria: "barreira",
+    titulo: "Luz muito intensa",
+    apoio: "Iluminação forte ou piscante",
+    porque: "Ajuda a decidir sobre boné, óculos ou outro horário.",
+    cena: "estrategia",
+  }),
+  p({
+    id: "barreira-multidao",
+    categoria: "barreira",
+    titulo: "Muitas pessoas juntas",
+    apoio: "Aglomeração e fila",
+    porque: "Muda a escolha de horário e do ponto de espera.",
+    cena: "lugar",
+  }),
+  p({
+    id: "barreira-imprevisto",
+    categoria: "barreira",
+    titulo: "Mudança de última hora",
+    apoio: "Quando o combinado muda",
+    porque: "Um plano alternativo já pronto diminui o impacto.",
+    cena: "alternativa",
+  }),
+  p({
+    id: "barreira-conversa",
+    categoria: "barreira",
+    titulo: "Ter que conversar na hora",
+    apoio: "Falar, pedir ou explicar",
+    porque: "Frases prontas retiram parte do esforço de improvisar.",
+    cena: "estrategia",
+  }),
+  p({
+    id: "barreira-espera",
+    categoria: "barreira",
+    titulo: "Esperar sem saber quanto tempo",
+    apoio: "Fila ou atraso",
+    porque: "Permite combinar o que fazer durante a espera.",
+    cena: "atividade",
+  }),
+  p({
+    id: "barreira-etapas",
+    categoria: "barreira",
+    titulo: "Não saber a ordem das etapas",
+    apoio: "O que vem antes e depois",
+    porque: "O percurso passa a mostrar um passo por vez.",
+    cena: "atividade",
+  }),
+  p({
+    id: "barreira-caminho",
+    categoria: "barreira",
+    titulo: "O caminho até o lugar",
+    apoio: "Trajeto e trocas",
+    porque: "Uma rota com menos trocas costuma pesar menos.",
+    cena: "rota",
+  }),
+];
+
+/** Treinamento — ensaio opcional, sem avaliação e sem pontuação. */
+const treinamentos: Peca[] = [
+  p({
+    id: "treino-mental",
+    categoria: "treinamento",
+    titulo: "Passar mentalmente pelas etapas",
+    apoio: "Só ler e imaginar",
+    porque: "Ensaiar por leitura já reduz o desconhecido.",
+    cena: "estrategia",
+    midias: [
+      {
+        tipo: "historia",
+        titulo: "Como pode ser",
+        quadros: [
+          { titulo: "Chegada", descricao: "Você chega e olha o ambiente sem pressa." },
+          { titulo: "Início", descricao: "Alguém fala com você; você pode pedir um instante." },
+          { titulo: "Saída", descricao: "Quando quiser, você encerra e sai." },
+        ],
+      },
+    ],
+  }),
+  p({
+    id: "treino-frases",
+    categoria: "treinamento",
+    titulo: "Ensaiar o que vou dizer",
+    apoio: "Escolher entre respostas possíveis",
+    porque: "Nenhuma resposta é certa ou errada: você escolhe a sua.",
+    cena: "estrategia",
+  }),
+  p({
+    id: "treino-visual",
+    categoria: "treinamento",
+    titulo: "Ver imagens do local antes",
+    apoio: "Entrada, balcão e saída",
+    porque: "Reconhecer o lugar antes diminui a surpresa.",
+    cena: "lugar",
+  }),
+  p({
+    id: "treino-sem",
+    categoria: "treinamento",
+    titulo: "Não quero treinar agora",
+    apoio: "Vou direto para o percurso",
+    porque: "O ensaio é sempre opcional.",
+    cena: "alternativa",
+  }),
+];
+
+/** Acompanhamento — apenas o que a pessoa autoriza, quando autoriza. */
+const acompanhamentos: Peca[] = [
+  p({
+    id: "acompanhamento-nenhum",
+    categoria: "acompanhamento",
+    titulo: "Nenhum acompanhamento",
+    apoio: "Sigo sozinho",
+    porque: "Nada é compartilhado e nada é registrado fora deste aparelho.",
+    cena: "alternativa",
+  }),
+  p({
+    id: "acompanhamento-status",
+    categoria: "acompanhamento",
+    titulo: "Só o status do percurso",
+    apoio: "Sem localização",
+    porque: "Uma pessoa de confiança vê apenas se você já começou ou encerrou.",
+    cena: "estrategia",
+  }),
+  p({
+    id: "acompanhamento-checklist",
+    categoria: "acompanhamento",
+    titulo: "Checklist na tela durante a realização",
+    apoio: "Um passo por vez",
+    porque: "O passo atual fica visível, com pausa sempre disponível.",
+    cena: "atividade",
+  }),
+  p({
+    id: "acompanhamento-mapa",
+    categoria: "acompanhamento",
+    titulo: "Mapa com pontos de referência",
+    apoio: "Só enquanto o percurso estiver ativo",
+    porque: "O mapa aparece por escolha sua e você pode desligar a qualquer momento.",
+    cena: "rota",
+  }),
+];
+
 const porCategoria: Record<CategoriaDeDecisao, Peca[]> = {
+  objetivo: objetivos,
   local: locais,
   forma: formas,
   rota: rotas,
+  barreira: barreiras,
   estrategia: estrategias,
+  treinamento: treinamentos,
   conteudo: conteudos,
+  acompanhamento: acompanhamentos,
   alternativa: alternativas,
+
 };
 
 export function opcoesDaDecisao(categoria: CategoriaDeDecisao, descartadas: string[] = []) {

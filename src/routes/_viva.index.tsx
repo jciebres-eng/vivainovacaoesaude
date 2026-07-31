@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import { CampoDoAgente } from "@/components/viva/agente";
 import { SeloDemonstrativo } from "@/components/viva/selo-demonstrativo";
+import { CatalogoDeSituacoes } from "@/components/viva/situacoes";
+
 import { JourneyMatchComposer } from "@/components/viva/visual";
 import { useAgente } from "@/lib/viva-agente";
 import { conteudosDaBiblioteca } from "@/lib/viva-biblioteca-dados";
@@ -106,6 +108,8 @@ function Inicio() {
 
           <CampoDoAgente onEnviar={(texto) => setIntencao(texto)} />
 
+          <CatalogoDeSituacoes titulo="Ou escolha uma situação" />
+
           <section aria-labelledby="conteudos-home" className="space-y-3">
             <h2 id="conteudos-home" className="viva-subtitulo text-text-primary">
               Conteúdos que podem ajudar
@@ -131,6 +135,7 @@ function Inicio() {
           >
             Iniciar demonstração guiada
           </Link>
+
         </>
       )}
 

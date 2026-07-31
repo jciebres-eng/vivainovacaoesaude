@@ -9,11 +9,11 @@ import { situacaoPorId } from "@/lib/viva-situacoes";
 export const Route = createFileRoute("/_viva/demonstracao")({
   head: () => ({
     meta: [
-      { title: "Demonstração guiada — a jornada de Ana | VIVA" },
+      { title: "Demonstração guiada — o percurso de Alex | VIVA" },
       {
         name: "description",
         content:
-          "Percorra, passo a passo e com dados fictícios, como o VIVA ajuda Ana a se preparar para a primeira reunião presencial no novo trabalho.",
+          "Percorra, passo a passo e com dados fictícios, como o VIVA ajuda Alex a se preparar para a primeira reunião presencial no novo trabalho.",
       },
       { property: "og:title", content: "Demonstração guiada — VIVA" },
       {
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/_viva/demonstracao")({
 });
 
 /**
- * Demonstração guiada — a história de Ana (documento 05 e 06).
+ * Demonstração guiada — a situação de demonstração (documento 05 e 06).
  *
  * Persona fictícia, dados fictícios, nenhuma geolocalização real, nenhum
  * compartilhamento real e nenhuma notificação. A pessoa pode avançar, voltar
@@ -36,15 +36,15 @@ export const Route = createFileRoute("/_viva/demonstracao")({
  */
 const passos: { titulo: string; texto: string; nota?: string }[] = [
   {
-    titulo: "Quem é Ana",
+    titulo: "Quem usa o VIVA aqui",
     texto:
-      "Ana tem 29 anos, é adulta neurodivergente e está começando um novo emprego. Ela pediu previsibilidade, menos estímulos, instruções claras e a possibilidade de pausa.",
-    nota: "Persona fictícia, criada apenas para esta demonstração.",
+      "Alex é o perfil único de demonstração. Nenhum diagnóstico é atribuído: Alex apenas indicou preferências de previsibilidade, menos estímulos, instruções claras e a possibilidade de pausa.",
+    nota: "Perfil de demonstração, fictício, com acesso a todas as situações.",
   },
   {
     titulo: "A intenção",
     texto:
-      "Na tela inicial, Ana escreve: “preciso me preparar para minha primeira reunião presencial”. Ela poderia também escolher uma situação pronta ou usar a voz.",
+      "Na tela inicial, Alex escreve: “preciso me preparar para minha primeira reunião presencial”. Poderia também escolher uma situação pronta ou usar a voz.",
   },
   {
     titulo: "O contexto",
@@ -54,38 +54,38 @@ const passos: { titulo: string; texto: string; nota?: string }[] = [
   {
     titulo: "As preferências",
     texto:
-      "Ana indica que prefere menos informações por tela e quer saber onde ficam as saídas. A interface se reorganiza a partir dessas escolhas.",
+      "Alex indica que prefere menos informações por tela e quer saber onde ficam as saídas. A interface se reorganiza a partir dessas escolhas.",
   },
   {
     titulo: "As estratégias",
     texto:
-      "Aparecem possibilidades curtas: chegar um pouco antes, levar frases prontas, combinar pausas. Ana aceita as que combinam com ela e descarta o resto.",
+      "Aparecem possibilidades curtas: chegar um pouco antes, levar frases prontas, combinar pausas. Alex aceita as que combinam e descarta o resto.",
     nota: "Não existe resposta certa ou errada: são possibilidades.",
   },
   {
     titulo: "O percurso",
     texto:
-      "As etapas aceitas formam uma trilha simples, em ordem, com tempo estimado. Ana pode reordenar, remover ou reescrever qualquer etapa.",
+      "As etapas aceitas formam uma trilha simples, em ordem, com tempo estimado. Alex pode reordenar, remover ou reescrever qualquer etapa.",
   },
   {
     titulo: "A preparação",
     texto:
-      "Antes do dia, Ana revisa o que precisa levar, lê um conteúdo curto da Biblioteca sobre organizar perguntas e guarda uma alternativa com menos trocas.",
+      "Antes do dia, Alex revisa o que precisa levar, lê um conteúdo curto da Biblioteca sobre organizar perguntas e guarda uma alternativa com menos trocas.",
   },
   {
     titulo: "A simulação",
     texto:
-      "Opcional: Ana passa mentalmente pelas etapas, escolhendo entre respostas possíveis. Nada é avaliado — ela pode adaptar qualquer resposta ou criar a própria.",
+      "Opcional: Alex passa mentalmente pelas etapas, escolhendo entre respostas possíveis. Nada é avaliado — é possível adaptar qualquer resposta ou criar a própria.",
   },
   {
     titulo: "A execução",
     texto:
-      "No dia, o VIVA mostra um passo por vez, com pausa sempre disponível e a alternativa à mão. Ana pode parar e retomar de onde parou.",
+      "No dia, o VIVA mostra um passo por vez, com pausa sempre disponível e a alternativa à mão. Alex pode parar e retomar de onde parou.",
   },
   {
     titulo: "O registro",
     texto:
-      "Depois, Ana conta como foi com as próprias palavras: o que ajudou, o que poderia ser diferente. Sem notas, sem pontuação, e ela pode pular.",
+      "Depois, Alex conta como foi com as próprias palavras: o que ajudou, o que poderia ser diferente. Sem notas, sem pontuação, e pode pular.",
   },
   {
     titulo: "A evolução",
@@ -100,7 +100,7 @@ function Demonstracao() {
   const atual = passos[passo];
   const ultimo = passo === passos.length - 1;
 
-  function abrirJornadaDeAna() {
+  function abrirPercursoDaDemonstracao() {
     const situacao = situacaoPorId("reuniao");
     if (!situacao) return;
     const novo = criarPercurso(
@@ -114,7 +114,7 @@ function Demonstracao() {
     <div className="space-y-6">
       <header>
         <p className="viva-legenda font-medium text-destaque-texto">Demonstração guiada</p>
-        <h1 className="mt-1 viva-titulo-pagina text-text-primary">A jornada de Ana</h1>
+        <h1 className="mt-1 viva-titulo-pagina text-text-primary">O percurso de Alex</h1>
         <p className="mt-2 viva-apoio text-text-secondary">
           Onze passos curtos para conhecer o fluxo completo. Você pode avançar, voltar e sair quando
           quiser.
@@ -141,7 +141,7 @@ function Demonstracao() {
             </Botao>
           ) : null}
           {ultimo ? (
-            <Botao onClick={abrirJornadaDeAna}>Montar a jornada de Ana</Botao>
+            <Botao onClick={abrirPercursoDaDemonstracao}>Montar o percurso de Alex</Botao>
           ) : (
             <Botao onClick={() => setPasso((p) => p + 1)}>Continuar</Botao>
           )}

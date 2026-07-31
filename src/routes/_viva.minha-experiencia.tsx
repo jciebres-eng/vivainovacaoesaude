@@ -4,7 +4,6 @@ import { Botao } from "@/components/ds/botao";
 import { Interruptor } from "@/components/ds/campos";
 import { AvisoDeAjuste, GrupoDeOpcoes } from "@/components/viva/experiencia/controles";
 import { Screen, ScreenHeader, SectionCard } from "@/components/viva/screen";
-import { personas } from "@/lib/viva-data";
 import {
   estrategiasSugeridas,
   rotulosDeCanal,
@@ -568,20 +567,13 @@ function MinhaExperienciaScreen() {
         title="Perfil da demonstração"
         hint="Nesta versão os dados são fictícios e servem apenas para mostrar o funcionamento."
       >
-        <GrupoDeOpcoes
-          colunas={2}
-          legenda="Perfil em uso"
-          opcoes={personas.map((persona) => ({
-            id: persona.id,
-            rotulo: persona.nome,
-            apoio: persona.tema,
-          }))}
-          valor={p.demonstracao.perfil}
-          onEscolher={(perfil) =>
-            ajustar({ demonstracao: { perfil } }, "O perfil da demonstração foi trocado.")
-          }
-        />
+        <p className="text-text-secondary">
+          Existe um único perfil de demonstração, com acesso a todas as situações, estratégias e
+          treinamentos. As preferências ficam em <strong>Perfil</strong>, e nenhuma delas limita o
+          que você pode acessar.
+        </p>
       </SectionCard>
+
 
       <SectionCard title="O que o VIVA faz com essas escolhas">
         <div className="space-y-3 text-text-secondary">

@@ -15,6 +15,7 @@ import { Cena } from "@/components/viva/visual/visual-base";
 import { useModo } from "@/lib/viva-modos";
 import {
   opcoesDaDecisao,
+  ordemCanonicaDeDecisao,
   rotulosDaDecisao,
   type CategoriaDeDecisao,
   type Peca,
@@ -28,7 +29,18 @@ export function JourneyMatchComposer({
   onConcluir?: (pecas: Peca[]) => void;
 }) {
   const { modo } = useModo();
-  const ordem = modo.ordemDasSugestoes as CategoriaDeDecisao[];
+  // A ordem canônica cobre objetivo, contexto, barreiras, estratégias,
+  // treinamento, conteúdos, acompanhamento e plano alternativo. O modo em uso
+  // só define quais decisões de contexto vêm primeiro.
+  const ordem = useMemo<CategoriaDeDecisao[]>(() => {
+    const prioridade = modo.ordemDasSugestoes as CategoriaDeDecisao[];
+    return [...ordemCanonicaDeDecisao].sort((a, b) => {
+      const ia = prioridade.indexOf(a);
+      const ib = prioridade.indexOf(b);
+      if (ia === -1 || ib === -1) return 0;
+      return ia - ib;
+    });
+  }, [modo.ordemDasSugestoes]);
   const [etapa, setEtapa] = useState(0);
   const [aceitas, setAceitas] = useState<Peca[]>([]);
   const [descartadas, setDescartadas] = useState<string[]>([]);
@@ -38,6 +50,7 @@ export function JourneyMatchComposer({
     () => (categoria ? opcoesDaDecisao(categoria, descartadas) : []),
     [categoria, descartadas],
   );
+
 
   const avancar = () =>
     setEtapa((e) => {
@@ -53,9 +66,19 @@ export function JourneyMatchComposer({
       <header>
         <p className="viva-legenda text-[var(--profile-muted)]">Seu percurso está se formando</p>
         <h2 className="viva-titulo text-[var(--profile-text)]">{intencao}</h2>
+        {!pronto ? (
+          <p className="mt-1 viva-legenda text-[var(--profile-muted)]">
+            Escolha {Math.min(etapa + 1, ordem.length)} de {ordem.length} ·{" "}
+            {rotulosDaDecisao[categoria].titulo}
+          </p>
+        ) : null}
       </header>
 
-      <TrilhaDoPercurso pecas={aceitas} totalDeEtapas={ordem.length} etapaAtual={etapa} />
+      <div className="space-y-2">
+        <h3 className="viva-subtitulo text-[var(--profile-text)]">Meu percurso</h3>
+        <TrilhaDoPercurso pecas={aceitas} totalDeEtapas={ordem.length} etapaAtual={etapa} />
+      </div>
+
 
       {pronto ? (
         <div className="space-y-3">
@@ -91,7 +114,14 @@ export function JourneyMatchComposer({
               conteudo: (
                 <VisualJourneyCard peca={peca} etiqueta={rotulosDaDecisao[categoria].titulo} />
               ),
+              detalhes: (
+                <div className="space-y-1">
+                  <p>{peca.porque}</p>
+                  {peca.numeros ? <p className="text-[var(--profile-muted)]">{peca.numeros}</p> : null}
+                </div>
+              ),
             }))}
+
             onAceitar={(id) => {
               const peca = opcoes.find((p) => p.id === id);
               if (peca) setAceitas((atuais) => [...atuais, peca]);

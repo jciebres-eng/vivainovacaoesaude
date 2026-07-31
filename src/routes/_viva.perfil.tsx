@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { BookOpen, FileText, Shield, SlidersHorizontal } from "lucide-react";
 
-import { SeletorDePerfil, SuperficieDeCartao } from "@/components/viva/mobile";
+import { CartaoDoPerfil, PreferenciasDoPerfil, SuperficieDeCartao } from "@/components/viva/mobile";
 import { SeletorDeModo } from "@/components/viva/visual";
 import { usePerfil } from "@/lib/viva-perfis";
 
@@ -12,12 +12,12 @@ export const Route = createFileRoute("/_viva/perfil")({
       {
         name: "description",
         content:
-          "Escolha o perfil de demonstração, ajuste sua experiência e veja como seus dados ficam apenas neste dispositivo.",
+          "Veja o perfil de demonstração, ajuste suas preferências e veja como seus dados ficam apenas neste dispositivo.",
       },
       { property: "og:title", content: "Perfil — VIVA" },
       {
         property: "og:description",
-        content: "Perfis de demonstração, preferências de experiência e cuidado com seus dados.",
+        content: "Perfil único de demonstração, preferências de experiência e cuidado com seus dados.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -61,12 +61,15 @@ function PerfilPagina() {
       <header>
         <h1 className="viva-titulo-pagina text-text-primary">Perfil</h1>
         <p className="mt-2 viva-texto text-text-secondary">
-          Você está usando o perfil de demonstração de {perfil.nome}. Trocar de perfil reorganiza a
-          experiência inteira.
+          Você está usando o perfil de demonstração de {perfil.nome}. Ele acessa todas as situações e
+          recursos: o que muda a experiência são suas preferências.
         </p>
       </header>
 
-      <SeletorDePerfil titulo="Trocar de perfil" />
+      <CartaoDoPerfil />
+
+      <PreferenciasDoPerfil />
+
 
       <SeletorDeModo />
 

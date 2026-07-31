@@ -9,7 +9,7 @@
  * Toda ação de gesto tem equivalente por botão e por teclado, e todo
  * resultado é anunciado por leitor de tela.
  */
-import { Check, Undo2, X } from "lucide-react";
+import { Check, ChevronUp, Undo2, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -20,9 +20,12 @@ export type ItemDaPilha = {
   /** Nome curto usado nos avisos acessíveis. */
   rotulo: string;
   conteudo: ReactNode;
+  /** Conteúdo revelado ao deslizar para cima ou tocar em "Ver detalhes". */
+  detalhes?: ReactNode;
 };
 
 const LIMITE = 96;
+
 
 export function JourneySwipeDeck({
   itens,
@@ -44,14 +47,22 @@ export function JourneySwipeDeck({
   const { modo, movimentoReduzido } = useModo();
   const [indice, setIndice] = useState(0);
   const [arrasto, setArrasto] = useState(0);
+  const [arrastoVertical, setArrastoVertical] = useState(0);
+  const [detalhesAbertos, setDetalhesAbertos] = useState(false);
   const [saindo, setSaindo] = useState<"aceito" | "descartado" | null>(null);
   const [aviso, setAviso] = useState("");
   const [ultimo, setUltimo] = useState<{ id: string; acao: "aceito" | "descartado" } | null>(null);
   const inicio = useRef<number | null>(null);
+  const inicioY = useRef<number | null>(null);
 
   useEffect(() => {
     setIndice(0);
   }, [itens.length === 0]);
+
+  useEffect(() => {
+    setDetalhesAbertos(false);
+  }, [indice]);
+
 
   const intensidade = movimentoReduzido ? 0 : modo.intensidadeDoMovimento;
   const atual = itens[indice];
@@ -138,28 +149,48 @@ export function JourneySwipeDeck({
               e.preventDefault();
               decidir("descartado");
             }
+            if (e.key === "ArrowUp" && atual.detalhes) {
+              e.preventDefault();
+              setDetalhesAbertos((a) => !a);
+            }
           }}
           onPointerDown={(e) => {
             if (intensidade === 0) return;
             inicio.current = e.clientX;
+            inicioY.current = e.clientY;
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
           }}
           onPointerMove={(e) => {
             if (inicio.current == null) return;
             setArrasto(e.clientX - inicio.current);
+            if (inicioY.current != null) setArrastoVertical(e.clientY - inicioY.current);
           }}
           onPointerUp={() => {
             if (inicio.current == null) return;
             const d = arrasto;
+            const dy = arrastoVertical;
             inicio.current = null;
+            inicioY.current = null;
+            setArrastoVertical(0);
+            if (dy < -LIMITE && Math.abs(dy) > Math.abs(d)) {
+              setArrasto(0);
+              if (atual.detalhes) {
+                setDetalhesAbertos(true);
+                setAviso(`Detalhes de ${atual.rotulo} abertos.`);
+              }
+              return;
+            }
             if (d > LIMITE) decidir("aceito");
             else if (d < -LIMITE) decidir("descartado");
             else setArrasto(0);
           }}
           onPointerCancel={() => {
             inicio.current = null;
+            inicioY.current = null;
             setArrasto(0);
+            setArrastoVertical(0);
           }}
+
           className={cn(
             "relative z-10 touch-pan-y outline-none",
             "focus-visible:ring-2 focus-visible:ring-[var(--profile-primary)] focus-visible:ring-offset-2",
@@ -192,6 +223,31 @@ export function JourneySwipeDeck({
         </div>
       </div>
 
+      {atual.detalhes ? (
+        <div className="mt-3">
+          <button
+            type="button"
+            onClick={() => setDetalhesAbertos((a) => !a)}
+            aria-expanded={detalhesAbertos}
+            className="viva-tap inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--profile-border)] px-4 viva-legenda text-[var(--profile-text)]"
+          >
+            <ChevronUp
+              className={cn("h-4 w-4 transition-transform", detalhesAbertos && "rotate-180")}
+              aria-hidden
+            />
+            {detalhesAbertos ? "Ocultar detalhes" : "Ver detalhes"}
+          </button>
+          {detalhesAbertos ? (
+            <div
+              className="mt-2 border border-[var(--profile-border)] p-3 viva-legenda text-[var(--profile-text)]"
+              style={{ borderRadius: "var(--profile-radius)" }}
+            >
+              {atual.detalhes}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       <div className="mt-4 flex items-center justify-center gap-3">
         <button
           type="button"
@@ -221,8 +277,10 @@ export function JourneySwipeDeck({
       </div>
 
       <p className="mt-2 text-center viva-legenda text-[var(--profile-muted)]">
-        Deslize, use os botões ou as setas do teclado. Nada é definitivo.
+        Deslize para o lado, para cima (detalhes), use os botões ou as setas do teclado. Nada é
+        definitivo.
       </p>
+
       <p aria-live="polite" className="sr-only">
         {aviso}
       </p>

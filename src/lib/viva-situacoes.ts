@@ -56,7 +56,6 @@ export type Situacao = {
   alternativas: ModeloDeAlternativa[];
   /** IDs de conteúdos da biblioteca relacionados a esta situação. */
   conteudos: string[];
-  perfilSugerido?: string;
 };
 
 const estrategiasComuns: Record<string, ModeloDeEstrategia> = {
@@ -145,7 +144,6 @@ export const situacoes: Situacao[] = [
     meioSugerido: "a-pe",
     horarioSugerido: "10:00",
     duracaoAproximada: "40 minutos",
-    perfilSugerido: "carla",
     etapas: [
       { id: "lista", titulo: "Montar uma lista curta", apoio: "Cinco itens bastam para hoje.", minutos: 5 },
       { id: "sair", titulo: "Sair de casa", apoio: "Documento, cartão e sacola.", minutos: 3, referencia: "Portaria" },
@@ -169,7 +167,6 @@ export const situacoes: Situacao[] = [
     meioSugerido: "onibus",
     horarioSugerido: "09:30",
     duracaoAproximada: "50 minutos",
-    perfilSugerido: "daniel",
     etapas: [
       { id: "conferir", titulo: "Conferir a linha e o horário", apoio: "Anotar a linha e o ponto de descida.", minutos: 5 },
       { id: "ponto", titulo: "Ir até o ponto", apoio: "Chegar alguns minutos antes.", minutos: 10, referencia: "Ponto da avenida" },
@@ -214,7 +211,6 @@ export const situacoes: Situacao[] = [
     meioSugerido: "onibus",
     horarioSugerido: "14:00",
     duracaoAproximada: "1 hora e 30 minutos",
-    perfilSugerido: "helena",
     etapas: [
       { id: "documentos", titulo: "Separar documentos e exames", apoio: "Tudo em uma pasta só.", minutos: 10 },
       { id: "duvidas", titulo: "Anotar as dúvidas", apoio: "Três perguntas já ajudam muito.", minutos: 8 },
@@ -259,7 +255,6 @@ export const situacoes: Situacao[] = [
     meioSugerido: "sem-deslocamento",
     horarioSugerido: "15:00",
     duracaoAproximada: "1 hora",
-    perfilSugerido: "ana",
     etapas: [
       { id: "pauta", titulo: "Ler a pauta", apoio: "Saber a ordem reduz surpresas.", minutos: 10 },
       { id: "anotacoes", titulo: "Preparar duas anotações", apoio: "O que você quer dizer e o que quer perguntar.", minutos: 8 },
@@ -305,7 +300,6 @@ export const situacoes: Situacao[] = [
     meioSugerido: "onibus",
     horarioSugerido: "08:00",
     duracaoAproximada: "meio período",
-    perfilSugerido: "bruno",
     etapas: [
       { id: "material", titulo: "Separar o material", apoio: "Só o necessário para hoje.", minutos: 10 },
       { id: "ida", titulo: "Ida ao campus", apoio: "Trajeto conhecido, com plano alternativo.", minutos: 40, referencia: "Portaria do campus" },
