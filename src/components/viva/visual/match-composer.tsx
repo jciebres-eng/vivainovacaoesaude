@@ -15,6 +15,7 @@ import { Cena } from "@/components/viva/visual/visual-base";
 import { useModo } from "@/lib/viva-modos";
 import {
   opcoesDaDecisao,
+  ordemCanonicaDeDecisao,
   rotulosDaDecisao,
   type CategoriaDeDecisao,
   type Peca,
@@ -28,7 +29,18 @@ export function JourneyMatchComposer({
   onConcluir?: (pecas: Peca[]) => void;
 }) {
   const { modo } = useModo();
-  const ordem = modo.ordemDasSugestoes as CategoriaDeDecisao[];
+  // A ordem canônica cobre objetivo, contexto, barreiras, estratégias,
+  // treinamento, conteúdos, acompanhamento e plano alternativo. O modo em uso
+  // só define quais decisões de contexto vêm primeiro.
+  const ordem = useMemo<CategoriaDeDecisao[]>(() => {
+    const prioridade = modo.ordemDasSugestoes as CategoriaDeDecisao[];
+    return [...ordemCanonicaDeDecisao].sort((a, b) => {
+      const ia = prioridade.indexOf(a);
+      const ib = prioridade.indexOf(b);
+      if (ia === -1 || ib === -1) return 0;
+      return ia - ib;
+    });
+  }, [modo.ordemDasSugestoes]);
   const [etapa, setEtapa] = useState(0);
   const [aceitas, setAceitas] = useState<Peca[]>([]);
   const [descartadas, setDescartadas] = useState<string[]>([]);
@@ -38,6 +50,7 @@ export function JourneyMatchComposer({
     () => (categoria ? opcoesDaDecisao(categoria, descartadas) : []),
     [categoria, descartadas],
   );
+
 
   const avancar = () =>
     setEtapa((e) => {
