@@ -2,10 +2,18 @@ import { useEffect, useMemo, useRef, useState, type ComponentType } from "react"
 import * as LottieModulo from "lottie-react";
 import type { LottieComponentProps, LottieRefCurrentProps } from "lottie-react";
 
-// A biblioteca é publicada em CommonJS: normalizamos o default para que o
-// componente funcione igual no servidor e no navegador.
-const Lottie = ((LottieModulo as unknown as { default?: unknown }).default ??
-  LottieModulo) as ComponentType<LottieComponentProps>;
+// A biblioteca é publicada em CommonJS. Dependendo do ambiente, o componente
+// chega embrulhado em uma ou duas camadas de `default`: desembrulhamos até
+// encontrar a função, para que servidor e navegador se comportem igual.
+function resolverComponente(modulo: unknown): ComponentType<LottieComponentProps> {
+  let atual: unknown = modulo;
+  for (let i = 0; i < 3 && atual && typeof atual !== "function"; i += 1) {
+    atual = (atual as { default?: unknown }).default;
+  }
+  return atual as ComponentType<LottieComponentProps>;
+}
+
+const Lottie = resolverComponente(LottieModulo);
 
 import { cn } from "@/lib/utils";
 import {
