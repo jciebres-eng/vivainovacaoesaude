@@ -59,12 +59,12 @@ export function JourneyMatchComposer({
   return (
     <div className="space-y-5">
       <header className="space-y-1">
-        <p className="viva-legenda text-[var(--profile-muted)]">
+        <p className="viva-legenda text-text-secondary">
           {concluido
             ? "Percurso montado"
             : `Escolha ${motor.rodada + 1} de ${motor.totalDeRodadas} · ${rotulosDeMatch[categoria].titulo}`}
         </p>
-        <h1 className="viva-titulo text-[var(--profile-text)]">{jornada?.titulo}</h1>
+        <h1 className="viva-titulo text-text-primary">{jornada?.titulo}</h1>
       </header>
 
       <TimelineDoPercurso jornada={jornada} modo="compacto" />
