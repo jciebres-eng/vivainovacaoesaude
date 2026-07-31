@@ -83,6 +83,7 @@ function PaginaDoPercurso() {
 
   return (
     <div className="space-y-6">
+      <PainelDoAgente frase={fasesDoPercurso.find((f) => f.id === fase)?.convite} />
       <header>
         <p className="viva-legenda text-text-secondary">Percurso</p>
         <h1 className="mt-1 viva-titulo-pagina text-text-primary">{percurso.titulo}</h1>
