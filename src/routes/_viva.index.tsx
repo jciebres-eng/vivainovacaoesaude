@@ -2,12 +2,14 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { CampoDoAgente, PainelDoAgente } from "@/components/viva/agente";
+import { CampoDoAgente } from "@/components/viva/agente";
 import { SeloDemonstrativo } from "@/components/viva/selo-demonstrativo";
-import { AberturaImersiva, JourneyMatchComposer } from "@/components/viva/visual";
+import { JourneyMatchComposer } from "@/components/viva/visual";
 import { useAgente } from "@/lib/viva-agente";
+import { conteudosDaBiblioteca } from "@/lib/viva-biblioteca-dados";
 import { usePerfil } from "@/lib/viva-perfis";
 import { rotulosDeEstado, usePercursos } from "@/lib/viva-percursos";
+
 
 export const Route = createFileRoute("/_viva/")({
   head: () => ({
