@@ -137,7 +137,39 @@ function Inicio() {
         <p className="mt-3 viva-texto text-text-secondary">{perfil.perguntaDeAbertura}</p>
       </header>
 
+      {trajetoAtivo.contexto && !trajetoAtivo.concluido ? (
+        <SuperficieDeCartao destacado>
+          <h2 className="viva-titulo-secao text-text-primary">Percurso em andamento</h2>
+          <p className="mt-2 viva-apoio text-text-secondary">
+            {trajetoAtivo.titulo}
+            {trajetoAtivo.emPausa ? " · em pausa" : ""}
+          </p>
+          <Link
+            to="/realizar"
+            className="viva-tap mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-destaque px-6 viva-texto-botao font-semibold text-action-primary-foreground"
+          >
+            <Play className="h-5 w-5" aria-hidden />
+            Voltar ao percurso
+          </Link>
+        </SuperficieDeCartao>
+      ) : null}
+
+      <SuperficieDeCartao>
+        <h2 className="viva-titulo-secao text-text-primary">Dizer o que preciso</h2>
+        <p className="mt-2 viva-apoio text-text-secondary">
+          Fale, escreva ou escolha com toques. Nada é gravado e tudo fica neste aparelho.
+        </p>
+        <Link
+          to="/falar"
+          className="viva-tap mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-border-default px-6 viva-texto-botao font-semibold text-text-primary"
+        >
+          <Mic className="h-5 w-5" aria-hidden />
+          Falar o que preciso
+        </Link>
+      </SuperficieDeCartao>
+
       {perfil.ordemDaHome.map((bloco) => blocos[bloco])}
+
 
       <SeletorDePerfil />
 
