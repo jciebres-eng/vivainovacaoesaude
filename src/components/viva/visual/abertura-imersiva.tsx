@@ -1,3 +1,5 @@
+import { useModo } from "@/lib/viva-modos";
+
 /**
  * ProfileMorphTransition — véu discreto durante a troca de modo.
  * A interface se desfaz e se recompõe: a pessoa percebe que tudo mudou de
