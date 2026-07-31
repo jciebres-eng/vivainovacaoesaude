@@ -11,12 +11,35 @@
 import type { CenaVisual } from "@/components/viva/visual/visual-base";
 
 export type CategoriaDeDecisao =
+  | "objetivo"
   | "local"
   | "forma"
   | "rota"
+  | "barreira"
   | "estrategia"
+  | "treinamento"
   | "conteudo"
+  | "acompanhamento"
   | "alternativa";
+
+/**
+ * Ordem canônica da montagem: objetivo, contexto, barreiras, estratégias,
+ * treinamento, conteúdos, acompanhamento e plano alternativo. Cada etapa é
+ * uma pergunta por vez e pode ser pulada.
+ */
+export const ordemCanonicaDeDecisao: CategoriaDeDecisao[] = [
+  "objetivo",
+  "local",
+  "forma",
+  "rota",
+  "barreira",
+  "estrategia",
+  "treinamento",
+  "conteudo",
+  "acompanhamento",
+  "alternativa",
+];
+
 
 export type MidiaDaEtapa =
   | { tipo: "video"; titulo: string; duracao: string; legenda: string; transcricao: string }
