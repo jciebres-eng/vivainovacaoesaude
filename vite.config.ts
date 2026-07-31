@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // lottie-react e lottie-web são publicados em CommonJS: sem o pré-bundle
+    // explícito, o import interop devolve um objeto no lugar do componente.
+    optimizeDeps: { include: ["lottie-react", "lottie-web"] },
+  },
 });
