@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { VivaProvider } from "../lib/viva-store";
 import { ExperienciaProvider } from "../lib/viva-experiencia";
+import { PerfilProvider } from "@/lib/viva-perfis";
 
 function NotFoundComponent() {
   return (
@@ -151,8 +152,10 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <VivaProvider>
         <ExperienciaProvider>
+          <PerfilProvider>
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
+          </PerfilProvider>
         </ExperienciaProvider>
       </VivaProvider>
     </QueryClientProvider>
