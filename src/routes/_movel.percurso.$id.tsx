@@ -41,11 +41,25 @@ export const Route = createFileRoute("/_movel/percurso/$id")({
   component: PaginaDoPercurso,
 });
 
+const estadoPorFase: Record<FaseDoPercurso, EstadoDoAgente> = {
+  preparar: "mostrando-percurso",
+  aprender: "mostrando-estrategia",
+  ensaiar: "aguardando-decisao",
+  realizar: "acompanhando",
+  registrar: "concluido",
+};
+
 function PaginaDoPercurso() {
   const { id } = Route.useParams();
   const { fase } = Route.useSearch();
   const navigate = useNavigate();
   const percurso = usePercurso(id);
+  const agente = useAgente();
+
+  useEffect(() => {
+    agente.irPara(estadoPorFase[fase]);
+  }, [fase, agente]);
+
 
   if (!percurso) {
     return (
