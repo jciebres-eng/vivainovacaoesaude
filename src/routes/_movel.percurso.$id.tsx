@@ -1,6 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Pause, Play, ShieldCheck, Star, StarOff } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { PainelDoAgente } from "@/components/viva/agente";
+import { useAgente, type EstadoDoAgente } from "@/lib/viva-agente";
 
 import { AreaDeTexto, Botao, Card, Nota } from "@/components/ds";
 import { EditorDePercurso } from "@/components/viva/percurso/editor";
@@ -41,11 +44,24 @@ export const Route = createFileRoute("/_movel/percurso/$id")({
   component: PaginaDoPercurso,
 });
 
+const estadoPorFase: Record<FaseDoPercurso, EstadoDoAgente> = {
+  preparar: "mostrando-percurso",
+  aprender: "mostrando-estrategia",
+  ensaiar: "aguardando-decisao",
+  realizar: "acompanhando",
+  registrar: "concluido",
+};
+
 function PaginaDoPercurso() {
   const { id } = Route.useParams();
   const { fase } = Route.useSearch();
   const navigate = useNavigate();
   const percurso = usePercurso(id);
+  const agente = useAgente();
+
+  useEffect(() => {
+    agente.irPara(estadoPorFase[fase as FaseDoPercurso]);
+  }, [fase, agente]);
 
   if (!percurso) {
     return (
@@ -66,6 +82,7 @@ function PaginaDoPercurso() {
 
   return (
     <div className="space-y-6">
+      <PainelDoAgente frase={fasesDoPercurso.find((f) => f.id === fase)?.convite} />
       <header>
         <p className="viva-legenda text-text-secondary">Percurso</p>
         <h1 className="mt-1 viva-titulo-pagina text-text-primary">{percurso.titulo}</h1>
@@ -83,7 +100,12 @@ function PaginaDoPercurso() {
             tamanho="compacto"
             onClick={() => {
               const copia = percursos.duplicar(percurso.id);
-              if (copia) navigate({ to: "/percurso/$id", params: { id: copia.id }, search: { fase: "preparar" } });
+              if (copia)
+                navigate({
+                  to: "/percurso/$id",
+                  params: { id: copia.id },
+                  search: { fase: "preparar" },
+                });
             }}
           >
             Criar uma nova versão
@@ -214,7 +236,11 @@ function Realizacao({ percursoId }: { percursoId: string }) {
           <Botao
             variante="principal"
             onClick={() =>
-              navigate({ to: "/percurso/$id", params: { id: percursoId }, search: { fase: "registrar" } })
+              navigate({
+                to: "/percurso/$id",
+                params: { id: percursoId },
+                search: { fase: "registrar" },
+              })
             }
           >
             Registrar como foi
@@ -255,7 +281,11 @@ function Realizacao({ percursoId }: { percursoId: string }) {
             </Botao>
           ) : null}
           {percurso.etapaAtual > 0 ? (
-            <Botao variante="terciario" tamanho="compacto" onClick={() => percursos.voltar(percursoId)}>
+            <Botao
+              variante="terciario"
+              tamanho="compacto"
+              onClick={() => percursos.voltar(percursoId)}
+            >
               Voltar uma etapa
             </Botao>
           ) : null}

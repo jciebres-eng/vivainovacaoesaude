@@ -1,10 +1,11 @@
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { BookOpen, History, Play, Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { Botao, Card } from "@/components/ds";
-import { CampoDoAgente, LeituraDoAgente } from "@/components/viva/agente";
-import { SeletorDePerfil } from "@/components/viva/mobile";
+import { CampoDoAgente, LeituraDoAgente, PainelDoAgente } from "@/components/viva/agente";
 import { usePerfil } from "@/lib/viva-perfis";
+import { useAgente } from "@/lib/viva-agente";
 import {
   memoriaDoCopiloto,
   percursos,
@@ -13,7 +14,6 @@ import {
   usePercursos,
 } from "@/lib/viva-percursos";
 import { sugerirSituacoes, type Situacao } from "@/lib/viva-situacoes";
-import { useState } from "react";
 
 export const Route = createFileRoute("/_movel/")({
   head: () => ({
@@ -39,22 +39,35 @@ export const Route = createFileRoute("/_movel/")({
 function Inicio() {
   const { perfil } = usePerfil();
   const navigate = useNavigate();
+  const agente = useAgente();
   const { emAndamento, lista, favoritos } = usePercursos();
   const [intencao, setIntencao] = useState<string | null>(null);
   const memoria = memoriaDoCopiloto();
 
+  useEffect(() => {
+    if (emAndamento.length > 0) agente.irPara("acompanhando");
+    else if (!intencao) agente.irPara("disponivel");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [emAndamento.length, intencao]);
+
   function abrir(situacao: Situacao) {
+    agente.irPara("organizando");
     const novo = percursos.criar(situacao, intencao ?? "");
     navigate({ to: "/percurso/$id", params: { id: novo.id }, search: { fase: "preparar" } });
   }
 
+  const frase = intencao
+    ? "Vamos organizar esse percurso."
+    : emAndamento.length > 0
+      ? "Seu percurso continua aberto, no ponto onde você parou."
+      : perfil.perguntaDeAbertura;
+
   return (
-    <div className="space-y-8">
-      <header>
-        <p className="viva-legenda text-text-secondary">{perfil.contexto}</p>
-        <h1 className="mt-1 viva-titulo-pagina text-text-primary">{perfil.saudacao}</h1>
-        <p className="mt-3 viva-texto text-text-secondary">{perfil.perguntaDeAbertura}</p>
-      </header>
+    <div className="space-y-6">
+      <p className="viva-legenda text-text-secondary">{perfil.contexto}</p>
+      <h1 className="sr-only">VIVA — assistente de percursos</h1>
+
+      <PainelDoAgente frase={frase} />
 
       {emAndamento.length > 0 ? (
         <Card variante="proximo-passo" titulo="Percurso em andamento">
@@ -82,15 +95,23 @@ function Inicio() {
           intencao={intencao}
           sugestoes={sugerirSituacoes(intencao)}
           onEscolher={abrir}
-          onCorrigir={() => setIntencao(null)}
+          onCorrigir={() => {
+            setIntencao(null);
+            agente.irPara("disponivel");
+          }}
         />
       ) : (
         <>
-          <CampoDoAgente onEnviar={setIntencao} />
+          <CampoDoAgente
+            onEnviar={(texto) => {
+              setIntencao(texto);
+              agente.irPara("mostrando-percurso");
+            }}
+          />
 
           <section aria-labelledby="situacoes-titulo">
             <h2 id="situacoes-titulo" className="viva-titulo-secao text-text-primary">
-              Situações comuns
+              Se preferir, comece por aqui
             </h2>
             <p className="mt-1 viva-legenda text-text-secondary">
               Tocar em uma delas leva ao mesmo lugar que falar ou escrever.
@@ -115,34 +136,58 @@ function Inicio() {
         </>
       )}
 
-      {memoria.estrategiasFrequentes.length > 0 ? (
-        <Card variante="informativo" titulo="O que você costuma escolher">
+      {memoria.situacoesFrequentes.length > 0 ? (
+        <Card variante="informativo" titulo="Encontrei um percurso parecido com este">
           <p className="viva-apoio text-text-secondary">
-            Isto vem só dos seus próprios percursos neste aparelho. Nada é deduzido sobre você.
+            {agente.memoriaAutorizada
+              ? "Isto vem só dos seus próprios percursos neste aparelho. Nada é deduzido sobre você."
+              : "Posso usar seus percursos anteriores para sugerir atalhos? Só com a sua autorização."}
           </p>
-          <ul className="mt-3 space-y-1 viva-legenda text-text-secondary">
-            {memoria.estrategiasFrequentes.slice(0, 3).map((e) => (
-              <li key={e.titulo} className="text-text-primary">
-                {e.titulo}
-              </li>
-            ))}
-          </ul>
+          {agente.memoriaAutorizada ? (
+            <ul className="mt-3 space-y-1 viva-legenda text-text-primary">
+              {memoria.situacoesFrequentes.slice(0, 3).map((s) => (
+                <li key={s.situacao.id}>{s.situacao.titulo}</li>
+              ))}
+            </ul>
+          ) : null}
+          <div className="mt-4">
+            <Botao
+              variante="secundario"
+              tamanho="compacto"
+              onClick={() => agente.autorizarMemoria(!agente.memoriaAutorizada)}
+            >
+              {agente.memoriaAutorizada ? "Parar de usar minha memória" : "Autorizar memória"}
+            </Botao>
+          </div>
         </Card>
       ) : null}
 
       <div className="flex flex-wrap gap-3">
-        <Botao variante="secundario" tamanho="compacto" icone={History} onClick={() => navigate({ to: "/meu-percurso" })}>
+        <Botao
+          variante="secundario"
+          tamanho="compacto"
+          icone={History}
+          onClick={() => navigate({ to: "/meu-percurso" })}
+        >
           Meus percursos ({lista.length})
         </Botao>
-        <Botao variante="secundario" tamanho="compacto" icone={Star} onClick={() => navigate({ to: "/favoritos" })}>
+        <Botao
+          variante="secundario"
+          tamanho="compacto"
+          icone={Star}
+          onClick={() => navigate({ to: "/favoritos" })}
+        >
           Favoritos ({favoritos.length})
         </Botao>
-        <Botao variante="secundario" tamanho="compacto" icone={BookOpen} onClick={() => navigate({ to: "/biblioteca" })}>
+        <Botao
+          variante="secundario"
+          tamanho="compacto"
+          icone={BookOpen}
+          onClick={() => navigate({ to: "/biblioteca" })}
+        >
           Biblioteca
         </Botao>
       </div>
-
-      <SeletorDePerfil />
 
       <p className="viva-legenda text-text-secondary">
         Demonstração com dados fictícios. Tudo fica apenas neste dispositivo e o VIVA não substitui

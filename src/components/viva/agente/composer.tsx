@@ -1,36 +1,70 @@
-import { Mic, MicOff, Paperclip, Send, Square } from "lucide-react";
-import { useState, type ChangeEvent } from "react";
+import { MapPin, Mic, MicOff, Paperclip, Send, Square } from "lucide-react";
+import { useRef, useState, type ChangeEvent } from "react";
 
 import { Botao, Nota } from "@/components/ds";
+import { useAgente } from "@/lib/viva-agente";
 import { useEscutaDeVoz } from "@/lib/viva-voz";
 import { exemplosDeIntencao } from "@/lib/viva-situacoes";
+import { OndasDaFala } from "./avatar";
 
 /**
  * AgentComposer — um único lugar para dizer o que se precisa.
  *
- * Falar, escrever ou tocar em um exemplo levam exatamente ao mesmo lugar.
- * O microfone só liga por ação da pessoa, nada é gravado e nada sai deste
- * aparelho (documentos 03, 04 e 15).
+ * Falar, escrever, anexar, usar a localização ou tocar em um exemplo levam
+ * exatamente ao mesmo lugar. O microfone e a localização só ligam por ação da
+ * pessoa, nada é gravado e nada sai deste aparelho (documentos 03, 04, 15, 19).
  */
+type Anexo = { id: string; nome: string; tipo: string };
+
 export function CampoDoAgente({
   onEnviar,
-  rotulo = "O que você precisa agora?",
-  apoio = "Fale, escreva ou toque em um exemplo. Nada é gravado e tudo fica neste aparelho.",
+  rotulo = "Como posso ajudar hoje?",
+  apoio = "Fale, escreva, anexe ou toque em um exemplo. Uma frase basta.",
 }: {
   onEnviar: (texto: string) => void;
   rotulo?: string;
   apoio?: string;
 }) {
   const voz = useEscutaDeVoz();
+  const agente = useAgente();
   const [texto, setTexto] = useState("");
-  const [anexos, setAnexos] = useState<string[]>([]);
+  const [anexos, setAnexos] = useState<Anexo[]>([]);
+  const [local, setLocal] = useState<string | null>(null);
+  const [avisoDeLocal, setAvisoDeLocal] = useState<string | null>(null);
+  const arquivoRef = useRef<HTMLInputElement>(null);
   const valor = voz.transcricao || texto;
   const pronto = valor.trim().length >= 3;
+  const ouvindo = voz.estado === "ouvindo";
+
+  function escrever(novo: string) {
+    voz.escrever(novo);
+    setTexto(novo);
+  }
+
+  function pedirLocalizacao() {
+    setAvisoDeLocal(null);
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      setAvisoDeLocal("Este aparelho não oferece localização. Você pode escrever o endereço.");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (p) => {
+        setLocal(
+          `Ponto atual aproximado (${p.coords.latitude.toFixed(2)}, ${p.coords.longitude.toFixed(2)})`,
+        );
+      },
+      () =>
+        setAvisoDeLocal(
+          "A localização não foi liberada. Você pode escrever o endereço ou o ponto de referência.",
+        ),
+      { enableHighAccuracy: false, timeout: 8000 },
+    );
+  }
 
   return (
     <section
       aria-label="Conversar com o VIVA"
-      className="rounded-3xl border border-border-default bg-surface-default p-5 shadow-sm"
+      className="rounded-3xl border border-border-default bg-surface-default p-5 shadow-suave"
     >
       <h2 className="viva-titulo-secao text-text-primary">{rotulo}</h2>
       <p className="mt-2 viva-apoio text-text-secondary">{apoio}</p>
@@ -42,17 +76,29 @@ export function CampoDoAgente({
         id="campo-agente"
         rows={3}
         value={valor}
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-          voz.escrever(e.target.value);
-          setTexto(e.target.value);
-        }}
-        placeholder="Uma frase basta."
+        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => escrever(e.target.value)}
+        onFocus={() => agente.irPara("aguardando-decisao")}
+        placeholder="Por exemplo: quero ir ao mercado."
         className="mt-4 w-full rounded-2xl border border-input bg-surface-muted px-4 py-3 viva-texto text-text-primary placeholder:text-text-secondary"
       />
 
+      {voz.transcricao && !ouvindo ? (
+        <p className="mt-2 viva-legenda text-text-secondary">
+          Isto foi o que ouvi. Você pode corrigir o texto antes de continuar.
+        </p>
+      ) : null}
+
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        {voz.estado === "ouvindo" ? (
-          <Botao variante="secundario" tamanho="compacto" icone={Square} onClick={voz.parar}>
+        {ouvindo ? (
+          <Botao
+            variante="secundario"
+            tamanho="compacto"
+            icone={Square}
+            onClick={() => {
+              voz.parar();
+              agente.irPara("interpretando");
+            }}
+          >
             Parar de ouvir
           </Botao>
         ) : (
@@ -60,7 +106,10 @@ export function CampoDoAgente({
             variante="secundario"
             tamanho="compacto"
             icone={voz.suportado ? Mic : MicOff}
-            onClick={voz.ouvir}
+            onClick={() => {
+              voz.ouvir();
+              agente.irPara("ouvindo");
+            }}
             disabled={!voz.suportado}
           >
             Falar
@@ -71,11 +120,29 @@ export function CampoDoAgente({
           variante="secundario"
           tamanho="compacto"
           icone={Paperclip}
-          onClick={() =>
-            setAnexos((a) => [...a, `Anotação ${a.length + 1} (demonstrativa, fica neste aparelho)`])
-          }
+          onClick={() => arquivoRef.current?.click()}
         >
           Anexar
+        </Botao>
+        <input
+          ref={arquivoRef}
+          type="file"
+          className="sr-only"
+          aria-label="Anexar arquivo (fica apenas neste aparelho)"
+          accept="image/*,application/pdf,audio/*,.txt,.ics"
+          onChange={(e) => {
+            const arquivo = e.target.files?.[0];
+            if (!arquivo) return;
+            setAnexos((a) => [
+              ...a,
+              { id: `${Date.now()}`, nome: arquivo.name, tipo: arquivo.type || "arquivo" },
+            ]);
+            e.target.value = "";
+          }}
+        />
+
+        <Botao variante="secundario" tamanho="compacto" icone={MapPin} onClick={pedirLocalizacao}>
+          Usar localização
         </Botao>
 
         <Botao
@@ -85,6 +152,7 @@ export function CampoDoAgente({
           iconePosicao="fim"
           disabled={!pronto}
           onClick={() => {
+            agente.irPara("interpretando");
             onEnviar(valor.trim());
             setTexto("");
             voz.cancelar();
@@ -94,11 +162,7 @@ export function CampoDoAgente({
         </Botao>
       </div>
 
-      {voz.estado === "ouvindo" ? (
-        <p role="status" className="mt-3 viva-apoio text-destaque-texto">
-          Estou ouvindo. Fale no seu ritmo — pode pausar quando quiser.
-        </p>
-      ) : null}
+      <OndasDaFala ativo={ouvindo} />
 
       {!voz.suportado ? (
         <Nota>
@@ -112,10 +176,30 @@ export function CampoDoAgente({
         </p>
       ) : null}
 
+      {local ? (
+        <p className="mt-3 viva-legenda text-text-secondary">
+          Ponto de partida: {local}. Ele não é enviado para lugar nenhum.
+        </p>
+      ) : null}
+      {avisoDeLocal ? (
+        <p role="status" className="mt-3 viva-legenda text-text-secondary">
+          {avisoDeLocal}
+        </p>
+      ) : null}
+
       {anexos.length > 0 ? (
-        <ul className="mt-3 space-y-1 viva-legenda text-text-secondary">
+        <ul className="mt-3 space-y-1 viva-legenda text-text-secondary" aria-label="Anexos">
           {anexos.map((a) => (
-            <li key={a}>{a}</li>
+            <li key={a.id}>
+              {a.nome} — fica apenas neste aparelho.{" "}
+              <button
+                type="button"
+                onClick={() => setAnexos((lista) => lista.filter((x) => x.id !== a.id))}
+                className="underline underline-offset-4"
+              >
+                Remover
+              </button>
+            </li>
           ))}
         </ul>
       ) : null}
@@ -127,10 +211,7 @@ export function CampoDoAgente({
             <li key={exemplo}>
               <button
                 type="button"
-                onClick={() => {
-                  voz.escrever(exemplo);
-                  setTexto(exemplo);
-                }}
+                onClick={() => escrever(exemplo)}
                 className="viva-tap min-h-11 rounded-full border border-border-default px-4 viva-legenda text-text-primary"
               >
                 {exemplo}
