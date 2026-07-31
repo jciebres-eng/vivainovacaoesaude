@@ -62,7 +62,14 @@ export const groups: DocGroup[] = [
     description:
       "Arquitetura conceitual, funcional, ética e comportamental do copiloto de percursos funcionais.",
   },
+  {
+    id: "I",
+    label: "Grupo I — Design System detalhado",
+    description:
+      "Especificações de fundações, botões, formulários, cards visuais, navegação, mapas, assistente, movimento e personalização.",
+  },
 ];
+
 
 export type VivaDoc = {
   slug: string;
