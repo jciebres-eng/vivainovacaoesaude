@@ -60,7 +60,7 @@ function PaginaDoPercurso() {
   const agente = useAgente();
 
   useEffect(() => {
-    agente.irPara(estadoPorFase[fase]);
+    agente.irPara(estadoPorFase[fase as FaseDoPercurso]);
   }, [fase, agente]);
 
 
