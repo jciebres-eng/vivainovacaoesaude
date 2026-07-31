@@ -12,7 +12,8 @@ let espera: Promise<boolean> | null = null;
 
 declare global {
   interface Window {
-    google?: typeof google;
+    /** Objeto do Maps JS API, presente só depois do carregamento. */
+    google?: Record<string, unknown>;
     vivaMapaPronto?: () => void;
   }
 }
