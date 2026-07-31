@@ -153,6 +153,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SessaoProvider>
       <VivaProvider>
         <ExperienciaProvider>
           <ModoProvider>
@@ -166,6 +167,7 @@ function RootComponent() {
           </ModoProvider>
         </ExperienciaProvider>
       </VivaProvider>
+      </SessaoProvider>
     </QueryClientProvider>
   );
 }
