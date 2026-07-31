@@ -153,12 +153,15 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <VivaProvider>
         <ExperienciaProvider>
-          <PerfilProvider>
-            <AgenteProvider>
-              {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-              <Outlet />
-            </AgenteProvider>
-          </PerfilProvider>
+          <ModoProvider>
+            <PerfilProvider>
+              <AgenteProvider>
+                <ProfileMorphTransition />
+                {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+                <Outlet />
+              </AgenteProvider>
+            </PerfilProvider>
+          </ModoProvider>
         </ExperienciaProvider>
       </VivaProvider>
     </QueryClientProvider>
