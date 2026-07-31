@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as JornadaRouteImport } from './routes/jornada'
 import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
@@ -33,11 +32,6 @@ import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_perc
 import { Route as PercursoBibliotecaMinhaRouteImport } from './routes/_percurso.biblioteca.minha'
 import { Route as PercursoBibliotecaReflexoesRouteImport } from './routes/_percurso.biblioteca.reflexoes'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PercursoRoute = PercursoRouteImport.update({
   id: '/_percurso',
   getParentRoute: () => rootRouteImport,
@@ -152,7 +146,7 @@ const PercursoBibliotecaReflexoesRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof PercursoRouteWithChildren
   '/jornada': typeof JornadaRouteWithChildren
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
@@ -176,7 +170,7 @@ export interface FileRoutesByFullPath {
   '/biblioteca/': typeof PercursoBibliotecaIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/': typeof PercursoRouteWithChildren
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
@@ -200,7 +194,6 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/_percurso': typeof PercursoRouteWithChildren
   '/jornada': typeof JornadaRouteWithChildren
   '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
@@ -274,7 +267,6 @@ export interface FileRouteTypes {
     | '/biblioteca'
   id:
     | '__root__'
-    | '/'
     | '/_percurso'
     | '/jornada'
     | '/_percurso/documentacao'
@@ -300,7 +292,6 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   PercursoRoute: typeof PercursoRouteWithChildren
   JornadaRoute: typeof JornadaRouteWithChildren
   DocumentosSlugRoute: typeof DocumentosSlugRoute
@@ -308,13 +299,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_percurso': {
       id: '/_percurso'
       path: ''
@@ -530,7 +514,6 @@ const JornadaRouteWithChildren =
   JornadaRoute._addFileChildren(JornadaRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   PercursoRoute: PercursoRouteWithChildren,
   JornadaRoute: JornadaRouteWithChildren,
   DocumentosSlugRoute: DocumentosSlugRoute,
