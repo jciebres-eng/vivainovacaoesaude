@@ -1,6 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Pause, Play, ShieldCheck, Star, StarOff } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { PainelDoAgente } from "@/components/viva/agente";
+import { useAgente, type EstadoDoAgente } from "@/lib/viva-agente";
 
 import { AreaDeTexto, Botao, Card, Nota } from "@/components/ds";
 import { EditorDePercurso } from "@/components/viva/percurso/editor";
