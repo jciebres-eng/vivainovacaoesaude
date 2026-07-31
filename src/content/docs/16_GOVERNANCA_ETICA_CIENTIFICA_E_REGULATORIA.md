@@ -6,7 +6,7 @@
 
 **Versão 1.0**
 
----
+------------------------------------------------------------------------
 
 **Finalidade**
 
@@ -23,7 +23,7 @@ A governança constitui um compromisso permanente do projeto e deverá
 acompanhar todas as fases de seu desenvolvimento, desde o protótipo até
 futuras versões operacionais.
 
----
+------------------------------------------------------------------------
 
 **Missão da Governança**
 
@@ -45,7 +45,7 @@ Garantir que o VIVA permaneça comprometido com:
 
 - melhoria contínua.
 
----
+------------------------------------------------------------------------
 
 **Princípios Fundamentais**
 
@@ -72,7 +72,7 @@ observar os seguintes princípios:
 
 - prestação de contas.
 
----
+------------------------------------------------------------------------
 
 **Natureza da Plataforma**
 
@@ -97,7 +97,7 @@ Sua finalidade não é:
 Caso a finalidade da plataforma evolua futuramente, sua classificação
 regulatória deverá ser reavaliada conforme a legislação aplicável.
 
----
+------------------------------------------------------------------------
 
 **Conformidade Regulatória**
 
@@ -119,7 +119,7 @@ O desenvolvimento deverá observar, conforme aplicável:
 O acompanhamento da evolução normativa deverá integrar o processo de
 governança.
 
----
+------------------------------------------------------------------------
 
 **Governança Científica**
 
@@ -142,7 +142,7 @@ Na ausência de evidências robustas, a funcionalidade deverá ser
 claramente identificada como experimental e submetida a avaliação
 contínua.
 
----
+------------------------------------------------------------------------
 
 **Validação Científica**
 
@@ -162,7 +162,7 @@ Sempre que pertinente, recomenda-se:
 
 Resultados obtidos deverão ser documentados.
 
----
+------------------------------------------------------------------------
 
 **Gestão de Riscos**
 
@@ -186,7 +186,7 @@ relacionados a:
 Os riscos identificados deverão ser registrados, classificados e
 acompanhados.
 
----
+------------------------------------------------------------------------
 
 **Governança de Conteúdo**
 
@@ -206,7 +206,7 @@ de:
 Conteúdos de natureza técnica deverão indicar sua base de elaboração
 quando apropriado.
 
----
+------------------------------------------------------------------------
 
 **Controle de Versões**
 
@@ -227,7 +227,7 @@ Sempre que possível registrar:
 
 A rastreabilidade favorece transparência, auditoria e melhoria contínua.
 
----
+------------------------------------------------------------------------
 
 **Auditoria**
 
@@ -245,7 +245,7 @@ A auditoria tem por finalidade:
 
 - demonstrar responsabilidade institucional.
 
----
+------------------------------------------------------------------------
 
 **Consentimento**
 
@@ -265,7 +265,7 @@ informações claras sobre:
 O consentimento, quando exigido, deverá ser livre, informado e
 específico.
 
----
+------------------------------------------------------------------------
 
 **Direitos dos Usuários**
 
@@ -280,7 +280,7 @@ legislação aplicável para que os usuários possam:
 
 - acessar informações relevantes sobre a plataforma.
 
----
+------------------------------------------------------------------------
 
 **Segurança da Informação**
 
@@ -303,7 +303,7 @@ proporcionais ao risco, incluindo:
 
 - monitoramento de vulnerabilidades.
 
----
+------------------------------------------------------------------------
 
 **Comitê de Governança**
 
@@ -325,7 +325,7 @@ grupo multidisciplinar responsável por acompanhar aspectos:
 Esse grupo poderá revisar funcionalidades relevantes antes de sua
 disponibilização.
 
----
+------------------------------------------------------------------------
 
 **Revisão Ética Contínua**
 
@@ -347,7 +347,7 @@ Mudanças relevantes deverão considerar seus impactos sobre:
 
 - direitos humanos.
 
----
+------------------------------------------------------------------------
 
 **Pesquisas Acadêmicas**
 
@@ -367,7 +367,7 @@ deverão ser observados:
 Os dados coletados para pesquisa não deverão ser utilizados para
 finalidades incompatíveis com aquelas informadas aos participantes.
 
----
+------------------------------------------------------------------------
 
 **Melhoria Contínua**
 
@@ -385,7 +385,7 @@ Sempre que surgirem:
 
 - recomendações de especialistas.
 
----
+------------------------------------------------------------------------
 
 **Perguntas de Governança**
 
@@ -410,7 +410,7 @@ Antes da implementação de qualquer nova funcionalidade:
 Caso alguma resposta indique risco significativo, a implementação deverá
 ser reavaliada.
 
----
+------------------------------------------------------------------------
 
 **Declaração Final**
 

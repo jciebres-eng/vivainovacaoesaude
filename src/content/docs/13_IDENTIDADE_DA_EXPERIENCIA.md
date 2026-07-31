@@ -6,7 +6,7 @@
 
 **Versão 1.0**
 
----
+------------------------------------------------------------------------
 
 **Finalidade deste documento**
 
@@ -20,7 +20,7 @@ acessível, ética, acolhedora e centrada na pessoa.
 Este documento complementa o **00_FILOSOFIA_DO_VIVA.md** e deverá
 orientar todas as futuras implementações da plataforma.
 
----
+------------------------------------------------------------------------
 
 **A personalidade do VIVA**
 
@@ -48,7 +48,7 @@ O sistema comunica-se de maneira:
 
 - encorajadora sem ser motivacional excessiva.
 
----
+------------------------------------------------------------------------
 
 **O tom de voz**
 
@@ -67,7 +67,7 @@ O VIVA não \"anima\" o usuário.
 
 O VIVA acompanha seu percurso.
 
----
+------------------------------------------------------------------------
 
 **Como o sistema conversa**
 
@@ -83,7 +83,7 @@ O VIVA acompanha seu percurso.
 
 \"Gostaria de registrar como foi essa experiência?\"
 
----
+------------------------------------------------------------------------
 
 **Evitar**
 
@@ -101,7 +101,7 @@ O VIVA acompanha seu percurso.
 
 \"Você precisa fazer isso.\"
 
----
+------------------------------------------------------------------------
 
 **Linguagem**
 
@@ -125,7 +125,7 @@ evitar excesso de instruções simultâneas;
 
 explicar termos técnicos quando necessários.
 
----
+------------------------------------------------------------------------
 
 **Comunicação acessível**
 
@@ -151,7 +151,7 @@ Nenhuma informação essencial poderá depender exclusivamente de:
 
 - imagem.
 
----
+------------------------------------------------------------------------
 
 **Microtextos**
 
@@ -167,7 +167,7 @@ Preferir:
 
 \"Começar\"
 
----
+------------------------------------------------------------------------
 
 Ao invés de:
 
@@ -177,7 +177,7 @@ Preferir:
 
 \"Finalizar\"
 
----
+------------------------------------------------------------------------
 
 Ao invés de:
 
@@ -187,7 +187,7 @@ Preferir:
 
 \"Não foi possível concluir esta ação.\"
 
----
+------------------------------------------------------------------------
 
 Ao invés de:
 
@@ -197,7 +197,7 @@ Preferir:
 
 \"Alterações salvas.\"
 
----
+------------------------------------------------------------------------
 
 Ao invés de:
 
@@ -207,7 +207,7 @@ Preferir:
 
 \"Recomendado\"
 
----
+------------------------------------------------------------------------
 
 **Confirmações**
 
@@ -221,7 +221,7 @@ Exemplos.
 
 \"Você poderá editar esta informação depois.\"
 
----
+------------------------------------------------------------------------
 
 **Mensagens de erro**
 
@@ -239,7 +239,7 @@ Preferir:
 
 \"Verifique sua conexão.\"
 
----
+------------------------------------------------------------------------
 
 **Comportamento da interface**
 
@@ -250,7 +250,7 @@ Cada tela deve responder apenas uma pergunta principal.
 O usuário nunca deve sentir que precisa tomar muitas decisões ao mesmo
 tempo.
 
----
+------------------------------------------------------------------------
 
 **Organização visual**
 
@@ -266,7 +266,7 @@ hierarquia clara.
 
 Evitar telas visualmente carregadas.
 
----
+------------------------------------------------------------------------
 
 **Fluxo de interação**
 
@@ -282,7 +282,7 @@ Evitar múltiplas janelas sobrepostas.
 
 Evitar interrupções constantes.
 
----
+------------------------------------------------------------------------
 
 **Notificações**
 
@@ -304,7 +304,7 @@ Evitar:
 
 \"Não perca.\"
 
----
+------------------------------------------------------------------------
 
 **Feedback**
 
@@ -316,7 +316,7 @@ o que pode ser feito agora.
 
 Nunca utilizar mensagens alarmistas.
 
----
+------------------------------------------------------------------------
 
 **Experiência emocional desejada**
 
@@ -339,7 +339,7 @@ previsibilidade.
 A plataforma não pretende produzir euforia, competição ou sensação de
 urgência.
 
----
+------------------------------------------------------------------------
 
 **Experiência emocional a evitar**
 
@@ -359,7 +359,7 @@ medo de errar;
 
 dependência da plataforma.
 
----
+------------------------------------------------------------------------
 
 **Relação com o tempo**
 
@@ -374,7 +374,7 @@ Existe continuidade.
 Caso uma atividade não seja realizada, ela poderá ser retomada
 posteriormente sem linguagem punitiva.
 
----
+------------------------------------------------------------------------
 
 **Relação com o progresso**
 
@@ -390,7 +390,7 @@ Não utilizar rankings.
 
 Não utilizar comparações entre usuários.
 
----
+------------------------------------------------------------------------
 
 **Personalização**
 
@@ -408,7 +408,7 @@ nível de detalhamento das informações;
 
 preferências de acessibilidade.
 
----
+------------------------------------------------------------------------
 
 **Princípios para futuras funcionalidades**
 
@@ -426,7 +426,7 @@ O usuário continua compreendendo o que está acontecendo?
 
 A funcionalidade respeita a autonomia?
 
----
+------------------------------------------------------------------------
 
 **Diretrizes para Inteligência Artificial**
 
@@ -445,7 +445,7 @@ A IA atua como apoio à organização e à reflexão.
 
 Nunca como responsável por decisões clínicas.
 
----
+------------------------------------------------------------------------
 
 **Declaração Final**
 
