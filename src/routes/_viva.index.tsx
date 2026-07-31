@@ -31,11 +31,11 @@ export const Route = createFileRoute("/_viva/")({
 });
 
 /**
- * Início — não é painel.
+ * Início — acolhimento e continuidade, não painel.
  *
- * A tela abre com o assistente e uma pergunta. Nada de resumos, contadores
- * ou blocos administrativos: a partir da intenção, o percurso se monta em
- * escolhas visuais (documentos 12, 13, 17, 19).
+ * Uma saudação discreta, uma pergunta, um campo de intenção e, no máximo,
+ * uma jornada para retomar. Sem resumos administrativos, sem métricas e sem
+ * CTAs concorrentes (documentos 12, 13, 17 e 19).
  */
 function Inicio() {
   const { perfil } = usePerfil();
@@ -50,18 +50,20 @@ function Inicio() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emAndamento.length, intencao]);
 
-  const frase = intencao
-    ? "Vamos montar isso junto, uma escolha por vez."
-    : emAndamento.length > 0
-      ? "Seu percurso continua aberto, no ponto onde você parou."
-      : perfil.perguntaDeAbertura;
+  const retomar = emAndamento[0];
+  const conteudos = conteudosDaBiblioteca.slice(0, 2);
 
   return (
     <div className="space-y-7">
-      <AberturaImersiva pergunta={perfil.perguntaDeAbertura} />
-      <h1 className="sr-only">VIVA — copiloto de percursos funcionais</h1>
-
-      <PainelDoAgente frase={frase} />
+      <header>
+        <p className="viva-legenda text-text-secondary">Olá, {perfil.nome.split(" ")[0]}.</p>
+        <h1 className="mt-1 viva-titulo-pagina text-text-primary">
+          {intencao ? "Vamos montar isso, uma escolha por vez." : "Como você gostaria de começar?"}
+        </h1>
+        <p className="mt-2 viva-apoio text-text-secondary">
+          Você pode escrever, falar ou escolher uma situação. Pode mudar tudo depois.
+        </p>
+      </header>
 
       {intencao ? (
         <>
@@ -69,52 +71,72 @@ function Inicio() {
           <button
             type="button"
             onClick={() => setIntencao(null)}
-            className="viva-tap min-h-11 viva-legenda text-[var(--profile-primary)] underline"
+            className="viva-tap min-h-11 viva-legenda text-destaque-texto underline underline-offset-4"
           >
             Quero dizer outra coisa
           </button>
         </>
       ) : (
         <>
-          {emAndamento.length > 0 ? (
+          {retomar ? (
+            <Link
+              to="/percurso/$id"
+              params={{ id: retomar.id }}
+              search={{ fase: "realizar" }}
+              className="viva-tap flex min-h-16 items-center gap-3 rounded-3xl border border-border-default bg-surface-default px-4 py-3"
+            >
+              <span
+                aria-hidden
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-destaque text-action-primary-foreground"
+              >
+                <Play className="h-5 w-5" />
+              </span>
+              <span className="min-w-0">
+                <span className="block viva-legenda font-semibold text-text-primary">
+                  Continuar de onde você parou
+                </span>
+                <span className="block truncate viva-legenda text-text-secondary">
+                  {retomar.titulo} · {rotulosDeEstado[retomar.estado]}
+                </span>
+              </span>
+            </Link>
+          ) : null}
+
+          <CampoDoAgente onEnviar={(texto) => setIntencao(texto)} />
+
+          <section aria-labelledby="conteudos-home" className="space-y-3">
+            <h2 id="conteudos-home" className="viva-subtitulo text-text-primary">
+              Conteúdos que podem ajudar
+            </h2>
             <ul className="space-y-2">
-              {emAndamento.map((p) => (
-                <li key={p.id}>
+              {conteudos.map((c) => (
+                <li key={c.id}>
                   <Link
-                    to="/percurso/$id"
-                    params={{ id: p.id }}
-                    search={{ fase: "realizar" }}
-                    className="viva-tap flex min-h-14 items-center gap-3 border border-[var(--profile-border)] bg-[var(--profile-card)] px-4 py-3"
-                    style={{ borderRadius: "var(--profile-radius)" }}
+                    to="/biblioteca/$conteudoId"
+                    params={{ conteudoId: c.id }}
+                    className="viva-tap flex min-h-12 items-center rounded-2xl border border-border-default bg-surface-default px-4 viva-legenda font-medium text-text-primary"
                   >
-                    <span
-                      aria-hidden
-                      className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--profile-primary)] text-[var(--profile-surface)]"
-                    >
-                      <Play className="h-5 w-5" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block truncate viva-legenda font-semibold text-[var(--profile-text)]">
-                        {p.titulo}
-                      </span>
-                      <span className="block viva-legenda text-[var(--profile-muted)]">
-                        {rotulosDeEstado[p.estado]}
-                      </span>
-                    </span>
+                    {c.titulo}
                   </Link>
                 </li>
               ))}
             </ul>
-          ) : null}
+          </section>
 
-          <CampoDoAgente onEnviar={(texto) => setIntencao(texto)} />
+          <Link
+            to="/demonstracao"
+            className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default px-5 viva-legenda font-medium text-text-primary"
+          >
+            Iniciar demonstração guiada
+          </Link>
         </>
       )}
 
       <SeloDemonstrativo
         sempreVisivel
-        texto="Demonstração com dados fictícios. Tudo fica apenas neste dispositivo e o VIVA não substitui acompanhamento profissional."
+        texto="Este é um ambiente demonstrativo, com dados fictícios. Não insira dados pessoais ou clínicos reais. O VIVA não substitui acompanhamento profissional."
       />
     </div>
   );
 }
+
