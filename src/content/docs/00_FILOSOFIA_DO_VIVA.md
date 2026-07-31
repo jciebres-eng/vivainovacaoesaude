@@ -6,7 +6,7 @@
 
 **Versão 1.0**
 
----
+------------------------------------------------------------------------
 
 **Manifesto**
 
@@ -38,7 +38,7 @@ A tecnologia deve servir às pessoas.
 
 Nunca o contrário.
 
----
+------------------------------------------------------------------------
 
 **Nossa Missão**
 
@@ -47,7 +47,7 @@ pessoa, capaz de apoiar o desenvolvimento de habilidades funcionais,
 promover autonomia e favorecer a construção de estratégias
 individualizadas para a vida cotidiana.
 
----
+------------------------------------------------------------------------
 
 **Nossa Visão**
 
@@ -55,7 +55,7 @@ Ser uma referência em tecnologias digitais humanizadas, demonstrando que
 inovação, ciência, acessibilidade e ética podem coexistir na construção
 de soluções voltadas ao desenvolvimento humano.
 
----
+------------------------------------------------------------------------
 
 **Nosso Propósito**
 
@@ -67,7 +67,7 @@ organizar rotinas, enfrentar desafios e desenvolver habilidades.
 
 O papel do VIVA é apoiar esse percurso, nunca substituí-lo.
 
----
+------------------------------------------------------------------------
 
 **Princípios Fundamentais**
 
@@ -80,7 +80,7 @@ A tecnologia é um meio.
 
 Jamais um fim.
 
----
+------------------------------------------------------------------------
 
 **2. A autonomia é o principal resultado esperado**
 
@@ -93,7 +93,7 @@ autonomia dentro de sua própria vida.
 O objetivo final é que a pessoa dependa cada vez menos da plataforma
 para executar suas atividades cotidianas.
 
----
+------------------------------------------------------------------------
 
 **3. Singularidade**
 
@@ -106,7 +106,7 @@ O sistema deve adaptar-se às pessoas.
 
 Nunca exigir que as pessoas se adaptem ao sistema.
 
----
+------------------------------------------------------------------------
 
 **4. Desenvolvimento gradual**
 
@@ -116,7 +116,7 @@ A plataforma deve favorecer experiências progressivas, respeitando
 ritmo, contexto, disponibilidade emocional e condições reais de cada
 usuário.
 
----
+------------------------------------------------------------------------
 
 **5. Acessibilidade como princípio**
 
@@ -127,7 +127,7 @@ Ela faz parte da essência do projeto.
 Toda funcionalidade deve considerar diferentes formas de percepção,
 comunicação, interação e processamento das informações.
 
----
+------------------------------------------------------------------------
 
 **6. Simplicidade**
 
@@ -138,7 +138,7 @@ momento.
 
 Toda complexidade deve permanecer invisível ao usuário.
 
----
+------------------------------------------------------------------------
 
 **7. Segurança psicológica**
 
@@ -147,7 +147,7 @@ O ambiente deve comunicar acolhimento, previsibilidade e respeito.
 A plataforma não utilizará mensagens que induzam culpa, vergonha,
 punição ou comparação entre usuários.
 
----
+------------------------------------------------------------------------
 
 **8. Evidências científicas**
 
@@ -155,7 +155,7 @@ Toda funcionalidade deverá ser construída com base em literatura
 científica, boas práticas em saúde, design centrado no usuário e
 princípios de acessibilidade.
 
----
+------------------------------------------------------------------------
 
 **Compromissos Éticos**
 
@@ -176,7 +176,7 @@ O VIVA compromete-se a:
 
 - favorecer transparência nas recomendações apresentadas.
 
----
+------------------------------------------------------------------------
 
 **Limites da Plataforma**
 
@@ -195,7 +195,7 @@ O VIVA não toma decisões em nome do usuário.
 Sempre que necessário, a plataforma deverá orientar a busca por
 profissionais habilitados ou serviços adequados.
 
----
+------------------------------------------------------------------------
 
 **Inteligência Artificial Responsável**
 
@@ -221,7 +221,7 @@ personalização e acesso às informações.
 
 Jamais para exercer autoridade clínica ou substituir profissionais.
 
----
+------------------------------------------------------------------------
 
 **Princípios da Experiência**
 
@@ -257,7 +257,7 @@ Nunca deve sentir:
 
 - obrigação de permanecer conectado.
 
----
+------------------------------------------------------------------------
 
 **Perguntas que orientam todas as decisões**
 
@@ -283,7 +283,7 @@ responder:
 Se alguma dessas respostas indicar risco significativo, a funcionalidade
 deverá ser revista antes de sua implementação.
 
----
+------------------------------------------------------------------------
 
 **Declaração Final**
 

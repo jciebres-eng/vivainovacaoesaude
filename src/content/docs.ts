@@ -62,7 +62,14 @@ export const groups: DocGroup[] = [
     description:
       "Arquitetura conceitual, funcional, ética e comportamental do copiloto de percursos funcionais.",
   },
+  {
+    id: "I",
+    label: "Grupo I — Design System detalhado",
+    description:
+      "Especificações de fundações, botões, formulários, cards visuais, navegação, mapas, assistente, movimento e personalização.",
+  },
 ];
+
 
 export type VivaDoc = {
   slug: string;
@@ -207,7 +214,71 @@ const meta: Record<string, { title: string; subtitle?: string; group: string; su
     summary:
       "Define identidade, missão, limites de atuação, regras de interação, acessibilidade e governança do assistente digital: um copiloto que transforma intenções em percursos organizados, sem diagnosticar ou prescrever.",
   },
+  "20_FOUNDATIONS_DESIGN_SYSTEM": {
+    title: "Foundations do Design System",
+    subtitle: "Cor, tipografia, espaçamento, raio, sombra e movimento",
+    group: "I",
+    summary:
+      "Fundações visuais do VIVA: tokens de cor, escala tipográfica, ritmo de espaçamento, bordas, elevação e princípios sensoriais que sustentam todos os componentes.",
+  },
+  "21_BUTTONS_AND_ACTIONS": {
+    title: "Botões e Ações",
+    subtitle: "Hierarquia de ações e estados de interação",
+    group: "I",
+    summary:
+      "Define variantes, tamanhos, estados e regras de uso das ações: uma ação principal por tela, alvos de toque amplos e linguagem humana nos rótulos.",
+  },
+  "22_FORMS_AND_SEARCH": {
+    title: "Formulários e Busca",
+    subtitle: "Campos, validação gentil e pesquisa",
+    group: "I",
+    summary:
+      "Regras para campos, rótulos, textos de apoio, mensagens sem culpa e comportamento da busca simples e progressiva.",
+  },
+  "23_VISUAL_CARDS": {
+    title: "Cards Visuais",
+    subtitle: "Cartões com predominância de imagem e gestos",
+    group: "I",
+    summary:
+      "Anatomia dos cards visuais do VIVA: proporção de mídia, texto mínimo, ações por gesto e alternativas acessíveis equivalentes.",
+  },
+  "24_NAVIGATION_AND_JOURNEY": {
+    title: "Navegação e Percurso",
+    subtitle: "Estrutura de navegação e trilha do percurso",
+    group: "I",
+    summary:
+      "Define a navegação móvel de poucas áreas, a ausência de menus profundos e como o percurso é apresentado passo a passo, sempre reversível.",
+  },
+  "25_MAPS_AND_GEOLOCATION": {
+    title: "Mapas e Geolocalização",
+    subtitle: "Endereços, rotas, marcadores e seleção de lugares",
+    group: "I",
+    summary:
+      "Estabelece como o VIVA usa mapas, busca de endereços, localização atual, pontos de referência e rotas para dar contexto espacial compreensível.",
+  },
+  "26_ASSISTANT_DESIGN_SYSTEM": {
+    title: "Design System do Assistente",
+    subtitle: "Forma, presença e comportamento visual do copiloto",
+    group: "I",
+    summary:
+      "Define a identidade visual do assistente digital: forma viva, escalas, presença na tela, tom de resposta e limites de expressividade.",
+  },
+  "27_MOTION_AND_LOTTIE": {
+    title: "Movimento e Lottie",
+    subtitle: "Animações, ritmos e respeito sensorial",
+    group: "I",
+    summary:
+      "Princípios de movimento do VIVA: durações calmas, curvas suaves, uso das animações Lottie do assistente e respeito a redução de movimento.",
+  },
+  "28_PROFILE_AND_PERSONALIZATION": {
+    title: "Perfil e Personalização",
+    subtitle: "Preferências, modos de experiência e controle da pessoa",
+    group: "I",
+    summary:
+      "Sistema de perfil e personalização: modos de experiência, preferências sensoriais, memória autorizada e controle reversível do que muda na interface.",
+  },
 };
+
 
 function cleanMarkdown(raw: string): string {
   return raw
