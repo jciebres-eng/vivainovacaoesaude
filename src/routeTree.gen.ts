@@ -13,6 +13,8 @@ import { Route as MovelRouteImport } from './routes/_movel'
 import { Route as PercursoRouteImport } from './routes/_percurso'
 import { Route as JornadaRouteImport } from './routes/jornada'
 import { Route as MovelIndexRouteImport } from './routes/_movel.index'
+import { Route as MovelCompartilharRouteImport } from './routes/_movel.compartilhar'
+import { Route as MovelFalarRouteImport } from './routes/_movel.falar'
 import { Route as MovelMeuPercursoRouteImport } from './routes/_movel.meu-percurso'
 import { Route as MovelMontarRouteImport } from './routes/_movel.montar'
 import { Route as MovelPerfilRouteImport } from './routes/_movel.perfil'
@@ -53,6 +55,16 @@ const JornadaRoute = JornadaRouteImport.update({
 const MovelIndexRoute = MovelIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => MovelRoute,
+} as any)
+const MovelCompartilharRoute = MovelCompartilharRouteImport.update({
+  id: '/compartilhar',
+  path: '/compartilhar',
+  getParentRoute: () => MovelRoute,
+} as any)
+const MovelFalarRoute = MovelFalarRouteImport.update({
+  id: '/falar',
+  path: '/falar',
   getParentRoute: () => MovelRoute,
 } as any)
 const MovelMeuPercursoRoute = MovelMeuPercursoRouteImport.update({
@@ -177,6 +189,8 @@ const PercursoBibliotecaReflexoesRoute =
 export interface FileRoutesByFullPath {
   '/': typeof MovelIndexRoute
   '/jornada': typeof JornadaRouteWithChildren
+  '/compartilhar': typeof MovelCompartilharRoute
+  '/falar': typeof MovelFalarRoute
   '/meu-percurso': typeof MovelMeuPercursoRoute
   '/montar': typeof MovelMontarRoute
   '/perfil': typeof MovelPerfilRoute
@@ -203,6 +217,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof MovelIndexRoute
+  '/compartilhar': typeof MovelCompartilharRoute
+  '/falar': typeof MovelFalarRoute
   '/meu-percurso': typeof MovelMeuPercursoRoute
   '/montar': typeof MovelMontarRoute
   '/perfil': typeof MovelPerfilRoute
@@ -232,6 +248,8 @@ export interface FileRoutesById {
   '/_movel': typeof MovelRouteWithChildren
   '/_percurso': typeof PercursoRouteWithChildren
   '/jornada': typeof JornadaRouteWithChildren
+  '/_movel/compartilhar': typeof MovelCompartilharRoute
+  '/_movel/falar': typeof MovelFalarRoute
   '/_movel/meu-percurso': typeof MovelMeuPercursoRoute
   '/_movel/montar': typeof MovelMontarRoute
   '/_movel/perfil': typeof MovelPerfilRoute
@@ -262,6 +280,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/jornada'
+    | '/compartilhar'
+    | '/falar'
     | '/meu-percurso'
     | '/montar'
     | '/perfil'
@@ -288,6 +308,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/compartilhar'
+    | '/falar'
     | '/meu-percurso'
     | '/montar'
     | '/perfil'
@@ -316,6 +338,8 @@ export interface FileRouteTypes {
     | '/_movel'
     | '/_percurso'
     | '/jornada'
+    | '/_movel/compartilhar'
+    | '/_movel/falar'
     | '/_movel/meu-percurso'
     | '/_movel/montar'
     | '/_movel/perfil'
@@ -377,6 +401,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof MovelIndexRouteImport
+      parentRoute: typeof MovelRoute
+    }
+    '/_movel/compartilhar': {
+      id: '/_movel/compartilhar'
+      path: '/compartilhar'
+      fullPath: '/compartilhar'
+      preLoaderRoute: typeof MovelCompartilharRouteImport
+      parentRoute: typeof MovelRoute
+    }
+    '/_movel/falar': {
+      id: '/_movel/falar'
+      path: '/falar'
+      fullPath: '/falar'
+      preLoaderRoute: typeof MovelFalarRouteImport
       parentRoute: typeof MovelRoute
     }
     '/_movel/meu-percurso': {
@@ -544,6 +582,8 @@ declare module '@tanstack/react-router' {
 }
 
 interface MovelRouteChildren {
+  MovelCompartilharRoute: typeof MovelCompartilharRoute
+  MovelFalarRoute: typeof MovelFalarRoute
   MovelMeuPercursoRoute: typeof MovelMeuPercursoRoute
   MovelMontarRoute: typeof MovelMontarRoute
   MovelPerfilRoute: typeof MovelPerfilRoute
@@ -551,6 +591,8 @@ interface MovelRouteChildren {
 }
 
 const MovelRouteChildren: MovelRouteChildren = {
+  MovelCompartilharRoute: MovelCompartilharRoute,
+  MovelFalarRoute: MovelFalarRoute,
   MovelMeuPercursoRoute: MovelMeuPercursoRoute,
   MovelMontarRoute: MovelMontarRoute,
   MovelPerfilRoute: MovelPerfilRoute,
