@@ -18,7 +18,9 @@ import { Route as VivaCompartilharRouteImport } from './routes/_viva.compartilha
 import { Route as VivaDemonstracaoRouteImport } from './routes/_viva.demonstracao'
 import { Route as VivaDocumentacaoRouteImport } from './routes/_viva.documentacao'
 import { Route as VivaEvolucaoRouteImport } from './routes/_viva.evolucao'
+import { Route as VivaExplorarRouteImport } from './routes/_viva.explorar'
 import { Route as VivaFavoritosRouteImport } from './routes/_viva.favoritos'
+import { Route as VivaHistoricoRouteImport } from './routes/_viva.historico'
 import { Route as VivaMeuPercursoRouteImport } from './routes/_viva.meu-percurso'
 import { Route as VivaMinhaExperienciaRouteImport } from './routes/_viva.minha-experiencia'
 import { Route as VivaPerfilRouteImport } from './routes/_viva.perfil'
@@ -30,7 +32,13 @@ import { Route as VivaBibliotecaIndexRouteImport } from './routes/_viva.bibliote
 import { Route as VivaBibliotecaConteudoIdRouteImport } from './routes/_viva.biblioteca.$conteudoId'
 import { Route as VivaBibliotecaMinhaRouteImport } from './routes/_viva.biblioteca.minha'
 import { Route as VivaBibliotecaReflexoesRouteImport } from './routes/_viva.biblioteca.reflexoes'
+import { Route as VivaMatchSituationIdRouteImport } from './routes/_viva.match.$situationId'
 import { Route as VivaPercursoIdRouteImport } from './routes/_viva.percurso.$id'
+import { Route as VivaJornadaJourneyIdExecutarRouteImport } from './routes/_viva.jornada.$journeyId.executar'
+import { Route as VivaJornadaJourneyIdFeedbackRouteImport } from './routes/_viva.jornada.$journeyId.feedback'
+import { Route as VivaJornadaJourneyIdPersonalizarRouteImport } from './routes/_viva.jornada.$journeyId.personalizar'
+import { Route as VivaJornadaJourneyIdRevisarRouteImport } from './routes/_viva.jornada.$journeyId.revisar'
+import { Route as VivaJornadaJourneyIdSimularRouteImport } from './routes/_viva.jornada.$journeyId.simular'
 
 const VivaRoute = VivaRouteImport.update({
   id: '/_viva',
@@ -76,9 +84,19 @@ const VivaEvolucaoRoute = VivaEvolucaoRouteImport.update({
   path: '/evolucao',
   getParentRoute: () => VivaRoute,
 } as any)
+const VivaExplorarRoute = VivaExplorarRouteImport.update({
+  id: '/explorar',
+  path: '/explorar',
+  getParentRoute: () => VivaRoute,
+} as any)
 const VivaFavoritosRoute = VivaFavoritosRouteImport.update({
   id: '/favoritos',
   path: '/favoritos',
+  getParentRoute: () => VivaRoute,
+} as any)
+const VivaHistoricoRoute = VivaHistoricoRouteImport.update({
+  id: '/historico',
+  path: '/historico',
   getParentRoute: () => VivaRoute,
 } as any)
 const VivaMeuPercursoRoute = VivaMeuPercursoRouteImport.update({
@@ -137,11 +155,46 @@ const VivaBibliotecaReflexoesRoute = VivaBibliotecaReflexoesRouteImport.update({
   path: '/biblioteca/reflexoes',
   getParentRoute: () => VivaRoute,
 } as any)
+const VivaMatchSituationIdRoute = VivaMatchSituationIdRouteImport.update({
+  id: '/match/$situationId',
+  path: '/match/$situationId',
+  getParentRoute: () => VivaRoute,
+} as any)
 const VivaPercursoIdRoute = VivaPercursoIdRouteImport.update({
   id: '/percurso/$id',
   path: '/percurso/$id',
   getParentRoute: () => VivaRoute,
 } as any)
+const VivaJornadaJourneyIdExecutarRoute =
+  VivaJornadaJourneyIdExecutarRouteImport.update({
+    id: '/jornada/$journeyId/executar',
+    path: '/jornada/$journeyId/executar',
+    getParentRoute: () => VivaRoute,
+  } as any)
+const VivaJornadaJourneyIdFeedbackRoute =
+  VivaJornadaJourneyIdFeedbackRouteImport.update({
+    id: '/jornada/$journeyId/feedback',
+    path: '/jornada/$journeyId/feedback',
+    getParentRoute: () => VivaRoute,
+  } as any)
+const VivaJornadaJourneyIdPersonalizarRoute =
+  VivaJornadaJourneyIdPersonalizarRouteImport.update({
+    id: '/jornada/$journeyId/personalizar',
+    path: '/jornada/$journeyId/personalizar',
+    getParentRoute: () => VivaRoute,
+  } as any)
+const VivaJornadaJourneyIdRevisarRoute =
+  VivaJornadaJourneyIdRevisarRouteImport.update({
+    id: '/jornada/$journeyId/revisar',
+    path: '/jornada/$journeyId/revisar',
+    getParentRoute: () => VivaRoute,
+  } as any)
+const VivaJornadaJourneyIdSimularRoute =
+  VivaJornadaJourneyIdSimularRouteImport.update({
+    id: '/jornada/$journeyId/simular',
+    path: '/jornada/$journeyId/simular',
+    getParentRoute: () => VivaRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof VivaIndexRoute
@@ -152,7 +205,9 @@ export interface FileRoutesByFullPath {
   '/demonstracao': typeof VivaDemonstracaoRoute
   '/documentacao': typeof VivaDocumentacaoRoute
   '/evolucao': typeof VivaEvolucaoRoute
+  '/explorar': typeof VivaExplorarRoute
   '/favoritos': typeof VivaFavoritosRoute
+  '/historico': typeof VivaHistoricoRoute
   '/meu-percurso': typeof VivaMeuPercursoRoute
   '/minha-experiencia': typeof VivaMinhaExperienciaRoute
   '/perfil': typeof VivaPerfilRoute
@@ -163,8 +218,14 @@ export interface FileRoutesByFullPath {
   '/biblioteca/$conteudoId': typeof VivaBibliotecaConteudoIdRoute
   '/biblioteca/minha': typeof VivaBibliotecaMinhaRoute
   '/biblioteca/reflexoes': typeof VivaBibliotecaReflexoesRoute
+  '/match/$situationId': typeof VivaMatchSituationIdRoute
   '/percurso/$id': typeof VivaPercursoIdRoute
   '/biblioteca/': typeof VivaBibliotecaIndexRoute
+  '/jornada/$journeyId/executar': typeof VivaJornadaJourneyIdExecutarRoute
+  '/jornada/$journeyId/feedback': typeof VivaJornadaJourneyIdFeedbackRoute
+  '/jornada/$journeyId/personalizar': typeof VivaJornadaJourneyIdPersonalizarRoute
+  '/jornada/$journeyId/revisar': typeof VivaJornadaJourneyIdRevisarRoute
+  '/jornada/$journeyId/simular': typeof VivaJornadaJourneyIdSimularRoute
 }
 export interface FileRoutesByTo {
   '/configuracoes': typeof ConfiguracoesRoute
@@ -174,7 +235,9 @@ export interface FileRoutesByTo {
   '/demonstracao': typeof VivaDemonstracaoRoute
   '/documentacao': typeof VivaDocumentacaoRoute
   '/evolucao': typeof VivaEvolucaoRoute
+  '/explorar': typeof VivaExplorarRoute
   '/favoritos': typeof VivaFavoritosRoute
+  '/historico': typeof VivaHistoricoRoute
   '/meu-percurso': typeof VivaMeuPercursoRoute
   '/minha-experiencia': typeof VivaMinhaExperienciaRoute
   '/perfil': typeof VivaPerfilRoute
@@ -186,8 +249,14 @@ export interface FileRoutesByTo {
   '/biblioteca/$conteudoId': typeof VivaBibliotecaConteudoIdRoute
   '/biblioteca/minha': typeof VivaBibliotecaMinhaRoute
   '/biblioteca/reflexoes': typeof VivaBibliotecaReflexoesRoute
+  '/match/$situationId': typeof VivaMatchSituationIdRoute
   '/percurso/$id': typeof VivaPercursoIdRoute
   '/biblioteca': typeof VivaBibliotecaIndexRoute
+  '/jornada/$journeyId/executar': typeof VivaJornadaJourneyIdExecutarRoute
+  '/jornada/$journeyId/feedback': typeof VivaJornadaJourneyIdFeedbackRoute
+  '/jornada/$journeyId/personalizar': typeof VivaJornadaJourneyIdPersonalizarRoute
+  '/jornada/$journeyId/revisar': typeof VivaJornadaJourneyIdRevisarRoute
+  '/jornada/$journeyId/simular': typeof VivaJornadaJourneyIdSimularRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -199,7 +268,9 @@ export interface FileRoutesById {
   '/_viva/demonstracao': typeof VivaDemonstracaoRoute
   '/_viva/documentacao': typeof VivaDocumentacaoRoute
   '/_viva/evolucao': typeof VivaEvolucaoRoute
+  '/_viva/explorar': typeof VivaExplorarRoute
   '/_viva/favoritos': typeof VivaFavoritosRoute
+  '/_viva/historico': typeof VivaHistoricoRoute
   '/_viva/meu-percurso': typeof VivaMeuPercursoRoute
   '/_viva/minha-experiencia': typeof VivaMinhaExperienciaRoute
   '/_viva/perfil': typeof VivaPerfilRoute
@@ -211,8 +282,14 @@ export interface FileRoutesById {
   '/_viva/biblioteca/$conteudoId': typeof VivaBibliotecaConteudoIdRoute
   '/_viva/biblioteca/minha': typeof VivaBibliotecaMinhaRoute
   '/_viva/biblioteca/reflexoes': typeof VivaBibliotecaReflexoesRoute
+  '/_viva/match/$situationId': typeof VivaMatchSituationIdRoute
   '/_viva/percurso/$id': typeof VivaPercursoIdRoute
   '/_viva/biblioteca/': typeof VivaBibliotecaIndexRoute
+  '/_viva/jornada/$journeyId/executar': typeof VivaJornadaJourneyIdExecutarRoute
+  '/_viva/jornada/$journeyId/feedback': typeof VivaJornadaJourneyIdFeedbackRoute
+  '/_viva/jornada/$journeyId/personalizar': typeof VivaJornadaJourneyIdPersonalizarRoute
+  '/_viva/jornada/$journeyId/revisar': typeof VivaJornadaJourneyIdRevisarRoute
+  '/_viva/jornada/$journeyId/simular': typeof VivaJornadaJourneyIdSimularRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -225,7 +302,9 @@ export interface FileRouteTypes {
     | '/demonstracao'
     | '/documentacao'
     | '/evolucao'
+    | '/explorar'
     | '/favoritos'
+    | '/historico'
     | '/meu-percurso'
     | '/minha-experiencia'
     | '/perfil'
@@ -236,8 +315,14 @@ export interface FileRouteTypes {
     | '/biblioteca/$conteudoId'
     | '/biblioteca/minha'
     | '/biblioteca/reflexoes'
+    | '/match/$situationId'
     | '/percurso/$id'
     | '/biblioteca/'
+    | '/jornada/$journeyId/executar'
+    | '/jornada/$journeyId/feedback'
+    | '/jornada/$journeyId/personalizar'
+    | '/jornada/$journeyId/revisar'
+    | '/jornada/$journeyId/simular'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/configuracoes'
@@ -247,7 +332,9 @@ export interface FileRouteTypes {
     | '/demonstracao'
     | '/documentacao'
     | '/evolucao'
+    | '/explorar'
     | '/favoritos'
+    | '/historico'
     | '/meu-percurso'
     | '/minha-experiencia'
     | '/perfil'
@@ -259,8 +346,14 @@ export interface FileRouteTypes {
     | '/biblioteca/$conteudoId'
     | '/biblioteca/minha'
     | '/biblioteca/reflexoes'
+    | '/match/$situationId'
     | '/percurso/$id'
     | '/biblioteca'
+    | '/jornada/$journeyId/executar'
+    | '/jornada/$journeyId/feedback'
+    | '/jornada/$journeyId/personalizar'
+    | '/jornada/$journeyId/revisar'
+    | '/jornada/$journeyId/simular'
   id:
     | '__root__'
     | '/_viva'
@@ -271,7 +364,9 @@ export interface FileRouteTypes {
     | '/_viva/demonstracao'
     | '/_viva/documentacao'
     | '/_viva/evolucao'
+    | '/_viva/explorar'
     | '/_viva/favoritos'
+    | '/_viva/historico'
     | '/_viva/meu-percurso'
     | '/_viva/minha-experiencia'
     | '/_viva/perfil'
@@ -283,8 +378,14 @@ export interface FileRouteTypes {
     | '/_viva/biblioteca/$conteudoId'
     | '/_viva/biblioteca/minha'
     | '/_viva/biblioteca/reflexoes'
+    | '/_viva/match/$situationId'
     | '/_viva/percurso/$id'
     | '/_viva/biblioteca/'
+    | '/_viva/jornada/$journeyId/executar'
+    | '/_viva/jornada/$journeyId/feedback'
+    | '/_viva/jornada/$journeyId/personalizar'
+    | '/_viva/jornada/$journeyId/revisar'
+    | '/_viva/jornada/$journeyId/simular'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -361,11 +462,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VivaEvolucaoRouteImport
       parentRoute: typeof VivaRoute
     }
+    '/_viva/explorar': {
+      id: '/_viva/explorar'
+      path: '/explorar'
+      fullPath: '/explorar'
+      preLoaderRoute: typeof VivaExplorarRouteImport
+      parentRoute: typeof VivaRoute
+    }
     '/_viva/favoritos': {
       id: '/_viva/favoritos'
       path: '/favoritos'
       fullPath: '/favoritos'
       preLoaderRoute: typeof VivaFavoritosRouteImport
+      parentRoute: typeof VivaRoute
+    }
+    '/_viva/historico': {
+      id: '/_viva/historico'
+      path: '/historico'
+      fullPath: '/historico'
+      preLoaderRoute: typeof VivaHistoricoRouteImport
       parentRoute: typeof VivaRoute
     }
     '/_viva/meu-percurso': {
@@ -445,11 +560,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VivaBibliotecaReflexoesRouteImport
       parentRoute: typeof VivaRoute
     }
+    '/_viva/match/$situationId': {
+      id: '/_viva/match/$situationId'
+      path: '/match/$situationId'
+      fullPath: '/match/$situationId'
+      preLoaderRoute: typeof VivaMatchSituationIdRouteImport
+      parentRoute: typeof VivaRoute
+    }
     '/_viva/percurso/$id': {
       id: '/_viva/percurso/$id'
       path: '/percurso/$id'
       fullPath: '/percurso/$id'
       preLoaderRoute: typeof VivaPercursoIdRouteImport
+      parentRoute: typeof VivaRoute
+    }
+    '/_viva/jornada/$journeyId/executar': {
+      id: '/_viva/jornada/$journeyId/executar'
+      path: '/jornada/$journeyId/executar'
+      fullPath: '/jornada/$journeyId/executar'
+      preLoaderRoute: typeof VivaJornadaJourneyIdExecutarRouteImport
+      parentRoute: typeof VivaRoute
+    }
+    '/_viva/jornada/$journeyId/feedback': {
+      id: '/_viva/jornada/$journeyId/feedback'
+      path: '/jornada/$journeyId/feedback'
+      fullPath: '/jornada/$journeyId/feedback'
+      preLoaderRoute: typeof VivaJornadaJourneyIdFeedbackRouteImport
+      parentRoute: typeof VivaRoute
+    }
+    '/_viva/jornada/$journeyId/personalizar': {
+      id: '/_viva/jornada/$journeyId/personalizar'
+      path: '/jornada/$journeyId/personalizar'
+      fullPath: '/jornada/$journeyId/personalizar'
+      preLoaderRoute: typeof VivaJornadaJourneyIdPersonalizarRouteImport
+      parentRoute: typeof VivaRoute
+    }
+    '/_viva/jornada/$journeyId/revisar': {
+      id: '/_viva/jornada/$journeyId/revisar'
+      path: '/jornada/$journeyId/revisar'
+      fullPath: '/jornada/$journeyId/revisar'
+      preLoaderRoute: typeof VivaJornadaJourneyIdRevisarRouteImport
+      parentRoute: typeof VivaRoute
+    }
+    '/_viva/jornada/$journeyId/simular': {
+      id: '/_viva/jornada/$journeyId/simular'
+      path: '/jornada/$journeyId/simular'
+      fullPath: '/jornada/$journeyId/simular'
+      preLoaderRoute: typeof VivaJornadaJourneyIdSimularRouteImport
       parentRoute: typeof VivaRoute
     }
   }
@@ -460,7 +617,9 @@ interface VivaRouteChildren {
   VivaDemonstracaoRoute: typeof VivaDemonstracaoRoute
   VivaDocumentacaoRoute: typeof VivaDocumentacaoRoute
   VivaEvolucaoRoute: typeof VivaEvolucaoRoute
+  VivaExplorarRoute: typeof VivaExplorarRoute
   VivaFavoritosRoute: typeof VivaFavoritosRoute
+  VivaHistoricoRoute: typeof VivaHistoricoRoute
   VivaMeuPercursoRoute: typeof VivaMeuPercursoRoute
   VivaMinhaExperienciaRoute: typeof VivaMinhaExperienciaRoute
   VivaPerfilRoute: typeof VivaPerfilRoute
@@ -470,8 +629,14 @@ interface VivaRouteChildren {
   VivaBibliotecaConteudoIdRoute: typeof VivaBibliotecaConteudoIdRoute
   VivaBibliotecaMinhaRoute: typeof VivaBibliotecaMinhaRoute
   VivaBibliotecaReflexoesRoute: typeof VivaBibliotecaReflexoesRoute
+  VivaMatchSituationIdRoute: typeof VivaMatchSituationIdRoute
   VivaPercursoIdRoute: typeof VivaPercursoIdRoute
   VivaBibliotecaIndexRoute: typeof VivaBibliotecaIndexRoute
+  VivaJornadaJourneyIdExecutarRoute: typeof VivaJornadaJourneyIdExecutarRoute
+  VivaJornadaJourneyIdFeedbackRoute: typeof VivaJornadaJourneyIdFeedbackRoute
+  VivaJornadaJourneyIdPersonalizarRoute: typeof VivaJornadaJourneyIdPersonalizarRoute
+  VivaJornadaJourneyIdRevisarRoute: typeof VivaJornadaJourneyIdRevisarRoute
+  VivaJornadaJourneyIdSimularRoute: typeof VivaJornadaJourneyIdSimularRoute
 }
 
 const VivaRouteChildren: VivaRouteChildren = {
@@ -479,7 +644,9 @@ const VivaRouteChildren: VivaRouteChildren = {
   VivaDemonstracaoRoute: VivaDemonstracaoRoute,
   VivaDocumentacaoRoute: VivaDocumentacaoRoute,
   VivaEvolucaoRoute: VivaEvolucaoRoute,
+  VivaExplorarRoute: VivaExplorarRoute,
   VivaFavoritosRoute: VivaFavoritosRoute,
+  VivaHistoricoRoute: VivaHistoricoRoute,
   VivaMeuPercursoRoute: VivaMeuPercursoRoute,
   VivaMinhaExperienciaRoute: VivaMinhaExperienciaRoute,
   VivaPerfilRoute: VivaPerfilRoute,
@@ -489,8 +656,14 @@ const VivaRouteChildren: VivaRouteChildren = {
   VivaBibliotecaConteudoIdRoute: VivaBibliotecaConteudoIdRoute,
   VivaBibliotecaMinhaRoute: VivaBibliotecaMinhaRoute,
   VivaBibliotecaReflexoesRoute: VivaBibliotecaReflexoesRoute,
+  VivaMatchSituationIdRoute: VivaMatchSituationIdRoute,
   VivaPercursoIdRoute: VivaPercursoIdRoute,
   VivaBibliotecaIndexRoute: VivaBibliotecaIndexRoute,
+  VivaJornadaJourneyIdExecutarRoute: VivaJornadaJourneyIdExecutarRoute,
+  VivaJornadaJourneyIdFeedbackRoute: VivaJornadaJourneyIdFeedbackRoute,
+  VivaJornadaJourneyIdPersonalizarRoute: VivaJornadaJourneyIdPersonalizarRoute,
+  VivaJornadaJourneyIdRevisarRoute: VivaJornadaJourneyIdRevisarRoute,
+  VivaJornadaJourneyIdSimularRoute: VivaJornadaJourneyIdSimularRoute,
 }
 
 const VivaRouteWithChildren = VivaRoute._addFileChildren(VivaRouteChildren)

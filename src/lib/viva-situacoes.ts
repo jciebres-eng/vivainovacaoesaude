@@ -400,7 +400,53 @@ export const situacoes: Situacao[] = [
     alternativas: [alternativasComuns.reduzir, alternativasComuns.adiar],
     conteudos: ["organizar-rotina", "planejar-pausas", "organizar-refeicoes"],
   },
+  {
+    id: "viagem",
+    titulo: "Fazer uma viagem",
+    resumo: "Uma viagem com bagagem, embarque e chegada previstos em partes curtas.",
+    contexto: "mobilidade",
+    termos: ["viagem", "viajar", "rodoviária", "rodoviaria", "aeroporto", "embarque", "passagem"],
+    origemSugerida: "Casa",
+    destinoSugerido: "Terminal de embarque",
+    meioSugerido: "aplicativo",
+    horarioSugerido: "07:00",
+    duracaoAproximada: "meio dia, em blocos",
+    etapas: [
+      { id: "bagagem", titulo: "Separar a bagagem", apoio: "Lista curta, uma mala só.", minutos: 30 },
+      { id: "documentos", titulo: "Conferir passagem e documento", apoio: "Foto no celular ajuda.", minutos: 10 },
+      { id: "ida", titulo: "Ida até o terminal", apoio: "Sair com folga reduz a pressa.", minutos: 40, referencia: "Terminal" },
+      { id: "embarque", titulo: "Embarque", apoio: "Perguntar o portão é legítimo.", minutos: 30, referencia: "Portão de embarque" },
+      { id: "trajeto", titulo: "Durante o trajeto", apoio: "Pausas, água e fone à mão.", minutos: 120 },
+      { id: "chegada", titulo: "Chegada e saída", apoio: "Identificar a saída antes de pegar a bagagem.", minutos: 20, referencia: "Saída" },
+    ],
+    estrategias: [estrategiasComuns.chegarAntes, estrategiasComuns.fone, estrategiasComuns.acompanhar, estrategiasComuns.pausas],
+    alternativas: [alternativasComuns.companhia, alternativasComuns.adiar, alternativasComuns.reduzir],
+    conteudos: ["comparar-trajetos", "rota-alternativa", "planejar-pausas"],
+  },
+  {
+    id: "servico-publico",
+    titulo: "Resolver um serviço público",
+    resumo: "Posto, secretaria ou serviço on-line com senha, protocolo e prazo.",
+    contexto: "trabalho",
+    termos: ["serviço público", "servico publico", "posto", "secretaria", "inss", "protocolo", "cadastro"],
+    origemSugerida: "Casa",
+    destinoSugerido: "Posto de atendimento",
+    meioSugerido: "onibus",
+    horarioSugerido: "08:30",
+    duracaoAproximada: "1 hora e 30 minutos",
+    etapas: [
+      { id: "agendar", titulo: "Conferir se precisa agendar", apoio: "Muitos serviços só atendem agendados.", minutos: 10 },
+      { id: "documentos", titulo: "Separar documentos", apoio: "Originais e cópias na mesma pasta.", minutos: 15 },
+      { id: "ida", titulo: "Ida até o posto", apoio: "Chegar antes da abertura reduz a fila.", minutos: 30, referencia: "Entrada" },
+      { id: "senha", titulo: "Pegar a senha certa", apoio: "Perguntar qual serviço corresponde à sua senha.", minutos: 10, referencia: "Recepção" },
+      { id: "atendimento", titulo: "Atendimento", apoio: "Anotar protocolo e prazo antes de sair.", minutos: 20, referencia: "Guichê" },
+    ],
+    estrategias: [estrategiasComuns.chegarAntes, estrategiasComuns.frasesProntas, estrategiasComuns.pausas, estrategiasComuns.saidaFacil],
+    alternativas: [alternativasComuns.remoto, alternativasComuns.companhia, alternativasComuns.adiar],
+    conteudos: ["organizar-documentos", "pedir-informacao", "lidar-com-atraso"],
+  },
 ];
+
 
 export function situacaoPorId(id: string | null | undefined) {
   return situacoes.find((s) => s.id === id) ?? null;
