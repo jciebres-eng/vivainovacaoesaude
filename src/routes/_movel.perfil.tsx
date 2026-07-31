@@ -67,6 +67,8 @@ function PerfilPagina() {
 
       <SeletorDePerfil titulo="Trocar de perfil" />
 
+      <SeletorDeModo />
+
       <section aria-labelledby="ajustes-titulo">
         <h2 id="ajustes-titulo" className="viva-titulo-secao text-text-primary">
           Ajustes e transparência
