@@ -63,13 +63,24 @@ export type Peca = {
 };
 
 export const rotulosDaDecisao: Record<CategoriaDeDecisao, { titulo: string; pergunta: string }> = {
+  objetivo: { titulo: "Objetivo", pergunta: "O que você quer que aconteça?" },
   local: { titulo: "Local", pergunta: "Onde isso acontece?" },
   forma: { titulo: "Forma de realização", pergunta: "Como você quer fazer?" },
   rota: { titulo: "Rota", pergunta: "Por qual caminho?" },
+  barreira: {
+    titulo: "O que pode dificultar",
+    pergunta: "O que pode tornar essa situação mais difícil para você?",
+  },
   estrategia: { titulo: "Estratégias", pergunta: "O que ajuda no caminho?" },
+  treinamento: { titulo: "Treinamento", pergunta: "Quer ensaiar alguma parte antes?" },
   conteudo: { titulo: "Conteúdos", pergunta: "Quer ver algo antes?" },
+  acompanhamento: {
+    titulo: "Acompanhamento",
+    pergunta: "Quer algum acompanhamento durante a realização?",
+  },
   alternativa: { titulo: "Plano alternativo", pergunta: "E se mudar de ideia?" },
 };
+
 
 const p = (peca: Peca): Peca => peca;
 
