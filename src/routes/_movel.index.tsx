@@ -189,10 +189,10 @@ function Inicio() {
         </Botao>
       </div>
 
-      <p className="viva-legenda text-text-secondary">
-        Demonstração com dados fictícios. Tudo fica apenas neste dispositivo e o VIVA não substitui
-        acompanhamento profissional.
-      </p>
+      <SeloDemonstrativo
+        sempreVisivel
+        texto="Demonstração com dados fictícios. Tudo fica apenas neste dispositivo e o VIVA não substitui acompanhamento profissional."
+      />
     </div>
   );
 }
