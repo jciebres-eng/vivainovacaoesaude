@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VivaRouteImport } from './routes/_viva'
 import { Route as VivaIndexRouteImport } from './routes/_viva.index'
 import { Route as VivaCompartilharRouteImport } from './routes/_viva.compartilhar'
+import { Route as VivaDemonstracaoRouteImport } from './routes/_viva.demonstracao'
 import { Route as VivaDocumentacaoRouteImport } from './routes/_viva.documentacao'
+import { Route as VivaEvolucaoRouteImport } from './routes/_viva.evolucao'
 import { Route as VivaFavoritosRouteImport } from './routes/_viva.favoritos'
 import { Route as VivaMeuPercursoRouteImport } from './routes/_viva.meu-percurso'
 import { Route as VivaMinhaExperienciaRouteImport } from './routes/_viva.minha-experiencia'
@@ -41,9 +43,19 @@ const VivaCompartilharRoute = VivaCompartilharRouteImport.update({
   path: '/compartilhar',
   getParentRoute: () => VivaRoute,
 } as any)
+const VivaDemonstracaoRoute = VivaDemonstracaoRouteImport.update({
+  id: '/demonstracao',
+  path: '/demonstracao',
+  getParentRoute: () => VivaRoute,
+} as any)
 const VivaDocumentacaoRoute = VivaDocumentacaoRouteImport.update({
   id: '/documentacao',
   path: '/documentacao',
+  getParentRoute: () => VivaRoute,
+} as any)
+const VivaEvolucaoRoute = VivaEvolucaoRouteImport.update({
+  id: '/evolucao',
+  path: '/evolucao',
   getParentRoute: () => VivaRoute,
 } as any)
 const VivaFavoritosRoute = VivaFavoritosRouteImport.update({
@@ -116,7 +128,9 @@ const VivaPercursoIdRoute = VivaPercursoIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof VivaIndexRoute
   '/compartilhar': typeof VivaCompartilharRoute
+  '/demonstracao': typeof VivaDemonstracaoRoute
   '/documentacao': typeof VivaDocumentacaoRoute
+  '/evolucao': typeof VivaEvolucaoRoute
   '/favoritos': typeof VivaFavoritosRoute
   '/meu-percurso': typeof VivaMeuPercursoRoute
   '/minha-experiencia': typeof VivaMinhaExperienciaRoute
@@ -133,7 +147,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/compartilhar': typeof VivaCompartilharRoute
+  '/demonstracao': typeof VivaDemonstracaoRoute
   '/documentacao': typeof VivaDocumentacaoRoute
+  '/evolucao': typeof VivaEvolucaoRoute
   '/favoritos': typeof VivaFavoritosRoute
   '/meu-percurso': typeof VivaMeuPercursoRoute
   '/minha-experiencia': typeof VivaMinhaExperienciaRoute
@@ -153,7 +169,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_viva': typeof VivaRouteWithChildren
   '/_viva/compartilhar': typeof VivaCompartilharRoute
+  '/_viva/demonstracao': typeof VivaDemonstracaoRoute
   '/_viva/documentacao': typeof VivaDocumentacaoRoute
+  '/_viva/evolucao': typeof VivaEvolucaoRoute
   '/_viva/favoritos': typeof VivaFavoritosRoute
   '/_viva/meu-percurso': typeof VivaMeuPercursoRoute
   '/_viva/minha-experiencia': typeof VivaMinhaExperienciaRoute
@@ -174,7 +192,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/compartilhar'
+    | '/demonstracao'
     | '/documentacao'
+    | '/evolucao'
     | '/favoritos'
     | '/meu-percurso'
     | '/minha-experiencia'
@@ -191,7 +211,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/compartilhar'
+    | '/demonstracao'
     | '/documentacao'
+    | '/evolucao'
     | '/favoritos'
     | '/meu-percurso'
     | '/minha-experiencia'
@@ -210,7 +232,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_viva'
     | '/_viva/compartilhar'
+    | '/_viva/demonstracao'
     | '/_viva/documentacao'
+    | '/_viva/evolucao'
     | '/_viva/favoritos'
     | '/_viva/meu-percurso'
     | '/_viva/minha-experiencia'
@@ -256,11 +280,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VivaCompartilharRouteImport
       parentRoute: typeof VivaRoute
     }
+    '/_viva/demonstracao': {
+      id: '/_viva/demonstracao'
+      path: '/demonstracao'
+      fullPath: '/demonstracao'
+      preLoaderRoute: typeof VivaDemonstracaoRouteImport
+      parentRoute: typeof VivaRoute
+    }
     '/_viva/documentacao': {
       id: '/_viva/documentacao'
       path: '/documentacao'
       fullPath: '/documentacao'
       preLoaderRoute: typeof VivaDocumentacaoRouteImport
+      parentRoute: typeof VivaRoute
+    }
+    '/_viva/evolucao': {
+      id: '/_viva/evolucao'
+      path: '/evolucao'
+      fullPath: '/evolucao'
+      preLoaderRoute: typeof VivaEvolucaoRouteImport
       parentRoute: typeof VivaRoute
     }
     '/_viva/favoritos': {
@@ -359,7 +397,9 @@ declare module '@tanstack/react-router' {
 
 interface VivaRouteChildren {
   VivaCompartilharRoute: typeof VivaCompartilharRoute
+  VivaDemonstracaoRoute: typeof VivaDemonstracaoRoute
   VivaDocumentacaoRoute: typeof VivaDocumentacaoRoute
+  VivaEvolucaoRoute: typeof VivaEvolucaoRoute
   VivaFavoritosRoute: typeof VivaFavoritosRoute
   VivaMeuPercursoRoute: typeof VivaMeuPercursoRoute
   VivaMinhaExperienciaRoute: typeof VivaMinhaExperienciaRoute
@@ -376,7 +416,9 @@ interface VivaRouteChildren {
 
 const VivaRouteChildren: VivaRouteChildren = {
   VivaCompartilharRoute: VivaCompartilharRoute,
+  VivaDemonstracaoRoute: VivaDemonstracaoRoute,
   VivaDocumentacaoRoute: VivaDocumentacaoRoute,
+  VivaEvolucaoRoute: VivaEvolucaoRoute,
   VivaFavoritosRoute: VivaFavoritosRoute,
   VivaMeuPercursoRoute: VivaMeuPercursoRoute,
   VivaMinhaExperienciaRoute: VivaMinhaExperienciaRoute,
