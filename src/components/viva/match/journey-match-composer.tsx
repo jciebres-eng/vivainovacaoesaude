@@ -57,7 +57,7 @@ export function JourneyMatchComposer({
   const concluido = !categoria;
 
   return (
-    <div className="space-y-5" data-fluxo={motor.fluxo} data-rodada={motor.rodada}>
+    <div className="space-y-5">
       <header className="space-y-1">
         <p className="viva-legenda text-text-secondary">
           {concluido
