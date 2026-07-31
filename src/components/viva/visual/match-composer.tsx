@@ -114,7 +114,14 @@ export function JourneyMatchComposer({
               conteudo: (
                 <VisualJourneyCard peca={peca} etiqueta={rotulosDaDecisao[categoria].titulo} />
               ),
+              detalhes: (
+                <div className="space-y-1">
+                  <p>{peca.porque}</p>
+                  {peca.numeros ? <p className="text-[var(--profile-muted)]">{peca.numeros}</p> : null}
+                </div>
+              ),
             }))}
+
             onAceitar={(id) => {
               const peca = opcoes.find((p) => p.id === id);
               if (peca) setAceitas((atuais) => [...atuais, peca]);
