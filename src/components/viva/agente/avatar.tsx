@@ -27,13 +27,7 @@ const animacaoPorEstado: Record<EstadoDoAgente, string> = {
   desativado: "",
 };
 
-export function FormaViva({
-  tamanho = 96,
-  className,
-}: {
-  tamanho?: number;
-  className?: string;
-}) {
+export function FormaViva({ tamanho = 96, className }: { tamanho?: number; className?: string }) {
   const { estado, descricao } = useAgente();
   const inativo = estado === "desativado" || estado === "offline" || estado === "erro";
 

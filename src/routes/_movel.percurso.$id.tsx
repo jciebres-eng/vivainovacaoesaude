@@ -63,7 +63,6 @@ function PaginaDoPercurso() {
     agente.irPara(estadoPorFase[fase as FaseDoPercurso]);
   }, [fase, agente]);
 
-
   if (!percurso) {
     return (
       <div className="space-y-5">
@@ -101,7 +100,12 @@ function PaginaDoPercurso() {
             tamanho="compacto"
             onClick={() => {
               const copia = percursos.duplicar(percurso.id);
-              if (copia) navigate({ to: "/percurso/$id", params: { id: copia.id }, search: { fase: "preparar" } });
+              if (copia)
+                navigate({
+                  to: "/percurso/$id",
+                  params: { id: copia.id },
+                  search: { fase: "preparar" },
+                });
             }}
           >
             Criar uma nova versão
@@ -232,7 +236,11 @@ function Realizacao({ percursoId }: { percursoId: string }) {
           <Botao
             variante="principal"
             onClick={() =>
-              navigate({ to: "/percurso/$id", params: { id: percursoId }, search: { fase: "registrar" } })
+              navigate({
+                to: "/percurso/$id",
+                params: { id: percursoId },
+                search: { fase: "registrar" },
+              })
             }
           >
             Registrar como foi
@@ -273,7 +281,11 @@ function Realizacao({ percursoId }: { percursoId: string }) {
             </Botao>
           ) : null}
           {percurso.etapaAtual > 0 ? (
-            <Botao variante="terciario" tamanho="compacto" onClick={() => percursos.voltar(percursoId)}>
+            <Botao
+              variante="terciario"
+              tamanho="compacto"
+              onClick={() => percursos.voltar(percursoId)}
+            >
               Voltar uma etapa
             </Botao>
           ) : null}
