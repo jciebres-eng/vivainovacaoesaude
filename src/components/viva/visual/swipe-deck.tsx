@@ -223,6 +223,31 @@ export function JourneySwipeDeck({
         </div>
       </div>
 
+      {atual.detalhes ? (
+        <div className="mt-3">
+          <button
+            type="button"
+            onClick={() => setDetalhesAbertos((a) => !a)}
+            aria-expanded={detalhesAbertos}
+            className="viva-tap inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--profile-border)] px-4 viva-legenda text-[var(--profile-text)]"
+          >
+            <ChevronUp
+              className={cn("h-4 w-4 transition-transform", detalhesAbertos && "rotate-180")}
+              aria-hidden
+            />
+            {detalhesAbertos ? "Ocultar detalhes" : "Ver detalhes"}
+          </button>
+          {detalhesAbertos ? (
+            <div
+              className="mt-2 border border-[var(--profile-border)] p-3 viva-legenda text-[var(--profile-text)]"
+              style={{ borderRadius: "var(--profile-radius)" }}
+            >
+              {atual.detalhes}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       <div className="mt-4 flex items-center justify-center gap-3">
         <button
           type="button"
@@ -252,8 +277,10 @@ export function JourneySwipeDeck({
       </div>
 
       <p className="mt-2 text-center viva-legenda text-[var(--profile-muted)]">
-        Deslize, use os botões ou as setas do teclado. Nada é definitivo.
+        Deslize para o lado, para cima (detalhes), use os botões ou as setas do teclado. Nada é
+        definitivo.
       </p>
+
       <p aria-live="polite" className="sr-only">
         {aviso}
       </p>
