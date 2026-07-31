@@ -159,8 +159,7 @@ export function aplicarEvento(
   if (!destino || destino === atual) return contexto;
 
   // Eventos de presença, rede e erro têm prioridade: ignoram permanência.
-  const prioritario =
-    presenciais.includes(destino) || destino === "offline" || destino === "error";
+  const prioritario = presenciais.includes(destino) || destino === "offline" || destino === "error";
 
   if (!prioritario) {
     const minimo = permanenciaMinima[atual] ?? 0;
@@ -168,7 +167,11 @@ export function aplicarEvento(
   }
 
   const anterior = presenciais.includes(destino) || destino === "offline" ? atual : destino;
-  return { estado: destino, anterior: presenciais.includes(anterior) ? "idle" : anterior, desde: agora };
+  return {
+    estado: destino,
+    anterior: presenciais.includes(anterior) ? "idle" : anterior,
+    desde: agora,
+  };
 }
 
 /** Indica se o estado representa movimento contínuo (loop). */

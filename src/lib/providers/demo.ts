@@ -137,20 +137,48 @@ export const provedorDeRotasDemonstrativo: RouteProvider = {
   async calcularRota(origem, destino, modo = "a-pe") {
     const passosBase: Record<Rota["modo"], Rota["passos"]> = {
       "a-pe": [
-        { descricao: "Saia e siga pela calçada à direita.", referencia: "Portaria", duracaoEmMinutos: 2 },
-        { descricao: "Atravesse na faixa em frente à padaria.", referencia: "Padaria", duracaoEmMinutos: 3 },
+        {
+          descricao: "Saia e siga pela calçada à direita.",
+          referencia: "Portaria",
+          duracaoEmMinutos: 2,
+        },
+        {
+          descricao: "Atravesse na faixa em frente à padaria.",
+          referencia: "Padaria",
+          duracaoEmMinutos: 3,
+        },
         { descricao: "Siga reto até a praça.", referencia: "Praça Azul", duracaoEmMinutos: 4 },
-        { descricao: "O destino fica à esquerda da praça.", referencia: destino, duracaoEmMinutos: 3 },
+        {
+          descricao: "O destino fica à esquerda da praça.",
+          referencia: destino,
+          duracaoEmMinutos: 3,
+        },
       ],
       "transporte-publico": [
-        { descricao: "Caminhe até o ponto de ônibus.", referencia: "Praça Azul", duracaoEmMinutos: 6 },
-        { descricao: "Aguarde a linha indicada no painel.", referencia: "Painel do ponto", duracaoEmMinutos: 8 },
+        {
+          descricao: "Caminhe até o ponto de ônibus.",
+          referencia: "Praça Azul",
+          duracaoEmMinutos: 6,
+        },
+        {
+          descricao: "Aguarde a linha indicada no painel.",
+          referencia: "Painel do ponto",
+          duracaoEmMinutos: 8,
+        },
         { descricao: "Desça na terceira parada.", referencia: "Av. Central", duracaoEmMinutos: 12 },
         { descricao: "Caminhe até o destino.", referencia: destino, duracaoEmMinutos: 5 },
       ],
       carro: [
-        { descricao: "Siga pela avenida principal.", referencia: "Av. das Palmeiras", duracaoEmMinutos: 6 },
-        { descricao: "Vire à direita após o semáforo.", referencia: "Semáforo", duracaoEmMinutos: 4 },
+        {
+          descricao: "Siga pela avenida principal.",
+          referencia: "Av. das Palmeiras",
+          duracaoEmMinutos: 6,
+        },
+        {
+          descricao: "Vire à direita após o semáforo.",
+          referencia: "Semáforo",
+          duracaoEmMinutos: 4,
+        },
         { descricao: "Estacione próximo ao destino.", referencia: destino, duracaoEmMinutos: 4 },
       ],
     };
@@ -278,8 +306,7 @@ function construtorDeFala(): (new () => ReconhecimentoDeFala) | null {
   if (typeof window === "undefined") return null;
   const janela = window as unknown as Record<string, unknown>;
   return (janela.SpeechRecognition ?? janela.webkitSpeechRecognition) as
-    | (new () => ReconhecimentoDeFala)
-    | null;
+    (new () => ReconhecimentoDeFala) | null;
 }
 
 export const provedorDeFalaDoNavegador: SpeechProvider = {
@@ -298,7 +325,9 @@ export const provedorDeFalaDoNavegador: SpeechProvider = {
     sessao.continuous = false;
     sessao.interimResults = true;
     sessao.onresult = (evento) => {
-      const dados = evento as { results: ArrayLike<ArrayLike<{ transcript: string }> & { isFinal: boolean }> };
+      const dados = evento as {
+        results: ArrayLike<ArrayLike<{ transcript: string }> & { isFinal: boolean }>;
+      };
       const ultimo = dados.results[dados.results.length - 1];
       aoTexto(ultimo[0].transcript, ultimo.isFinal);
     };
