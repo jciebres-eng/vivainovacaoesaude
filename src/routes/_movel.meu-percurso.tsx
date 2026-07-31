@@ -1,115 +1,93 @@
-import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Bookmark, Plus, RotateCcw } from "lucide-react";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { Trash2 } from "lucide-react";
 
-import {
-  BibliotecaRelacionada,
-  LinhaDoPercurso,
-  SuperficieDeCartao,
-  conteudoPorId,
-} from "@/components/viva/mobile";
-import { catalogoDoPerfil } from "@/lib/viva-catalogo";
-import { useMontagem } from "@/lib/viva-montagem";
-import { usePerfil } from "@/lib/viva-perfis";
+import { Botao, Card } from "@/components/ds";
+import { percursos, rotulosDeEstado, usePercursos, type Percurso } from "@/lib/viva-percursos";
 
 export const Route = createFileRoute("/_movel/meu-percurso")({
   head: () => ({
     meta: [
-      { title: "Meu percurso — VIVA" },
+      { title: "Meus percursos — VIVA" },
       {
         name: "description",
         content:
-          "O percurso que você montou: situação, objetivo, apoios, estratégias e leituras. Tudo editável e retomável quando quiser.",
+          "Todos os percursos que você montou neste aparelho: em construção, em andamento, concluídos e favoritos.",
       },
-      { property: "og:title", content: "Meu percurso — VIVA" },
+      { property: "og:title", content: "Meus percursos — VIVA" },
       {
         property: "og:description",
-        content: "Suas escolhas organizadas, sem cobrança e sem prazo.",
+        content: "Uma lista cronológica e neutra, sem notas, sem sequência e sem cobrança.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: MeuPercurso,
+  component: MeusPercursos,
 });
 
-function MeuPercurso() {
-  const navigate = useNavigate();
-  const { perfil } = usePerfil();
-  const catalogo = catalogoDoPerfil(perfil);
-  const { estado, carregado, iniciado, remover, irParaEtapa, recomecar } = useMontagem(perfil.id);
+export function ItemDePercurso({ p }: { p: Percurso }) {
+  return (
+    <li className="rounded-2xl border border-border-default bg-surface-default p-4">
+      <p className="viva-apoio font-semibold text-text-primary">{p.titulo}</p>
+      <p className="mt-1 viva-legenda text-text-secondary">
+        {rotulosDeEstado[p.estado]} · criado em {new Date(p.criadoEm).toLocaleDateString("pt-BR")}
+        {p.registros.length > 0 ? ` · ${p.registros.length} registro(s)` : ""}
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Link
+          to="/percurso/$id"
+          params={{ id: p.id }}
+          search={{ fase: p.estado === "em-andamento" ? "realizar" : "preparar" } as const}
+          className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default px-4 viva-legenda font-medium text-text-primary"
+        >
+          Abrir
+        </Link>
+        <Botao
+          variante="terciario"
+          tamanho="compacto"
+          icone={Trash2}
+          onClick={() => percursos.remover(p.id)}
+        >
+          Apagar
+        </Botao>
+      </div>
+    </li>
+  );
+}
 
-  if (!carregado) return null;
-
-  const guardados = estado.paraDepois.map(conteudoPorId).filter(Boolean);
+function MeusPercursos() {
+  const { lista } = usePercursos();
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <header>
-        <h1 className="viva-titulo-pagina text-text-primary">Meu percurso</h1>
-        <p className="mt-2 viva-texto text-text-secondary">
-          Isto é seu. Pode mudar, remover ou continuar depois — nada se perde e nada expira.
+        <h1 className="viva-titulo-pagina text-text-primary">Meus percursos</h1>
+        <p className="mt-2 viva-apoio text-text-secondary">
+          Uma lista simples, em ordem de criação. Nada aqui mede desempenho.
         </p>
       </header>
 
-      {!iniciado ? (
-        <SuperficieDeCartao destacado>
-          <h2 className="viva-titulo-secao text-text-primary">Ainda não há escolhas aqui</h2>
-          <p className="mt-2 viva-apoio text-text-secondary">
-            Quando quiser, monte um percurso em passos curtos.
+      {lista.length === 0 ? (
+        <Card variante="informativo" titulo="Ainda não há percursos aqui">
+          <p className="viva-apoio text-text-secondary">
+            Quando você montar um percurso, ele aparece nesta lista.
           </p>
-          <Link
-            to="/montar"
-            className="viva-tap mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-destaque px-6 viva-texto-botao font-semibold text-action-primary-foreground"
-          >
-            <Plus className="h-5 w-5" aria-hidden />
-            Começar
-          </Link>
-        </SuperficieDeCartao>
+          <div className="mt-4">
+            <Link
+              to="/"
+              className="viva-tap inline-flex min-h-12 items-center rounded-full bg-destaque px-6 viva-texto-botao font-semibold text-action-primary-foreground"
+            >
+              Dizer o que preciso
+            </Link>
+          </div>
+        </Card>
       ) : (
-        <LinhaDoPercurso
-          estado={estado}
-          catalogo={catalogo}
-          onEditar={(i) => {
-            irParaEtapa(i);
-            navigate({ to: "/montar" });
-          }}
-          onRemover={remover}
-        />
+        <ul className="space-y-3">
+          {lista.map((p) => (
+            <ItemDePercurso key={p.id} p={p} />
+          ))}
+        </ul>
       )}
-
-      {guardados.length ? (
-        <section aria-labelledby="depois-titulo">
-          <h2 id="depois-titulo" className="viva-titulo-secao text-text-primary">
-            Guardado para depois
-          </h2>
-          <ul className="mt-3 space-y-2">
-            {guardados.map((item) => (
-              <li key={item!.id}>
-                <SuperficieDeCartao className="flex items-center gap-3 p-4">
-                  <Bookmark className="h-4 w-4 shrink-0 text-text-secondary" aria-hidden />
-                  <span className="min-w-0 flex-1 truncate viva-apoio text-text-primary">
-                    {item!.titulo}
-                  </span>
-                </SuperficieDeCartao>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-
-      {iniciado ? (
-        <>
-          <BibliotecaRelacionada ids={perfil.conteudos} titulo="Leituras relacionadas" />
-          <button
-            type="button"
-            onClick={recomecar}
-            className="viva-tap inline-flex min-h-11 items-center gap-2 rounded-full viva-legenda font-medium text-text-secondary underline underline-offset-4"
-          >
-            <RotateCcw className="h-4 w-4" aria-hidden />
-            Recomeçar do início
-          </button>
-        </>
-      ) : null}
     </div>
   );
 }

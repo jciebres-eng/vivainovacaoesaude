@@ -36,6 +36,7 @@ import { Route as JornadaProximoPassoRouteImport } from './routes/jornada.proxim
 import { Route as JornadaReflexaoRouteImport } from './routes/jornada.reflexao'
 import { Route as JornadaRegistroRouteImport } from './routes/jornada.registro'
 import { Route as JornadaResumoRouteImport } from './routes/jornada.resumo'
+import { Route as MovelPercursoIdRouteImport } from './routes/_movel.percurso.$id'
 import { Route as PercursoBibliotecaIndexRouteImport } from './routes/_percurso.biblioteca.index'
 import { Route as PercursoBibliotecaConteudoIdRouteImport } from './routes/_percurso.biblioteca.$conteudoId'
 import { Route as PercursoBibliotecaMinhaRouteImport } from './routes/_percurso.biblioteca.minha'
@@ -175,6 +176,11 @@ const JornadaResumoRoute = JornadaResumoRouteImport.update({
   path: '/resumo',
   getParentRoute: () => JornadaRoute,
 } as any)
+const MovelPercursoIdRoute = MovelPercursoIdRouteImport.update({
+  id: '/percurso/$id',
+  path: '/percurso/$id',
+  getParentRoute: () => MovelRoute,
+} as any)
 const PercursoBibliotecaIndexRoute = PercursoBibliotecaIndexRouteImport.update({
   id: '/biblioteca/',
   path: '/biblioteca/',
@@ -224,6 +230,7 @@ export interface FileRoutesByFullPath {
   '/jornada/registro': typeof JornadaRegistroRoute
   '/jornada/resumo': typeof JornadaResumoRoute
   '/jornada/': typeof JornadaIndexRoute
+  '/percurso/$id': typeof MovelPercursoIdRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/biblioteca/reflexoes': typeof PercursoBibliotecaReflexoesRoute
@@ -254,6 +261,7 @@ export interface FileRoutesByTo {
   '/jornada/registro': typeof JornadaRegistroRoute
   '/jornada/resumo': typeof JornadaResumoRoute
   '/jornada': typeof JornadaIndexRoute
+  '/percurso/$id': typeof MovelPercursoIdRoute
   '/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/biblioteca/reflexoes': typeof PercursoBibliotecaReflexoesRoute
@@ -288,6 +296,7 @@ export interface FileRoutesById {
   '/jornada/resumo': typeof JornadaResumoRoute
   '/_movel/': typeof MovelIndexRoute
   '/jornada/': typeof JornadaIndexRoute
+  '/_movel/percurso/$id': typeof MovelPercursoIdRoute
   '/_percurso/biblioteca/$conteudoId': typeof PercursoBibliotecaConteudoIdRoute
   '/_percurso/biblioteca/minha': typeof PercursoBibliotecaMinhaRoute
   '/_percurso/biblioteca/reflexoes': typeof PercursoBibliotecaReflexoesRoute
@@ -321,6 +330,7 @@ export interface FileRouteTypes {
     | '/jornada/registro'
     | '/jornada/resumo'
     | '/jornada/'
+    | '/percurso/$id'
     | '/biblioteca/$conteudoId'
     | '/biblioteca/minha'
     | '/biblioteca/reflexoes'
@@ -351,6 +361,7 @@ export interface FileRouteTypes {
     | '/jornada/registro'
     | '/jornada/resumo'
     | '/jornada'
+    | '/percurso/$id'
     | '/biblioteca/$conteudoId'
     | '/biblioteca/minha'
     | '/biblioteca/reflexoes'
@@ -384,6 +395,7 @@ export interface FileRouteTypes {
     | '/jornada/resumo'
     | '/_movel/'
     | '/jornada/'
+    | '/_movel/percurso/$id'
     | '/_percurso/biblioteca/$conteudoId'
     | '/_percurso/biblioteca/minha'
     | '/_percurso/biblioteca/reflexoes'
@@ -589,6 +601,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JornadaResumoRouteImport
       parentRoute: typeof JornadaRoute
     }
+    '/_movel/percurso/$id': {
+      id: '/_movel/percurso/$id'
+      path: '/percurso/$id'
+      fullPath: '/percurso/$id'
+      preLoaderRoute: typeof MovelPercursoIdRouteImport
+      parentRoute: typeof MovelRoute
+    }
     '/_percurso/biblioteca/': {
       id: '/_percurso/biblioteca/'
       path: '/biblioteca'
@@ -628,6 +647,7 @@ interface MovelRouteChildren {
   MovelPerfilRoute: typeof MovelPerfilRoute
   MovelRealizarRoute: typeof MovelRealizarRoute
   MovelIndexRoute: typeof MovelIndexRoute
+  MovelPercursoIdRoute: typeof MovelPercursoIdRoute
 }
 
 const MovelRouteChildren: MovelRouteChildren = {
@@ -638,6 +658,7 @@ const MovelRouteChildren: MovelRouteChildren = {
   MovelPerfilRoute: MovelPerfilRoute,
   MovelRealizarRoute: MovelRealizarRoute,
   MovelIndexRoute: MovelIndexRoute,
+  MovelPercursoIdRoute: MovelPercursoIdRoute,
 }
 
 const MovelRouteWithChildren = MovelRoute._addFileChildren(MovelRouteChildren)
