@@ -66,7 +66,7 @@ export function JourneySwipeDeck({
 
   const intensidade = movimentoReduzido ? 0 : modo.intensidadeDoMovimento;
   const atual = itens[indice];
-  const proximos = itens.slice(indice + 1, indice + Math.max(1, modo.cardsSimultaneos));
+  const proximos = itens.slice(indice + 1, indice + 1 + Math.max(2, modo.cardsSimultaneos - 1));
 
   const decidir = useCallback(
     (acao: "aceito" | "descartado") => {

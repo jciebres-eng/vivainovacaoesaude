@@ -47,7 +47,17 @@ export function useJourneyMatchEngine(opcoes: {
           atual = await repositorios.jornadas.porId(opcoes.jornadaId);
         } else if (opcoes.situacaoId) {
           const situacao = await repositorios.situacoes.porId(opcoes.situacaoId);
-          if (situacao) atual = await repositorios.jornadas.criar(situacao);
+          if (situacao) {
+            // Recarregar a página não recomeça o percurso: um rascunho da
+            // mesma situação é retomado onde estava.
+            const existentes = await repositorios.jornadas.listar();
+            atual =
+              existentes.find(
+                (j) =>
+                  j.estado === "rascunho" &&
+                  (j.situacaoId === situacao.id || j.situacaoId === situacao.situacaoId),
+              ) ?? (await repositorios.jornadas.criar(situacao));
+          }
         }
         const carregados: Record<string, ItemDeMatch[]> = {};
         for (const cat of sequenciaDeMatch) {
@@ -57,7 +67,14 @@ export function useJourneyMatchEngine(opcoes: {
         setItens(carregados);
         setJornada(atual);
         setStatus(atual ? "pronto" : "empty");
-        if (atual) enviar({ type: "SITUACAO_ESCOLHIDA", jornada: atual });
+        if (atual) {
+          enviar({ type: "SITUACAO_ESCOLHIDA", jornada: atual });
+          // Retomar na pergunta onde a pessoa parou.
+          for (const cat of sequenciaDeMatch) {
+            if (atual.escolhas.some((e) => e.categoria === cat)) enviar({ type: "AVANCAR" });
+            else break;
+          }
+        }
       } catch {
         if (vivo) {
           setStatus("error");

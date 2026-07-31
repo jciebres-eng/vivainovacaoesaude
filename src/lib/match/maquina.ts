@@ -120,19 +120,62 @@ export const journeyMatchMachine = setup({
             VOLTAR: "searching",
           },
         },
-        matchingNeeds: { on: { AVANCAR: "matchingBarriers", VOLTAR: "selectingSituation" } },
-        matchingBarriers: { on: { AVANCAR: "matchingStrategies", VOLTAR: "matchingNeeds" } },
-        matchingStrategies: { on: { AVANCAR: "matchingInformation", VOLTAR: "matchingBarriers" } },
-        matchingInformation: { on: { AVANCAR: "matchingTraining", VOLTAR: "matchingStrategies" } },
-        matchingTraining: { on: { AVANCAR: "reviewingJourney", VOLTAR: "matchingInformation" } },
+        /**
+         * Cada rodada avança o índice do match junto com o estado nomeado.
+         * Sem a ação `proximaRodada` o fluxo trocava de estado mas continuava
+         * pedindo a primeira pergunta.
+         */
+        matchingNeeds: {
+          on: {
+            AVANCAR: { target: "matchingBarriers", actions: "proximaRodada" },
+            VOLTAR: "selectingSituation",
+          },
+        },
+        matchingBarriers: {
+          on: {
+            AVANCAR: { target: "matchingStrategies", actions: "proximaRodada" },
+            VOLTAR: { target: "matchingNeeds", actions: "rodadaAnterior" },
+          },
+        },
+        matchingStrategies: {
+          on: {
+            AVANCAR: { target: "matchingInformation", actions: "proximaRodada" },
+            VOLTAR: { target: "matchingBarriers", actions: "rodadaAnterior" },
+          },
+        },
+        matchingInformation: {
+          on: {
+            AVANCAR: { target: "matchingTraining", actions: "proximaRodada" },
+            VOLTAR: { target: "matchingStrategies", actions: "rodadaAnterior" },
+          },
+        },
+        matchingTraining: {
+          on: {
+            AVANCAR: { target: "matchingMonitoring", actions: "proximaRodada" },
+            VOLTAR: { target: "matchingInformation", actions: "rodadaAnterior" },
+          },
+        },
+        matchingMonitoring: {
+          on: {
+            AVANCAR: { target: "matchingFeedback", actions: "proximaRodada" },
+            VOLTAR: { target: "matchingTraining", actions: "rodadaAnterior" },
+          },
+        },
+        matchingFeedback: {
+          on: {
+            AVANCAR: { target: "reviewingJourney", actions: "proximaRodada" },
+            VOLTAR: { target: "matchingMonitoring", actions: "rodadaAnterior" },
+          },
+        },
         reviewingJourney: {
           on: {
             SIMULAR: "simulating",
             PRONTO: "readyToExecute",
             PERSONALIZAR: "personalizing",
-            VOLTAR: "matchingTraining",
+            VOLTAR: { target: "matchingFeedback", actions: "rodadaAnterior" },
           },
         },
+
         simulating: { on: { PRONTO: "readyToExecute", REVISAR: "reviewingJourney" } },
         readyToExecute: { on: { EXECUTAR: "executing", REVISAR: "reviewingJourney" } },
         executing: { on: { PAUSAR: "paused", CONCLUIR: "completing" } },
@@ -154,6 +197,6 @@ export const estadoPorCategoria: Record<string, string> = {
   strategy: "matchingStrategies",
   information: "matchingInformation",
   training: "matchingTraining",
-  monitoring: "matchingTraining",
-  feedback: "matchingTraining",
+  monitoring: "matchingMonitoring",
+  feedback: "matchingFeedback",
 };

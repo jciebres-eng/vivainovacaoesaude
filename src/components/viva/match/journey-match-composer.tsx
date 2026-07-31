@@ -101,7 +101,11 @@ export function JourneyMatchComposer({
           ) : (
             <Deck
               itens={motor.opcoesDaRodada}
-              onAceitar={(item) => void motor.aceitar(item)}
+              onAceitar={async (item) => {
+                // Uma escolha aceita conclui a rodada e abre a próxima pergunta.
+                await motor.aceitar(item);
+                motor.avancar();
+              }}
               onDescartar={(item) => void motor.descartar(item)}
               onDesfazer={() => void motor.desfazer()}
               podeDesfazer={podeDesfazer}
