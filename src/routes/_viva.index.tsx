@@ -9,7 +9,7 @@ import { useAgente } from "@/lib/viva-agente";
 import { usePerfil } from "@/lib/viva-perfis";
 import { rotulosDeEstado, usePercursos } from "@/lib/viva-percursos";
 
-export const Route = createFileRoute("/_movel/")({
+export const Route = createFileRoute("/_viva/")({
   head: () => ({
     meta: [
       { title: "VIVA — Copiloto neuroinclusivo de percursos" },

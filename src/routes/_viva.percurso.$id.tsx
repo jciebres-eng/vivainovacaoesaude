@@ -19,7 +19,7 @@ import { fasesDoPercurso, percursos, usePercurso, type FaseDoPercurso } from "@/
 
 const fasesValidas = fasesDoPercurso.map((f) => f.id) as FaseDoPercurso[];
 
-export const Route = createFileRoute("/_movel/percurso/$id")({
+export const Route = createFileRoute("/_viva/percurso/$id")({
   validateSearch: (search: Record<string, unknown>): { fase: FaseDoPercurso } => {
     const fase = String(search.fase ?? "preparar") as FaseDoPercurso;
     return { fase: fasesValidas.includes(fase) ? fase : "preparar" };

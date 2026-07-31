@@ -19,7 +19,7 @@ import { conteudoPorId, rotulosDeArea, rotulosDeComplexidade } from "@/lib/viva-
 import { novoId, useBiblioteca } from "@/lib/viva-biblioteca";
 import { usePercursos } from "@/lib/viva-percursos";
 
-export const Route = createFileRoute("/_percurso/biblioteca/$conteudoId")({
+export const Route = createFileRoute("/_viva/biblioteca/$conteudoId")({
   loader: ({ params }) => {
     const conteudo = conteudoPorId(params.conteudoId);
     if (!conteudo) throw notFound();

@@ -14,7 +14,7 @@ import {
   type NivelDeCompartilhamento,
 } from "@/lib/viva-trajeto";
 
-export const Route = createFileRoute("/_movel/compartilhar")({
+export const Route = createFileRoute("/_viva/compartilhar")({
   head: () => ({
     meta: [
       { title: "Compartilhar percurso — VIVA" },

@@ -15,7 +15,7 @@ import {
 } from "@/lib/viva-biblioteca-dados";
 import { useBiblioteca } from "@/lib/viva-biblioteca";
 
-export const Route = createFileRoute("/_percurso/biblioteca/")({
+export const Route = createFileRoute("/_viva/biblioteca/")({
   head: () => ({
     meta: [
       { title: "Biblioteca Viva — conteúdos para o dia a dia | VIVA" },

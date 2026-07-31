@@ -7,7 +7,7 @@ import { Screen, ScreenHeader } from "@/components/viva/screen";
 import { conteudoPorId } from "@/lib/viva-biblioteca-dados";
 import { useBiblioteca } from "@/lib/viva-biblioteca";
 
-export const Route = createFileRoute("/_percurso/biblioteca/minha")({
+export const Route = createFileRoute("/_viva/biblioteca/minha")({
   head: () => ({
     meta: [
       { title: "Minha Biblioteca — o que você guardou | VIVA" },

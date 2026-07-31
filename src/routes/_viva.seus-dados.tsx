@@ -5,7 +5,7 @@ import { Confirmacao } from "@/components/ds";
 import { Note, Screen, ScreenHeader, SectionCard, TextAction } from "@/components/viva/screen";
 import { useViva } from "@/lib/viva-store";
 
-export const Route = createFileRoute("/_percurso/seus-dados")({
+export const Route = createFileRoute("/_viva/seus-dados")({
   head: () => ({
     meta: [
       { title: "Seus dados no VIVA — transparência e controle" },
