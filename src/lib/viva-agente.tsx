@@ -196,6 +196,10 @@ type ValorDoAgente = {
   online: boolean;
   /** Muda o estado do agente. Ignorado quando o agente está desativado. */
   irPara: (estado: EstadoDoAgente) => void;
+  /** Estado técnico correspondente, usado pelas animações do assistente. */
+  estadoTecnicoAtual: EstadoDoAssistente;
+  /** Envia um evento à máquina de estados do assistente. */
+  enviar: (evento: EventoDoAssistente) => void;
   definirPresenca: (presenca: PresencaDoAgente) => void;
   autorizarMemoria: (autorizada: boolean) => void;
 };
