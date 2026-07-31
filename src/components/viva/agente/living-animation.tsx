@@ -1,5 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import Lottie, { type LottieRefCurrentProps } from "lottie-react";
+import { useEffect, useMemo, useRef, useState, type ComponentType } from "react";
+import * as LottieModulo from "lottie-react";
+import type { LottieComponentProps, LottieRefCurrentProps } from "lottie-react";
+
+// A biblioteca é publicada em CommonJS: normalizamos o default para que o
+// componente funcione igual no servidor e no navegador.
+const Lottie = ((LottieModulo as unknown as { default?: unknown }).default ??
+  LottieModulo) as ComponentType<LottieComponentProps>;
 
 import { cn } from "@/lib/utils";
 import {
