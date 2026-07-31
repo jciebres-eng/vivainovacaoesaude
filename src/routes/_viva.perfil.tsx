@@ -12,12 +12,12 @@ export const Route = createFileRoute("/_viva/perfil")({
       {
         name: "description",
         content:
-          "Escolha o perfil de demonstração, ajuste sua experiência e veja como seus dados ficam apenas neste dispositivo.",
+          "Veja o perfil de demonstração, ajuste suas preferências e veja como seus dados ficam apenas neste dispositivo.",
       },
       { property: "og:title", content: "Perfil — VIVA" },
       {
         property: "og:description",
-        content: "Perfis de demonstração, preferências de experiência e cuidado com seus dados.",
+        content: "Perfil único de demonstração, preferências de experiência e cuidado com seus dados.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
