@@ -1,7 +1,7 @@
 import { Keyboard, Mic, MicOff, Square } from "lucide-react";
 import { useState } from "react";
 
-import { Botao, Card, CampoTextoLongo, Nota } from "@/components/ds";
+import { Botao, Card, AreaDeTexto, Nota } from "@/components/ds";
 import { exemplosDeFala, interpretarIntencao, type Interpretacao } from "@/lib/viva-intencao";
 import { useEscutaDeVoz } from "@/lib/viva-voz";
 
@@ -23,7 +23,7 @@ export function EntradaPorVoz({
 
   return (
     <div className="space-y-5">
-      <Card variante="acao" titulo="Diga o que você precisa">
+      <Card variante="proximo-passo" titulo="Diga o que você precisa">
         <p className="viva-apoio text-text-secondary">
           Você pode falar, escrever ou escolher com toques. Qualquer caminho leva ao mesmo lugar.
         </p>
@@ -68,12 +68,11 @@ export function EntradaPorVoz({
         ) : null}
 
         <div className="mt-5">
-          <CampoTextoLongo
-            id="fala"
+          <AreaDeTexto
             rotulo="O que você precisa agora"
             apoio="Uma frase basta. Nada aqui é enviado para fora deste dispositivo."
             value={valor}
-            onChange={(e) => {
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               voz.escrever(e.target.value);
               setTexto(e.target.value);
             }}
@@ -126,7 +125,7 @@ export function ConfirmacaoDeIntencao({
 }) {
   const indefinido = interpretacao.contexto.id === "indefinido";
   return (
-    <Card variante="acao" titulo={indefinido ? "Não tenho certeza" : "É isto?"}>
+    <Card variante="proximo-passo" titulo={indefinido ? "Não tenho certeza" : "É isto?"}>
       <p className="viva-texto text-text-primary">
         Entendi: {interpretacao.contexto.confirmacao}.
       </p>
