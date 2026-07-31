@@ -154,8 +154,10 @@ function RootComponent() {
       <VivaProvider>
         <ExperienciaProvider>
           <PerfilProvider>
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
+            <AgenteProvider>
+              {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+              <Outlet />
+            </AgenteProvider>
           </PerfilProvider>
         </ExperienciaProvider>
       </VivaProvider>
