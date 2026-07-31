@@ -18,11 +18,13 @@ import { Route as MovelFalarRouteImport } from './routes/_movel.falar'
 import { Route as MovelMeuPercursoRouteImport } from './routes/_movel.meu-percurso'
 import { Route as MovelMontarRouteImport } from './routes/_movel.montar'
 import { Route as MovelPerfilRouteImport } from './routes/_movel.perfil'
+import { Route as MovelRealizarRouteImport } from './routes/_movel.realizar'
 import { Route as PercursoDocumentacaoRouteImport } from './routes/_percurso.documentacao'
 import { Route as PercursoMeuMomentoRouteImport } from './routes/_percurso.meu-momento'
 import { Route as PercursoMinhaExperienciaRouteImport } from './routes/_percurso.minha-experiencia'
 import { Route as PercursoSeusDadosRouteImport } from './routes/_percurso.seus-dados'
 import { Route as PercursoSobreRouteImport } from './routes/_percurso.sobre'
+import { Route as AcompanharTokenRouteImport } from './routes/acompanhar.$token'
 import { Route as DocumentosSlugRouteImport } from './routes/documentos.$slug'
 import { Route as JornadaIndexRouteImport } from './routes/jornada.index'
 import { Route as JornadaAtividadeRouteImport } from './routes/jornada.atividade'
@@ -82,6 +84,11 @@ const MovelPerfilRoute = MovelPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => MovelRoute,
 } as any)
+const MovelRealizarRoute = MovelRealizarRouteImport.update({
+  id: '/realizar',
+  path: '/realizar',
+  getParentRoute: () => MovelRoute,
+} as any)
 const PercursoDocumentacaoRoute = PercursoDocumentacaoRouteImport.update({
   id: '/documentacao',
   path: '/documentacao',
@@ -107,6 +114,11 @@ const PercursoSobreRoute = PercursoSobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
   getParentRoute: () => PercursoRoute,
+} as any)
+const AcompanharTokenRoute = AcompanharTokenRouteImport.update({
+  id: '/acompanhar/$token',
+  path: '/acompanhar/$token',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DocumentosSlugRoute = DocumentosSlugRouteImport.update({
   id: '/documentos/$slug',
@@ -194,11 +206,13 @@ export interface FileRoutesByFullPath {
   '/meu-percurso': typeof MovelMeuPercursoRoute
   '/montar': typeof MovelMontarRoute
   '/perfil': typeof MovelPerfilRoute
+  '/realizar': typeof MovelRealizarRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
   '/seus-dados': typeof PercursoSeusDadosRoute
   '/sobre': typeof PercursoSobreRoute
+  '/acompanhar/$token': typeof AcompanharTokenRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/jornada/atividade': typeof JornadaAtividadeRoute
   '/jornada/encerramento': typeof JornadaEncerramentoRoute
@@ -222,11 +236,13 @@ export interface FileRoutesByTo {
   '/meu-percurso': typeof MovelMeuPercursoRoute
   '/montar': typeof MovelMontarRoute
   '/perfil': typeof MovelPerfilRoute
+  '/realizar': typeof MovelRealizarRoute
   '/documentacao': typeof PercursoDocumentacaoRoute
   '/meu-momento': typeof PercursoMeuMomentoRoute
   '/minha-experiencia': typeof PercursoMinhaExperienciaRoute
   '/seus-dados': typeof PercursoSeusDadosRoute
   '/sobre': typeof PercursoSobreRoute
+  '/acompanhar/$token': typeof AcompanharTokenRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/jornada/atividade': typeof JornadaAtividadeRoute
   '/jornada/encerramento': typeof JornadaEncerramentoRoute
@@ -253,11 +269,13 @@ export interface FileRoutesById {
   '/_movel/meu-percurso': typeof MovelMeuPercursoRoute
   '/_movel/montar': typeof MovelMontarRoute
   '/_movel/perfil': typeof MovelPerfilRoute
+  '/_movel/realizar': typeof MovelRealizarRoute
   '/_percurso/documentacao': typeof PercursoDocumentacaoRoute
   '/_percurso/meu-momento': typeof PercursoMeuMomentoRoute
   '/_percurso/minha-experiencia': typeof PercursoMinhaExperienciaRoute
   '/_percurso/seus-dados': typeof PercursoSeusDadosRoute
   '/_percurso/sobre': typeof PercursoSobreRoute
+  '/acompanhar/$token': typeof AcompanharTokenRoute
   '/documentos/$slug': typeof DocumentosSlugRoute
   '/jornada/atividade': typeof JornadaAtividadeRoute
   '/jornada/encerramento': typeof JornadaEncerramentoRoute
@@ -285,11 +303,13 @@ export interface FileRouteTypes {
     | '/meu-percurso'
     | '/montar'
     | '/perfil'
+    | '/realizar'
     | '/documentacao'
     | '/meu-momento'
     | '/minha-experiencia'
     | '/seus-dados'
     | '/sobre'
+    | '/acompanhar/$token'
     | '/documentos/$slug'
     | '/jornada/atividade'
     | '/jornada/encerramento'
@@ -313,11 +333,13 @@ export interface FileRouteTypes {
     | '/meu-percurso'
     | '/montar'
     | '/perfil'
+    | '/realizar'
     | '/documentacao'
     | '/meu-momento'
     | '/minha-experiencia'
     | '/seus-dados'
     | '/sobre'
+    | '/acompanhar/$token'
     | '/documentos/$slug'
     | '/jornada/atividade'
     | '/jornada/encerramento'
@@ -343,11 +365,13 @@ export interface FileRouteTypes {
     | '/_movel/meu-percurso'
     | '/_movel/montar'
     | '/_movel/perfil'
+    | '/_movel/realizar'
     | '/_percurso/documentacao'
     | '/_percurso/meu-momento'
     | '/_percurso/minha-experiencia'
     | '/_percurso/seus-dados'
     | '/_percurso/sobre'
+    | '/acompanhar/$token'
     | '/documentos/$slug'
     | '/jornada/atividade'
     | '/jornada/encerramento'
@@ -370,6 +394,7 @@ export interface RootRouteChildren {
   MovelRoute: typeof MovelRouteWithChildren
   PercursoRoute: typeof PercursoRouteWithChildren
   JornadaRoute: typeof JornadaRouteWithChildren
+  AcompanharTokenRoute: typeof AcompanharTokenRoute
   DocumentosSlugRoute: typeof DocumentosSlugRoute
 }
 
@@ -438,6 +463,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MovelPerfilRouteImport
       parentRoute: typeof MovelRoute
     }
+    '/_movel/realizar': {
+      id: '/_movel/realizar'
+      path: '/realizar'
+      fullPath: '/realizar'
+      preLoaderRoute: typeof MovelRealizarRouteImport
+      parentRoute: typeof MovelRoute
+    }
     '/_percurso/documentacao': {
       id: '/_percurso/documentacao'
       path: '/documentacao'
@@ -472,6 +504,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/sobre'
       preLoaderRoute: typeof PercursoSobreRouteImport
       parentRoute: typeof PercursoRoute
+    }
+    '/acompanhar/$token': {
+      id: '/acompanhar/$token'
+      path: '/acompanhar/$token'
+      fullPath: '/acompanhar/$token'
+      preLoaderRoute: typeof AcompanharTokenRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/documentos/$slug': {
       id: '/documentos/$slug'
@@ -587,6 +626,7 @@ interface MovelRouteChildren {
   MovelMeuPercursoRoute: typeof MovelMeuPercursoRoute
   MovelMontarRoute: typeof MovelMontarRoute
   MovelPerfilRoute: typeof MovelPerfilRoute
+  MovelRealizarRoute: typeof MovelRealizarRoute
   MovelIndexRoute: typeof MovelIndexRoute
 }
 
@@ -596,6 +636,7 @@ const MovelRouteChildren: MovelRouteChildren = {
   MovelMeuPercursoRoute: MovelMeuPercursoRoute,
   MovelMontarRoute: MovelMontarRoute,
   MovelPerfilRoute: MovelPerfilRoute,
+  MovelRealizarRoute: MovelRealizarRoute,
   MovelIndexRoute: MovelIndexRoute,
 }
 
@@ -662,6 +703,7 @@ const rootRouteChildren: RootRouteChildren = {
   MovelRoute: MovelRouteWithChildren,
   PercursoRoute: PercursoRouteWithChildren,
   JornadaRoute: JornadaRouteWithChildren,
+  AcompanharTokenRoute: AcompanharTokenRoute,
   DocumentosSlugRoute: DocumentosSlugRoute,
 }
 export const routeTree = rootRouteImport
