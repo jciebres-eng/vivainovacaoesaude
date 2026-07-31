@@ -15,6 +15,7 @@ import { Route as JornadaRouteImport } from './routes/jornada'
 import { Route as MovelIndexRouteImport } from './routes/_movel.index'
 import { Route as MovelCompartilharRouteImport } from './routes/_movel.compartilhar'
 import { Route as MovelFalarRouteImport } from './routes/_movel.falar'
+import { Route as MovelFavoritosRouteImport } from './routes/_movel.favoritos'
 import { Route as MovelMeuPercursoRouteImport } from './routes/_movel.meu-percurso'
 import { Route as MovelMontarRouteImport } from './routes/_movel.montar'
 import { Route as MovelPerfilRouteImport } from './routes/_movel.perfil'
@@ -68,6 +69,11 @@ const MovelCompartilharRoute = MovelCompartilharRouteImport.update({
 const MovelFalarRoute = MovelFalarRouteImport.update({
   id: '/falar',
   path: '/falar',
+  getParentRoute: () => MovelRoute,
+} as any)
+const MovelFavoritosRoute = MovelFavoritosRouteImport.update({
+  id: '/favoritos',
+  path: '/favoritos',
   getParentRoute: () => MovelRoute,
 } as any)
 const MovelMeuPercursoRoute = MovelMeuPercursoRouteImport.update({
@@ -209,6 +215,7 @@ export interface FileRoutesByFullPath {
   '/jornada': typeof JornadaRouteWithChildren
   '/compartilhar': typeof MovelCompartilharRoute
   '/falar': typeof MovelFalarRoute
+  '/favoritos': typeof MovelFavoritosRoute
   '/meu-percurso': typeof MovelMeuPercursoRoute
   '/montar': typeof MovelMontarRoute
   '/perfil': typeof MovelPerfilRoute
@@ -240,6 +247,7 @@ export interface FileRoutesByTo {
   '/': typeof MovelIndexRoute
   '/compartilhar': typeof MovelCompartilharRoute
   '/falar': typeof MovelFalarRoute
+  '/favoritos': typeof MovelFavoritosRoute
   '/meu-percurso': typeof MovelMeuPercursoRoute
   '/montar': typeof MovelMontarRoute
   '/perfil': typeof MovelPerfilRoute
@@ -274,6 +282,7 @@ export interface FileRoutesById {
   '/jornada': typeof JornadaRouteWithChildren
   '/_movel/compartilhar': typeof MovelCompartilharRoute
   '/_movel/falar': typeof MovelFalarRoute
+  '/_movel/favoritos': typeof MovelFavoritosRoute
   '/_movel/meu-percurso': typeof MovelMeuPercursoRoute
   '/_movel/montar': typeof MovelMontarRoute
   '/_movel/perfil': typeof MovelPerfilRoute
@@ -309,6 +318,7 @@ export interface FileRouteTypes {
     | '/jornada'
     | '/compartilhar'
     | '/falar'
+    | '/favoritos'
     | '/meu-percurso'
     | '/montar'
     | '/perfil'
@@ -340,6 +350,7 @@ export interface FileRouteTypes {
     | '/'
     | '/compartilhar'
     | '/falar'
+    | '/favoritos'
     | '/meu-percurso'
     | '/montar'
     | '/perfil'
@@ -373,6 +384,7 @@ export interface FileRouteTypes {
     | '/jornada'
     | '/_movel/compartilhar'
     | '/_movel/falar'
+    | '/_movel/favoritos'
     | '/_movel/meu-percurso'
     | '/_movel/montar'
     | '/_movel/perfil'
@@ -452,6 +464,13 @@ declare module '@tanstack/react-router' {
       path: '/falar'
       fullPath: '/falar'
       preLoaderRoute: typeof MovelFalarRouteImport
+      parentRoute: typeof MovelRoute
+    }
+    '/_movel/favoritos': {
+      id: '/_movel/favoritos'
+      path: '/favoritos'
+      fullPath: '/favoritos'
+      preLoaderRoute: typeof MovelFavoritosRouteImport
       parentRoute: typeof MovelRoute
     }
     '/_movel/meu-percurso': {
@@ -642,6 +661,7 @@ declare module '@tanstack/react-router' {
 interface MovelRouteChildren {
   MovelCompartilharRoute: typeof MovelCompartilharRoute
   MovelFalarRoute: typeof MovelFalarRoute
+  MovelFavoritosRoute: typeof MovelFavoritosRoute
   MovelMeuPercursoRoute: typeof MovelMeuPercursoRoute
   MovelMontarRoute: typeof MovelMontarRoute
   MovelPerfilRoute: typeof MovelPerfilRoute
@@ -653,6 +673,7 @@ interface MovelRouteChildren {
 const MovelRouteChildren: MovelRouteChildren = {
   MovelCompartilharRoute: MovelCompartilharRoute,
   MovelFalarRoute: MovelFalarRoute,
+  MovelFavoritosRoute: MovelFavoritosRoute,
   MovelMeuPercursoRoute: MovelMeuPercursoRoute,
   MovelMontarRoute: MovelMontarRoute,
   MovelPerfilRoute: MovelPerfilRoute,
