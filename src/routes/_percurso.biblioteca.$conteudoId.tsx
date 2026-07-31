@@ -17,7 +17,7 @@ import { Screen, ScreenHeader } from "@/components/viva/screen";
 import { cn } from "@/lib/utils";
 import { conteudoPorId, rotulosDeArea, rotulosDeComplexidade } from "@/lib/viva-biblioteca-dados";
 import { novoId, useBiblioteca } from "@/lib/viva-biblioteca";
-import { usePercurso } from "@/lib/viva-percurso";
+import { usePercursos } from "@/lib/viva-percursos";
 
 export const Route = createFileRoute("/_percurso/biblioteca/$conteudoId")({
   loader: ({ params }) => {
@@ -64,7 +64,7 @@ function ConteudoScreen() {
     adotarEstrategia,
     definirLeitura,
   } = useBiblioteca();
-  const percurso = usePercurso();
+  const { lista: meusPercursos } = usePercursos();
   const [acaoAberta, setAcaoAberta] = useState<
     "salvar" | "adaptar" | "relacionar" | "plano" | "util" | null
   >(null);
@@ -87,9 +87,9 @@ function ConteudoScreen() {
   );
 
   const experiencias = useMemo(() => {
-    const doPercurso = percurso.experiencias.map((e) => ({
-      valor: e.atividade,
-      label: e.atividade,
+    const doPercurso = meusPercursos.map((p) => ({
+      valor: p.titulo,
+      label: p.titulo,
     }));
     return doPercurso.length
       ? doPercurso
@@ -101,7 +101,7 @@ function ConteudoScreen() {
           },
           { valor: "Um deslocamento recente", label: "Um deslocamento recente" },
         ];
-  }, [percurso.experiencias]);
+  }, [meusPercursos]);
 
   return (
     <>
