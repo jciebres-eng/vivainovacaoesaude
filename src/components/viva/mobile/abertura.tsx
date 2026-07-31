@@ -21,9 +21,12 @@ export function AberturaDinamica({ baixaEstimulacao = false }: { baixaEstimulaca
       /* sem sessionStorage: a abertura aparece normalmente */
     }
     setVisivel(true);
-    const t = window.setTimeout(() => setVisivel(false), baixaEstimulacao ? 1200 : 2200);
+    const t = window.setTimeout(() => setVisivel(false), 2200);
     return () => window.clearTimeout(t);
-  }, [baixaEstimulacao]);
+    // Roda uma única vez: mudanças de preferência não devem reabrir a abertura.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   if (!visivel) return null;
 
