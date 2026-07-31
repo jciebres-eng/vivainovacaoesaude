@@ -5,7 +5,7 @@ import { Screen, ScreenHeader } from "@/components/viva/screen";
 import { conteudoPorId } from "@/lib/viva-biblioteca-dados";
 import { perguntasDeReflexao, useBiblioteca } from "@/lib/viva-biblioteca";
 
-export const Route = createFileRoute("/_percurso/biblioteca/reflexoes")({
+export const Route = createFileRoute("/_viva/biblioteca/reflexoes")({
   head: () => ({
     meta: [
       { title: "Minhas Reflexões — biblioteca | VIVA" },

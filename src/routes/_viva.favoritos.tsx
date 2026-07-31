@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { Card } from "@/components/ds";
 import { usePercursos } from "@/lib/viva-percursos";
-import { ItemDePercurso } from "./_movel.meu-percurso";
+import { ItemDePercurso } from "./_viva.meu-percurso";
 
-export const Route = createFileRoute("/_movel/favoritos")({
+export const Route = createFileRoute("/_viva/favoritos")({
   head: () => ({
     meta: [
       { title: "Favoritos — VIVA" },

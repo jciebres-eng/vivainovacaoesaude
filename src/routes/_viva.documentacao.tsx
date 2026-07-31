@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Note, Screen, ScreenHeader } from "@/components/viva/screen";
 import { docs, docsByGroup, groups } from "@/content/docs";
 
-export const Route = createFileRoute("/_percurso/documentacao")({
+export const Route = createFileRoute("/_viva/documentacao")({
   head: () => ({
     meta: [
       { title: "Documentos do projeto VIVA" },

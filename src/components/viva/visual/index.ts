@@ -1,4 +1,4 @@
-export { AberturaImersiva, ProfileMorphTransition } from "./abertura-imersiva";
+export { ProfileMorphTransition } from "./abertura-imersiva";
 export {
   VisualJourneyCard,
   VisualPlaceCard,

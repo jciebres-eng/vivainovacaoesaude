@@ -12,7 +12,7 @@ import {
   type CanalDeNotificacao,
 } from "@/lib/viva-experiencia";
 
-export const Route = createFileRoute("/_percurso/minha-experiencia")({
+export const Route = createFileRoute("/_viva/minha-experiencia")({
   head: () => ({
     meta: [
       { title: "Minha experiência — ajustes do VIVA" },

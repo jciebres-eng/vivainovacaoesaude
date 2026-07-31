@@ -5,7 +5,7 @@ import { SeletorDePerfil, SuperficieDeCartao } from "@/components/viva/mobile";
 import { SeletorDeModo } from "@/components/viva/visual";
 import { usePerfil } from "@/lib/viva-perfis";
 
-export const Route = createFileRoute("/_movel/perfil")({
+export const Route = createFileRoute("/_viva/perfil")({
   head: () => ({
     meta: [
       { title: "Perfil — VIVA" },

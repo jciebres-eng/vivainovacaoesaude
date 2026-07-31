@@ -4,7 +4,7 @@ import { Trash2 } from "lucide-react";
 import { Botao, Card } from "@/components/ds";
 import { percursos, rotulosDeEstado, usePercursos, type Percurso } from "@/lib/viva-percursos";
 
-export const Route = createFileRoute("/_movel/meu-percurso")({
+export const Route = createFileRoute("/_viva/meu-percurso")({
   head: () => ({
     meta: [
       { title: "Meus percursos — VIVA" },
