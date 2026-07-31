@@ -3,10 +3,9 @@ import { Play } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { CampoDoAgente } from "@/components/viva/agente";
+import { GradeDeSituacoes } from "@/components/viva/match";
 import { SeloDemonstrativo } from "@/components/viva/selo-demonstrativo";
-import { CatalogoDeSituacoes } from "@/components/viva/situacoes";
 
-import { JourneyMatchComposer } from "@/components/viva/visual";
 import { useAgente } from "@/lib/viva-agente";
 import { conteudosDaBiblioteca } from "@/lib/viva-biblioteca-dados";
 import { usePerfil } from "@/lib/viva-perfis";
@@ -71,7 +70,10 @@ function Inicio() {
 
       {intencao ? (
         <>
-          <JourneyMatchComposer intencao={intencao} />
+          <GradeDeSituacoes
+            titulo="Situações parecidas com o que você disse"
+            buscaInicial={intencao}
+          />
           <button
             type="button"
             onClick={() => setIntencao(null)}
@@ -108,7 +110,23 @@ function Inicio() {
 
           <CampoDoAgente onEnviar={(texto) => setIntencao(texto)} />
 
-          <CatalogoDeSituacoes titulo="Ou escolha uma situação" />
+          <GradeDeSituacoes titulo="Ou escolha uma situação" comBusca={false} limite={6} />
+
+          <div className="flex flex-wrap gap-3">
+            <Link
+              to="/explorar"
+              className="viva-tap inline-flex min-h-11 items-center rounded-full border border-border-default px-5 viva-legenda font-medium text-text-primary"
+            >
+              Ver todas as situações
+            </Link>
+            <Link
+              to="/historico"
+              className="viva-tap inline-flex min-h-11 items-center viva-legenda text-destaque-texto underline"
+            >
+              Meus percursos
+            </Link>
+          </div>
+
 
           <section aria-labelledby="conteudos-home" className="space-y-3">
             <h2 id="conteudos-home" className="viva-subtitulo text-text-primary">
